@@ -1,0 +1,1491 @@
+{
+	"Type_": "GestureManager",
+	"m_GestureMap": [{
+		"key": "relax_right_arm_shoulderPitch",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "relax_right_arm_shoulderPitch",
+			"m_bAbsolute": true,
+			"m_JointName": "RShoulderPitch",
+			"m_fAngle": 1.48353,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "relax_right_arm_shoulderRoll",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "relax_right_arm_shoulderRoll",
+			"m_bAbsolute": true,
+			"m_JointName": "RShoulderRoll",
+			"m_fAngle": -0.0087,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "relax_right_arm_elbowYaw",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "relax_right_arm_elbowYaw",
+			"m_bAbsolute": true,
+			"m_JointName": "RElbowYaw",
+			"m_fAngle": 1.8500534158111,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "relax_right_arm_elbowRoll",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "relax_right_arm_elbowRoll",
+			"m_bAbsolute": true,
+			"m_JointName": "RElbowRoll",
+			"m_fAngle": 0.383972,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "relax_right_arm_wristYaw",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "relax_right_arm_wristYaw",
+			"m_bAbsolute": true,
+			"m_JointName": "RWristYaw",
+			"m_fAngle": 0.0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "relax_left_arm_shoulderPitch",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "relax_left_arm_shoulderPitch",
+			"m_bAbsolute": true,
+			"m_JointName": "LShoulderPitch",
+			"m_fAngle": 1.48353,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "relax_left_arm_shoulderRoll",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "relax_left_arm_shoulderRoll",
+			"m_bAbsolute": true,
+			"m_JointName": "LShoulderRoll",
+			"m_fAngle": 0.0087,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "relax_left_arm_elbowYaw",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "relax_left_arm_elbowYaw",
+			"m_bAbsolute": true,
+			"m_JointName": "LElbowYaw",
+			"m_fAngle": -1.8500534158111,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "relax_left_arm_elbowRoll",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "relax_left_arm_elbowRoll",
+			"m_bAbsolute": true,
+			"m_JointName": "LElbowRoll",
+			"m_fAngle": 0.383972,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "relax_left_arm_wristYaw",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "relax_left_arm_wristYaw",
+			"m_bAbsolute": true,
+			"m_JointName": "LWristYaw",
+			"m_fAngle": 0.0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "look_left",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "look_left",
+			"m_bAbsolute": false,
+			"m_JointName": "HeadYaw",
+			"m_fAngle": 0.52,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "look_right",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "look_right",
+			"m_bAbsolute": false,
+			"m_JointName": "HeadYaw",
+			"m_fAngle": -0.52,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "look_all_the_way_left",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "look_all_the_way_left",
+			"m_bAbsolute": true,
+			"m_JointName": "HeadYaw",
+			"m_fAngle": 2.0857,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "look_all_the_way_right",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "look_all_the_way_right",
+			"m_bAbsolute": true,
+			"m_JointName": "HeadYaw",
+			"m_fAngle": -2.0857,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "look_straight",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "look_straight",
+			"m_bAbsolute": true,
+			"m_JointName": "HeadYaw",
+			"m_fAngle": 0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "look_up",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "look_up",
+			"m_bAbsolute": false,
+			"m_JointName": "HeadPitch",
+			"m_fAngle": -0.17,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "look_down",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "look_down",
+			"m_bAbsolute": false,
+			"m_JointName": "HeadPitch",
+			"m_fAngle": 0.16,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "look_all_the_way_down",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "look_all_the_way_down",
+			"m_bAbsolute": true,
+			"m_JointName": "HeadPitch",
+			"m_fAngle": 0.6371,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "look_all_the_way_up",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "look_all_the_way_up",
+			"m_bAbsolute": true,
+			"m_JointName": "HeadPitch",
+			"m_fAngle": -0.7068,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "look_forward",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "look_forward",
+			"m_bAbsolute": true,
+			"m_JointName": "HeadPitch",
+			"m_fAngle": 0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "lean_right",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "lean_right",
+			"m_bAbsolute": false,
+			"m_JointName": "HipRoll",
+			"m_fAngle": 0.205,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "lean_left",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "lean_right",
+			"m_bAbsolute": false,
+			"m_JointName": "HipRoll",
+			"m_fAngle": -0.205,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "lean_all_the_way_right",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "lean_all_the_way_right",
+			"m_bAbsolute": true,
+			"m_JointName": "HipRoll",
+			"m_fAngle": 0.5149,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "lean_all_the_way_left",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "lean_all_the_way_left",
+			"m_bAbsolute": true,
+			"m_JointName": "HipRoll",
+			"m_fAngle": -0.5149,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "lean_forward",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "lean_forward",
+			"m_bAbsolute": false,
+			"m_JointName": "HipPitch",
+			"m_fAngle": 0.259,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "lean_backward",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "lean_backward",
+			"m_bAbsolute": false,
+			"m_JointName": "HipPitch",
+			"m_fAngle": -0.259,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "lean_all_the_way_forward",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "lean_all_the_way_forward",
+			"m_bAbsolute": true,
+			"m_JointName": "HipPitch",
+			"m_fAngle": 1.0385,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "lean_all_the_way_backward",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "lean_all_the_way_backward",
+			"m_bAbsolute": true,
+			"m_JointName": "HipPitch",
+			"m_fAngle": -1.0385,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "straighten_up_hips_roll",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "straighten_up_hips_roll",
+			"m_bAbsolute": true,
+			"m_JointName": "HipRoll",
+			"m_fAngle": 0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "straighten_up_hips_pitch",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "straighten_up_hips_pitch",
+			"m_bAbsolute": true,
+			"m_JointName": "HipPitch",
+			"m_fAngle": 0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "bend_knees_forward",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "bend_knees_forward",
+			"m_bAbsolute": true,
+			"m_JointName": "KneePitch",
+			"m_fAngle": 0.128,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "bend_knees_backward",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "bend_knees_backward",
+			"m_bAbsolute": true,
+			"m_JointName": "KneePitch",
+			"m_fAngle": -0.128,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "bend_knees_all_the_way_forward",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "bend_knees_all_the_way_forward",
+			"m_bAbsolute": true,
+			"m_JointName": "KneePitch",
+			"m_fAngle": 0.5149,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "bend_knees_all_the_was_backward",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "bend_knees_all_the_was_backward",
+			"m_bAbsolute": true,
+			"m_JointName": "KneePitch",
+			"m_fAngle": -0.5149,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "straighten_up_knees",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "straighten_up_knees",
+			"m_bAbsolute": true,
+			"m_JointName": "KneePitch",
+			"m_fAngle": 0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_left_shoulder_up",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_left_shoulder_up",
+			"m_bAbsolute": false,
+			"m_JointName": "LShoulderPitch",
+			"m_fAngle": -0.52,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_left_shoulder_up_wave",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_left_shoulder_up_wave",
+			"m_bAbsolute": true,
+			"m_JointName": "LShoulderPitch",
+			"m_fAngle": -0.698132,
+			"m_fSpeed": 3.0,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_left_shoulder_down",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_left_shoulder_down",
+			"m_bAbsolute": false,
+			"m_JointName": "LShoulderPitch",
+			"m_fAngle": 0.52,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_left_shoulder_all_the_way_up",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_left_shoulder_all_the_way_up",
+			"m_bAbsolute": true,
+			"m_JointName": "LShoulderPitch",
+			"m_fAngle": -2.0857,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_left_shoulder_all_the_way_down",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_left_shoulder_all_the_way_down",
+			"m_bAbsolute": true,
+			"m_JointName": "LShoulderPitch",
+			"m_fAngle": 2.0857,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_left_shoulder_out",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_left_shoulder_out",
+			"m_bAbsolute": false,
+			"m_JointName": "LShoulderRoll",
+			"m_fAngle": 0.388,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_left_shoulder_out_wave",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_left_shoulder_out_wave",
+			"m_bAbsolute": true,
+			"m_JointName": "LShoulderRoll",
+			"m_fAngle": 0.90,
+			"m_fSpeed": 1.0,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_left_shoulder_in",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_left_shoulder_in",
+			"m_bAbsolute": false,
+			"m_JointName": "LShoulderRoll",
+			"m_fAngle": -0.388,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_left_shoulder_all_the_way_out",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_left_shoulder_all_the_way_out",
+			"m_bAbsolute": true,
+			"m_JointName": "LShoulderRoll",
+			"m_fAngle": 1.5620,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_left_shoulder_all_the_way_in",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_left_shoulder_all_the_way_in",
+			"m_bAbsolute": true,
+			"m_JointName": "LShoulderRoll",
+			"m_fAngle": -0.0087,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_left_forarm_out",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_left_forarm_out",
+			"m_bAbsolute": false,
+			"m_JointName": "LElbowYaw",
+			"m_fAngle": 0.52,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_left_forarm_in",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_left_forarm_in",
+			"m_bAbsolute": false,
+			"m_JointName": "LElbowYaw",
+			"m_fAngle": -0.52,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_left_forarm_all_the_way_out",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_left_forarm_all_the_way_out",
+			"m_bAbsolute": true,
+			"m_JointName": "LElbowYaw",
+			"m_fAngle": 2.0857,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_left_forarm_all_the_way_in",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_left_forarm_all_the_way_in",
+			"m_bAbsolute": true,
+			"m_JointName": "LElbowYaw",
+			"m_fAngle": -2.0857,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "bend_left_elbow_out",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "bend_left_elbow_out",
+			"m_bAbsolute": false,
+			"m_JointName": "LElbowRoll",
+			"m_fAngle": -0.388,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "bend_left_elbow_in",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "bend_left_elbow_in",
+			"m_bAbsolute": false,
+			"m_JointName": "LElbowRoll",
+			"m_fAngle": 0.388,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "bend_left_elbow_all_the_way_out",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "bend_left_elbow_all_the_way_out",
+			"m_bAbsolute": true,
+			"m_JointName": "LElbowRoll",
+			"m_fAngle": 0.0087,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "bend_left_elbow_all_the_way_in",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "bend_left_elbow_all_the_way_in",
+			"m_bAbsolute": true,
+			"m_JointName": "LElbowRoll",
+			"m_fAngle": 1.5620,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_left_wrist_out",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_left_wrist_out",
+			"m_bAbsolute": false,
+			"m_JointName": "r2/left_arm/joint4",
+			"m_fAngle": 3.14,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_left_wrist_in",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_left_wrist_in",
+			"m_bAbsolute": false,
+			"m_JointName": "r2/left_arm/joint4",
+			"m_fAngle": 1.4,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_left_wrist_all_the_way_out",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_left_wrist_all_the_way_out",
+			"m_bAbsolute": true,
+			"m_JointName": "LWristYaw",
+			"m_fAngle": -1.8329,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_left_wrist_all_the_way_in",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_left_wrist_all_the_way_in",
+			"m_bAbsolute": true,
+			"m_JointName": "LWristYaw",
+			"m_fAngle": 1.8329,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_right_shoulder_up",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_right_shoulder_up",
+			"m_bAbsolute": true,
+			"m_JointName": "RShoulderPitch",
+			"m_fAngle": -0.52,
+			"m_fSpeed": 3.0,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_right_shoulder_up_wave",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_right_shoulder_up_wave",
+			"m_bAbsolute": true,
+			"m_JointName": "RShoulderPitch",
+			"m_fAngle": -0.698132,
+			"m_fSpeed": 3.0,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_right_shoulder_down",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_right_shoulder_down",
+			"m_bAbsolute": false,
+			"m_JointName": "RShoulderPitch",
+			"m_fAngle": 0.52,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_right_shoulder_all_the_way_up",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_right_shoulder_all_the_way_up",
+			"m_bAbsolute": true,
+			"m_JointName": "RShoulderPitch",
+			"m_fAngle": -2.0857,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_right_shoulder_all_the_way_down",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_right_shoulder_all_the_way_down",
+			"m_bAbsolute": true,
+			"m_JointName": "RShoulderPitch",
+			"m_fAngle": 2.0857,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_right_shoulder_out",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_right_shoulder_out",
+			"m_bAbsolute": true,
+			"m_JointName": "RShoulderRoll",
+			"m_fAngle": -0.388,
+			"m_fSpeed": 1.0,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_right_shoulder_out_wave",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_right_shoulder_out_wave",
+			"m_bAbsolute": true,
+			"m_JointName": "RShoulderRoll",
+			"m_fAngle": -0.90,
+			"m_fSpeed": 1.0,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_right_shoulder_in",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_right_shoulder_in",
+			"m_bAbsolute": false,
+			"m_JointName": "RShoulderRoll",
+			"m_fAngle": 0.388,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_right_shoulder_all_the_way_out",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_right_shoulder_all_the_way_out",
+			"m_bAbsolute": true,
+			"m_JointName": "RShoulderRoll",
+			"m_fAngle": -1.5620,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_right_shoulder_all_the_way_in",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_right_shoulder_all_the_way_in",
+			"m_bAbsolute": true,
+			"m_JointName": "RShoulderRoll",
+			"m_fAngle": -0.0087,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_right_forarm_out",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_right_forarm_out",
+			"m_bAbsolute": false,
+			"m_JointName": "RElbowYaw",
+			"m_fAngle": 0.52,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_right_forarm_in",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_right_forarm_in",
+			"m_bAbsolute": false,
+			"m_JointName": "RElbowYaw",
+			"m_fAngle": -0.52,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_right_forarm_all_the_way_out",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_right_forarm_all_the_way_out",
+			"m_bAbsolute": true,
+			"m_JointName": "RElbowYaw",
+			"m_fAngle": 2.0857,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_right_forarm_all_the_way_in",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_right_forarm_all_the_way_in",
+			"m_bAbsolute": true,
+			"m_JointName": "RElbowYaw",
+			"m_fAngle": -2.0857,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "bend_right_elbow_out",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "bend_right_elbow_out",
+			"m_bAbsolute": false,
+			"m_JointName": "RElbowRoll",
+			"m_fAngle": -0.388,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "bend_right_elbow_in",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "bend_right_elbow_in",
+			"m_bAbsolute": false,
+			"m_JointName": "RElbowRoll",
+			"m_fAngle": 0.388,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "bend_right_elbow_all_the_way_out",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "bend_right_elbow_all_the_way_out",
+			"m_bAbsolute": true,
+			"m_JointName": "RElbowRoll",
+			"m_fAngle": 0.0087,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "bend_right_elbow_all_the_way_in",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "bend_right_elbow_all_the_way_in",
+			"m_bAbsolute": true,
+			"m_JointName": "RElbowRoll",
+			"m_fAngle": 1.5620,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_right_wrist_out",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_right_wrist_out",
+			"m_bAbsolute": false,
+			"m_JointName": "RWristYaw",
+			"m_fAngle": 0.458,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_right_wrist_in",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_right_wrist_in",
+			"m_bAbsolute": false,
+			"m_JointName": "RWristYaw",
+			"m_fAngle": -0.458,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_right_wrist_all_the_way_out",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_right_wrist_all_the_way_out",
+			"m_bAbsolute": true,
+			"m_JointName": "RWristYaw",
+			"m_fAngle": 1.8329,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "rotate_right_wrist_all_the_way_in",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "rotate_right_wrist_all_the_way_in",
+			"m_bAbsolute": true,
+			"m_JointName": "RWristYaw",
+			"m_fAngle": -1.8329,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "r_hand_raise",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "r_hand_raise",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/right_arm/joint0",
+			"m_fAngle": 1.0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_raise",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_raise",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/joint0",
+			"m_fAngle": -1.0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_index_distal_open",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_index_distal_open",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/index/distal",
+			"m_fAngle": 0.0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_index_medial_open",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_index_medial_open",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/index/medial",
+			"m_fAngle": 0.0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_index_proximal_open",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_index_proximal_open",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/index/proximal",
+			"m_fAngle": 0.0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_index_yaw_open",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_index_yaw_open",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/index/yaw",
+			"m_fAngle": 0.17,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_middle_distal_open",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_middle_distal_open",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/middle/distal",
+			"m_fAngle": 0.0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_middle_medial_open",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_medial_open",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/middle/medial",
+			"m_fAngle": 0.0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_middle_proximal_open",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_proximal_open",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/middle/proximal",
+			"m_fAngle": 0.0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_middle_yaw_open",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_yaw_open",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/middle/yaw",
+			"m_fAngle": -0.17,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_pinky_little_open",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_pinky_little_open",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/ringlittle/little",
+			"m_fAngle": 0.0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_pinky_little_distal_open",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_pinky_little_distal_open",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/ringlittle/littleDistal",
+			"m_fAngle": 0.0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_pinky_little_medial_open",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_pinky_little_medial_open",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/ringlittle/littleMedial",
+			"m_fAngle": 0.0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_ring_ring_open",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_ring_ring_open",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/ringlittle/ring",
+			"m_fAngle": 0.0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_ring_ring_distal_open",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_ring_ring_distal_open",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/ringlittle/ringDistal",
+			"m_fAngle": 0.0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_ring_ring_medial_open",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_ring_ring_medial_open",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/ringlittle/ringMedial",
+			"m_fAngle": 0.0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_thumb_distal_open",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_thumb_distal_open",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/thumb/distal",
+			"m_fAngle": 0.0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_thumb_proximal_open",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_thumb_proximal_open",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/thumb/proximal",
+			"m_fAngle": 0.0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_thumb_medial_open",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_thumb_medial_open",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/thumb/medial",
+			"m_fAngle": 0.0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_thumb_roll_open",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_thumb_roll_open",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/thumb/roll",
+			"m_fAngle": 0.0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_index_distal_close",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_index_distal_close",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/index/distal",
+			"m_fAngle": 1.0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_index_medial_close",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_index_medial_close",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/index/medial",
+			"m_fAngle": 1.57,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_index_proximal_close",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_index_proximal_close",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/index/proximal",
+			"m_fAngle": 1.57,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_index_yaw_close",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_index_yaw_close",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/index/yaw",
+			"m_fAngle": 0.0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_middle_distal_close",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_middle_distal_close",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/middle/distal",
+			"m_fAngle": 1.0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_middle_medial_close",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_medial_close",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/middle/medial",
+			"m_fAngle": 1.4,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_middle_proximal_close",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_proximal_close",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/middle/proximal",
+			"m_fAngle": 1.57,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_middle_yaw_close",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_yaw_close",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/middle/yaw",
+			"m_fAngle": 0.0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_pinky_little_close",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_pinky_little_close",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/ringlittle/little",
+			"m_fAngle": 2.96,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_pinky_little_distal_close",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_pinky_little_distal_close",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/ringlittle/littleDistal",
+			"m_fAngle": 1.0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_pinky_little_medial_close",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_pinky_little_medial_close",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/ringlittle/littleMedial",
+			"m_fAngle": 1.0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_ring_ring_close",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_ring_ring_close",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/ringlittle/ring",
+			"m_fAngle": 2.96,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_ring_ring_distal_close",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_ring_ring_distal_close",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/ringlittle/ringDistal",
+			"m_fAngle": 1.0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_ring_ring_medial_close",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_ring_ring_medial_close",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/ringlittle/ringMedial",
+			"m_fAngle": 1.0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_thumb_distal_close",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_thumb_distal_close",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/thumb/distal",
+			"m_fAngle": 0.5,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_thumb_proximal_close",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_thumb_proximal_close",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/thumb/proximal",
+			"m_fAngle": 0.0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_thumb_medial_close",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_thumb_medial_close",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/thumb/medial",
+			"m_fAngle": 1.0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_thumb_roll_close",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_thumb_roll_close",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/hand/thumb/roll",
+			"m_fAngle": -1.2217,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_descend",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_descend",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/left_arm/joint0",
+			"m_fAngle": 1.0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "r_hand_descend",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "r_hand_descend",
+			"m_bAbsolute": true,
+			"m_JointName": "r2/right_arm/joint0",
+			"m_fAngle": -1.0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "r_hand_extend",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "r_hand_extend",
+			"m_JointName": "RShoulderPitch",
+			"m_bAbsolute": true,
+			"m_fAngle": 0.0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "l_hand_extend",
+		"value": {
+			"Type_": "MoveJointGesture",
+			"m_GestureId": "l_hand_extend",
+			"m_JointName": "LShoulderPitch",
+			"m_bAbsolute": true,
+			"m_fAngle": 0.0,
+			"m_fSpeed": 3.5,
+			"m_fStiffness": 1
+		}
+	},
+	{
+		"key": "r_hand_close",
+		"value": {
+			"Type_": "GraspGesture",
+			"m_GestureId": "r_hand_close",
+			"m_Hand": "RHand",
+			"m_Open": false
+		}
+	},
+	{
+		"key": "r_hand_open",
+		"value": {
+			"Type_": "GraspGesture",
+			"m_GestureId": "r_hand_open",
+			"m_Hand": "RHand",
+			"m_Open": true
+		}
+	},
+	{
+		"key": "l_hand_close",
+		"value": {
+			"Type_": "GraspGesture",
+			"m_GestureId": "l_hand_close",
+			"m_Hand": "LHand",
+			"m_Open": false
+		}
+	},
+	{
+		"key": "l_hand_open",
+		"value": {
+			"Type_": "GraspGesture",
+			"m_GestureId": "l_hand_open",
+			"m_Hand": "LHand",
+			"m_Open": true
+		}
+	}]
+}

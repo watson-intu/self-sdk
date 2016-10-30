@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="gestures">
+      <UniqueIdentifier>{3096d940-6d5f-460b-bb03-3c9ec524bd33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sensors">
+      <UniqueIdentifier>{e22c0f9b-295b-46d5-abcb-d3efd8753978}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="agents">
+      <UniqueIdentifier>{eedd00cb-4800-4b2e-8d2f-a33d3b302fc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="blackboard">
+      <UniqueIdentifier>{9e48cdb4-0adf-41f1-a26e-eec90b9f5725}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="services">
+      <UniqueIdentifier>{883982f6-57f1-4823-a145-a6a0df4f6c7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests">
+      <UniqueIdentifier>{4049ca2e-694d-4c2e-a075-09a738e4350a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\plugins\remote\agents\RemoteCameraAgent.cpp">
+      <Filter>agents</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\remote\sensors\RemoteCamera.cpp">
+      <Filter>sensors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\remote\sensors\RemoteMicrophone.cpp">
+      <Filter>sensors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\remote\services\PTZCamera.cpp">
+      <Filter>services</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\remote\tests\TestPTZCamera.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\remote\blackboard\CameraIntent.cpp">
+      <Filter>blackboard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\remote\gestures\RemoteSpeechGesture.cpp">
+      <Filter>gestures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\remote\tests\TestRemoteMicrophone.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\plugins\remote\agents\RemoteCameraAgent.h">
+      <Filter>agents</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\remote\sensors\RemoteCamera.h">
+      <Filter>sensors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\remote\sensors\RemoteMicrophone.h">
+      <Filter>sensors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\remote\services\PTZCamera.h">
+      <Filter>services</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\remote\blackboard\CameraIntent.h">
+      <Filter>blackboard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\remote\gestures\RemoteSpeechGesture.h">
+      <Filter>gestures</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

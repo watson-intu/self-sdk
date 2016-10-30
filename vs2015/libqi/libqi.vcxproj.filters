@@ -1,0 +1,1138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="qi">
+      <UniqueIdentifier>{b095fff1-e4be-4a50-b83f-e2a9f2beae96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="qi\detail">
+      <UniqueIdentifier>{cc56dec7-cc34-413a-979c-adc312843b9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="qi\log">
+      <UniqueIdentifier>{889bcd55-1530-4d0c-88fc-902c8bf2663f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="qi\messaging">
+      <UniqueIdentifier>{750493f8-a563-40c7-824f-cf20cb29eece}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="qi\messaging\detail">
+      <UniqueIdentifier>{8aef6d13-ec92-4a37-8165-3853f834c324}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="qi\perf">
+      <UniqueIdentifier>{3d5bd7c2-2159-41ab-891b-1f99723b1632}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="qi\perf\detail">
+      <UniqueIdentifier>{e505d019-1d9b-45c7-97a2-025904618d5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="qi\type">
+      <UniqueIdentifier>{264fcbd6-8508-43b1-a0e4-0573821d4ba6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="qi\type\detail">
+      <UniqueIdentifier>{75e04271-691e-4ff0-98a0-db4477734463}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{e6de2a7a-3510-48a0-8254-e47f9d36f1ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\messaging">
+      <UniqueIdentifier>{60fb1448-1d0b-43b6-bb34-5351376d2da8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\perf">
+      <UniqueIdentifier>{59b83c71-e24c-4c58-8ba1-f3e6e5b33ddc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\type">
+      <UniqueIdentifier>{693ca493-9b83-4080-a27c-edd63e08a213}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests">
+      <UniqueIdentifier>{fc58cd4f-044d-48c5-9288-f7ca1d9518ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests\messaging">
+      <UniqueIdentifier>{411689ff-dfdd-45e2-9c24-6ef6a0c5c453}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests\perf">
+      <UniqueIdentifier>{abc7278c-cc92-4f4f-8598-880f7b501f3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests\qi">
+      <UniqueIdentifier>{bd525413-0e82-4899-be35-48d639e7fe30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests\type">
+      <UniqueIdentifier>{e1c315fc-bbc6-43c0-8559-68feb124057f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests\messaging\libtestsession">
+      <UniqueIdentifier>{fa5f1836-80f4-4334-a9f7-9f70a9757174}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests\messaging\passobject-fromclient">
+      <UniqueIdentifier>{fde65dbd-a798-49e3-9601-33ab2c2d9a2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests\messaging\passobject-fromservice">
+      <UniqueIdentifier>{ffba2ac6-ddf5-47f7-8aa4-a18f9b21fc4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests\messaging\task-service">
+      <UniqueIdentifier>{eb585ece-d7c6-4943-9510-7109c30818b0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\lib\libqi\qi\actor.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\anyfunction.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\anymodule.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\anyobject.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\anyvalue.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\api.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\application.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\applicationsession.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\atomic.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\binarycodec.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\buffer.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\clock.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\eventloop.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\future.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\futuregroup.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\getenv.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\iocolor.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\jsoncodec.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\log.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\macro.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\os.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\path.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\periodictask.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\preproc.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\property.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\qi.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\session.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\signal.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\signalspy.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\signature.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\stats.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\strand.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\trackable.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\translator.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\types.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\url.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\version.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\detail\clock.hxx">
+      <Filter>qi\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\detail\eventloop.hxx">
+      <Filter>qi\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\detail\executioncontext.hpp">
+      <Filter>qi\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\detail\future.hxx">
+      <Filter>qi\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\detail\future_fwd.hpp">
+      <Filter>qi\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\detail\futurebarrier.hpp">
+      <Filter>qi\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\detail\log.hxx">
+      <Filter>qi\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\detail\mpl.hpp">
+      <Filter>qi\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\detail\trackable.hxx">
+      <Filter>qi\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\detail\warn_pop_ignore_deprecated.hpp">
+      <Filter>qi\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\detail\warn_push_ignore_deprecated.hpp">
+      <Filter>qi\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\log\consoleloghandler.hpp">
+      <Filter>qi\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\log\csvloghandler.hpp">
+      <Filter>qi\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\log\fileloghandler.hpp">
+      <Filter>qi\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\log\headfileloghandler.hpp">
+      <Filter>qi\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\log\journaldloghandler.hpp">
+      <Filter>qi\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\log\tailfileloghandler.hpp">
+      <Filter>qi\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\messaging\authprovider.hpp">
+      <Filter>qi\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\messaging\authproviderfactory.hpp">
+      <Filter>qi\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\messaging\autoservice.hpp">
+      <Filter>qi\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\messaging\clientauthenticator.hpp">
+      <Filter>qi\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\messaging\clientauthenticatorfactory.hpp">
+      <Filter>qi\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\messaging\gateway.hpp">
+      <Filter>qi\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\messaging\serviceinfo.hpp">
+      <Filter>qi\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\messaging\detail\autoservice.hxx">
+      <Filter>qi\messaging\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\perf\dataperf.hpp">
+      <Filter>qi\perf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\perf\dataperfsuite.hpp">
+      <Filter>qi\perf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\perf\measure.hpp">
+      <Filter>qi\perf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\perf\detail\dataperfsuite.hxx">
+      <Filter>qi\perf\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\dynamicobject.hpp">
+      <Filter>qi\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\dynamicobjectbuilder.hpp">
+      <Filter>qi\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\fwd.hpp">
+      <Filter>qi\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\metamethod.hpp">
+      <Filter>qi\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\metaobject.hpp">
+      <Filter>qi\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\metaproperty.hpp">
+      <Filter>qi\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\metasignal.hpp">
+      <Filter>qi\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\objecttypebuilder.hpp">
+      <Filter>qi\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\proxyproperty.hpp">
+      <Filter>qi\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\proxysignal.hpp">
+      <Filter>qi\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\typedispatcher.hpp">
+      <Filter>qi\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\typeinterface.hpp">
+      <Filter>qi\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\typeobject.hpp">
+      <Filter>qi\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\accessor.hxx">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\anyfunction.hxx">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\anyfunctionfactory.hxx">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\anyiterator.hpp">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\anyiterator.hxx">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\anyreference.hpp">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\anyreference.hxx">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\anyvalue.hpp">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\anyvalue.hxx">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\bindtype.hxx">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\buffertypeinterface.hxx">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\dynamicobjectbuilder.hxx">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\dynamictypeinterface.hxx">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\functionsignature.hxx">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\futureadapter.hpp">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\futureadapter.hxx">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\genericobject.hpp">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\hasless.hxx">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\inttypeinterface.hxx">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\listtypeinterface.hxx">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\manageable.hpp">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\maptypeinterface.hxx">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\object.hxx">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\objecttypebuilder.hxx">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\pointertypeinterface.hxx">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\property.hxx">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\proxyregister.hpp">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\signal.hxx">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\staticobjecttype.hpp">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\stringtypeinterface.hxx">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\structtypeinterface.hxx">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\traceanalyzer.hpp">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\type.hpp">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\type.hxx">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\typedispatcher.hxx">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\typeimpl.hxx">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\qi\type\detail\typeinterface.hpp">
+      <Filter>qi\type\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\buffer_p.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\eventloop_p.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\log_p.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\path_conf.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\sdklayout.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\tp_qi.in.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\utils.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\messaging\authprovider_p.hpp">
+      <Filter>src\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\messaging\boundobject.hpp">
+      <Filter>src\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\messaging\clientauthenticator_p.hpp">
+      <Filter>src\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\messaging\message.hpp">
+      <Filter>src\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\messaging\messagedispatcher.hpp">
+      <Filter>src\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\messaging\objecthost.hpp">
+      <Filter>src\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\messaging\objectregistrar.hpp">
+      <Filter>src\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\messaging\remoteobject_p.hpp">
+      <Filter>src\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\messaging\server.hpp">
+      <Filter>src\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\messaging\servicedirectory.hpp">
+      <Filter>src\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\messaging\servicedirectory_p.hpp">
+      <Filter>src\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\messaging\servicedirectoryclient.hpp">
+      <Filter>src\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\messaging\serviceinfo_p.hpp">
+      <Filter>src\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\messaging\session_p.hpp">
+      <Filter>src\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\messaging\sessionservice.hpp">
+      <Filter>src\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\messaging\sessionservices.hpp">
+      <Filter>src\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\messaging\streamcontext.hpp">
+      <Filter>src\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\messaging\tcptransportsocket.hpp">
+      <Filter>src\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\messaging\transportserver.hpp">
+      <Filter>src\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\messaging\transportserverasio_p.hpp">
+      <Filter>src\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\messaging\transportsocket.hpp">
+      <Filter>src\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\messaging\transportsocketcache.hpp">
+      <Filter>src\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\perf\dataperf_p.hpp">
+      <Filter>src\perf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\perf\dataperfsuite_p.hpp">
+      <Filter>src\perf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\type\binarycodec_p.hpp">
+      <Filter>src\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\type\jsoncodec_p.hpp">
+      <Filter>src\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\type\metamethod_p.hpp">
+      <Filter>src\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\type\metaobject_p.hpp">
+      <Filter>src\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\type\metasignal_p.hpp">
+      <Filter>src\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\type\signal_p.hpp">
+      <Filter>src\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\src\type\signatureconvertor.hpp">
+      <Filter>src\type</Filter>
+    </ClInclude>
+    <ClInclude Include="qi\config.hpp" />
+    <ClInclude Include="..\..\lib\libqi\qi\config.hpp">
+      <Filter>qi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\tests\messaging\sig_generator.h">
+      <Filter>tests\messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\tests\messaging\libtestsession\src\defaultservice.hpp">
+      <Filter>tests\messaging\libtestsession</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\tests\messaging\libtestsession\src\populationgenerator.hpp">
+      <Filter>tests\messaging\libtestsession</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\tests\messaging\libtestsession\src\sessioninitializer.hpp">
+      <Filter>tests\messaging\libtestsession</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\tests\messaging\libtestsession\src\testsession_p.hpp">
+      <Filter>tests\messaging\libtestsession</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\tests\messaging\libtestsession\src\trafficgenerator.hpp">
+      <Filter>tests\messaging\libtestsession</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\tests\messaging\libtestsession\testsession\testsession.hpp">
+      <Filter>tests\messaging\libtestsession</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\tests\messaging\libtestsession\testsession\testsessionpair.hpp">
+      <Filter>tests\messaging\libtestsession</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\tests\messaging\task-service\task_service.hpp">
+      <Filter>tests\messaging\task-service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\tests\messaging\task-service\taskgenerator.hpp">
+      <Filter>tests\messaging\task-service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\libqi\tests\type\cat.hpp">
+      <Filter>tests\type</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\lib\libqi\qi\config.dox">
+      <Filter>qi</Filter>
+    </None>
+    <None Include="..\..\lib\libqi\qi\config.hpp.in">
+      <Filter>qi</Filter>
+    </None>
+    <None Include="..\..\lib\libqi\qi\perf\dataperf.dox">
+      <Filter>qi\perf</Filter>
+    </None>
+    <None Include="..\..\lib\libqi\qi\perf\dataperfsuite.dox">
+      <Filter>qi\perf</Filter>
+    </None>
+    <None Include="..\..\lib\libqi\tests\messaging\server.crt">
+      <Filter>tests\messaging</Filter>
+    </None>
+    <None Include="..\..\lib\libqi\tests\messaging\server.key">
+      <Filter>tests\messaging</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\lib\libqi\src\application.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\buffer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\bufferreader.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\clock.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\consoleloghandler.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\csvloghandler.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\dlfcn.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\eventloop.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\fileloghandler.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\future.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\headfileloghandler.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\iocolor.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\journaldloghandler.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\locale-light.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\log.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\os.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\os_debugger_win32.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\os_launch_win32.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\os_win32.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\path.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\path_conf.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\periodictask.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\registration.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\sdklayout-boost.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\strand.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\tailfileloghandler.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\translator.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\utils.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\version.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\messaging\applicationsession.cpp">
+      <Filter>src\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\messaging\authprovider.cpp">
+      <Filter>src\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\messaging\boundobject.cpp">
+      <Filter>src\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\messaging\clientauthenticator.cpp">
+      <Filter>src\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\messaging\gateway.cpp">
+      <Filter>src\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\messaging\message.cpp">
+      <Filter>src\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\messaging\messagedispatcher.cpp">
+      <Filter>src\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\messaging\objecthost.cpp">
+      <Filter>src\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\messaging\objectregistrar.cpp">
+      <Filter>src\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\messaging\remoteobject.cpp">
+      <Filter>src\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\messaging\server.cpp">
+      <Filter>src\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\messaging\servicedirectory.cpp">
+      <Filter>src\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\messaging\servicedirectoryclient.cpp">
+      <Filter>src\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\messaging\serviceinfo.cpp">
+      <Filter>src\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\messaging\session.cpp">
+      <Filter>src\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\messaging\sessionservice.cpp">
+      <Filter>src\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\messaging\sessionservices.cpp">
+      <Filter>src\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\messaging\streamcontext.cpp">
+      <Filter>src\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\messaging\tcptransportsocket.cpp">
+      <Filter>src\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\messaging\transportserver.cpp">
+      <Filter>src\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\messaging\transportserverasio_p.cpp">
+      <Filter>src\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\messaging\transportsocket.cpp">
+      <Filter>src\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\messaging\transportsocketcache.cpp">
+      <Filter>src\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\messaging\url.cpp">
+      <Filter>src\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\perf\dataperf.cpp">
+      <Filter>src\perf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\perf\dataperfsuite.cpp">
+      <Filter>src\perf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\perf\measure.cpp">
+      <Filter>src\perf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\type\anyfunction.cpp">
+      <Filter>src\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\type\anymodule.cpp">
+      <Filter>src\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\type\anyobject.cpp">
+      <Filter>src\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\type\anyreference.cpp">
+      <Filter>src\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\type\anyvalue.cpp">
+      <Filter>src\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\type\binarycodec.cpp">
+      <Filter>src\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\type\dynamicobject.cpp">
+      <Filter>src\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\type\dynamicobjectbuilder.cpp">
+      <Filter>src\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\type\genericobject.cpp">
+      <Filter>src\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\type\jsondecoder.cpp">
+      <Filter>src\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\type\jsonencoder.cpp">
+      <Filter>src\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\type\manageable.cpp">
+      <Filter>src\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\type\metamethod.cpp">
+      <Filter>src\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\type\metaobject.cpp">
+      <Filter>src\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\type\metaproperty.cpp">
+      <Filter>src\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\type\metasignal.cpp">
+      <Filter>src\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\type\metasignal_p.cpp">
+      <Filter>src\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\type\objecttypebuilder.cpp">
+      <Filter>src\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\type\signal.cpp">
+      <Filter>src\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\type\signature.cpp">
+      <Filter>src\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\type\signatureconvertor.cpp">
+      <Filter>src\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\type\staticobjecttype.cpp">
+      <Filter>src\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\type\structtypeinterface.cpp">
+      <Filter>src\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\type\traceanalyzer.cpp">
+      <Filter>src\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\type\type.cpp">
+      <Filter>src\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\type\typeinterface.cpp">
+      <Filter>src\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\src\filesystem.cpp">
+      <Filter>qi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\sig_generator.cpp">
+      <Filter>tests\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\test_anymodule.cpp">
+      <Filter>tests\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\test_application.cpp">
+      <Filter>tests\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\test_applicationsession.cpp">
+      <Filter>tests\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\test_applicationsession_noautoexit.cpp">
+      <Filter>tests\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\test_authentication.cpp">
+      <Filter>tests\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\test_autoservice.cpp">
+      <Filter>tests\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\test_binarycoder.cpp">
+      <Filter>tests\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\test_call.cpp">
+      <Filter>tests\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\test_call_many.cpp">
+      <Filter>tests\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\test_call_on_close_session.cpp">
+      <Filter>tests\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\test_connection.cpp">
+      <Filter>tests\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\test_event_connect.cpp">
+      <Filter>tests\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\test_event_remote.cpp">
+      <Filter>tests\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\test_event_remote_connect.cpp">
+      <Filter>tests\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\test_gateway.cpp">
+      <Filter>tests\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\test_metavalue_argument.cpp">
+      <Filter>tests\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\test_proxy.cpp">
+      <Filter>tests\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\test_sd.cpp">
+      <Filter>tests\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\test_send_object.cpp">
+      <Filter>tests\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\test_service.cpp">
+      <Filter>tests\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\test_session.cpp">
+      <Filter>tests\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\test_session_harder.cpp">
+      <Filter>tests\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\test_signature.cpp">
+      <Filter>tests\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\test_testsession.cpp">
+      <Filter>tests\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\test_transportsocketcache.cpp">
+      <Filter>tests\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\test_url.cpp">
+      <Filter>tests\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\test_with_gateway.cpp">
+      <Filter>tests\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\test_without_gateway.cpp">
+      <Filter>tests\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\testanymodule.cpp">
+      <Filter>tests\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\testanymodulesession.cpp">
+      <Filter>tests\messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\libtestsession\src\defaultservice.cpp">
+      <Filter>tests\messaging\libtestsession</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\libtestsession\src\populationgenerator.cpp">
+      <Filter>tests\messaging\libtestsession</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\libtestsession\src\sessioninitializer.cpp">
+      <Filter>tests\messaging\libtestsession</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\libtestsession\src\testmode.cpp">
+      <Filter>tests\messaging\libtestsession</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\libtestsession\src\testsession.cpp">
+      <Filter>tests\messaging\libtestsession</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\libtestsession\src\testsession_p.cpp">
+      <Filter>tests\messaging\libtestsession</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\libtestsession\src\testsessionerror.cpp">
+      <Filter>tests\messaging\libtestsession</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\libtestsession\src\testsessionpair.cpp">
+      <Filter>tests\messaging\libtestsession</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\libtestsession\src\trafficgenerator.cpp">
+      <Filter>tests\messaging\libtestsession</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\task-service\task_service.cpp">
+      <Filter>tests\messaging\task-service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\task-service\test_task.cpp">
+      <Filter>tests\messaging\task-service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\passobject-fromservice\adder.cpp">
+      <Filter>tests\messaging\passobject-fromservice</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\passobject-fromservice\test_adder.cpp">
+      <Filter>tests\messaging\passobject-fromservice</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\passobject-fromclient\adder.cpp">
+      <Filter>tests\messaging\passobject-fromclient</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\messaging\passobject-fromclient\test_adder.cpp">
+      <Filter>tests\messaging\passobject-fromclient</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\type\qi_test_anymodule.cpp">
+      <Filter>tests\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\type\test_anymodule.cpp">
+      <Filter>tests\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\type\test_clocktype.cpp">
+      <Filter>tests\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\type\test_event.cpp">
+      <Filter>tests\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\type\test_json.cpp">
+      <Filter>tests\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\type\test_message_visitor.cpp">
+      <Filter>tests\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\type\test_object.cpp">
+      <Filter>tests\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\type\test_object_eventloop.cpp">
+      <Filter>tests\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\type\test_property.cpp">
+      <Filter>tests\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\type\test_serialization_qt.cpp">
+      <Filter>tests\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\type\test_signal.cpp">
+      <Filter>tests\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\type\test_signature.cpp">
+      <Filter>tests\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\type\test_value.cpp">
+      <Filter>tests\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\qi\check_env.cpp">
+      <Filter>tests\qi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\qi\check_machineid.cpp">
+      <Filter>tests\qi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\qi\test_application.cpp">
+      <Filter>tests\qi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\qi\test_buffer.cpp">
+      <Filter>tests\qi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\qi\test_bufferreader.cpp">
+      <Filter>tests\qi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\qi\test_future.cpp">
+      <Filter>tests\qi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\qi\test_futuregroup.cpp">
+      <Filter>tests\qi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\qi\test_locale.cpp">
+      <Filter>tests\qi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\qi\test_macro.cpp">
+      <Filter>tests\qi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\qi\test_path_conf.cpp">
+      <Filter>tests\qi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\qi\test_qiatomic.cpp">
+      <Filter>tests\qi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\qi\test_qiclock.cpp">
+      <Filter>tests\qi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\qi\test_qilaunch.cpp">
+      <Filter>tests\qi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\qi\test_qilog_async.cpp">
+      <Filter>tests\qi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\qi\test_qilog_sync.cpp">
+      <Filter>tests\qi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\qi\test_qios.cpp">
+      <Filter>tests\qi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\qi\test_qipath.cpp">
+      <Filter>tests\qi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\qi\test_strand.cpp">
+      <Filter>tests\qi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\qi\test_thread.cpp">
+      <Filter>tests\qi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\qi\test_version.cpp">
+      <Filter>tests\qi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\qi\testlaunch.cpp">
+      <Filter>tests\qi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\qi\testlaunchloop.cpp">
+      <Filter>tests\qi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\perf\test_dataperf.cpp">
+      <Filter>tests\perf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\libqi\tests\perf\test_measure.cpp">
+      <Filter>tests\perf</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\lib\libqi\tests\CMakeLists.txt">
+      <Filter>tests</Filter>
+    </Text>
+    <Text Include="..\..\lib\libqi\tests\messaging\CMakeLists.txt">
+      <Filter>tests\messaging</Filter>
+    </Text>
+    <Text Include="..\..\lib\libqi\tests\messaging\libtestsession\CMakeLists.txt">
+      <Filter>tests\messaging\libtestsession</Filter>
+    </Text>
+    <Text Include="..\..\lib\libqi\tests\messaging\task-service\CMakeLists.txt">
+      <Filter>tests\messaging\task-service</Filter>
+    </Text>
+    <Text Include="..\..\lib\libqi\tests\messaging\passobject-fromservice\CMakeLists.txt">
+      <Filter>tests\messaging\passobject-fromservice</Filter>
+    </Text>
+    <Text Include="..\..\lib\libqi\tests\messaging\passobject-fromclient\CMakeLists.txt">
+      <Filter>tests\messaging\passobject-fromclient</Filter>
+    </Text>
+    <Text Include="..\..\lib\libqi\tests\type\CMakeLists.txt">
+      <Filter>tests\type</Filter>
+    </Text>
+    <Text Include="..\..\lib\libqi\tests\qi\CMakeLists.txt">
+      <Filter>tests\qi</Filter>
+    </Text>
+    <Text Include="..\..\lib\libqi\tests\perf\CMakeLists.txt">
+      <Filter>tests\perf</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\..\lib\libqi\tests\messaging\task-service\TaskGenerator.xml">
+      <Filter>tests\messaging\task-service</Filter>
+    </Xml>
+    <Xml Include="..\..\lib\libqi\tests\messaging\passobject-fromservice\Adder.xml">
+      <Filter>tests\messaging\passobject-fromservice</Filter>
+    </Xml>
+    <Xml Include="..\..\lib\libqi\tests\messaging\passobject-fromservice\AddTask.xml">
+      <Filter>tests\messaging\passobject-fromservice</Filter>
+    </Xml>
+    <Xml Include="..\..\lib\libqi\tests\messaging\passobject-fromclient\Adder.xml">
+      <Filter>tests\messaging\passobject-fromclient</Filter>
+    </Xml>
+    <Xml Include="..\..\lib\libqi\tests\messaging\passobject-fromclient\AddTask.xml">
+      <Filter>tests\messaging\passobject-fromclient</Filter>
+    </Xml>
+  </ItemGroup>
+</Project>

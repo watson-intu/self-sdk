@@ -1,0 +1,10 @@
+<project version="3">
+  <qibuild name="libqi">
+    <depends buildtime="true" runtime="true" names="dl boost pthread qiprobes" />
+    <depends testtime="true" buildtime="true" names="gtest" />
+  </qibuild>
+  <project src="dox" />
+
+  <project src="compat/cqit"/>
+  <project src="compat/cqim"/>
+</project>

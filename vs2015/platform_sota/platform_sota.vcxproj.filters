@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="gestures">
+      <UniqueIdentifier>{81e92992-06d1-4646-b250-fd0e8947a5b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sensors">
+      <UniqueIdentifier>{f1170fa8-f60b-4cd3-8948-7b6bb9292594}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="libs">
+      <UniqueIdentifier>{92adf47e-5a2d-48a8-a2b6-7eb23cb8dd63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="libs\jsoncpp">
+      <UniqueIdentifier>{8b30ddc6-17ea-440f-adb3-5da42dbf3e9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="libs\jsoncpp\json">
+      <UniqueIdentifier>{9b89f6db-0942-4776-9ab3-bb4ef10ec35d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\platform\sota\gestures\SotaSpeechGesture.cpp">
+      <Filter>gestures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\platform\sota\sensors\SotaMicrophone.cpp">
+      <Filter>sensors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\jsoncpp\jsoncpp.cpp">
+      <Filter>libs\jsoncpp</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\platform\sota\gestures\SotaSpeechGesture.h">
+      <Filter>gestures</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\platform\sota\sensors\SotaMicrophone.h">
+      <Filter>sensors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\jsoncpp\json\json-forwards.h">
+      <Filter>libs\jsoncpp\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\jsoncpp\json\json.h">
+      <Filter>libs\jsoncpp\json</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

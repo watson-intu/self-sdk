@@ -1,0 +1,24 @@
+// -*- mode:c++; -*-
+
+/**
+ * \def QI_API_LEVEL
+ * \brief Define the API version of the Platform
+ *
+ * \verbatim
+ * Version Mapping:
+ *
+ * +---------------+--------------------+
+ * | API Level     | Version            |
+ * +===============+====================+
+ * | 0 / undefined | Pre 1.12 release   |
+ * +---------------+--------------------+
+ * | 1             | NAOqi release 1.12 |
+ * +---------------+--------------------+
+ * \endverbatim
+ */
+
+/**
+ * \internal
+ * \def QI_API
+ * \brief internal define to export API for libqi symbols
+ */

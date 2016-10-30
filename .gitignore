@@ -1,0 +1,15 @@
+bin/
+examples/vs2015/.vs/
+*.opendb
+*.db
+*.sdf
+Debug
+Release
+*.opensdf
+*.suo
+*.log
+bin/win_debug/libqi.pdb
+*.user
+.qi/
+build-pepper/
+*.exe

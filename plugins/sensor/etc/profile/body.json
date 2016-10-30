@@ -1,0 +1,540 @@
+{
+   "Type_" : "SelfInstance",
+   "m_Agents" : [
+      {
+         "Type_" : "SelfUpdateAgent",
+         "m_FoundUpdateResponse" : "There's an updated version of Self available! Would you like to download and install it?",
+         "m_InstallationCompleteResponse" : "Self update has been successfully downloaded. Restarting and installing now.",
+         "m_LastVersionConfirmed" : "",
+         "m_SelfPackageName" : "Self-Win.zip",
+         "m_bAllowRecommendedDownload" : false,
+         "m_fUpdateCheckDelay" : 1200
+      },
+      {
+         "Type_" : "GoalAgent"
+      },
+	{
+		"Type_" : "MotionAgent"
+	},
+      {
+         "Type_" : "TopicAgent",
+         "m_CertFile" : "",
+         "m_Interface" : "",
+         "m_KeyFile" : "",
+         "m_ParentHost" : "ws://75.126.4.101:9494",
+         "m_VerifyFile" : "",
+         "m_fReconnectInterval" : 5,
+         "m_fRequestTimeout" : 30,
+         "m_nPort" : 9494,
+         "m_nThreads" : 5
+      },
+      {
+         "Type_" : "LearningAgent",
+         "m_ConfirmRetrain" : [ "Please confirm that you want to retrain the phrase, %s, as a %s?" ],
+         "m_ForgetResponses" : [ "I have forgotten how to %s." ],
+         "m_LearningResponses" : [ "Now I know how to %s." ],
+         "m_RetrainResponses" : [ "I will now understand the phrase, %s, as a %s." ]
+      },
+      {
+         "Type_" : "QuestionAgent",
+         "m_ClarificationTag" : "{entity_clarification}",
+         "m_ConfirmationTag" : "{intent_confirmation}",
+         "m_DeleteDelay" : 14400,
+         "m_DialogMissIntent" : "dialog_miss_node",
+         "m_Dialogs" : [
+            {
+               "m_AppendDialogClass" : false,
+               "m_ClassifierFile" : "",
+               "m_ClassifierId" : "",
+               "m_DialogFile" : "./etc/shared/self_dialog.xml",
+               "m_DialogId" : "ef0da273-e86a-49af-8795-bd95e98c5cfe",
+               "m_DialogUsesIntent" : true,
+               "m_Language" : "en",
+               "m_UpdateInterval" : 420
+            }
+         ],
+         "m_HangOnResponses" : [ "Ok, sorry about that" ],
+         "m_HangOnTime" : 180,
+         "m_MinAnswerConfidence" : 0,
+         "m_MinDialogConfidence" : 0,
+         "m_PipelineDownResponses" : [ "I'm sorry, but the %s pipeline seems to be down." ],
+         "m_UseDialogConfidence" : 0.5,
+         "m_nQuestionLimit" : 3
+      },
+      {
+         "Type_" : "RandomInteractionAgent",
+         "m_TextList" : [
+            "It sure is quiet in here",
+            "What was that?",
+            "any one there?",
+            "Awfully quiet in here",
+            "Anyone want some coffee?"
+         ],
+         "m_fMaxSpeakDelay" : 120,
+         "m_fMinSpeakDelay" : 60
+      },
+      {
+         "Type_" : "RequestAgent",
+         "m_RequestFailedText" : [ "I do not know how to %s." ]
+      },
+      {
+         "Type_" : "FeedbackAgent",
+         "m_NegativeResponses" : [ "Sorry to hear that!" ],
+         "m_PositiveResponses" : [ "Glad to hear that!" ]
+      },
+      {
+         "Type_" : "ExcessiveProcessingAgent",
+         "m_PleaseWaitText" : [ "ummmm...." ],
+         "m_fProcessingTime" : 2
+      },
+      {
+         "Type_" : "GreeterAgent",
+         "m_Greetings" : [
+            {
+               "m_Greeting" : "Hello there! Please ask me something!"
+            },
+            {
+               "m_GenderFilter" : "FEMALE",
+               "m_Greeting" : "Hi Sweetie, please ask me anything."
+            },
+            {
+               "m_GenderFilter" : "MALE",
+               "m_Greeting" : "Hey Dude, please ask me anything."
+            }
+         ],
+         "m_WaitTime" : 30
+      },
+      {
+         "Type_" : "DialogAgent",
+         "m_InterruptionResponses" : [ "sorry", "my bad" ],
+         "m_InterruptionSensors" : [ "Head" ],
+         "m_Interruptions" : [ "be quiet", "shut up", "shh", "stop talking", "wait" ],
+         "m_MinInterruptionSensors" : 1,
+         "m_SpeechSkill" : "tts",
+         "m_Voice" : "en-US_MichaelVoice",
+         "m_VolumeTunings" : [
+            {
+               "m_Sensor" : "LFoot/Bumper",
+               "m_Skill" : "volume_up"
+            },
+            {
+               "m_Sensor" : "RFoot/Bumper",
+               "m_Skill" : "volume_down"
+            }
+         ],
+         "m_fInterruptionSensorInterval" : 1
+      },
+      {
+         "Type_" : "HealthAgent",
+         "m_HealthCheckInterval" : 30,
+         "m_HealthCheckServices" : [ "Dialog", "SpeechToText", "TextToSpeech", "NaturalLanguageClassifier" ]
+      },
+      {
+         "Type_" : "EmotionAgent",
+         "m_WaitTime" : 30
+      },
+      {
+         "Type_" : "StatusChangeAgent"
+      },
+      {
+         "Type_" : "EnvironmentAgent"
+      },
+      {
+         "Type_" : "ReminderAgent",
+         "m_Delay" : 60,
+         "m_Sayings" : [ "Not a problem", "Sure thing", "Will do", "You got it" ]
+      },
+      {
+         "Type_" : "SleepAgent",
+         "m_HealthSensorMasks" : [ "Diagnosis/Temperature/*" ],
+         "m_SleepTime" : 1800,
+         "m_WakeTime" : 10800
+      }
+   ],
+   "m_Classifiers" : [
+      {
+         "Type_" : "TextClassifier",
+         "m_ClassifierFile" : "./etc/shared/self_nlc.csv",
+         "m_ClassifierId" : "3a84cfx63-nlc-17576",
+         "m_FailureResponses" : [ "Sorry, I am unable to understand your speech at this time." ],
+         "m_Filters" : [
+            {
+               "Type_" : "DuplicateFilter",
+               "m_MinIntentWindow" : 2
+            },
+            {
+               "Type_" : "NonsenseFilter",
+               "m_Chatter" : "nonsense",
+               "m_DynamicNonsenceInterval" : 1,
+               "m_DynamicNonsenceIntervalIncrement" : 0.014999999664723873,
+               "m_MinIgnoreNonsense" : 1
+            }
+         ],
+         "m_IntentClasses" : [
+            {
+               "m_Class" : "LearningIntent",
+               "m_Intent" : "negative_feedback"
+            },
+            {
+               "m_Class" : "LearningIntent",
+               "m_Intent" : "positive_feedback"
+            },
+            {
+               "m_Class" : "LearningIntent",
+               "m_Intent" : "statement"
+            },
+            {
+               "m_Class" : "LearningIntent",
+               "m_Intent" : "forget"
+            },
+            {
+               "m_Class" : "LearningIntent",
+               "m_Intent" : "learn*"
+            },
+            {
+               "m_Class" : "HangOnIntent",
+               "m_Intent" : "dialog_hold_on"
+            },
+            {
+               "m_Class" : "QuestionIntent",
+               "m_Intent" : "dialog*"
+            },
+            {
+               "m_Class" : "QuestionIntent",
+               "m_Intent" : "question*"
+            },
+            {
+               "m_Class" : "QuestionIntent",
+               "m_Intent" : "watson-thunder"
+            },
+            {
+               "m_Class" : "QuestionIntent",
+               "m_Intent" : "watson_on_watson"
+            },
+            {
+               "m_Class" : "QuestionIntent",
+               "m_Intent" : "numerati"
+            },
+            {
+               "m_Class" : "RequestIntent",
+               "m_Intent" : "command"
+            },
+            {
+               "m_Class" : "NameIntent",
+               "m_Intent" : "name_statement"
+            },
+            {
+               "m_Class" : "RequestIntent",
+               "m_Intent" : "*"
+            }
+         ],
+         "m_Language" : "en",
+         "m_MinFailureResponseInterval" : 60,
+         "m_MinIntentConfidence" : 0.69999999999999996,
+         "m_MinMissNodeConfidence" : 0.5
+      },
+      {
+         "Type_" : "ImageClassifier"
+      },
+	{
+		"Type_" : "MotionClassifier"
+	},
+      {
+         "Type_" : "PersonClassifier"
+      },
+      {
+         "Type_" : "EnvironmentClassifier",
+         "m_EnvironmentAnomalyThreshold" : 50
+      },
+      {
+         "Type_" : "FaceClassifier"
+      }
+   ],
+   "m_Extractors" : [
+      {
+         "Type_" : "ImageExtractor"
+      },
+	{
+		"Type_" : "MotionExtractor"
+	},
+      {
+         "Type_" : "RemoteDeviceExtractor"
+      },
+      {
+         "Type_" : "TextExtractor",
+         "m_ConfidenceThreshold" : 0.50285458564758301,
+         "m_ConfidenceThresholdLocal" : 0.5,
+         "m_EnergyAverageSampleCount" : 40,
+         "m_EnergyTimeInterval" : 2,
+         "m_FailureResponses" : [
+            "Sorry, but I'm unable to recognize speech at the moment, please try again later."
+         ],
+         "m_MaxConfidence" : 0.50,
+         "m_MinConfidence" : 0.2,
+         "m_MinFailureResponseInterval" : 7,
+         "m_MaxFailureResponsesCount" : 5,
+         "m_NormalizedEnergyAvg" : 0.057091835886240005,
+         "m_StdDevThreshold" : 4.5
+      }
+   ],
+   "m_GestureFiles" : [
+      "./etc/shared/gestures/default.json",
+      "./etc/shared/gestures/lab.json",
+      "./etc/shared/gestures/nao-anims.json",
+      "./etc/shared/gestures/nao-joints.json",
+      "./etc/shared/gestures/nao-locomotion.json",
+      "./etc/shared/gestures/nao-postures.json"
+   ],
+   "m_Libs" : [ "platform_win", "sensor_plugin" ],
+   "m_LogoUrl" : "http://66.media.tumblr.com/292014cfdbec82ae24e672aaf2fb41c8/tumblr_o6k2spJ4H01s8c9jeo1_400.gif",
+   "m_MacId" : "00:13:95:14:FD:C4",
+   "m_PlanFiles" : [
+      "./etc/shared/plans/default.json",
+      "./etc/shared/plans/lab.json",
+      "./etc/shared/plans/wayblazer.json"
+   ],
+   "m_RobotKey" : "079b8e77-deb5-4298-8dc0-6b519e796aa3",
+   "m_RobotName" : "Willow",
+   "m_RobotType" : "Win",
+   "m_RobotUrl" : "tcp://127.0.0.1",
+   "m_SelfVersion" : "0.1.52",
+   "m_Sensors" : [
+      {
+         "Type_" : "Microphone",
+         "m_RecordingBits" : 16,
+         "m_RecordingChannels" : 1,
+         "m_RecordingHZ" : 16000
+      },
+      {
+         "Type_" : "LocalSpeechToText",
+         "m_MinConfidence" : 0.40,
+         "m_VocabularyList" : [
+            "hello",
+            "goodbye",
+            "what is your purpose",
+            "what is your favorite movie",
+            "can you fly",
+            "how are you",
+            "what time is it",
+            "what is your name",
+            "be quiet",
+            "shut up",
+            "shh",
+            "stop talking",
+            "wait"
+         ]
+      },
+      {
+         "Type_" : "Network",
+         "m_Addresses" : [ "www.ibm.com", "www.google.com" ],
+         "m_NetworkCheckInterval" : 20
+      },
+	{
+         "Type_" : "ExampleSensor",
+	    "m_Rests" : [ 
+		{
+               "m_Token" : "1ecee119-299e-41fa-9011-3593a73a1c33",
+               "m_Type" : "GET",
+               "m_URL" : "https://graph-na02-useast1.api.smartthings.com",	
+			   "m_Params":"/motion"
+		}
+		],
+         "m_fPollInterval" : 30
+      },
+      {
+         "Type_" : "HealthSensor",
+         "m_HealthSensorCheckInterval" : 60
+      }
+   ],
+   "m_ServiceConfigs" : [
+      {
+         "m_Password" : "",
+         "m_ServiceId" : "PackageStoreV1",
+         "m_URL" : "http://75.126.4.99/xray/?action=",
+         "m_User" : ""
+      },
+      {
+         "m_Password" : "",
+         "m_ServiceId" : "RobotGatewayV1",
+         "m_URL" : "http://watson-robotgateway-dev.mybluemix.net",
+         "m_User" : ""
+      },
+      {
+         "m_Password" : "",
+         "m_ServiceId" : "FacialRecognition",
+         "m_URL" : "https://apius.faceplusplus.com",
+         "m_User" : ""
+      },
+      {
+         "m_Password" : "",
+         "m_ServiceId" : "SMS",
+         "m_URL" : "https://sports-sms.mybluemix.net",
+         "m_User" : ""
+      },
+      {
+         "m_Password" : "",
+         "m_ServiceId" : "WatsonAvatarV1",
+         "m_URL" : "tcp://9.53.163.57:31337",
+         "m_User" : ""
+      },
+      {
+         "m_Password" : "demo2000",
+         "m_ServiceId" : "XRayV1",
+         "m_URL" : "https://watson-xray-dev.mybluemix.net",
+         "m_User" : "labDemo"
+      },
+      {
+         "m_Password" : "rNdhNeFpKHFx",
+         "m_ServiceId" : "SpeechToTextV1",
+         "m_URL" : "https://stream.watsonplatform.net/speech-to-text/api",
+         "m_User" : "e6e58eb0-5e92-48bf-9d67-a02a15807ddf"
+      },
+      {
+         "m_Password" : "69n1PkyLdx6c",
+         "m_ServiceId" : "TextToSpeechV1",
+         "m_URL" : "https://stream.watsonplatform.net/text-to-speech/api",
+         "m_User" : "eab409fa-5092-4b9a-83d5-dbceec52b51f"
+      },
+      {
+         "m_Password" : "lqiDj2nJ0Hfa",
+         "m_ServiceId" : "DialogV1",
+         "m_URL" : "https://gateway.watsonplatform.net/dialog/api",
+         "m_User" : "6cf20c52-0384-4ca9-87e5-58dc53d68a8a"
+      },
+      {
+         "m_Password" : "iVkOM48qlruX",
+         "m_ServiceId" : "NaturalLanguageClassifierV1",
+         "m_URL" : "https://gateway.watsonplatform.net/natural-language-classifier/api",
+         "m_User" : "11fcf3a3-edaf-4ba4-b221-fe84ab5857cd"
+      },
+      {
+         "m_Password" : "GjdOsET77XEn",
+         "m_ServiceId" : "RelationshipExtractionV1",
+         "m_URL" : "https://gateway.watsonplatform.net/relationship-extraction-beta/api",
+         "m_User" : "6e6b3d7c-6351-48c0-b3d6-58f266614b69"
+      },
+      {
+         "m_Password" : "nopassword",
+         "m_ServiceId" : "AlchemyV1",
+         "m_URL" : "https://gateway-a.watsonplatform.net/calls",
+         "m_User" : "8acabec395e5a8382b87018480ae49e1d05be77e"
+      }
+   ],
+   "m_Services" : [
+      {
+         "Type_" : "RobotGateway",
+         "m_MaxCacheAge" : 168,
+         "m_MaxCacheSize" : 5242880,
+         "m_PersistLogFilter" : [ "Conversation", "SelfInstance"],
+         "m_PersistLogInterval" : 60,
+         "m_PersistLogLevel" : 0,
+         "m_RequestTimeout" : 30,
+         "m_ServiceId" : "RobotGatewayV1",
+         "m_bCacheEnabled" : true
+      },
+      {
+         "Type_" : "PackageStore",
+         "m_MaxCacheAge" : 168,
+         "m_MaxCacheSize" : 5242880,
+         "m_RequestTimeout" : 30,
+         "m_ServiceId" : "PackageStoreV1",
+         "m_bCacheEnabled" : true
+      },
+      {
+         "Type_" : "XRAY",
+         "m_MaxCacheAge" : 168,
+         "m_MaxCacheSize" : 5242880,
+         "m_RequestTimeout" : 30,
+         "m_ServiceId" : "XRayV1",
+         "m_bCacheEnabled" : true
+      },
+      {
+         "Type_" : "FacialRecognition",
+         "m_Group" : "Lab",
+         "m_Key" : "b77bff3032bb2315318b4df6bca02130",
+         "m_MaxCacheAge" : 168,
+         "m_MaxCacheSize" : 5242880,
+         "m_RequestTimeout" : 30,
+         "m_Secret" : "7rP9qzLbqB-xgr_kJgX2jciEmm2F74c0",
+         "m_ServiceId" : "FacialRecognition",
+         "m_bCacheEnabled" : true
+      },
+      {
+         "Type_" : "SMS",
+         "m_FromNumber" : "12092603507",
+         "m_Key" : "SHINER_BOCK",
+         "m_MaxCacheAge" : 168,
+         "m_MaxCacheSize" : 5242880,
+         "m_RequestTimeout" : 30,
+         "m_ServiceId" : "SMS",
+         "m_bCacheEnabled" : true
+      },
+      {
+         "Type_" : "Dialog",
+         "m_MaxCacheAge" : 720,
+         "m_MaxCacheSize" : 5242880,
+         "m_MaxDialogAge" : 720,
+         "m_RequestTimeout" : 30,
+         "m_ServiceId" : "DialogV1",
+         "m_bCacheEnabled" : true
+      },
+      {
+         "Type_" : "SpeechToText",
+         "m_Continous" : true,
+         "m_DetectSilence" : false,
+         "m_Interium" : true,
+         "m_MaxAlternatives" : 1,
+         "m_MaxAudioQueueSize" : 1048576,
+         "m_MaxCacheAge" : 168,
+         "m_MaxCacheSize" : 5242880,
+         "m_RecognizeModel" : "en-US_gj44G_WidebandModel",
+         "m_RequestTimeout" : 30,
+         "m_ServiceId" : "SpeechToTextV1",
+         "m_SilenceThreshold" : 0.029999999329447746,
+         "m_Timestamps" : false,
+         "m_WordConfidence" : false,
+         "m_bCacheEnabled" : true
+      },
+      {
+         "Type_" : "TextToSpeech",
+         "m_MaxCacheAge" : 168,
+         "m_MaxCacheSize" : 5242880,
+         "m_RequestTimeout" : 30,
+         "m_ServiceId" : "TextToSpeechV1",
+         "m_Voice" : "en-US_MichaelVoice",
+         "m_bCacheEnabled" : true
+      },
+      {
+         "Type_" : "NaturalLanguageClassifier",
+         "m_MaxCacheAge" : 168,
+         "m_MaxCacheSize" : 5242880,
+         "m_RequestTimeout" : 30,
+         "m_ServiceId" : "NaturalLanguageClassifierV1",
+         "m_bCacheEnabled" : true
+      },
+      {
+         "Type_" : "RelationshipExtraction",
+         "m_MaxCacheAge" : 168,
+         "m_MaxCacheSize" : 5242880,
+         "m_RequestTimeout" : 30,
+         "m_ServiceId" : "RelationshipExtractionV1",
+         "m_bCacheEnabled" : true
+      },
+      {
+         "Type_" : "Alchemy",
+         "m_MaxCacheAge" : 168,
+         "m_MaxCacheSize" : 5242880,
+         "m_RequestTimeout" : 30,
+         "m_ServiceId" : "AlchemyV1",
+         "m_bCacheEnabled" : true
+      }
+   ],
+   "m_SkillFiles" : [
+      "./etc/shared/skills/default.json",
+      "./etc/shared/skills/lab.json",
+      "./etc/shared/skills/nao-anims.json",
+      "./etc/shared/skills/nao-joints.json",
+      "./etc/shared/skills/nao-locomotion.json",
+      "./etc/shared/skills/nao-postures.json"
+   ]
+}

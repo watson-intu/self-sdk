@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="sensors">
+      <UniqueIdentifier>{e18d2349-b342-4486-a404-51e09e786ac9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gestures">
+      <UniqueIdentifier>{647503c1-1108-44a4-8a45-487868f55058}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\platform\mac\gestures\AQSpeechGesture.cpp">
+      <Filter>gestures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\platform\mac\sensors\AQMicrophone.cpp">
+      <Filter>sensors</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\platform\mac\gestures\AQSpeechGesture.h">
+      <Filter>gestures</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\platform\mac\sensors\AQMicrophone.h">
+      <Filter>sensors</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\platform\mac\CMakeLists.txt" />
+  </ItemGroup>
+</Project>

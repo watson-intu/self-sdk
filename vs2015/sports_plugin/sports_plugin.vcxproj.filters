@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="services">
+      <UniqueIdentifier>{bf9a2d73-07c3-471c-a955-1be1e92e5750}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="agent">
+      <UniqueIdentifier>{eab9dfae-cb7d-4dc2-8824-3be4a0163e90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="agent\proxies">
+      <UniqueIdentifier>{e810d72b-d2ee-4627-ac88-b596cbb7d867}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="services\Golf">
+      <UniqueIdentifier>{b5bf2b44-736d-482e-8c61-c25531f716e6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\plugins\sports\agent\proxies\GolfProxy.cpp">
+      <Filter>agent\proxies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugins\sports\services\Golf\Golf.cpp">
+      <Filter>services\Golf</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\plugins\sports\agent\proxies\GolfProxy.h">
+      <Filter>agent\proxies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugins\sports\services\Golf\Golf.h">
+      <Filter>services\Golf</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

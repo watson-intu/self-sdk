@@ -1,0 +1,63 @@
+{
+	"Type_": "SkillManager",
+	"m_SkillMap": [
+	{
+		"key": "show_happiness",
+		"value": {
+			"Type_": "LinearSkill",
+			"m_GUID": "show_happiness",
+			"m_SkillName": "show_happiness",
+			"m_Skills" : [
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_index_medial_open"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_index_proximal_open"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_middle_medial_open"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_middle_proximal_open"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_ring_ring_close"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_pinky_little_close"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_thumb_roll_close"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_thumb_medial_close"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_thumb_proximal_close"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_thumb_distal_close"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_index_yaw_open"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId" : "l_hand_middle_yaw_open"
+			}
+			]
+		}
+	}
+	]
+}

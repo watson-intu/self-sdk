@@ -1,0 +1,189 @@
+{
+	"Type_": "SkillManager",
+	"m_SkillMap": [{
+		"key": "l_hand_descend",
+		"value": {
+			"Type_": "GestureSkill",
+			"m_GUID": "l_hand_descend",
+			"m_GestureId": "l_hand_descend",
+			"m_GestureParams": {
+				"Type_": "ParamsMap"
+			},
+			"m_SkillName": "l_hand_descend",
+			"m_bReplaceParams": false
+		}
+	},
+	{
+		"key": "l_hand_raise",
+		"value": {
+			"Type_": "GestureSkill",
+			"m_GUID": "l_hand_raise",
+			"m_GestureId": "l_hand_raise",
+			"m_GestureParams": {
+				"Type_": "ParamsMap"
+			},
+			"m_SkillName": "l_hand_raise",
+			"m_bReplaceParams": false
+		}
+	},
+	{
+		"key": "r_hand_descend",
+		"value": {
+			"Type_": "GestureSkill",
+			"m_GUID": "r_hand_descend",
+			"m_GestureId": "r_hand_descend",
+			"m_GestureParams": {
+				"Type_": "ParamsMap"
+			},
+			"m_SkillName": "r_hand_descend",
+			"m_bReplaceParams": false
+		}
+	},
+	{
+		"key": "r_hand_raise",
+		"value": {
+			"Type_": "GestureSkill",
+			"m_GUID": "r_hand_raise",
+			"m_GestureId": "r_hand_raise",
+			"m_GestureParams": {
+				"Type_": "ParamsMap"
+			},
+			"m_SkillName": "r_hand_raise",
+			"m_bReplaceParams": false
+		}
+	},
+	{
+		"key": "rotate_left_wrist_out",
+		"value": {
+			"Type_": "GestureSkill",
+			"m_GestureId": "rotate_left_wrist_out"
+		}
+	},
+	{
+		"key": "rotate_left_wrist_in",
+		"value": {
+			"Type_": "GestureSkill",
+			"m_GestureId": "rotate_left_wrist_in"
+		}
+	},
+	{
+		"key": "l_hand_close",
+		"value": {
+			"Type_": "LinearSkill",
+			"m_GUID": "l_hand_close",
+			"m_SkillName": "l_hand_close",
+			"m_Skills": [
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_index_medial_close"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_index_proximal_close"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_index_yaw_close"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_middle_medial_close"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_middle_proximal_close"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId" : "l_hand_middle_yaw_close"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_ring_ring_close"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_pinky_little_close"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_thumb_roll_close"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_thumb_medial_close"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_thumb_proximal_close"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_thumb_distal_close"
+			}
+			]
+		}
+	},
+	{
+		"key": "l_hand_open",
+		"value": {
+			"Type_": "LinearSkill",
+			"m_GUID": "l_hand_open",
+			"m_SkillName": "l_hand_open",
+			"m_Skills": [
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_index_medial_open"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_index_proximal_open"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_index_yaw_close"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_middle_medial_open"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_middle_proximal_open"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_middle_yaw_close"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_ring_ring_open"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_middle_proximal_open"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_pinky_little_open"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_thumb_medial_open"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_thumb_proximal_open"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_thumb_roll_open"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_thumb_distal_close"
+			}
+			]
+		}
+	}]
+}

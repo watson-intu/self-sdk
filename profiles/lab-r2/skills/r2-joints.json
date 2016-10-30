@@ -1,0 +1,237 @@
+{
+	"Type_": "SkillManager",
+	"m_SkillMap": [{
+		"key": "l_hand_descend",
+		"value": {
+			"Type_": "GestureSkill",
+			"m_GUID": "l_hand_descend",
+			"m_GestureId": "l_hand_descend",
+			"m_GestureParams": {
+				"Type_": "ParamsMap"
+			},
+			"m_SkillName": "l_hand_descend",
+			"m_bReplaceParams": false
+		}
+	},
+	{
+		"key": "show_determination",
+		"value": {
+			"Type_": "GestureSkill",
+			"m_GUID": "show_determination",
+			"m_GestureId": "show_determination",
+			"m_GestureParams": {
+				"Type_": "ParamsMap"
+			},
+			"m_SkillName": "show_determination",
+			"m_bReplaceParams": false
+		}
+	},
+		{
+		"key": "show_anger",
+		"value": {
+			"Type_": "LinearSkill",
+			"m_GUID": "show_anger",
+			"m_SkillName": "show_anger",
+			"m_Skills": [
+			{
+				"Type_" : "GestureSkill",
+				"m_GestureId" : "r_hand_close"
+			},
+			{
+				"Type_" : "GestureSkill",
+				"m_GestureId" : "r_thumb_close"
+			}
+			]
+		}
+	},
+	{
+		"key": "l_hand_raise",
+		"value": {
+			"Type_": "GestureSkill",
+			"m_GUID": "l_hand_raise",
+			"m_GestureId": "l_hand_raise",
+			"m_GestureParams": {
+				"Type_": "ParamsMap"
+			},
+			"m_SkillName": "l_hand_raise",
+			"m_bReplaceParams": false
+		}
+	},
+	{
+		"key": "r_hand_extend",
+		"value": {
+			"Type_": "GestureSkill",
+			"m_GUID": "r_hand_extend",
+			"m_GestureId": "r_hand_extend",
+			"m_GestureParams": {
+				"Type_": "ParamsMap"
+			},
+			"m_SkillName": "r_hand_extend",
+			"m_bReplaceParams": false
+		}
+	},
+	{
+		"key": "l_hand_extend",
+		"value": {
+			"Type_": "GestureSkill",
+			"m_GUID": "l_hand_extend",
+			"m_GestureId": "l_hand_extend",
+			"m_GestureParams": {
+				"Type_": "ParamsMap"
+			},
+			"m_SkillName": "l_hand_extend",
+			"m_bReplaceParams": false
+		}
+	},
+	{
+		"key": "r_hand_retract",
+		"value": {
+			"Type_": "GestureSkill",
+			"m_GUID": "r_hand_retract",
+			"m_GestureId": "r_hand_retract",
+			"m_GestureParams": {
+				"Type_": "ParamsMap"
+			},
+			"m_SkillName": "r_hand_retract",
+			"m_bReplaceParams": false
+		}
+	},
+	{
+		"key": "rotate_right_wrist_out",
+		"value": {
+			"Type_": "GestureSkill",
+			"m_GUID": "rotate_right_wrist_out",
+			"m_GestureId": "rotate_right_wrist_out",
+			"m_GestureParams": {
+				"Type_": "ParamsMap"
+			},
+			"m_SkillName": "rotate_right_wrist_out",
+			"m_bReplaceParams": false
+		}
+	},
+	{
+		"key": "l_hand_retract",
+		"value": {
+			"Type_": "GestureSkill",
+			"m_GUID": "l_hand_retract",
+			"m_GestureId": "l_hand_retract",
+			"m_GestureParams": {
+				"Type_": "ParamsMap"
+			},
+			"m_SkillName": "l_hand_retract",
+			"m_bReplaceParams": false
+		}
+	},
+	{
+		"key": "r_hand_descend",
+		"value": {
+			"Type_": "GestureSkill",
+			"m_GUID": "r_hand_descend",
+			"m_GestureId": "r_hand_descend",
+			"m_GestureParams": {
+				"Type_": "ParamsMap"
+			},
+			"m_SkillName": "r_hand_descend",
+			"m_bReplaceParams": false
+		}
+	},
+	{
+		"key": "r_hand_raise",
+		"value": {
+			"Type_": "GestureSkill",
+			"m_GUID": "r_hand_raise",
+			"m_GestureId": "r_hand_raise",
+			"m_GestureParams": {
+				"Type_": "ParamsMap"
+			},
+			"m_SkillName": "r_hand_raise",
+			"m_bReplaceParams": false
+		}
+	},
+	{
+		"key": "rotate_left_wrist_out",
+		"value": {
+			"Type_": "GestureSkill",
+			"m_GestureId": "rotate_left_wrist_out"
+		}
+	},
+	{
+		"key": "rotate_left_wrist_in",
+		"value": {
+			"Type_": "GestureSkill",
+			"m_GestureId": "rotate_left_wrist_in"
+		}
+	},
+	{
+		"key": "l_hand_close",
+		"value": {
+			"Type_": "LinearSkill",
+			"m_GUID": "l_hand_close",
+			"m_SkillName": "l_hand_close",
+			"m_Skills": [
+			{
+				"Type_" : "GestureSkill",
+				"m_GestureId" : "l_thumb_close"
+			},
+			{
+				"Type_" : "GestureSkill",
+				"m_GestureId" : "l_hand_close"
+			}
+			]
+		}
+	},
+	{
+		"key": "r_hand_close",
+		"value": {
+			"Type_": "LinearSkill",
+			"m_GUID": "r_hand_close",
+			"m_SkillName": "r_hand_close",
+			"m_Skills": [
+			{
+				"Type_" : "GestureSkill",
+				"m_GestureId" : "r_hand_close"
+			},
+			{
+				"Type_" : "GestureSkill",
+				"m_GestureId" : "r_thumb_open"
+			}
+			]
+		}
+	},
+	{
+		"key": "r_hand_open",
+		"value": {
+			"Type_": "LinearSkill",
+			"m_GUID": "l_hand_open",
+			"m_SkillName": "l_hand_open",
+			"m_Skills": [
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "r_hand_open"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "r_thumb_open"
+			}
+			]
+		}
+	},
+	{
+		"key": "l_hand_open",
+		"value": {
+			"Type_": "LinearSkill",
+			"m_GUID": "l_hand_open",
+			"m_SkillName": "l_hand_open",
+			"m_Skills": [
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_thumb_open"
+			},
+			{
+				"Type_": "GestureSkill",
+				"m_GestureId": "l_hand_open"
+			}
+			]
+		}
+	}]
+}

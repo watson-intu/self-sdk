@@ -1,0 +1,159 @@
+{
+  "Type_": "PlanManager",
+  "m_Plans": [{
+    "key": "tennisconversation_answer",
+    "value": {
+      "Type_": "Plan",
+      "m_Actions": [
+        {
+          "Type_": "CreateAction",
+          "m_ActionFlags": 0,
+          "m_ActionId": "fc0c580c-a737-415a-8842-ad3d73c883cd",
+          "m_CompletedState": "COMPLETED",
+          "m_FailedState": "FAILED",
+          "m_GoalParams": null,
+          "m_InitialState": "",
+          "m_MinPostCondition": 0.5,
+          "m_MinPreCondition": 0.5,
+          "m_Object": {
+            "Type_": "Say",
+            "m_Text": "{response}"
+          },
+          "m_ReplaceParams": true,
+          "m_bAttachToRoot": false,
+          "m_fImportance": 1
+        }],
+      "m_PlanId": "tennisconversation_answer",
+      "m_PreConditions": [{
+        "Type_": "GoalParamsCondition",
+        "m_LogicalOp": "AND",
+        "m_Params": [{
+          "m_Name": "id",
+          "m_Op": "EQ",
+          "m_Value": "tennisconversation"
+        }]
+      },
+        {
+          "Type_": "GoalStateCondition",
+          "m_State": "ADDED",
+          "m_StateOp": "EQ"
+        }]
+    }
+  },
+  {
+    "key": "tennisconversation_answer_url",
+    "value": {
+      "Type_": "Plan",
+      "m_Actions": [{
+        "Type_": "CreateAction",
+        "m_ActionFlags": 0,
+        "m_ActionId": "fc0c580c-a737-415a-8842-ad3d73c883cd",
+        "m_CompletedState": "COMPLETED",
+        "m_FailedState": "FAILED",
+        "m_GoalParams": null,
+        "m_InitialState": "",
+        "m_MinPostCondition": 0.5,
+        "m_MinPreCondition": 0.5,
+        "m_Object": {
+          "Type_": "Url",
+          "m_URL": "{url}"
+        },
+        "m_ReplaceParams": true,
+        "m_bAttachToRoot": false,
+        "m_fImportance": 1
+      },
+        {
+          "Type_": "CreateAction",
+          "m_ActionFlags": 0,
+          "m_ActionId": "fc0c580c-a737-415a-8842-ad3d73c883cd",
+          "m_CompletedState": "COMPLETED",
+          "m_FailedState": "FAILED",
+          "m_GoalParams": null,
+          "m_InitialState": "",
+          "m_MinPostCondition": 0.5,
+          "m_MinPreCondition": 0.5,
+          "m_Object": {
+            "Type_": "Say",
+            "m_Text": "Please see my screen for the answer"
+          },
+          "m_ReplaceParams": true,
+          "m_bAttachToRoot": false,
+          "m_fImportance": 1
+        }],
+      "m_PlanId": "tennisconversation_answer",
+      "m_PreConditions": [{
+        "Type_": "GoalParamsCondition",
+        "m_LogicalOp": "AND",
+        "m_Params": [{
+          "m_Name": "id",
+          "m_Op": "EQ",
+          "m_Value": "tennisconversationurl"
+        }]
+      },
+        {
+          "Type_": "GoalStateCondition",
+          "m_State": "ADDED",
+          "m_StateOp": "EQ"
+        }]
+    }
+  },
+  {
+    "key": "tennisconversation_answer_long",
+    "value": {
+      "Type_": "Plan",
+      "m_Actions": [
+        {
+        "Type_": "CreateAction",
+        "m_ActionFlags": 0,
+        "m_ActionId": "fc0c580c-a737-415a-8842-ad3d73c883cd",
+        "m_CompletedState": "COMPLETED",
+        "m_FailedState": "FAILED",
+        "m_GoalParams": null,
+        "m_InitialState": "",
+        "m_MinPostCondition": 0.5,
+        "m_MinPreCondition": 0.5,
+        "m_Object": {
+          "Type_": "Url",
+          "m_URL": "https://sports-sms-test.mybluemix.net/rest/query/self/echo?text={response}"
+        },
+        "m_ReplaceParams": true,
+        "m_bAttachToRoot": false,
+        "m_fImportance": 1
+      },
+        {
+          "Type_": "CreateAction",
+          "m_ActionFlags": 0,
+          "m_ActionId": "fc0c580c-a737-415a-8842-ad3d73c883cd",
+          "m_CompletedState": "COMPLETED",
+          "m_FailedState": "FAILED",
+          "m_GoalParams": null,
+          "m_InitialState": "",
+          "m_MinPostCondition": 0.5,
+          "m_MinPreCondition": 0.5,
+          "m_Object": {
+            "Type_": "Say",
+            "m_Text": "Wow this answer is pretty long, please see my screen for the answer"
+          },
+          "m_ReplaceParams": true,
+          "m_bAttachToRoot": false,
+          "m_fImportance": 1
+        }],
+      "m_PlanId": "tennisconversation_answer_long",
+      "m_PreConditions": [{
+        "Type_": "GoalParamsCondition",
+        "m_LogicalOp": "AND",
+        "m_Params": [{
+          "m_Name": "id",
+          "m_Op": "EQ",
+          "m_Value": "tennisconversationlong"
+        }]
+      },
+        {
+          "Type_": "GoalStateCondition",
+          "m_State": "ADDED",
+          "m_StateOp": "EQ"
+        }]
+    }
+  }],
+  "m_fMinPlanScore": 0.5
+}

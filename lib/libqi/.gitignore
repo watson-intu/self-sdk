@@ -1,0 +1,8 @@
+build-*/
+*.pyc
+*.[oa]
+*~
+*.pyc
+*.suo
+*.orig
+CMakeLists.txt.user
