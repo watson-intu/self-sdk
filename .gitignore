@@ -13,3 +13,5 @@ bin/win_debug/libqi.pdb
 .qi/
 build-pepper/
 *.exe
+include/
+packages/
