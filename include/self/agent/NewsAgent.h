@@ -11,33 +11,39 @@
 /*                                                                   */
 /* ***************************************************************** */
 
-#ifndef SPEECH_GESTURE_H
-#define SPEECH_GESTURE_H
+#ifndef SELF_NEWSAGENT_H
+#define SELF_NEWSAGENT_H
 
-#include "IGesture.h"
+#include "IAgent.h"
+#include "services/Alchemy/Alchemy.h"
+#include "blackboard/NewsIntent.h"
 #include "SelfLib.h"
 
-//! This gesture wraps the local speech sythesis so the self can speak
-class SELF_API SpeechGesture : public IGesture
+class SELF_API NewsAgent : public IAgent
 {
 public:
 	RTTI_DECL();
 
-	//! Construction
-	SpeechGesture() 
-	{}
-
-	SpeechGesture(const std::string & a_gestureId) : IGesture(a_gestureId)
+	NewsAgent() : m_NumberOfArticles( 10 )
 	{}
 
 	//! ISerializable interface
-	virtual void Serialize(Json::Value & json);
-	virtual void Deserialize(const Json::Value & json);
+	void Serialize(Json::Value & json);
+	void Deserialize(const Json::Value & json);
 
-	//! IGesture interface
-	virtual bool Execute( GestureDelegate a_Callback, const ParamsMap & a_Params );
-	virtual bool Abort();
+	//! IAgent interface
+	virtual bool OnStart();
+	virtual bool OnStop();
+
+private:
+	//! Data
+	Alchemy *		m_pAlchemy;
+	NewsIntent::SP  m_spActive;
+	int				m_NumberOfArticles;
+
+	//! Event Handlers
+	void                    OnNewsIntent(const ThingEvent & a_ThingEvent);
+	void                    OnNewsData(const Json::Value & a_Callback);
 };
 
-
-#endif //SPEECH_GESTURE_H
+#endif //SELF_NEWSAGENT_H

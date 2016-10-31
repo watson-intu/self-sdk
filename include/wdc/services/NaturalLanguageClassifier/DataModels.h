@@ -20,7 +20,7 @@
 
 #include "utils/ISerializable.h"
 
-struct Classifier : public ISerializable
+struct WDC_API Classifier : public ISerializable
 {
 	RTTI_DECL();
 
@@ -62,7 +62,7 @@ struct Classifier : public ISerializable
 	}
 };
 
-struct Classifiers : public ISerializable
+struct WDC_API Classifiers : public ISerializable
 {
 	RTTI_DECL();
 
@@ -79,7 +79,7 @@ struct Classifiers : public ISerializable
 	}
 };
 
-struct Class : public ISerializable
+struct WDC_API Class : public ISerializable
 {
 	RTTI_DECL();
 
@@ -101,7 +101,7 @@ struct Class : public ISerializable
 	}
 };
 
-struct ClassifyResult : public ISerializable
+struct WDC_API ClassifyResult : public ISerializable
 {
 	RTTI_DECL();
 

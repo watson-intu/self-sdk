@@ -68,18 +68,12 @@ private:
 	double						m_MinDialogConfidence;
 	double						m_MinAnswerConfidence;
 	double						m_UseDialogConfidence;		
-	std::string					m_DialogMissIntent;
-	float						m_HangOnTime;
 	int							m_nQuestionLimit;		// maximum number of active questions 
 	std::string					m_ConfirmationTag;			// tag in a dialog response for a confirmation
 
 	std::vector<IQuestionAnswerProxy::SP>	
 								m_QuestionAnswerProxies;				// one or more dialogs to query
-	std::vector<std::string>	m_HangOnResponses;
 	std::vector<std::string>	m_PipelineDownResponses;
-
-	TimerPool::ITimer::SP		m_spHangOnTimer;
-	bool						m_IgnoreMissedDialogNodes;
 	std::list<ProcessQuestion *>
 								m_ActiveQuestions;
 

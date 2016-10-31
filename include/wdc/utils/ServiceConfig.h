@@ -43,6 +43,11 @@ struct WDC_API ServiceConfig : public ISerializable, public boost::enable_shared
 	std::string							m_Password;
 	CustomMap							m_CustomMap;
 
+	bool IsConfigured() const
+	{
+		return m_ServiceId.size() > 0 && m_URL.size() > 0 && (m_User.size() > 0 || m_Password.size() > 0);
+	}
+
 	//! ISerializable interface
 	virtual void Serialize(Json::Value & json)
 	{
@@ -51,7 +56,7 @@ struct WDC_API ServiceConfig : public ISerializable, public boost::enable_shared
 		json["m_User"] = m_User;
 		json["m_Password"] = m_Password;
 
-		//SerializeMap("m_CustomMap", m_CustomMap, json);
+		SerializeMap("m_CustomMap", m_CustomMap, json);
 	}
 
 	virtual void Deserialize(const Json::Value & json)
@@ -61,7 +66,16 @@ struct WDC_API ServiceConfig : public ISerializable, public boost::enable_shared
 		m_User = json["m_User"].asString();
 		m_Password = json["m_Password"].asString();
 
-		//DeserializeMap("m_CustomMap", json, m_CustomMap);
+		DeserializeMap("m_CustomMap", json, m_CustomMap);
+	}
+
+	const std::string & GetKeyValue( const std::string & a_Key, const std::string & a_Default ) const
+	{
+		CustomMap::const_iterator iMap = m_CustomMap.find( a_Key );
+		if ( iMap != m_CustomMap.end() )
+			return iMap->second;
+
+		return a_Default;
 	}
 
 	bool operator==( const ServiceConfig & a_Compare ) const

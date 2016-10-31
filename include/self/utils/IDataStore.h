@@ -64,7 +64,7 @@ public:
 		Delegate<bool> a_Callback = Delegate<bool>()) = 0;
 	//! Get data from this store by it's primary ID, this is asynchronous and will invoke the callback.
 	virtual bool Load(const std::string & a_ID,
-		Delegate<const Json::Value &> a_Callback) = 0;
+		Delegate<Json::Value *> a_Callback) = 0;
 	//! Delete data from this store by it's primary ID.
 	virtual bool Delete(const std::string & a_ID,
 		Delegate<bool> a_Callback = Delegate<bool>()) = 0;
@@ -72,7 +72,7 @@ public:
 	//! Query for data based on conditions, this will invoke your callback with the ID's of all 
 	//! records that match your conditions.
 	virtual bool Find(const Conditions & a_Conditions,
-		Delegate<const QueryResults &> a_Callback) = 0;
+		Delegate<QueryResults *> a_Callback) = 0;
 };
 
 #endif // SELF_DATA_STORE_H

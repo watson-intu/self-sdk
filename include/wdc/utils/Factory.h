@@ -55,7 +55,7 @@ public:
 		}
 
 		// This will generate a compile error if your class doesn't inherit from BASE
-		Log::Debug("Factory", "Registered %s in factory.", a_ID.c_str());
+		//Log::Debug("Factory", "Registered %s in factory.", a_ID.c_str());
 		m_CreatorMapping[a_ID] = a_pCreator;
 		return true;
 	}

@@ -19,7 +19,7 @@
 #include "ISkill.h"
 
 //! This skill is composed of multiple skills running in sequence.
-class LinearSkill : public ISkill
+class SELF_API LinearSkill : public ISkill
 {
 public:
 	RTTI_DECL();

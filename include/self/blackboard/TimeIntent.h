@@ -11,38 +11,36 @@
 /*                                                                   */
 /* ***************************************************************** */
 
-#ifndef SELF_SMS_H
-#define SELF_SMS_H
+#ifndef SELF_TIMEINTENT_H
+#define SELF_TIMEINTENT_H
 
-#include "services/IService.h"
-#include "SelfLib.h"
+#include "IIntent.h"
 
-class SELF_API SMS : public IService
+class SELF_API TimeIntent : public IIntent
 {
 public:
-    RTTI_DECL();
+RTTI_DECL();
 
-	//! Types
-	typedef Delegate<Request *>			SendCallback;
+//! Types
+typedef boost::shared_ptr<TimeIntent>		SP;
+typedef boost::weak_ptr<TimeIntent>			WP;
 
-    //! Construction
-    SMS();
+//! ISerializable interface
+virtual void Serialize(Json::Value & json);
+virtual void Deserialize(const Json::Value & json);
 
-    //! ISerializable interface
-    virtual void Serialize(Json::Value & json);
-    virtual void Deserialize(const Json::Value & json);
+//! IIntent interface
+virtual void Create(const Json::Value & a_Intent, const Json::Value & a_Parse);
 
-    //! IService interface
-    virtual bool Start();
-
-    void Send( const std::string & a_Number, const std::string & a_Text,
-		SendCallback a_Callback );
+const std::string & GetLocation() const
+{
+    return m_Location;
+}
 
 private:
-
-    std::string m_FromNumber;
-    std::string m_Key;
-
+//! Data
+std::string m_Location;
+Json::Value m_Parse;
 };
 
-#endif //SELF_SMS_H
+#endif //SELF_TIMEINTENT_H

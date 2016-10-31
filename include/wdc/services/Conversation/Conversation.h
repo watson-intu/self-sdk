@@ -47,7 +47,8 @@ public:
     void Message( 
 		const std::string & a_WorkspaceId, 
 		const Json::Value & a_Context,
-		const std::string & a_Text, 
+		const std::string & a_Text,
+		const std::string & a_IntentOverrideTag,
 		OnMessage a_Callback );
 
 private:

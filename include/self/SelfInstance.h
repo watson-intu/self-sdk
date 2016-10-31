@@ -58,7 +58,8 @@ public:
 	static SelfInstance * GetInstance();
 
 	//! Construction
-	SelfInstance(const std::string & a_LocalStoragePath);
+	SelfInstance( const std::string & a_staticDataPath = "./etc/",
+		const std::string & a_InstanceDataPath = "./" );
 	~SelfInstance();
 
 	//! ISerializable interface
@@ -67,7 +68,6 @@ public:
 
 	//! Accessors
 	bool					IsActive() const;
-	const std::string &		GetLocalStoragePath() const;
 	TopicManager *			GetTopicManager() const;
 	ITopics *				GetTopics() const;
 	BlackBoard *			GetBlackBoard() const;
@@ -84,6 +84,7 @@ public:
 	const std::string &		GetRobotKey() const;
 	const std::string & 	GetOrganizationId() const;
 	const std::string &		GetRobotName() const;
+	void					SetRobotName(const std::string & a_RobotName);
 	const std::string &		GetBackendLanguage() const;
 	const std::string &		GetRobotType() const;
 	const std::string &		GetMacId() const;
@@ -144,7 +145,6 @@ public:
 		return NULL;
 	}
 
-private:
 	struct EmbodimentCreds : public ISerializable
 	{
 		RTTI_DECL();
@@ -171,9 +171,9 @@ private:
 		}
 	};
 
+private:
 	//! Data
 	static SelfInstance *	sm_pInstance;
-	std::string				m_LocalStoragePath;
 	bool					m_bActive;
 	TopicManager *			m_pTopicManager;
 	ITopics *				m_pTopics;
@@ -213,6 +213,7 @@ private:
 
 	EmbodimentCreds         m_EmbodimentCreds;  // struct containing embodiment credentials
 
+	void SendBacktraces();
 	void HandlePublishBody( const ITopics::Payload & a_Body );
 	void OnSaveBody();
 };
@@ -220,11 +221,6 @@ private:
 inline bool SelfInstance::IsActive() const
 {
 	return m_bActive;
-}
-
-inline const std::string & SelfInstance::GetLocalStoragePath() const
-{
-	return m_LocalStoragePath;
 }
 
 inline TopicManager * SelfInstance::GetTopicManager() const
@@ -300,6 +296,11 @@ inline const std::string & SelfInstance::GetOrganizationId() const
 inline const std::string & SelfInstance::GetRobotName() const
 {
 	return m_RobotName;
+}
+
+inline void SelfInstance::SetRobotName(const std::string & a_RobotName)
+{
+	m_RobotName = a_RobotName;
 }
 
 inline const std::string & SelfInstance::GetBackendLanguage() const

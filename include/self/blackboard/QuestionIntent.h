@@ -66,6 +66,11 @@ public:
         return m_GoalParams;
     }
 
+	const Json::Value & GetParse() const
+	{
+		return m_Parse;
+	}
+
 	void SetLocalDialog( bool a_bLocalDialog )
 	{
 		m_bLocalDialog = a_bLocalDialog;
@@ -81,6 +86,7 @@ private:
     std::string m_Text;
     std::string m_Pipeline;
     Json::Value m_GoalParams;
+	Json::Value m_Parse;
 	bool m_bLocalDialog;
 };
 

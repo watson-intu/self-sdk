@@ -11,52 +11,60 @@
 /*                                                                   */
 /* ***************************************************************** */
 
-#ifndef PARALLEL_SKILL_H
-#define PARALLEL_SKILL_H
 
-#include <vector>
+#ifndef SELF_CALCULATE_H
+#define SELF_CALCULATE_H
 
-#include "ISkill.h"
+#include "IThing.h"
 
-//! This skill is composed of multiple skills running in sequence.
-class SELF_API ParallelSkill : public ISkill
+//! This object is placed on the blackboard when we need self to calculate something
+class SELF_API Calculate : public IThing
 {
 public:
 	RTTI_DECL();
 
 	//! Types
-	typedef boost::shared_ptr<ParallelSkill>	SP;
-	typedef boost::weak_ptr<ParallelSkill>		WP;
-	typedef std::vector< ISkill::SP >			SkillList;
-
-	//! Construction
-	ParallelSkill();
-	ParallelSkill( const ParallelSkill & a_Copy );
-	virtual ~ParallelSkill();
+	typedef boost::shared_ptr<Calculate>			SP;
+	typedef boost::weak_ptr<Calculate>			WP;
 
 	//! ISerializable interface
 	virtual void Serialize(Json::Value & json);
 	virtual void Deserialize(const Json::Value & json);
 
-	//! ISkill interface
-	virtual bool CanUseSkill();
-	virtual void UseSkill( Delegate<ISkill *> a_Callback, const ParamsMap & a_Params);
-	virtual bool AbortSkill();
-	virtual ISkill * Clone();
+	//! Construction
+	Calculate() : IThing(TT_COGNITIVE)
+	{}
 
-	void AddSkill( const ISkill::SP & a_pSkill);
-	void ClearSkillList();
+	Calculate(const std::string & a_Data,
+		const std::string & a_Arithmetic,
+		const std::string & a_Key) :
+		IThing(TT_COGNITIVE),
+		m_Data(a_Data),
+		m_Arithmetic(a_Arithmetic),
+		m_Key(a_Key)
+	{}
+
+	//! Accessors
+	const std::string & GetData() const
+	{
+		return m_Data;
+	}
+
+	const std::string & GetArithmetic() const
+	{
+		return m_Arithmetic;
+	}
+
+	const std::string & GetKey() const
+	{
+		return m_Key;
+	}
 
 private:
 	//! Data
-	SkillList m_Skills;
-
-	//! State Data
-	Delegate<ISkill *> m_Callback;
-	int m_ActiveSkills;
-
-	//! Callback
-	void OnSkillDone( ISkill * a_pSkill );
+	std::string m_Data;
+	std::string m_Arithmetic;
+	std::string m_Key;
 };
 
-#endif
+#endif //SELF_CALCULATE_H

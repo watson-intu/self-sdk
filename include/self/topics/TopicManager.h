@@ -133,13 +133,13 @@ public:
 	{
 		m_ConfigFile = a_ConfigFile;
 	}
-	void SetGroupId( const std::string & a_GroupId )
-	{
-		m_GroupId = a_GroupId;
-	}
 	void SetSelfId( const std::string & a_SelfId )
 	{
 		m_SelfId = a_SelfId;
+	}
+	void SetBearerToken( const std::string & a_BearerToken )
+	{
+		m_BearerToken = a_BearerToken;
 	}
 
 private:
@@ -195,13 +195,13 @@ private:
 		~Connection();
 
 		unsigned int GetConnectionId() const { return m_ConnectionId; }
-		const std::string & GetGroupId() const { return m_GroupId; }
 		const std::string & GetSelfId() const { return m_SelfId; }
+		const std::string & GetBearerToken() const { return m_BearerToken; } 
 		bool IsAuthenticated() const { return m_bAuthenticated; }
 		IWebSocket::SP GetSocket() const { return m_spSocket; }
 
 		void Start( TopicManager * a_pAgent, IWebSocket::SP a_spSocket );
-		void Authenticate(const std::string & a_GroupId, const std::string & a_SelfId);
+		void Authenticate( const std::string & a_SelfId, const std::string & a_Token );
 
 	private:
 		//! Types
@@ -210,8 +210,8 @@ private:
 		//! Data
 		TopicManager *	m_pAgent;
 		unsigned int	m_ConnectionId;
-		std::string		m_GroupId;
 		std::string		m_SelfId;
+		std::string		m_BearerToken;
 		bool			m_bAuthenticated;
 		IWebSocket::SP	m_spSocket;
 		FramesList		m_PendingFrames;
@@ -291,8 +291,8 @@ private:
 	TopicDataMap	m_TopicDataMap;					// persisted topic data 
 
 	std::string		m_ConfigFile;
-	std::string		m_GroupId;						// our group ID
 	std::string		m_SelfId;						// our self ID
+	std::string		m_BearerToken;					// our authentication token
 
 	Connection::SP	m_spParentConnection;
 	TimerPool::ITimer::SP

@@ -17,18 +17,20 @@
 #include <list>
 
 #include "IAgent.h"
+#include "topics/TopicManager.h"
 #include "utils/Factory.h"
 #include "utils/RTTI.h"
 #include "SelfLib.h"		// include last
 
 class SelfInstance;
+class ProxySensor;
 
 class SELF_API AgentSociety
 {
 public:
     //! Types
-    typedef std::list< IAgent::SP >	AgentList;
-    typedef Factory< IAgent >		AgentFactory;
+    typedef std::vector< IAgent::SP >	AgentList;
+    typedef Factory< IAgent >			AgentFactory;
 
     //! Construction
     AgentSociety();
@@ -41,6 +43,17 @@ public:
     bool						Start();
     //! Stop this manager.
     bool						Stop();
+
+	//! Add the agent to this society, it takes ownership of the object if accepted.
+	bool					AddAgent(const IAgent::SP & a_spAgent, bool a_bOverride = false);
+	//! Remove a agent from this society.
+	bool					RemoveAgent(const IAgent::SP & a_spAgent);
+
+	bool					FindAgentsByName(const std::string & a_Name, std::vector<IAgent::SP> & a_Overrides);
+
+
+	void OnAgentOverride(IAgent * a_pAgent);
+	void OnAgentOverrideEnd(IAgent * a_pAgent);
 
 	template<typename T>
 	T * GetAgent() const
@@ -58,6 +71,12 @@ private:
     //! Data
     bool						m_bActive;
     AgentList				    m_Agents;
+	TopicManager *				m_pTopicManager;
+
+	//! Callbacks
+	void					OnSubscriber(const ITopics::SubInfo & a_Info);
+	void					OnAgentEvent(const ITopics::Payload & a_Payload);
+
 };
 
 inline const AgentSociety::AgentList & AgentSociety::GetAgentList() const

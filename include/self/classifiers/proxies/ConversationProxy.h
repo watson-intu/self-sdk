@@ -38,12 +38,19 @@ public:
 	virtual void Stop();
 
 	virtual void ClassifyText( Text::SP a_spText, Delegate<ClassifyResult *> a_Callback );
+	void		 OnEmotionalState(const ThingEvent & a_ThingEvent);
 
 private:
 	//! Data
-	Conversation *					m_pConversation;
-	Json::Value						m_Context;						// current context
+	std::string						m_ServiceId;					// ID for the conversation service to use
+	std::string						m_WorkspaceKey;					// ID of the key in the configuration for our workspace ID
 	std::string						m_WorkspaceId;					// ID of the workspace to use
+	std::string						m_IntentOverride;				// A tag to use to override the intent from Conversation
+	Json::Value						m_Context;						// Custom context data
+	Json::Value						m_MergedContext;				
+
+	Conversation *					m_pConversation;
+	float							m_EmotionalState;
 
 	//! Helper request object
 	class Request

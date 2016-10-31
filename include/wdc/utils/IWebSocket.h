@@ -48,9 +48,12 @@ public:
 
 	struct Frame
 	{
+		Frame() : m_Op( CONTINUATION )
+		{}
+
 		OpCode				m_Op;
 		std::string			m_Data;
-		IWebSocket *		m_pSocket;
+		WP					m_wpSocket;
 	};
 	typedef boost::shared_ptr<Frame>			FrameSP;
 

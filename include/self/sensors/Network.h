@@ -50,9 +50,8 @@ public:
 
 		virtual ~Request()
 		{
-			assert( m_pClient->GetState() == IWebClient::CLOSED 
-				|| m_pClient->GetState() == IWebClient::DISCONNECTED );
-			delete m_pClient;
+			assert( m_spClient->GetState() == IWebClient::CLOSED 
+				|| m_spClient->GetState() == IWebClient::DISCONNECTED );
 		}
 
 		//! HTTP callbacks
@@ -62,11 +61,10 @@ public:
 		void OnTimeout( );
 
 		//! Data
-		IWebClient *            m_pClient;
+		IWebClient::SP          m_spClient;
 		TimerPool::ITimer::SP	m_spTimeoutTimer;
 		Delegate<bool>          m_Callback;
 		bool                    m_bDelete;
-
 	};
 
     //! ISensor interface

@@ -199,9 +199,9 @@ private:
 	TimerPool::ITimer::SP
 					m_spSaveTimer;
 
-	void			OnLoadGraph(const Json::Value & a_Json);
-	void			OnVertexLoaded(const Json::Value & a_Json);
-	void			OnEdgeLoaded(const Json::Value & a_Json);
+	void			OnLoadGraph(Json::Value * a_Json);
+	void			OnVertexLoaded(Json::Value * a_Json);
+	void			OnEdgeLoaded(Json::Value * a_Json);
 	void			OnLoadDone();
 	void			OnAutoSave();
 };

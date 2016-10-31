@@ -11,24 +11,21 @@
 /*                                                                   */
 /* ***************************************************************** */
 
-#ifndef SELF_WEBREQUESTAGENT_H
-#define SELF_WEBREQUESTAGENT_H
+#ifndef SELF_ASIMOVAGENT_H
+#define SELF_ASIMOVAGENT_H
 
 #include "IAgent.h"
-#include "utils/IWebClient.h"
-#include "blackboard/WebRequest.h"
+#include "blackboard/Text.h"
 
 class SkillInstance;
 
-class SELF_API WebRequestAgent : public IAgent
+class SELF_API AsimovAgent : public IAgent
 {
 public:
     RTTI_DECL();
 
-    WebRequestAgent() 
+    AsimovAgent()
     {}
-
-	~WebRequestAgent();
 
     //! ISerializable interface
     void Serialize( Json::Value & json );
@@ -39,20 +36,11 @@ public:
     virtual bool OnStop();
 
 private:
-
-    //! Types
-    typedef std::list<WebRequest::SP>		RequestList;
+    //! Event Handlers
+    void OnText(const ThingEvent & a_ThingEvent);
 
     //! Data
-    WebRequest::SP  m_spActive;
-    RequestList     m_Requests;
-    IWebClient::SP  m_spClient;
-
-    //! Event Handlers
-    void OnWebRequest(const ThingEvent & a_ThingEvent);
-    void ExecuteRequest(WebRequest::SP a_spWebRequest);
-    void OnResponse(IWebClient::RequestData * a_pResponse);
-    void OnState(IWebClient * a_pConnector);
+    std::vector<std::string>    m_Interruptions;
 };
 
-#endif //SELF_WEBREQUESTAGENT_H
+#endif //SELF_ASIMOVAGENT_H

@@ -142,19 +142,21 @@ protected:
 	//! pops the current active request from the queue, returns true if there are more requests
 	bool PopRequest( bool a_bError = false )
 	{
+		bool bMore = false;
 		if ( m_Requests.begin() != m_Requests.end() )
 		{
 			Request * pRequest = m_Requests.front();
+			m_Requests.pop_front();
+
+			bMore = m_Requests.begin() != m_Requests.end();
 			pRequest->m_bError |= a_bError;
 
 			if ( pRequest->m_Callback.IsValid() )
 				pRequest->m_Callback( Result( this, pRequest->m_bError ) );
-
 			delete pRequest;
-			m_Requests.pop_front();
 		}
 
-		return m_Requests.begin() != m_Requests.end();
+		return bMore;
 	}
 
 	void PopAllRequests()

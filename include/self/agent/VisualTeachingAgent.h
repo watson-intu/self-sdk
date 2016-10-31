@@ -11,52 +11,46 @@
 /*                                                                   */
 /* ***************************************************************** */
 
-#ifndef PARALLEL_SKILL_H
-#define PARALLEL_SKILL_H
+#ifndef SELF_VISUALTEACHINGAGENT_H
+#define SELF_VISUALTEACHINGAGENT_H
 
-#include <vector>
+#include "IAgent.h"
+#include "blackboard/LearningIntent.h"
+#include "blackboard/Image.h"
+#include "blackboard/Entity.h"
+#include "utils/Factory.h"
 
-#include "ISkill.h"
+#include "SelfLib.h"
 
-//! This skill is composed of multiple skills running in sequence.
-class SELF_API ParallelSkill : public ISkill
+
+class SELF_API VisualTeachingAgent : public IAgent
 {
 public:
 	RTTI_DECL();
 
-	//! Types
-	typedef boost::shared_ptr<ParallelSkill>	SP;
-	typedef boost::weak_ptr<ParallelSkill>		WP;
-	typedef std::vector< ISkill::SP >			SkillList;
-
-	//! Construction
-	ParallelSkill();
-	ParallelSkill( const ParallelSkill & a_Copy );
-	virtual ~ParallelSkill();
+	VisualTeachingAgent();
 
 	//! ISerializable interface
 	virtual void Serialize(Json::Value & json);
 	virtual void Deserialize(const Json::Value & json);
 
-	//! ISkill interface
-	virtual bool CanUseSkill();
-	virtual void UseSkill( Delegate<ISkill *> a_Callback, const ParamsMap & a_Params);
-	virtual bool AbortSkill();
-	virtual ISkill * Clone();
-
-	void AddSkill( const ISkill::SP & a_pSkill);
-	void ClearSkillList();
+	//! IAgent interface
+	virtual bool OnStart();
+	virtual bool OnStop();
 
 private:
+	//! Callbacks
+	void OnImage(const ThingEvent & a_ThingEvent);
+	void OnLearningIntent(const ThingEvent & a_ThingEvent);
+	void OnLearnObject( LearningIntent::SP a_spIntent );
+	void OnForgetObject( LearningIntent::SP a_spIntent );
+
 	//! Data
-	SkillList m_Skills;
-
-	//! State Data
-	Delegate<ISkill *> m_Callback;
-	int m_ActiveSkills;
-
-	//! Callback
-	void OnSkillDone( ISkill * a_pSkill );
+	std::vector<std::string>	m_LearnObjectResponses;
+	std::vector<std::string>	m_ForgetObjectResponses;
+	std::vector<std::string>    m_FailedImageTraining;
+	std::list<Image::SP>		m_ImageHistory;
+	bool						m_bEnableObjectTraining;
 };
 
-#endif
+#endif //SELF_VISUALTEACHINGAGENT_H

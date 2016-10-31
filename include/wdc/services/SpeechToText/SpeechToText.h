@@ -112,7 +112,7 @@ private:
 		SpeechToText *	m_pSTT;						
 		std::string		m_RecognizeModel;		 // ID of the model to use.
 		std::string		m_Language;
-		IWebClient *	m_ListenSocket;          // use to communicate with the server
+		IWebClient::SP	m_spListenSocket;          // use to communicate with the server
 		bool			m_ListenActive;
 		bool			m_AudioSent;
 		bool			m_Connected;
@@ -158,6 +158,7 @@ private:
 	bool			m_DetectSilence;        // If true, then we will try not to record silence.
 	float			m_SilenceThreshold;     // If the audio level is below this value, then it's considered silent.
 	unsigned int	m_MaxAudioQueueSize;
+	int				m_Timeout;
 	bool 			m_bLearningOptOut;
 	ErrorEvent		m_OnError;
 	float			m_fResultDelay;			// how long do we wait for results from all streams before we return the final result

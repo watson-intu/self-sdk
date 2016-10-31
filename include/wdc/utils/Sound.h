@@ -73,6 +73,8 @@ public:
 	bool LoadFromFile(const std::string & a_FileName);
 	bool SaveToFile(const std::string & a_FileName) const;
 
+	bool Resample( int a_Rate );
+
 	// Static
 	static bool	LoadWave(const std::string & a_FileData, int & a_Rate, int & a_Channels, int & a_Bits,
 		std::string & a_WaveData);

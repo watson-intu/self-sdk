@@ -76,6 +76,8 @@ private:
     bool        m_SaySomething;
 	std::vector<Greeting>
 				m_Greetings;
+	std::vector<std::string>
+				m_NameGreetings;
 	float		m_WaitTime;			// amount of time of silence to engage greeting
 	TimerPool::ITimer::SP
 				m_spWaitTimer;

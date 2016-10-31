@@ -37,6 +37,8 @@ public:
 private:
     //! Data
     DeepQA *                    m_pDeepQA;
+	std::string					m_ServiceId;
+	std::string					m_PipelineType;
     float                       m_fMinConfidence;
     std::vector<std::string>    m_LowConfidenceResponses;
 

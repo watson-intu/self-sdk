@@ -38,7 +38,7 @@ public:
 	};
 
 	//! Typedefs
-	typedef Delegate<const URLServiceData &>        UrlCallback;
+	typedef Delegate<URLServiceData *>		        UrlCallback;
 	typedef struct URLServiceData                   UrlServiceData;
 	typedef Delegate<void *>						OnGetServer;
 
@@ -61,14 +61,15 @@ public:
 	void MakeHeartBeat();
 	void OnHeartBeatResponse(const Json::Value & a_Response);
 
+	//! Escape the given URL of any spaces found in any of the arguments, this is used to convert
+	//! some text into a fully escaped URL.
+	static std::string EscapeUrl( const std::string & a_URL );
 
 protected:
 
 	//! Data
 	std::string	m_AvailabilitySuffix;
 	std::string	m_FunctionalSuffix;
-
-private:
 
 	struct HeartBeat : public ISerializable
 	{

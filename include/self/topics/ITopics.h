@@ -83,7 +83,6 @@ public:
 
 		bool				m_bSuccess;
 		std::string			m_Path;
-		std::string			m_GroupId;
 		std::string			m_SelfId;
 		std::string			m_ParentId;
 		std::string			m_Name;

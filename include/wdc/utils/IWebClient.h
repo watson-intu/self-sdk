@@ -35,9 +35,6 @@ class WDC_API IWebClient : public IWebSocket
 public:
 	RTTI_DECL();
 
-	//! Static function for creating a concrete WebClient class.
-	static IWebClient * Create();
-
 	//! Stats
 	static boost::atomic<unsigned int>		sm_RequestsSent;
 	static boost::atomic<unsigned int>		sm_BytesSent;
@@ -72,6 +69,9 @@ public:
 		DISCONNECTED	// connection has been lost
 	};
 
+	//! Static function for creating a concrete WebClient class.
+	static SP Create();
+	
 	//! Destruction
 	virtual ~IWebClient()
 	{}

@@ -11,52 +11,49 @@
 /*                                                                   */
 /* ***************************************************************** */
 
-#ifndef PARALLEL_SKILL_H
-#define PARALLEL_SKILL_H
+#ifndef SELF_NAMEAGENT_H
+#define SELF_NAMEAGENT_H
 
-#include <vector>
+#include "IAgent.h"
+#include "blackboard/Calculate.h"
 
-#include "ISkill.h"
+#include "SelfLib.h"
 
-//! This skill is composed of multiple skills running in sequence.
-class SELF_API ParallelSkill : public ISkill
+class SELF_API MathAgent : public IAgent
 {
 public:
 	RTTI_DECL();
 
-	//! Types
-	typedef boost::shared_ptr<ParallelSkill>	SP;
-	typedef boost::weak_ptr<ParallelSkill>		WP;
-	typedef std::vector< ISkill::SP >			SkillList;
+	MathAgent()
+	{}
 
-	//! Construction
-	ParallelSkill();
-	ParallelSkill( const ParallelSkill & a_Copy );
-	virtual ~ParallelSkill();
+	enum MathOp
+	{
+		SUM,		// +
+		SUBTRACT,	// -
+		DIVIDE,		// /
+		MULTIPLY,	// *
+
+		LAST_EO
+	};
 
 	//! ISerializable interface
 	virtual void Serialize(Json::Value & json);
 	virtual void Deserialize(const Json::Value & json);
 
-	//! ISkill interface
-	virtual bool CanUseSkill();
-	virtual void UseSkill( Delegate<ISkill *> a_Callback, const ParamsMap & a_Params);
-	virtual bool AbortSkill();
-	virtual ISkill * Clone();
-
-	void AddSkill( const ISkill::SP & a_pSkill);
-	void ClearSkillList();
+	//! IAgent interface
+	virtual bool OnStart();
+	virtual bool OnStop();
 
 private:
-	//! Data
-	SkillList m_Skills;
+	const char * MathOpText(MathOp a_Op);
+	MathAgent::MathOp GetMathOp(const std::string & a_Op);
+	void PopulateVectorFromData(const std::string & a_Data, const std::string & a_Key, std::vector<double> & a_Vector);
+	double PerformArithmetic(const std::string & a_Arithmetic, std::vector<double> & a_Vector);
 
-	//! State Data
-	Delegate<ISkill *> m_Callback;
-	int m_ActiveSkills;
+	//! Callbacks
+	void OnCalculate(const ThingEvent & a_ThingEvent);
 
-	//! Callback
-	void OnSkillDone( ISkill * a_pSkill );
 };
 
-#endif
+#endif // SELF_MATHAGENT_H

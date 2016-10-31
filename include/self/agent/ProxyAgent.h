@@ -11,52 +11,67 @@
 /*                                                                   */
 /* ***************************************************************** */
 
-#ifndef PARALLEL_SKILL_H
-#define PARALLEL_SKILL_H
+#ifndef SELF_PROXY_AGENT_H
+#define SELF_PROXY_AGENT_H
 
-#include <vector>
+#include "IAgent.h"
+#include "SelfLib.h"
 
-#include "ISkill.h"
-
-//! This skill is composed of multiple skills running in sequence.
-class SELF_API ParallelSkill : public ISkill
+//! This sensor class is used to represent a remote sensor that is running outside this self instance
+class SELF_API ProxyAgent : public IAgent
 {
 public:
 	RTTI_DECL();
 
 	//! Types
-	typedef boost::shared_ptr<ParallelSkill>	SP;
-	typedef boost::weak_ptr<ParallelSkill>		WP;
-	typedef std::vector< ISkill::SP >			SkillList;
+	typedef boost::shared_ptr< ProxyAgent >		SP;
+	typedef boost::weak_ptr< ProxyAgent >		WP;
 
 	//! Construction
-	ParallelSkill();
-	ParallelSkill( const ParallelSkill & a_Copy );
-	virtual ~ParallelSkill();
+	ProxyAgent(const std::string & a_AgentId,
+		const std::string & a_InstanceId,
+		bool a_bOverride,
+		const std::string & a_Origin);
+	ProxyAgent();
+	~ProxyAgent();
 
 	//! ISerializable interface
 	virtual void Serialize(Json::Value & json);
 	virtual void Deserialize(const Json::Value & json);
 
-	//! ISkill interface
-	virtual bool CanUseSkill();
-	virtual void UseSkill( Delegate<ISkill *> a_Callback, const ParamsMap & a_Params);
-	virtual bool AbortSkill();
-	virtual ISkill * Clone();
+	//! IAgent interface	
+	virtual bool OnStart();
+	virtual bool OnStop();
+	virtual const std::string & GetAgentName() const
+	{
+		return m_AgentId;
+	}
 
-	void AddSkill( const ISkill::SP & a_pSkill);
-	void ClearSkillList();
+	void SendEvent(const std::string & a_EventName);
 
-private:
+	const std::string & GetInstanceId() const
+	{
+		return m_InstanceId;
+	}
+
+	const std::string & GetOrigin() const
+	{
+		return m_Origin;
+	}
+
+	const std::string & GetAgentId() const
+	{
+		return m_AgentId;
+	}
+
+	
+
+protected:
 	//! Data
-	SkillList m_Skills;
-
-	//! State Data
-	Delegate<ISkill *> m_Callback;
-	int m_ActiveSkills;
-
-	//! Callback
-	void OnSkillDone( ISkill * a_pSkill );
+	std::string			m_Origin;
+	std::string			m_InstanceId;
+	std::string			m_AgentId;
+	bool				m_bOverride;
 };
 
-#endif
+#endif // SELF_PROXY_AGENT_H

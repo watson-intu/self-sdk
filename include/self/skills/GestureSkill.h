@@ -20,7 +20,7 @@
 #include "ISkill.h"
 
 //! This skill executes a gestures in the gesture manager.
-class GestureSkill : public ISkill
+class SELF_API GestureSkill : public ISkill
 {
 public:
 	RTTI_DECL();

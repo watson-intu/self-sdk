@@ -16,6 +16,10 @@
 
 #include "IAgent.h"
 #include "blackboard/Emotion.h"
+#include "blackboard/Text.h"
+#include "blackboard/LearningIntent.h"
+#include "services/WeatherInsights.h"
+#include "services/ToneAnalyzer/ToneAnalyzer.h"
 #include "sensors/SensorManager.h"
 #include "sensors/MoodData.h"
 #include "SelfLib.h"
@@ -29,7 +33,8 @@ class SELF_API EmotionAgent : public IAgent
 public:
 	RTTI_DECL();
 
-	EmotionAgent() : m_SaySomething(false), m_WaitTime( 30.0f )
+	EmotionAgent() : m_SaySomething(false), m_WaitTime( 30.0f ), m_EmotionalState( 0.5f ), 
+		m_WeatherWaitTime( 3600.0f ), m_EmotionTime( 30.0f ), m_LastEmotionalState( 0.0f )
 	{}
 
 	//! ISerializable interface
@@ -40,22 +45,47 @@ public:
 	virtual bool OnStart();
 	virtual bool OnStop();
 
+	const float GetEmotionalState() const
+	{
+		return m_EmotionalState;
+	}
+
 private:
 
 	//! Types
 	typedef SensorManager::SensorList   SensorList;
 
 	//! Data
-	SensorList				m_MoodSensors;
-	bool 					m_SaySomething;
-	float 					m_WaitTime;
-	TimerPool::ITimer::SP	m_spWaitTimer;
+	SensorList					m_MoodSensors;
+	bool 						m_SaySomething;
+	float 						m_WaitTime;
+	float						m_WeatherWaitTime;
+	float						m_EmotionalState;
+	float						m_LastEmotionalState;
+	float						m_EmotionTime;
+	TimerPool::ITimer::SP		m_spWaitTimer;
+	TimerPool::ITimer::SP		m_spWeatherTimer;
+	TimerPool::ITimer::SP		m_spEmotionTimer;
+	std::vector<std::string>	m_NegativeTones;
+	std::vector<std::string>	m_PositiveTones;
+	std::vector<std::string>	m_PositiveWeather;
+	std::vector<std::string>	m_NegativeWeather;
 
 	//! Event Handlers
 	void 		OnEmotion(const ThingEvent & a_ThingEvent);
-	void        OnMoodData(IData * data);
-	void		OnEnableEmotion();
+	void		OnText(const ThingEvent & a_ThingEvent);
+	void		OnLearningIntent(const ThingEvent & a_ThingEvent);
+	void		OnWeatherData(const Json::Value & json);
+	void		OnTone(DocumentTones * a_Callback);
 
+	void		OnAddMoodSensor( ISensor * a_pSensor );
+	void		OnRemoveMoodSensor( ISensor * a_pSensor );
+	void        OnMoodData(IData * a_pData);
+
+	void		OnEnableEmotion();
+	void		OnEnableWeather();
+	void		OnEmotionCheck();
+	void		PublishEmotionalState();
 };
 
 #endif // EMOTION Agent

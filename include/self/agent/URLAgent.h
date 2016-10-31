@@ -56,7 +56,7 @@ private:
 
 	//! Event Handlers
 	void 		OnURL(const ThingEvent & a_ThingEvent);
-	void        OnResponse( const URLService::URLServiceData & a_UrlAgentData );
+	void        OnResponse( URLService::URLServiceData * a_UrlAgentData );
 
 };
 

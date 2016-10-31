@@ -119,11 +119,11 @@ private:
 		void MakeRequest();
 
 	private:
-		size_t m_Index;
-		RemoteDevice * m_pDevice;
+		size_t							m_Index;
+		RemoteDevice *					m_pDevice;
 		std::vector<RemoteDevice::Rest> m_Rests;
-		IWebClient * m_pClient;
-		ParamsMap m_Param;
+		IWebClient::SP					m_spClient;
+		ParamsMap						m_Param;
 	};
 
     //!Data

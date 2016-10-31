@@ -70,7 +70,7 @@ private:
 class WDC_API FileReactor : public ILogReactor
 {
 public:
-	FileReactor(const char * a_pLogFile, LogLevel a_MinLevel = LL_STATUS);
+	FileReactor(const char * a_pLogFile, LogLevel a_MinLevel = LL_STATUS, int a_LogHistory = 5 );
 
 	virtual void Process(const LogRecord & a_Record);
 

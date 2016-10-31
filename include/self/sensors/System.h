@@ -29,11 +29,14 @@ class SELF_API System : public ISensor
 public:
 	RTTI_DECL();
 
-	System( ) : m_SystemCheckInterval( 60 ), m_fFreeMemoryThreshold( 50.0 ),
-	            m_cpuUsageCommand( "top -b -n1 | grep 'Cpu(s)' | awk '{print $2 + $4}' " ),
-	            m_diskUsageCommand( "df --total -k -h | tail -1 | awk '{print $5}'"),
-	            m_freeMemoryCommand( "free | awk 'FNR == 3 {print $4/($3+$4)*100}'" ),
-	            m_lastRebootCommand( "last reboot -F | head -1 | awk '{print $5,$6,$7,$8,$9}'" )
+	System( ) : 
+		m_SystemCheckInterval( 60 ), 
+		m_bProcessing( false ),
+		m_fFreeMemoryThreshold( 50.0 ),
+	    m_cpuUsageCommand( "top -b -n1 | grep 'Cpu(s)' | awk '{print $2 + $4}' " ),
+	    m_diskUsageCommand( "df --total -k -h | tail -1 | awk '{print $5}'"),
+	    m_freeMemoryCommand( "free | awk 'FNR == 3 {print $4/($3+$4)*100}'" ),
+	    m_lastRebootCommand( "last reboot -F | head -1 | awk '{print $5,$6,$7,$8,$9}'" )
 	{}
 
 	//! ISerializable interface
@@ -55,11 +58,16 @@ public:
 	virtual void OnPause();
 	virtual void OnResume();
 
+	void SetSystemCheckIntervval( float a_fIntervalInSeconds )
+	{
+		m_SystemCheckInterval = a_fIntervalInSeconds;
+	}
+
 protected:
 	//! Data
-	int                         m_SystemCheckInterval;
+	float                       m_SystemCheckInterval;
 	TimerPool::ITimer::SP       m_SystemCheckTimer;
-	bool                        m_bProcessing;
+	volatile bool               m_bProcessing;
 	std::string                 m_cpuUsageCommand;
 	std::string                 m_diskUsageCommand;
 	std::string                 m_freeMemoryCommand;

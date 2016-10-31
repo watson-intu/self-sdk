@@ -11,52 +11,36 @@
 /*                                                                   */
 /* ***************************************************************** */
 
-#ifndef PARALLEL_SKILL_H
-#define PARALLEL_SKILL_H
+#ifndef SELF_NEWSINTENT_H
+#define SELF_NEWSINTENT_H
 
-#include <vector>
+#include "IIntent.h"
 
-#include "ISkill.h"
-
-//! This skill is composed of multiple skills running in sequence.
-class SELF_API ParallelSkill : public ISkill
+class SELF_API NewsIntent : public IIntent
 {
 public:
 	RTTI_DECL();
 
 	//! Types
-	typedef boost::shared_ptr<ParallelSkill>	SP;
-	typedef boost::weak_ptr<ParallelSkill>		WP;
-	typedef std::vector< ISkill::SP >			SkillList;
-
-	//! Construction
-	ParallelSkill();
-	ParallelSkill( const ParallelSkill & a_Copy );
-	virtual ~ParallelSkill();
+	typedef boost::shared_ptr<NewsIntent>		SP;
+	typedef boost::weak_ptr<NewsIntent>			WP;
 
 	//! ISerializable interface
 	virtual void Serialize(Json::Value & json);
 	virtual void Deserialize(const Json::Value & json);
 
-	//! ISkill interface
-	virtual bool CanUseSkill();
-	virtual void UseSkill( Delegate<ISkill *> a_Callback, const ParamsMap & a_Params);
-	virtual bool AbortSkill();
-	virtual ISkill * Clone();
+	//! IIntent interface
+	virtual void Create(const Json::Value & a_Intent, const Json::Value & a_Parse);
 
-	void AddSkill( const ISkill::SP & a_pSkill);
-	void ClearSkillList();
+	const std::string & GetCompany() const
+	{
+		return m_Company;
+	}
 
 private:
 	//! Data
-	SkillList m_Skills;
-
-	//! State Data
-	Delegate<ISkill *> m_Callback;
-	int m_ActiveSkills;
-
-	//! Callback
-	void OnSkillDone( ISkill * a_pSkill );
+	std::string m_Company;
+	Json::Value m_Parse;
 };
 
-#endif
+#endif //SELF_WEATHERINTENT_H

@@ -11,8 +11,8 @@
 /*                                                                   */
 /* ***************************************************************** */
 
-#ifndef SELF_DIALOG_AGENT_H
-#define SELF_DIALOG_AGENT_H
+#ifndef SELF_SPEAKING_AGENT_H
+#define SELF_SPEAKING_AGENT_H
 
 #include "IAgent.h"
 #include "blackboard/Say.h"
@@ -28,13 +28,13 @@
 
 class SkillInstance;
 
-//! This agent handles dialog with the users
-class SELF_API DialogAgent : public IAgent
+//! This agent handles speaking to the users
+class SELF_API SpeakingAgent : public IAgent
 {
 public:
 	RTTI_DECL();
 
-	DialogAgent();
+	SpeakingAgent();
 
 	//! ISerializable interface
 	virtual void Serialize(Json::Value & json);
@@ -46,7 +46,7 @@ public:
 
 private:
 	//! Types
-	typedef std::list<Say::SP>		DialogList;
+	typedef std::list<Say::SP>		SpeakingList;
 	typedef std::list<Emotion::SP>	EmotionList;
 
 	struct VolumeTuning : public ISerializable
@@ -95,20 +95,21 @@ private:
 	bool                        m_bVolumeTuningFunctionality;
 
 	Say::SP	                    m_spActive;
-	DialogList                  m_Dialogs;
+	SpeakingList                m_Speakings;
 	EmotionList                 m_Emotions;
 	std::vector<VolumeTuning>   m_VolumeTunings;
 
 	LanguageTranslation *		m_pTranslation;
+	SpeechToText *				m_pSTT;
 
 	//! Event Handlers
-	void		OnDialog( const ThingEvent &a_ThingEvent );
+	void		OnSay( const ThingEvent &a_ThingEvent );
 	void 		OnText( const ThingEvent & a_ThingEvent );
-	void		ExecuteDialog( Say::SP a_spDialog );
+	void		ExecuteSpeaking( Say::SP a_spSay );
 	void		OnSkillState( SkillInstance * a_pSkill );
 	void		OnTouchData( IData * data );
 	void 		OnTranslate(Translations * a_pTranslations);
-
+	void		OnSpeakingDone();
 };
 
-#endif // SELF_DIALOG_AGENT_H
+#endif // SELF_SPEAKING_AGENT_H

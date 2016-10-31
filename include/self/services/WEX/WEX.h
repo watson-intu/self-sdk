@@ -15,8 +15,9 @@
 #define SELF_WEX_H
 
 #include "services/IService.h"
+#include "SelfLib.h"
 
-class WEX : public IService
+class SELF_API WEX : public IService
 {
 public:
     RTTI_DECL();

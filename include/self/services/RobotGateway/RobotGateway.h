@@ -46,15 +46,22 @@ public:
 	//! ILogReactor interface
 	virtual void Process(const LogRecord & a_Record);
 
-	//! Register the robot if it isn't when Self starts up
-	void Register( Delegate<const Json::Value &> a_Callback);
-	//! Send e-mail to gateway
-	void SendEmail(const std::string & a_Subject, const std::string & a_Message, Delegate<Request *> a_Callback);
-	//! Send heart-beat to the gateway
-	void Heartbeat();
+	//! Accessors
+	const std::string & GetOrgAdmins() const
+	{
+		return m_OrgAdminList;
+	}
+
 	//! Register embodiment on gateway
 	void RegisterEmbodiment( Delegate<const Json::Value &> a_Callback );
-
+	//! Send e-mail to gateway
+	void SendEmail( const std::string & a_To,
+		const std::string & a_Subject, 
+		const std::string & a_Message, Delegate<Request *> a_Callback);
+	//! Send backtrace from previous crash
+	void SendBacktrace( const std::string & a_BT );
+	//! Send heart-beat to the gateway
+	void Heartbeat();
 	//! Get information about our current organization.
 	void GetOrganization( Delegate<const Json::Value &> a_Callback );
 	//! Get organization admin list.
@@ -65,9 +72,8 @@ public:
 	//! is responsible for the ServieList object returned in the callback, they must call delete on the object
 	//! when they are done.
 	void GetServices( Delegate<ServiceList *> a_Callback );
-
 	//! Authenticate if another self instance is allowed to connect into this self
-	void Authenticate( const std::string & a_EmbodimentToken, const std::string & a_EmbodimentId,
+	void Authenticate( const std::string & a_Token, 
 		Delegate<const Json::Value &> a_Callback );
 
 private:
@@ -94,6 +100,7 @@ private:
 	std::string			m_MacId;
 	std::string			m_SelfVersion;
 	std::string         m_EmbodimentToken;
+	std::string			m_EmbodimentId;
 	std::string			m_EmbodimentName;
 	std::string         m_OrgAdminList;
 
@@ -124,9 +131,8 @@ private:
 	void OnRegisteredEmbodiment(const Json::Value & a_Response);
 	void OnPersistLogs();
 	void OnLogsPersisted(const Json::Value & a_Response);
-	void UpdateRobotSelfVersion();
-	void OnUpdateRobotSelfVersion(const Json::Value & a_Response);
-	void ProcessCommands(const Json::Value & response);
+	void OnBacktracePersisted(const Json::Value & a_Response);
+	void OnHeartbeat(const Json::Value & response);
 
 };
 

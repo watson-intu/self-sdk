@@ -16,7 +16,7 @@
 
 #include "sensors/Microphone.h"
 
-class DiskAudioSensor : public Microphone
+class SELF_API DiskAudioSensor : public Microphone
 {
 public:
 	RTTI_DECL();

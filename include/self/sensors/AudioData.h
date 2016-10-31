@@ -57,28 +57,8 @@ public:
 	}
 	virtual bool FromBinary( const std::string & a_Type, const std::string & a_Input )
 	{
-		std::vector<std::string> parts;
-		StringUtil::Split( a_Type, ";", parts );
-
-		if ( parts.size() > 0 && StringUtil::Compare( parts[0], "audio/L16", true ) == 0 )
+		if ( ParseAudioFormat( a_Type, m_Freq, m_BPS, m_Channels ) )
 		{
-			m_BPS = 16;
-			m_Freq = 16000;
-			m_Channels = 1;
-
-			for(size_t i=1;i<parts.size();++i)
-			{
-				std::vector<std::string> kv;
-				StringUtil::Split( parts[i], "=", kv );
-				if ( kv.size() == 2 )
-				{
-					if ( StringUtil::Compare( kv[0], "rate", true ) == 0 )
-						m_Freq = atoi( kv[1].c_str() );
-					else if ( StringUtil::Compare( kv[0], "channels", true ) == 0 )
-						m_Channels = atoi( kv[1].c_str() );
-				}
-			}
-
 			m_WaveData = a_Input;
 			return true;
 		}
@@ -102,6 +82,37 @@ public:
 	unsigned int GetBPS() const
 	{
 		return m_BPS;
+	}
+
+	static bool ParseAudioFormat( const std::string & a_Format, 
+		unsigned int & a_Freq, unsigned int & a_BPS, unsigned int & a_Channels )
+	{
+		std::vector<std::string> parts;
+		StringUtil::Split( a_Format, ";", parts );
+
+		if ( parts.size() > 0 && StringUtil::Compare( parts[0], "audio/L16", true ) == 0 )
+		{
+			a_BPS = 16;
+			a_Freq = 16000;
+			a_Channels = 1;
+
+			for(size_t i=1;i<parts.size();++i)
+			{
+				std::vector<std::string> kv;
+				StringUtil::Split( parts[i], "=", kv );
+				if ( kv.size() == 2 )
+				{
+					if ( StringUtil::Compare( kv[0], "rate", true ) == 0 )
+						a_Freq = atoi( kv[1].c_str() );
+					else if ( StringUtil::Compare( kv[0], "channels", true ) == 0 )
+						a_Channels = atoi( kv[1].c_str() );
+				}
+			}
+
+			return true;
+		}
+
+		return false;
 	}
 
 private:

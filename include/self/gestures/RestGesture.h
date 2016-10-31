@@ -69,6 +69,7 @@ public:
 	
 protected:
 	//! Data
+	IWebClient::SP		m_spClient;
 	std::string			m_URL;			// url of the rest request
 	std::string			m_Type;			// GET, POST, or DELETE
 	Headers				m_Headers;		// headers for the request

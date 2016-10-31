@@ -32,6 +32,10 @@ public:
 	Telephony();
 	~Telephony();
 
+	//! ISerializable interface
+	virtual void Serialize(Json::Value & json);
+	virtual void Deserialize(const Json::Value & json);
+
 	//! Accessors
 	IWebClient *		GetConnection() const;
 	const std::string &	GetAudioInFormat() const;
@@ -40,15 +44,15 @@ public:
 
 	//! Connect to the back-end, this will register and we will become available to receive phone calls. The provided
 	//! Callback will be invoke when a call is incoming, the user must call Answer() to answer the incoming call.
-	bool	Connect( 
-				const std::string & a_GroupId, 
-				const std::string & a_SelfId,
+	bool	Connect(
 				OnCommand a_OnCommand, 
 				OnAudioOut a_OnAudioOut );
 	//! Make outgoing call.
 	bool	Dial( const std::string & a_Number );
 	//! Answer an incoming call, returns true on success.
-	bool	Answer();
+	bool	Answer(
+				const std::string & fromNumber,
+				const std::string & toNumber );
 	//! Hang up current call.
 	bool	HangUp();
 	//! Send a SMS message
@@ -65,19 +69,29 @@ private:
 	//! Data
 	OnCommand			m_OnCommand;
 	OnAudioOut			m_OnAudioOut;
-	IWebClient *		m_pConnection;
+	IWebClient::SP		m_spConnection;
 	bool				m_bConnected;
 	bool				m_bInCall;
 	std::string			m_AudioInFormat;
 	std::string			m_AudioOutFormat;
 	std::string			m_MyNumber;
+	std::string         m_TelephonySelfId;
+
 	TimerPool::ITimer::SP
 						m_spReconnectTimer;
+	std::list<std::string>
+						m_Outgoing;
+	TimerPool::ITimer::SP 
+						m_spSendTimer;
+	size_t				m_nSendBytes;
 
 	//! IWebClient callbacks
 	void				OnListenMessage( IWebSocket::FrameSP a_spFrame );
 	void				OnListenState( IWebClient * a_pClient );
 	void				OnListenData( IWebClient::RequestData * a_pData );
+
+	void				StartSendTimer();
+	void				OnSendAudioData();
 
 	void				OnReconnect();
 };
@@ -86,7 +100,7 @@ private:
 
 inline IWebClient * Telephony::GetConnection() const
 {
-	return m_pConnection;
+	return m_spConnection.get();
 }
 
 inline const std::string & Telephony::GetAudioInFormat() const

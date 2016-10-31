@@ -41,6 +41,7 @@ public:
     void OnSent( IService::Request * a_pRequest );
 
     //! Data
+	std::string			m_To;
 	std::string         m_Subject;
     std::string			m_Message;
 };

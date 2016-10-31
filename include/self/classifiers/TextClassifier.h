@@ -102,6 +102,8 @@ private:
 	//! Callback handler
 	void OnText(const ThingEvent & a_ThingEvent);
 	void OnHealth(const ThingEvent & a_Event);
+	void OnHangOn(const ThingEvent & a_Event);
+	void OnHangOnEnd();
 	void OnAttention(const ThingEvent & a_Event );
 
 	//! Types
@@ -136,6 +138,7 @@ private:
 	Alchemy *		m_pAlchemy;
 	double			m_MinIntentConfidence;			// minimum confidence to create an intent
 	double			m_MinMissNodeConfidence;		// minimum confidence to post a dialog_miss_node
+	float			m_HangOnTime;					// how long to hang on
 
 	StringList		m_FailureResponses;				// failure responses
 	StringList		m_LowConfidenceResponses;       // low confidence responses
@@ -145,7 +148,8 @@ private:
 	double          m_LastFailureResponse;
 	double          m_MinFailureResponseInterval;
 	bool		  	m_bHoldOn;
-
+	TimerPool::ITimer::SP
+					m_HangOnTimer;
 
 	const std::string & GetFailureResponse();
 	const std::string & GetLowConfidenceResponse();

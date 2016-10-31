@@ -11,24 +11,22 @@
 /*                                                                   */
 /* ***************************************************************** */
 
-#ifndef SELF_WEBREQUESTAGENT_H
-#define SELF_WEBREQUESTAGENT_H
+#ifndef SELF_TIMEAGENT_H
+#define SELF_TIMEAGENT_H
 
 #include "IAgent.h"
-#include "utils/IWebClient.h"
-#include "blackboard/WebRequest.h"
+#include "services/WeatherInsights.h"
+#include "blackboard/TimeIntent.h"
+#include "SelfLib.h"
+#include <boost/date_time/local_time/local_time.hpp>
 
-class SkillInstance;
-
-class SELF_API WebRequestAgent : public IAgent
+class SELF_API TimeAgent : public IAgent
 {
 public:
     RTTI_DECL();
 
-    WebRequestAgent() 
+    TimeAgent() : m_TimeZoneDB( "shared/date_time_zonespec.csv" )
     {}
-
-	~WebRequestAgent();
 
     //! ISerializable interface
     void Serialize( Json::Value & json );
@@ -39,20 +37,19 @@ public:
     virtual bool OnStop();
 
 private:
-
-    //! Types
-    typedef std::list<WebRequest::SP>		RequestList;
-
     //! Data
-    WebRequest::SP  m_spActive;
-    RequestList     m_Requests;
-    IWebClient::SP  m_spClient;
+    WeatherInsights *				m_pWeatherInsights;
+    std::string						m_TimeZone;
+	std::string						m_TimeZoneDB;
+	TimeIntent::SP					m_spActive;
+	boost::local_time::tz_database	m_TZdb;
 
     //! Event Handlers
-    void OnWebRequest(const ThingEvent & a_ThingEvent);
-    void ExecuteRequest(WebRequest::SP a_spWebRequest);
-    void OnResponse(IWebClient::RequestData * a_pResponse);
-    void OnState(IWebClient * a_pConnector);
+    void                    OnTimeIntent(const ThingEvent & a_ThingEvent);
+    void					OnLocation(const Json::Value & json);
+    void                    OnTime(const Json::Value & json);
+    void                    OnExecute(std::string & a_TimeZone);
+
 };
 
-#endif //SELF_WEBREQUESTAGENT_H
+#endif //SELF_TIMEAGENT_H

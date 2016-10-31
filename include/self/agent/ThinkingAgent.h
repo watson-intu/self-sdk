@@ -61,7 +61,8 @@ private:
         TimerPool::ITimer::SP
 							m_spTimer;
     };
-    typedef std::list< ProcessingIThing > ProcessingThingList;
+    typedef boost::shared_ptr<ProcessingIThing> ProcessingIThingSP;
+    typedef std::list< ProcessingIThingSP > ProcessingThingList;
 
     //! Data
     float					m_fProcessingTime;
