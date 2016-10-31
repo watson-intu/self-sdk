@@ -31,9 +31,9 @@ public:
 	typedef boost::weak_ptr<IClassifier>			WP;
 
 	//! ISerializable interface
-	virtual void Serialize(Json::Value & json) 
+	virtual void Serialize(Json::Value & json)
 	{}
-	virtual void Deserialize(const Json::Value & json) 
+	virtual void Deserialize(const Json::Value & json)
 	{}
 
 	//! Construction
