@@ -1,6 +1,6 @@
 # SELF C++ SDK
 
-The SDK allows users of the "SELF" robotics middle-ware to implement their own sensors, agents, classifiers, extractors, and more using C++.
+The SDK allows users of the "Self" middle-ware to implement their own sensors, agents, classifiers, extractors, and more using C++.
 
 # Binaries
 You can download the latest build of the binaries from the following URL:
