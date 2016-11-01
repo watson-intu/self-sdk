@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\bin\Debug\etc\profile\body.json" />
+    <None Include="..\..\bin\Release\etc\profile\body.json" />
     <None Include="..\..\packages\Self-SDK-w32.zip">
       <FileType>Document</FileType>
     </None>
@@ -70,12 +72,16 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <NMakeOutput>self-sdk.exe</NMakeOutput>
     <NMakePreprocessorDefinitions>WIN32;_DEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
-    <OutDir>..\..\packages\</OutDir>
+    <OutDir>..\..\bin\$(Configuration)\</OutDir>
+    <TargetName>self_instance</TargetName>
+    <TargetExt>.exe</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <NMakeOutput>self-sdk.exe</NMakeOutput>
     <NMakePreprocessorDefinitions>WIN32;NDEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
-    <OutDir>..\..\packages\</OutDir>
+    <OutDir>..\..\bin\$(Configuration)\</OutDir>
+    <TargetName>self_instance</TargetName>
+    <TargetExt>.exe</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <PreBuildEvent>

@@ -56,16 +56,16 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;SENSOR_PLUGIN_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\plugins\sensor;..\..\include\self;..\..\include\wdc;..\..\lib\boost_1_60_0;..\..\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\examples\sensor;..\..\include\self;..\..\include\wdc;..\..\lib\boost_1_60_0;..\..\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>../../lib/win_debug;../../lib/boost_1_60_0/stage/lib/</AdditionalLibraryDirectories>
-      <AdditionalDependencies>self.lib;wdc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>../../lib/$(Configuration);../../lib/boost_1_60_0/stage/lib/</AdditionalLibraryDirectories>
+      <AdditionalDependencies>jsoncpp.lib;self.lib;wdc.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y "$(TargetPath)" "$(ProjectDir)..\..\bin\win_debug\"</Command>
+      <Command>copy /Y "$(TargetPath)" "$(ProjectDir)..\..\bin\$(Configuration)\"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -77,41 +77,33 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;SENSOR_PLUGIN_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\plugins\sensor;..\..\include\self;..\..\include\wdc;..\..\lib\boost_1_60_0;..\..\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\examples\sensor;..\..\include\self;..\..\include\wdc;..\..\lib\boost_1_60_0;..\..\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>../../lib/win_release;../../lib/boost_1_60_0/stage/lib/</AdditionalLibraryDirectories>
-      <AdditionalDependencies>self.lib;wdc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>../../lib/$(Configuration);../../lib/boost_1_60_0/stage/lib/</AdditionalLibraryDirectories>
+      <AdditionalDependencies>jsoncpp.lib;self.lib;wdc.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y "$(TargetPath)" "$(ProjectDir)..\..\bin\win_release\"</Command>
+      <Command>copy /Y "$(TargetPath)" "$(ProjectDir)..\..\bin\$(Configuration)\"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\lib\jsoncpp\json\json-forwards.h" />
-    <ClInclude Include="..\..\lib\jsoncpp\json\json.h" />
-    <ClInclude Include="..\..\plugins\sensor\agents\MotionAgent.h" />
-    <ClInclude Include="..\..\plugins\sensor\blackboard\Motion.h" />
-    <ClInclude Include="..\..\plugins\sensor\classifiers\MotionClassifier.h" />
-    <ClInclude Include="..\..\plugins\sensor\extractors\MotionExtractor.h" />
-    <ClInclude Include="..\..\plugins\sensor\sensors\ExampleSensor.h" />
+    <ClInclude Include="..\..\examples\sensor\agents\MotionAgent.h" />
+    <ClInclude Include="..\..\examples\sensor\blackboard\Motion.h" />
+    <ClInclude Include="..\..\examples\sensor\classifiers\MotionClassifier.h" />
+    <ClInclude Include="..\..\examples\sensor\extractors\MotionExtractor.h" />
+    <ClInclude Include="..\..\examples\sensor\sensors\ExampleSensor.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\lib\jsoncpp\jsoncpp.cpp" />
-    <ClCompile Include="..\..\plugins\sensor\agents\MotionAgent.cpp" />
-    <ClCompile Include="..\..\plugins\sensor\blackboard\Motion.cpp" />
-    <ClCompile Include="..\..\plugins\sensor\classifiers\MotionClassifier.cpp" />
-    <ClCompile Include="..\..\plugins\sensor\extractors\MotionExtractor.cpp" />
-    <ClCompile Include="..\..\plugins\sensor\sensors\ExampleSensor.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <CustomBuild Include="..\..\plugins\sensor\etc\profile\body.json">
-      <FileType>Document</FileType>
-    </CustomBuild>
+    <ClCompile Include="..\..\examples\sensor\agents\MotionAgent.cpp" />
+    <ClCompile Include="..\..\examples\sensor\blackboard\Motion.cpp" />
+    <ClCompile Include="..\..\examples\sensor\classifiers\MotionClassifier.cpp" />
+    <ClCompile Include="..\..\examples\sensor\extractors\MotionExtractor.cpp" />
+    <ClCompile Include="..\..\examples\sensor\sensors\ExampleSensor.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sensor_plugin", "sensor_plugin\sensor_plugin.vcxproj", "{2F2A28B8-7200-482F-9906-18CD1A773F2D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "plugins", "plugins", "{8F16BE43-9DDC-42D1-884C-A7011ECEBF66}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{8F16BE43-9DDC-42D1-884C-A7011ECEBF66}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "self-sdk", "self-sdk\self-sdk.vcxproj", "{74228ADE-F3ED-4F37-B92E-6A30A51605B4}"
 EndProject

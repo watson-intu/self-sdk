@@ -2,5 +2,19 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <None Include="..\..\packages\Self-SDK-w32.zip" />
+    <None Include="..\..\bin\Debug\etc\profile\body.json">
+      <Filter>Debug</Filter>
+    </None>
+    <None Include="..\..\bin\Release\etc\profile\body.json">
+      <Filter>Release</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Debug">
+      <UniqueIdentifier>{609d3e22-2828-46ad-8482-64f132631846}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Release">
+      <UniqueIdentifier>{b4d41c08-40c9-4ed8-97b6-0b286af1eaf0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

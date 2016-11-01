@@ -75,16 +75,13 @@ ExampleSensor::DeviceRequest::DeviceRequest()
 {}
 
 ExampleSensor::DeviceRequest::DeviceRequest(const std::vector<ExampleSensor::Rest> & Rests, ExampleSensor * a_pDevice) :
-	m_pDevice(a_pDevice), m_Rests(Rests), m_Index(0), m_pClient(NULL)
+	m_pDevice(a_pDevice), m_Rests(Rests), m_Index(0)
 {
 	MakeRequest();
 }
 
 ExampleSensor::DeviceRequest::~DeviceRequest()
-{
-	if (m_pClient != NULL)
-		delete m_pClient;
-}
+{}
 
 void ExampleSensor::DeviceRequest::OnState(IWebClient * a_pConnector)
 {
@@ -122,11 +119,11 @@ void ExampleSensor::DeviceRequest::OnResponse(IWebClient::RequestData * a_pRespo
 
 void ExampleSensor::DeviceRequest::MakeRequest()
 {
-	if (m_pClient == NULL)
-		m_pClient = IWebClient::Create();
+	if (!m_spClient)
+		m_spClient = IWebClient::Create();
 	
 	m_Rests[m_Index].m_Headers["Authorization"] = "Bearer 1ecee119-299e-41fa-9011-3593a73a1c33";
-	m_pClient->Request(m_Rests[m_Index].m_URL + m_Rests[m_Index].m_Params,
+	m_spClient->Request(m_Rests[m_Index].m_URL + m_Rests[m_Index].m_Params,
 		m_Rests[m_Index].m_Headers,
 		m_Rests[m_Index].m_Type,
 		"",

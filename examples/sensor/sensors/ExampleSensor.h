@@ -131,7 +131,7 @@ private:
 		size_t m_Index;
 		ExampleSensor * m_pDevice;
 		std::vector<ExampleSensor::Rest> m_Rests;
-		IWebClient * m_pClient;
+		IWebClient::SP m_spClient;
 		ParamsMap m_Param;
 	};
 

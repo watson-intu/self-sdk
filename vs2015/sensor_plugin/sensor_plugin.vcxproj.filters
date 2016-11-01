@@ -1,49 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="..\..\plugins\sensor\agents\MotionAgent.h">
-      <Filter>agent</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\plugins\sensor\sensors\ExampleSensor.h">
+    <ClInclude Include="..\..\examples\sensor\sensors\ExampleSensor.h">
       <Filter>sensors</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\plugins\sensor\classifiers\MotionClassifier.h">
-      <Filter>classifiers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\plugins\sensor\blackboard\Motion.h">
+    <ClInclude Include="..\..\examples\sensor\blackboard\Motion.h">
       <Filter>blackboard</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\lib\jsoncpp\json\json-forwards.h" />
-    <ClInclude Include="..\..\lib\jsoncpp\json\json.h" />
-    <ClInclude Include="..\..\plugins\sensor\extractors\MotionExtractor.h">
+    <ClInclude Include="..\..\examples\sensor\agents\MotionAgent.h">
+      <Filter>agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\examples\sensor\classifiers\MotionClassifier.h">
+      <Filter>classifiers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\examples\sensor\extractors\MotionExtractor.h">
       <Filter>extractors</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\plugins\sensor\agents\MotionAgent.cpp">
-      <Filter>agent</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\plugins\sensor\sensors\ExampleSensor.cpp">
+    <ClCompile Include="..\..\examples\sensor\sensors\ExampleSensor.cpp">
       <Filter>sensors</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\plugins\sensor\classifiers\MotionClassifier.cpp">
-      <Filter>classifiers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\plugins\sensor\blackboard\Motion.cpp">
+    <ClCompile Include="..\..\examples\sensor\blackboard\Motion.cpp">
       <Filter>blackboard</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\lib\jsoncpp\jsoncpp.cpp" />
-    <ClCompile Include="..\..\plugins\sensor\extractors\MotionExtractor.cpp">
+    <ClCompile Include="..\..\examples\sensor\agents\MotionAgent.cpp">
+      <Filter>agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\examples\sensor\classifiers\MotionClassifier.cpp">
+      <Filter>classifiers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\examples\sensor\extractors\MotionExtractor.cpp">
       <Filter>extractors</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="etc">
-      <UniqueIdentifier>{169affc9-63b4-48ab-a57b-7e56c95ed25e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="etc\profile">
-      <UniqueIdentifier>{de9099dd-6eef-4bb4-861a-dbbc586dae8f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="agent">
       <UniqueIdentifier>{f9959e3b-814d-45cf-a624-257b481bdc91}</UniqueIdentifier>
     </Filter>
@@ -59,10 +50,5 @@
     <Filter Include="extractors">
       <UniqueIdentifier>{f4a6e063-4bcf-4553-b9d4-ce43cdeed6f0}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <CustomBuild Include="..\..\plugins\sensor\etc\profile\body.json">
-      <Filter>etc\profile</Filter>
-    </CustomBuild>
   </ItemGroup>
 </Project>
