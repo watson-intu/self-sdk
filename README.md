@@ -8,20 +8,6 @@ http://75.126.4.99/xray/?action=/download&packageId=Self-SDK-bin.zip
 
 # Building Examples
 
-## Building for Nao/Pepper using OSX
-
-1. Setup qibuild & cmake, see http://doc.aldebaran.com/2-1/dev/cpp/install_guide.html for instructions on getting those installed.
-2. Download the "Cross Toolchain" for Mac from https://community.aldebaran.com/en/resources/software and unzip into ~/nao/ctc-mac64-atom.2.4.2.26/.
-3. Run the following commmands:
-  * cd {self-sdk root directory}
-  * qibuild init
-  * qitoolchain create pepper ~/nao/ctc-mac64-atom.2.4.2.26/toolchain.xml
-  * qibuild add-config pepper --toolchain pepper --default
-  * qitoolchain add-package -c pepper packages/openssl-i686-aldebaran-linux-gnu-1.0.1s.zip
-  * qitoolchain add-package -c pepper packages/self-0.1-pepper.zip
-  * qibuild configure 
-  * ./scripts/build_nao.sh nao@{IP ADDRESS} [profile]
-
 ## Building for Windows
 
 1. Install Visual Studio 2015.
@@ -63,4 +49,18 @@ PS: If you run into issues with the build, you might have to change a couple of 
   * qibuild configure -c linux
   * ./scripts/build_linux.sh user@{IP ADDRESS} [profile]
 
+## Building for Nao/Pepper using OSX
+
+1. Setup qibuild & cmake, see http://doc.aldebaran.com/2-1/dev/cpp/install_guide.html for instructions on getting those installed.
+2. Download the "Cross Toolchain" for Mac from https://community.aldebaran.com/en/resources/software and unzip into ~/nao/ctc-mac64-atom.2.4.2.26/.
+3. Run the following commmands:
+  * cd {self-sdk root directory}
+  * qibuild init
+  * qitoolchain create pepper ~/nao/ctc-mac64-atom.2.4.2.26/toolchain.xml
+  * qibuild add-config pepper --toolchain pepper --default
+  * qitoolchain add-package -c pepper packages/openssl-i686-aldebaran-linux-gnu-1.0.1s.zip
+  * qitoolchain add-package -c pepper packages/self-0.1-pepper.zip
+  * qibuild configure 
+  * ./scripts/build_nao.sh nao@{IP ADDRESS} [profile]
+  
 This installs SELF on the remote machine whose user name and IP address you supply. You can go to the ~/self/latest directory on that machine and run run_self.sh. This has been tested on Red Hat Enterprise 6.6 and 6.7.
