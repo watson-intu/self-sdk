@@ -3,6 +3,6 @@ include_directories(.)
 
 file(GLOB_RECURSE SELF_CPP RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "*.cpp")
 qi_create_lib(sensor_plugin SHARED ${SELF_CPP})
-qi_use_lib(sensor_plugin self wdc tinythread++)
+qi_use_lib(sensor_plugin self wdc tinythread++ boost boost_system)
 qi_stage_lib(sensor_plugin)
 
