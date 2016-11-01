@@ -60,6 +60,7 @@ if [ ! -f "$PACKAGES_DIR/$PACKAGE_ZIP" ]; then
 	cd $PACKAGES_DIR
 	curl "http://75.126.4.99/xray/?action=/download?packageId=$PACKAGE_ZIP" --output $PACKAGE_ZIP
 	unzip $PACKAGE_ZIP
+	cp -R $PACKAGE_ID/bin $BUILD_DIR/
 	cp -R $PACKAGE_ID/include $BUILD_DIR/
 
 	if [ -d "${PACKAGE_ID}/toolchain" ]; then	
