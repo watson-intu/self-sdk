@@ -123,6 +123,6 @@ rmdir /S /Q "%PACKAGE_ID%"
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
   <Target Name="AfterClean">
-    <Delete Files="$(OutDir)\Self-SDK-w32.zip" ContinueOnError="true" />
+    <Delete Files="..\..\packages\Self-SDK-w32.zip" ContinueOnError="true" />
   </Target>
 </Project>
