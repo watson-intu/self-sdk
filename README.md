@@ -32,11 +32,8 @@ NOTE: If using SourceTree, it may get stuck when trying to pull using SSH. Exect
   * qibuild init  
   * qitoolchain create mac ~/mac/naoqi-sdk-mac64/toolchain.xml
   * quibuild add-config mac --toolchain mac
-  * qitoolchain add-package -c mac ~/self/sdk/packages/portaudio-osx64-0.1.zip 
-  * qitoolchain add-package -c mac packages/self-0.1-mac.zip
-  * qibuild configure -c mac
   * ./scripts/build_mac.sh [profile]
-
+  
 This stages the executables in the SELF/sdk/bin/mac directory on your local computer. You can change into that directory and run the unit_test and self_instance executables.
 
 PS: If you run into issues with the build, you might have to change a couple of Boost header files, as described here: https://github.com/Homebrew/legacy-homebrew/issues/27396 (specifically, you might have to replace your copy of Boost's boost/atomic/detail/cas128strong.hpp and boost/atomic/detail/gcc-atomic.hpp with the latest available in the Boost directory)
