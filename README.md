@@ -15,11 +15,11 @@ http://75.126.4.99/xray/?action=/download&packageId=Self-SDK-bin.zip
 
 1. Install Visual Studio 2015.
 2. Open the solution found in vs2015/self-sdk.sln
-3. Open the properties for the "sensor_plugin" project, select the "Debugging" tab.
-4. Select the "Debug" configuration, select "Command" and browse to "bin\win_debug\self_instance.exe", afterwards select "Working Directory" and browse to the "bin\win_debug\" directory.
-5. Select the "Release" configuration, select "Command" and browse to "bin\win\self_instance.exe", afterwards select "Working Directory" and browse to the "bin\win" directory.
-6. You may now compile and run the "sensor_plugin" project included as an example project.
- 
+3. Right click on the "self-sdk" project and select "Set as Startup Project".
+4. Right click on the "self-sdk" projet, open properties. In the Debugging tab of the properties, you will need to change "Working Directory" to "$(TargetDir)".
+5. Select Build->Build Solution
+6. Select Debug->Start Debugging to run the project with debugging
+
 NOTE: If using SourceTree, it may get stuck when trying to pull using SSH. Exectue the following commands on the command line to fix the problem with the git client trying to be interactive:
 * cd "C:\Program Files (x86)\Atlassian\SourceTree\tools\putty"
 * plink git@github.ibm.com
