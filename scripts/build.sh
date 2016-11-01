@@ -1,36 +1,80 @@
 #!/bin/bash
 # Usage: build.sh <platform> [profile]
 
-PLATFORM=$1
-export TARGET=$PLATFORM
+export TARGET=$1
+
+TOOLCHAIN=
+UNAME=$(uname)
+if [ "$UNAME" == "Darwin" ]; then
+	PLATFORM=mac64
+	if [ "$TARGET" == "nao" ]; then
+		TOOLCHAIN=ctc-mac64-atom-2.4.3.28
+	elif [ "$TARGET" == "mac" ]; then
+		TOOLCHAIN=naoqi-sdk-2.1.4.13-mac64
+	fi
+else
+	PLATFORM=linux64
+	if [ "$TARGET" == "nao" ]; then
+		TOOLCHAIN=ctc-linux64-atom.2.4.3.28
+	elif [ "$TARGET" == "linux" ]; then
+		TOOLCHAIN=naoqi-sdk-2.1.4.13-linux64
+	fi
+fi
+
+if [ "$TOOLCHAIN" == "" ]; then
+	echo "Unsupport platform/target combination."
+	exit 1
+fi
+
+TOOLCHAIN_ZIP=$TOOLCHAIN.zip
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 BUILD_DIR=$DIR/..
 PACKAGES_DIR=$BUILD_DIR/packages
-PACKAGE_ID=Self-SDK-$PLATFORM
+PACKAGE_ID=Self-SDK-$TARGET
 PACKAGE_ZIP=$PACKAGE_ID.zip
 PACKAGE_DIR=$PACKAGES_DIR/$PACKAGE_ID/
 
 cd $BUILD_DIR
 
-if [ ! -f $PACKAGES_DIR/$PACKAGE_ZIP ]; then
-	echo Downloading package $PACKAGE_ZIP...
+if [ ! -d "$BUILD_DIR/.qi" ]; then
+        qibuild init
+fi
+
+if [ ! -d $PACKAGES_DIR ]; then
 	mkdir -p $PACKAGES_DIR
+fi
+
+if [ ! -f "$PACKAGES_DIR/$TOOLCHAIN_ZIP" ]; then
+	cd $PACKAGES_DIR
+	echo "Downloading toolchain $TOOLCHAIN_ZIP..."	
+	curl "http://75.126.4.99/xray/?action=/download?packageId=$TOOLCHAIN_ZIP" --output $TOOLCHAIN_ZIP
+	unzip $TOOLCHAIN_ZIP
+	cd $BUILD_DIR
+	qitoolchain create $TARGET-self $PACKAGES_DIR/$TOOLCHAIN/toolchain.xml
+	qibuild add-config $TARGET-self --toolchain $TARGET-self	
+fi
+
+if [ ! -f "$PACKAGES_DIR/$PACKAGE_ZIP" ]; then
+	echo "Downloading package $PACKAGE_ZIP..."
 	cd $PACKAGES_DIR
 	curl "http://75.126.4.99/xray/?action=/download?packageId=$PACKAGE_ZIP" --output $PACKAGE_ZIP
 	unzip $PACKAGE_ZIP
-	cp -R $PACKAGE_ID/* ../
-	rm -rf $PACKAGE_ID
+	cp -R $PACKAGE_ID/include $BUILD_DIR/
+
+	if [ -d "${PACKAGE_ID}/toolchain" ]; then	
+		echo Installing toolchains...
+		for f in ${PACKAGE_ID}/toolchain/*.zip; do
+			echo "Installing $f into toolchain..."
+			qitoolchain add-package -c ${TARGET}-self $f
+		done
+	fi
 	
-	echo Installing toolchains...
-	for f in $BUILD_DIR/toolchain/*.zip; do
-		qitoolchain add-package -c $PLATFORM $f
-	done
 	cd $BUILD_DIR
-	qibuild configure -c $PLATFORM
+	qibuild configure -c $TARGET-self
 fi
 
-qibuild make -c $PLATFORM -j 4
+qibuild make -c $TARGET-self -j 4
 if [ $? -ne 0 ]; then
 	echo "Build Error!"
 	exit 1

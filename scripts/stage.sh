@@ -9,7 +9,7 @@ fi
 PLATFORM=$1
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 if [ "$BUILD_CONFIG" == "" ]; then 
-	BUILD_CONFIG="build-$PLATFORM"
+	BUILD_CONFIG="build-$PLATFORM-self"
 fi
 
 BUILD_DIR=$DIR/../$BUILD_CONFIG

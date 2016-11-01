@@ -8,9 +8,6 @@ fi
 
 PLATFORM=$1
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-if [ "$BUILD_CONFIG" == "" ]; then 
-	BUILD_CONFIG="build-$PLATFORM"
-fi
 
 STAGE_DIR=$DIR/../bin/$PLATFORM/
 $DIR/build.sh $PLATFORM $3
