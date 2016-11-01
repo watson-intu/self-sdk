@@ -25,8 +25,12 @@ NOTE: If using SourceTree, it may get stuck when trying to pull using SSH. Exect
 * plink git@github.ibm.com
 
 ## Building for OSX
-1. Setup qibuild and CMake. You can use Homebrew to install CMake, and any distribution of Python (2.7 recommended) to install qibuild through pip.
-2. Download the "Mac Toolchain" for Mac (C++ SDK 2.1.4 Mac 64) from https://community.aldebaran.com/en/resources/software and unzip into ~/toolchains/naoqi-sdk-mac64/.
+1. Set up [CMake](http://doc.aldebaran.com/2-1/dev/cpp/install_guide.html#required-buidsys). To install CMake by using Homebrew, run `brew install cmake`.
+  * To install Homebrew, run the following command in your terminal: ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+2. Set up [qiBuild](http://doc.aldebaran.com/2-1/dev/cpp/install_guide.html#qibuild-install).
+  * `pip install qibuild` (NOTE: it is highly recommended to download [anaconda python version 2.7](https://www.continuum.io/downloads) to have pip correctly configured)
+  * `qibuild config --wizard` (use default setup for steps by pressing 1 twice)
+2. Download [the Mac Toolchain for Mac (C++ SDK 2.1.4 Mac 64)](https://community.aldebaran.com/en/resources/software) and unzip the package into `~/toolchains/naoqi-sdk-mac64/`.
 3. Run the following commands:
   * cd {self root directory}
   * qibuild init  
@@ -39,8 +43,8 @@ This stages the executables in the SELF/sdk/bin/mac directory on your local comp
 PS: If you run into issues with the build, you might have to change a couple of Boost header files, as described here: https://github.com/Homebrew/legacy-homebrew/issues/27396 (specifically, you might have to replace your copy of Boost's boost/atomic/detail/cas128strong.hpp and boost/atomic/detail/gcc-atomic.hpp with the latest available in the Boost directory)
 
 ## Building for Linux
-1. Setup qibuild and CMake. You can use your Linux package manager to install CMake, and any distribution of Python (2.7 recommended) to install qibuild through pip.
-2. Download the "Linux Toolchain" for Linux (C++ SDK 2.1.4 Linux 64) from https://community.aldebaran.com/en/resources/software and unzip into ~/toolchains/naoqi-sdk-linux64/.
+1. Set up qibuild and CMake. You can use your Linux package manager to install CMake, and any distribution of Python (2.7 recommended) to install qibuild through pip.
+2. Download the [Linux Toolchain for Linux (C++ SDK 2.1.4 Linux 64)](https://community.aldebaran.com/en/resources/software) and unzip the package into `~/toolchains/naoqi-sdk-linux64/`.
 3. Run the following commands:
   * cd {self root directory}
   * qitoolchain create linux ~/toolchains/naoqi-sdk-linux64/toolchain.xml
