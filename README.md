@@ -1,6 +1,9 @@
-# SELF C++ SDK
+# Self C++ SDK
+
+Self is an architecture that enables Watson services in devices that perceive by vision, audition, olfaction, sonar, infrared energy, temperature, and vibration. Self-enabled devices express themselves and interact with their environments, other devices, and people through speakers, actuators, gestures, scent emitters, lights, navigation, and more.
 
 The SDK allows users of the "Self" middle-ware to implement their own sensors, agents, classifiers, extractors, and more using C++.
+
 
 # Binaries
 You can download the latest build of the binaries from the following URL:
