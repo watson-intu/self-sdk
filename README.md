@@ -32,7 +32,7 @@ NOTE: If using SourceTree, it may get stuck when trying to pull using SSH. Exect
   * qibuild init  
   * qitoolchain create mac ~/toolchains/naoqi-sdk-mac64/toolchain.xml
   * quibuild add-config mac --toolchain mac
-  * ./scripts/build_mac.sh [profile]
+  * ./scripts/install_mac.sh [user@host] [profile]
   
 This stages the executables in the SELF/sdk/bin/mac directory on your local computer. You can change into that directory and run the unit_test and self_instance executables.
 
@@ -46,7 +46,7 @@ PS: If you run into issues with the build, you might have to change a couple of 
   * qitoolchain create linux ~/toolchains/naoqi-sdk-linux64/toolchain.xml
   * qibuild init
   * qibuild add-config linux --toolchain linux
-  * ./scripts/build_linux.sh [user@host] [profile]
+  * ./scripts/install_linux.sh [profile]
   
 ## Building for Nao/Pepper using OSX
 
@@ -57,6 +57,6 @@ PS: If you run into issues with the build, you might have to change a couple of 
   * qibuild init
   * qitoolchain create nao ~/toolchains/ctc-mac64-atom.2.4.2.26/toolchain.xml
   * qibuild add-config nao --toolchain nao --default
-  * ./scripts/build_nao.sh [user@host] [profile]
+  * ./scripts/install_nao.sh [user@host] [profile]
   
 This installs SELF on the remote machine whose user name and IP address you supply. You can go to the ~/self/latest directory on that machine and run run_self.sh. This has been tested on Red Hat Enterprise 6.6 and 6.7.
