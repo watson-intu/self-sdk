@@ -33,10 +33,7 @@ NOTE: If using SourceTree, it may get stuck when trying to pull using SSH. Exect
 2. Download [the Mac Toolchain for Mac (C++ SDK 2.1.4 Mac 64)](https://community.aldebaran.com/en/resources/software) and unzip the package into `~/toolchains/naoqi-sdk-mac64/`.
 3. Run the following commands:
   * cd {self root directory}
-  * qibuild init  
-  * qitoolchain create mac ~/toolchains/naoqi-sdk-mac64/toolchain.xml
-  * quibuild add-config mac --toolchain mac
-  * ./scripts/install_mac.sh [user@host] [profile]
+  * ./scripts/build_mac.sh
   
 This stages the executables in the SELF/sdk/bin/mac directory on your local computer. You can change into that directory and run the unit_test and self_instance executables.
 
@@ -47,10 +44,7 @@ PS: If you run into issues with the build, you might have to change a couple of 
 2. Download the [Linux Toolchain for Linux (C++ SDK 2.1.4 Linux 64)](https://community.aldebaran.com/en/resources/software) and unzip the package into `~/toolchains/naoqi-sdk-linux64/`.
 3. Run the following commands:
   * cd {self root directory}
-  * qitoolchain create linux ~/toolchains/naoqi-sdk-linux64/toolchain.xml
-  * qibuild init
-  * qibuild add-config linux --toolchain linux
-  * ./scripts/install_linux.sh [profile]
+  * ./scripts/build_linux.sh
   
 ## Building for Nao/Pepper using OSX
 
@@ -58,9 +52,8 @@ PS: If you run into issues with the build, you might have to change a couple of 
 2. Download the "Cross Toolchain" for Mac from https://community.aldebaran.com/en/resources/software and unzip into ~/toolchains/ctc-mac64-atom.2.4.2.26/.
 3. Run the following commmands:
   * cd {self-sdk root directory}
-  * qibuild init
-  * qitoolchain create nao ~/toolchains/ctc-mac64-atom.2.4.2.26/toolchain.xml
-  * qibuild add-config nao --toolchain nao --default
+  * ./scripts/build_nao.sh
+4. In order to install into a specific robot, run the following command:
   * ./scripts/install_nao.sh [user@host] [profile]
-  
+
 This installs SELF on the remote machine whose user name and IP address you supply. You can go to the ~/self/latest directory on that machine and run run_self.sh. This has been tested on Red Hat Enterprise 6.6 and 6.7.
