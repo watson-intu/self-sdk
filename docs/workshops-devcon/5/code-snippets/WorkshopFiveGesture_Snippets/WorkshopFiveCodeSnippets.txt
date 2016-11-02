@@ -1,0 +1,32 @@
+// Code snippet for DoAnimateThread()
+	// make a list of possible gestures..
+    std::vector<AnimationEntry> anims;
+    for(size_t i=0;i<m_Animations.size();++i)
+    {
+        anims.push_back( m_Animations[i] );
+    }
+
+    if ( anims.size() > 0 )
+    {
+        srand( (unsigned int)Time().GetMilliseconds() );
+        const AnimationEntry & entry = anims[ rand() % anims.size() ];
+        Log::Debug( "WorkshopFiveGesture", "Gesture %s is running behavior %s.", m_GestureId.c_str(), entry.m_AnimId.c_str() );
+
+        if ( !m_bWiredPi )
+        {
+            wiringPiSetup();
+            pinMode(m_PinNumber, OUTPUT);
+            m_bWiredPi = true;
+        }
+        for(size_t i=0;i<5;++i)
+        {
+            digitalWrite(m_PinNumber, HIGH);
+            delay(200);
+            digitalWrite(m_PinNumber, LOW);
+            delay(200);
+        }
+    }
+    else
+    {
+        Log::Warning( "WorkshopFiveGesture", "No valid animations found for gesture %s", m_GestureId.c_str() );
+    }

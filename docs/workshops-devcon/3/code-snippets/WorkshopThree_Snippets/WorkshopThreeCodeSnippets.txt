@@ -1,0 +1,73 @@
+   
+//Code for OnLearningIntent()
+   LearningIntent::SP spLearningIntent = DynamicCast<LearningIntent>(a_ThingEvent.GetIThing());
+    if (spLearningIntent && spLearningIntent->GetVerb().compare("feedback") == 0)
+    {
+        if (spLearningIntent->GetTarget().compare("positive_feedback") == 0)
+        {
+            if(m_EmotionalState < 1.0)
+                m_EmotionalState += 0.1f;
+        }
+        else
+        {
+            if (m_EmotionalState > 0.0)
+                m_EmotionalState -= 0.1f;
+        }
+
+        PublishEmotionalState();
+    }
+
+//Code for OnText()
+    Text::SP spText = DynamicCast<Text>(a_ThingEvent.GetIThing());
+    if (spText)
+    {
+        ToneAnalyzer * tone = SelfInstance::GetInstance()->FindService<ToneAnalyzer>();
+        if (tone != NULL)
+        {
+            tone->GetTone(spText->GetText(), DELEGATE(WorkshopThreeAgent, OnTone, DocumentTones *, this));
+        }
+    }
+
+//Code for OnTone()
+    if (a_Callback != NULL)
+    {
+        double topScore = 0.0;
+        Tone tone;
+        for (size_t i = 0; i < a_Callback->m_ToneCategories.size(); ++i)
+        {
+            for (size_t j = 0; j < a_Callback->m_ToneCategories[i].m_Tones.size(); ++j)
+            {
+                Tone someTone = a_Callback->m_ToneCategories[i].m_Tones[j];
+                if (someTone.m_Score > topScore)
+                {
+                    topScore = someTone.m_Score;
+                    tone = someTone;
+                }
+            }
+        }
+        Log::Debug("WorkshopThreeAgent", "Found top tone as: %s", tone.m_ToneName.c_str());
+        bool toneFound = false;
+        for (size_t i = 0; i < m_PositiveTones.size(); ++i)
+        {
+            if (tone.m_ToneId == m_PositiveTones[i])
+            {
+                toneFound = true;
+                if (m_EmotionalState < 1.0f)
+                    m_EmotionalState += 0.1f;
+            }
+        }
+
+        if (!toneFound)
+        {
+            for (size_t i = 0; i < m_NegativeTones.size(); ++i)
+            {
+                if (tone.m_ToneId == m_NegativeTones[i])
+                {
+                    if (m_EmotionalState > 0.0f)
+                        m_EmotionalState -= 0.1f;
+                }
+            }
+        }
+
+        PublishEmotionalState();
+    }
