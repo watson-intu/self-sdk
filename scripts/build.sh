@@ -2,7 +2,7 @@
 # Usage: build.sh <platform> [profile]
 
 export TARGET=$1
-TC_NAME=$TARGET-self
+TC_NAME="${TARGET}-self"
 
 if [ "$ACTION" == "" ]; then
 	ACTION=make
@@ -28,9 +28,9 @@ if [ $? != 0 ]; then
 fi
 
 cd $BUILD_DIR
-qibuild configure -c $TC_NAME
+qibuild configure -c "$TC_NAME"
 if [ $? -ne 0 ]; then exit 1; fi
-qibuild $ACTION -c $TC_NAME -j 4
+qibuild $ACTION -c "$TC_NAME" -j 4
 if [ $? -ne 0 ]; then exit 1; fi
 
 $DIR/stage.sh $1 $2

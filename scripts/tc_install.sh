@@ -58,6 +58,7 @@ PACKAGE_DIR=$PACKAGES_DIR/$PACKAGE_ID/
 echo "Downloading package $PACKAGE_ZIP..."
 cd $PACKAGES_DIR
 curl "${STORE_URL}/download?packageId=$PACKAGE_ZIP" --output $PACKAGE_ZIP
+rm -rf $PACKAGE_ID
 unzip $PACKAGE_ZIP
 cp -R $PACKAGE_ID/bin $BUILD_DIR/
 cp -R $PACKAGE_ID/include $BUILD_DIR/
