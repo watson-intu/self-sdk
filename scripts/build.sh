@@ -21,13 +21,6 @@ else
 	fi
 fi
 
-if [ "$TOOLCHAIN" == "" ]; then
-	echo "Unsupport platform/target combination."
-	exit 1
-fi
-
-TOOLCHAIN_ZIP=$TOOLCHAIN.zip
-
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 BUILD_DIR=$DIR/..
 PACKAGES_DIR=$BUILD_DIR/packages
@@ -45,14 +38,25 @@ if [ ! -d $PACKAGES_DIR ]; then
 	mkdir -p $PACKAGES_DIR
 fi
 
-if [ ! -f "$PACKAGES_DIR/$TOOLCHAIN_ZIP" ]; then
-	cd $PACKAGES_DIR
-	echo "Downloading toolchain $TOOLCHAIN_ZIP..."	
-	curl "http://75.126.4.99/xray/?action=/download?packageId=$TOOLCHAIN_ZIP" --output $TOOLCHAIN_ZIP
-	unzip $TOOLCHAIN_ZIP
-	cd $BUILD_DIR
-	qitoolchain create $TARGET-self $PACKAGES_DIR/$TOOLCHAIN/toolchain.xml
-	qibuild add-config $TARGET-self --toolchain $TARGET-self	
+if [ "$TOOLCHAIN" != "" ]; then
+	TOOLCHAIN_ZIP=$TOOLCHAIN.zip	
+	if [ ! -f "$PACKAGES_DIR/$TOOLCHAIN_ZIP" ]; then
+		cd $PACKAGES_DIR
+		echo "Downloading toolchain $TOOLCHAIN_ZIP..."	
+		curl "http://75.126.4.99/xray/?action=/download?packageId=$TOOLCHAIN_ZIP" --output $TOOLCHAIN_ZIP
+		unzip $TOOLCHAIN_ZIP
+		cd $BUILD_DIR
+		qitoolchain create $TARGET-self $PACKAGES_DIR/$TOOLCHAIN/toolchain.xml
+		qibuild add-config $TARGET-self --toolchain $TARGET-self	
+	fi
+else
+	qitoolchain info $TARGET-self
+	if [ $? != 0 ]; then
+		echo "Creating toolchain for target: $TARGET..."
+		qitoolchain create $TARGET-self
+                qibuild add-config $TARGET-self --toolchain $TARGET-self
+	fi
+
 fi
 
 if [ ! -f "$PACKAGES_DIR/$PACKAGE_ZIP" ]; then
@@ -82,4 +86,3 @@ if [ $? -ne 0 ]; then
 fi
 
 $DIR/stage.sh $1 $2
-
