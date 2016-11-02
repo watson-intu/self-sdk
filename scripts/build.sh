@@ -70,8 +70,9 @@ if [ ! -f "$PACKAGES_DIR/$PACKAGE_ZIP" ]; then
 	if [ -d "${PACKAGE_ID}/toolchain" ]; then	
 		echo Installing toolchains...
 		for f in ${PACKAGE_ID}/toolchain/*.zip; do
-			echo "Installing $f into toolchain..."
-			qitoolchain add-package -c ${TARGET}-self $f
+			NAME=$(basename "$f")
+			echo "Installing $NAME into toolchain..."
+			qitoolchain add-package -c ${TARGET}-self $f --name ${NAME}
 		done
 	fi
 	
