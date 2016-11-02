@@ -75,11 +75,11 @@ Follow the instructions for your platform.
 * plink git@github.ibm.com
 ## Creating an emotion agent
 
-1. Download the [Workshop 3 code snippets](https://github.ibm.com/watson-labs-austin/self/tree/develop/docs/workshops-devcon/3/code-snippets).
+1. Download the [Workshop 3 code snippets](https://github.ibm.com/watson-labs-austin/self-sdk/tree/develop/docs/workshops-devcon/3/code-snippets).
 2. Open the `self-sdk-develop` file as a project in the IDE for your platform.
 3. Now, let's create and populate directory specifically for this workshop.
   1. Locate the `examples` directory under the `self-sdk-develop` project that you opened. This directory contains only a `sensor` directory.
-  2. Right-click the `examples` directory, and click **New**->**Directory**. Your new directory is created.
+  2. Right-click the `examples` directory, and click **New**->**Directory**, and name it `workshop_three`. Your new directory is created.
   3. Name the directory `workshop_three`.
   4. Navigate to the `sensor` directory, copy the `CMakeLists.txt` file, and paste it in the `workshop_three` directory. This file helps to build the plugin for the emotion agent.
   5. Open the `CMakeLists.txt` file, and change its content to this:
@@ -199,8 +199,10 @@ In the next task, you update the `body.json` file to include the new plugin so t
 7. Return to the directory for you platform in the `/bin` directory, and run one of the following commands:
   * If you're using OS X, run `pwd`.
   * If you're using Windows, run `cd`.
-8. Run `export LD_LIBRARY_PATH=*the path returned in Step 7*
-9. Run Self.
+8. Run the following commands:
+  * `export LD_LIBRARY_PATH={$HOME}/Self/self-sdk-develop/bin/mac`
+  * `export LD_LIBRARY_PATH=*the path returned in Step 7*`
+9. In the `mac` directory, run Self by issuing the following command: `./self_instance -c 0 -f 0`.
 
 ## After DevCon ends
 
