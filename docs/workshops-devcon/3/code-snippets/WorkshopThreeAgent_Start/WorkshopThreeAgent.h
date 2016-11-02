@@ -14,7 +14,7 @@
 #ifndef SELF_WORKSHOP_THREE_AGENT_AGENT_H
 #define SELF_WORKSHOP_THREE_AGENT_AGENT_H
 
-#include "IAgent.h"
+#include "agent/IAgent.h"
 #include "blackboard/Emotion.h"
 #include "blackboard/Text.h"
 #include "blackboard/LearningIntent.h"
