@@ -26,7 +26,7 @@ To complete this workshop, you must create your own instance of the Conversation
   2. Click the **Service Credentials** tab.
   3. Click **View Credentials** in the row for the new service instance.
   4. Copy the values of the `password` and `username` parameters and paste them in your text file.
-5. Intu to use your Conversation service instance.
+5. Configure Intu to use your Conversation service instance.
   1.  Return to the Watson Intu Gatewa and login.
   2.  Under **MANAGE** on the left hand navigation bar click on **Services**
   3.  To the right of "Filter By:" select your Orgnaization and Group
