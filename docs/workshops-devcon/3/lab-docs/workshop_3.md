@@ -117,6 +117,8 @@ Known toolchains are:
 
 ## Creating an emotion agent
 
+**OS X and Windows users do Steps 1 and 2**
+
 1. Open the `self-sdk-develop` file as a project in the IDE for your platform.
 2. Now, let's create and populate directory specifically for this workshop.
 ** For OSX
@@ -132,7 +134,6 @@ Known toolchains are:
     add_subdirectory(workshop_three)
   ```
   5. Open the `CMakeLists.txt` file in the `workshop_three` directory, and overwrite its content with this code:
-  
   ```
     include_directories(.)
 
@@ -140,17 +141,25 @@ Known toolchains are:
     qi_create_lib(workshop_three_plugin SHARED ${SELF_CPP})
     qi_use_lib(workshop_three_plugin self wdc)
     qi_stage_lib(workshop_three_plugin)
-	
-	** For Windows 
-	1. In Visual Studio, in the examples directory, add a new Win32 Project called workshop_three_plugin and hit OK. Click Next and select Application Type as DLL and uncheck Precompiled header and Security Development Lifecycle (SDL) checks under Additional options. Click Finish 
-	2. Remove the Header Files, Resource Files, and Source Files directories that were newly created in the solution. 
-	3. Right click solution and go to Properties and make the following changes (Make sure Configuration at top left is set to All Configurations): 
-	General -> Character Set -> Change to Use Multi-Byte Character Set 
-	Linker -> General -> Additional Library Directories -> add: ../../lib/$(Configuration);../../lib/boost_1_60_0/stage/lib/ 
-	Linker -> Input -> Additional Dependencies -> replace with: jsoncpp.lib;self.lib;wdc.lib;%(AdditionalDependencies) 
-	Build Events -> Post-Build Event -> Command Line -> add: copy /Y "$(TargetPath)" "$(ProjectDir)....\bin\$(Configuration)\" 
-  4. Make a folder in the sdk/examples folder (in filesystem, not Visual Studio) and call it workshop_three 
-  5 Right click on the created workshop solution, and add a new Filter and call it agent
+```
+
+**Windows users do the following five steps.**
+
+1. In Visual Studio, in the `examples` directory, add a new Win32 Project called `workshop_three_plugin`, and click **OK**.
+2. Click **Next**, select **Application Type as DLL**, and uncheck **Precompiled header and Security Development Lifecycle (SDL) checks** under **Additional options**.
+3. Click **Finish**.
+4. Remove the Header Files, Resource Files, and Source Files directories that were newly created in the solution. 
+5. Right-click the project, open **Properties**, and make the following changes. Before you begin, make sure Configuration at the top left is set to **All Configurations**.
+
+* Change the value of **General->Character Set** to **Use Multi-Byte Character Set**.
+* Go to **Linker->General->Additional Library Directories->**, and add `../../lib/$(Configuration);../../lib/boost_1_60_0/stage/lib/`.
+* Replace the value of **Linker->Input->Additional Dependencies** with the following value: `jsoncpp.lib;self.lib;wdc.lib;%(AdditionalDependencies)`.
+* Go to **Build Events->Post-Build Event->Command Line**, and add `copy /Y "$(TargetPath)" "$(ProjectDir)....\bin\$(Configuration)\"`.
+
+**OS X and Windows users do the following four steps.**
+
+4. Make a folder in the sdk/examples folder (in filesystem, not Visual Studio) and call it workshop_three 
+5. Right click on the created workshop solution, and add a new Filter and call it agent
   ```
 3. Navigate back to the `workshop_three` directory, create a new directory, and name it `agents`.
 4. Locate the Workshop 3 code snippet files in `self-sdk-develop/docs/workshops-devcon/3/code-snippets/WorkshopThreeAgent_start`. Copy the `WorkshopThreeAgent.cpp` and the `WorkshopThreeAgent.h` files, and paste them into the `agents` directory that you created.
@@ -165,16 +174,20 @@ Known toolchains are:
   * **OnEmotionCheck()**: Restores the EmotionalState to a basel level of 0.5. For every 30 seconds the OnEmotionCheck() increases when EmotionalState is less than 0.5 and decreases when EmotionalState is more than 0.5 the EmotionalState variable. This ensures that the EmotionalState will trend back to neutral over time. 
   * **PublishEmotionalState()**: Formats the current EmotionalState value, formats it into the json value, and adds it to the blackboard.
 
-** IF ON WINDOWS in Visual Studio:
-  Right click on solution and go to Properties and make the following changes:
-  C/C++ -> General -> Additional Include Directories -> add: ..\..\examples\workshop_three;..\..\include\self;..\..\include\wdc;..\..\lib\boost_1_60_0;..\..\lib;%(AdditionalIncludeDirectories)
-  C/C++ -> Precompiled Headers -> Confirm Precompile Header is left blank
+**Windows users do the following step.**
+
+1. Right-click on the project, go to **Properties**, and make the following changes:
+
+* Go to **C/C++->General->Additional Include Directories->**, and add `..\..\examples\workshop_three;..\..\include\self;..\..\include\wdc;..\..\lib\boost_1_60_0;..\..\lib;%(AdditionalIncludeDirectories)`.
+* Go to **C/C++->Precompiled Headers->Confirm Precompile Header**, and delete the value. Make sure it's blank.
+
+**OS X and Windows do the following two steps.**
   
 The Serialize, Deserialize, OnStart, OnStop, OnEmotion, OnLearningIntent, OnEmotionCheck, and PublishEmotionalState functions are already completely built out.
 
 In the next step, you build the OnText and OnTone function bodies yourself.
 
-6. Write the OnText and OnTone function bodies.
+1. Write the OnText and OnTone function bodies.
   1. For OnText(), copy the following code and paste it into the function body {}:
   ```
   Text::SP spText = DynamicCast<Text>(a_ThingEvent.GetIThing());
@@ -235,7 +248,7 @@ In the next step, you build the OnText and OnTone function bodies yourself.
   ```
 First, this code iterates over the response to find the emotion that has the highest probability. Then, it check whether the emotion is positive, and, if it is, the EmotionalState variable is incremented by 0.1. The EmotionalState variable cannot exceed one. If the highest probability tone is negative, the EmotionalState variable is decreased by 0.1. The EmotionalState variable cannot be less than zero.
 
-7. Rebuild this project in the SDK.
+2. Rebuild this project in the SDK.
 
 **Congratulations!** You just built all the functions required for the emotion agent. This process created the `libworkshop_three_plugin.dylib` in the `bin` directory for your platform in the `self-sdk-develop` directory. If you're using OS X, the path is `Self/self-sdk-develop/bin/mac`.
 
