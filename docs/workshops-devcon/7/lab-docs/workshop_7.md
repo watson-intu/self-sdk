@@ -18,16 +18,19 @@ Complete the following tasks:
 5. Open the avatar configuration file.
   * If you're using a Mac, right-click `intu_avatar` and select **Show Package Contents**. Open **Contents**->**Resources**->**Data**->**StreamingAssets**->, and open `Config.json` in your favorite text editor.
   * If you're using Windows, open **Self-Avatar-Win64**->**intu_avatar_Data**->**StreamingAssets**, and open `Config.json` in your favorite text editor.
-6. Locate the `SelfID` parameter, and delete its value. **Important**: Do not delete the set of quotation marks.
-7. Replace the value of the `BearerToken` parameter in `Config.json` with the value of `m_BearerToken` from your credentials.
-8. Replace the value of the `GroupID` parameter in `Config.json` with the value of `m_GroupId` from your credentials.
-9. Replace the value of the `OrgID` parameter in `Config.json` with the value of `m_OrgId` from your credentials.
-10. Save your changes.
+6. Locate the `SelfID` key, and delete only its value. **Important**: Do not delete the set of quotation marks.
+7. Return to your credentials in the Gateway, and copy the value of `m_BearerToken`.
+8. Return to the `Config.json` file in your text editor, and paste the value of `m_BearerToken` over the value of the `BearerToken` key.
+9. Return to your credentials in the Gateway, and copy the value of `m_GroupId`.
+10. Return to the `Config.json` file in your text editor, and paste the value of `m_GroupId` over the value of the `GroupID` key.
+11. Return to your credentials in the Gateway, and copy the value of `m_OrgId`.
+12. Return to the `Config.json` file in your text editor, and paste the value of `m_OrgId` over the value of the `OrgID` key.
+13. Save the changes you made in the `Config.json` file.
   
 ## Running the Intu Avatar
 
-1. Open the `intu_avatar` application. If a security warning is displayed, continue to run the application.
-2. Select the **Windowed** option, and click **Play!**.
+1. Navigate back to the directory where you extracted the Intu Avatar, and open the `intu_avatar` application. If a security warning is displayed, continue to run the application.
+2. Select the **Windowed** option, accept the other default values, and click **Play!**.
 3. Test Intu by saying hello into the microphone or by typing hello in the **Input Message Here** field.
 
 ## After DevCon ends

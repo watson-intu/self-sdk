@@ -1,6 +1,3 @@
-//
-// Created by Jack Lee-Kopij on 9/06/2016.
-//
 /**
 * Copyright 2016 IBM Corp. All Rights Reserved.
 *
