@@ -177,6 +177,17 @@ First, this code iterates over the response to find the emotion that has the hig
 
 In the next task, you update the `body.json` file to include the new plugin so that Intu can use it.
 
+## Retrieving embodiment credentials for you organisation. 
+To get the embodiment credentials for your organisation, without closing the terminal you are in, go back to the Robot Gateway: https://rg-gateway01.mybluemix.net/Downloads 
+
+On the left hand side of the page, locate and click on VIEW CREDENTIALS.
+
+This should direct to a new frame on the right hand side of the page. Under Filter By: find the organisation you created in Workshop 1 and find the group you created in the scroll down. 
+
+Now click "Get Credentials" and then copy the credentials by clicking the copy button. 
+
+Now go back to the terminal you had the Intu directory.
+
 ## Configuring your Intu instance to include the emotion agent
 
 1. Navigate to the **self**->**etc**->**profile** directory, and open the `body.json` file (For Windows, this will be in the sdk/bin/Debug).
@@ -188,15 +199,16 @@ In the next task, you update the `body.json` file to include the new plugin so t
   * If you're using Windows, the variable is `"m_Libs" : [ "platform_win", "workshop_three_plugin"],`
 4. Locate `EmotionAgent` in the `body.json` file, and notice the `m_NegativeTones` and `m_PositiveTones` strings. To understand the tone of the input, these strings are compared to OnTone().
 5. Change EmotionAgent to WorkshopThreeAgent or the name you gave your class. The instructions use WorkshopThreeAgent, so the Type_ field is `"Type_" : "WorkshopThreeAgent"`.
-6. Save your changes.
-7. Return to the directory for you platform in the `/bin` directory, and run one of the following commands:
+6. Now find the `"m_EmbodimentCreds":{ ... }`, and replace this with the `"m_EmbodimentCreds":{ ... }` copied from the robot gateway.
+7. Save your changes.
+8. Return to the directory for you platform in the `/bin` directory, and run one of the following commands:
   * If you're using OS X, run `pwd`.
   * If you're using Windows, run `cd`.
-8. Run the following commands:
+9. Run the following commands:
   * `export LD_LIBRARY_PATH={$HOME}/Self/self-sdk-develop/bin/mac`
   * `export LD_LIBRARY_PATH=*the path returned in Step 7*`
-9. ** For OSX** In the `mac` directory, run Self by issuing the following command: `./self_instance -c 0 -f 0`.
-10. ** For Windows**  Run Self by clicking Local Windows Debugger in Visual Studio
+10. ** For OSX** In the `mac` directory, run Self by issuing the following command: `./self_instance -c 0 -f 0`.
+11. ** For Windows**  Run Self by clicking Local Windows Debugger in Visual Studio
 
 ## After DevCon ends
 
