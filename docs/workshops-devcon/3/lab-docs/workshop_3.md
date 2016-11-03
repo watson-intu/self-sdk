@@ -179,7 +179,7 @@ In the next task, you update the `body.json` file to include the new plugin so t
 
 ## Configuring your Intu instance to include the emotion agent
 
-1. Navigate to the **self**->**etc**->**profile** directory, and open the `body.json` file.
+1. Navigate to the **self**->**etc**->**profile** directory, and open the `body.json` file (For Windows, this will be in the sdk/bin/Debug).
 2. Locate the `m_Libs` variable.
   * If you're using OS X, the variable is `"m_Libs" : [ "platform_mac" ],`
   * If you're using Windows, the variable is `"m_Libs" : [ "platform_win" ],`
@@ -195,7 +195,8 @@ In the next task, you update the `body.json` file to include the new plugin so t
 8. Run the following commands:
   * `export LD_LIBRARY_PATH={$HOME}/Self/self-sdk-develop/bin/mac`
   * `export LD_LIBRARY_PATH=*the path returned in Step 7*`
-9. In the `mac` directory, run Self by issuing the following command: `./self_instance -c 0 -f 0`.
+9. ** For OSX** In the `mac` directory, run Self by issuing the following command: `./self_instance -c 0 -f 0`.
+10. ** For Windows**  Run Self by clicking Local Windows Debugger in Visual Studio
 
 ## After DevCon ends
 
