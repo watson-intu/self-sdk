@@ -56,6 +56,7 @@ Follow the instructions for your platform.
 
 1. Open the `self-sdk-develop` file as a project in the IDE for your platform.
 2. Now, let's create and populate directory specifically for this workshop.
+** For OSX
   1. Locate the `examples` directory under the `self-sdk-develop` project that you opened. This directory contains a `sensor` directory and a `CMakeLists.txt` file.
   2. Right-click the `examples` directory, and click **New**->**Directory**. Name it `workshop_three`. Your new directory is created.
   3. Copy the `CMakeLists.txt` file from the examples directory, and paste it in the `workshop_three` directory. This file helps to build the plugin for the emotion agent.
@@ -76,9 +77,20 @@ Follow the instructions for your platform.
     qi_use_lib(workshop_three_plugin self wdc)
     qi_stage_lib(workshop_three_plugin)
   ```
-3. Navigate back to the `workshop_three` directory, create a new directory, and name it `agents`.
+** For Windows
+  1. In Visual Studio, in the `examples` directory, add a new Win32 Project called workshop_three_plugin and hit OK. Click Next and select Application Type as DLL and uncheck Precompiled header and Security Development Lifecycle (SDL) checks under Additional options. Click Finish
+  2. Remove the Header Files, Resource Files, and Source Files directories that were newly created in the solution.
+  3. Right click solution and go to Properties and make the following changes (Make sure Configuration at top left is set to All Configurations):
+   General -> Character Set -> Change to Use Multi-Byte Character Set 
+   Linker -> General -> Additional Library Directories -> add: ../../lib/$(Configuration);../../lib/boost_1_60_0/stage/lib/
+   Linker -> Input -> Additional Dependencies -> replace with: jsoncpp.lib;self.lib;wdc.lib;%(AdditionalDependencies)
+   Build Events -> Post-Build Event -> Command Line -> add: copy /Y "$(TargetPath)" "$(ProjectDir)..\..\bin\$(Configuration)\"
+  4. Make a folder in the sdk/examples folder (in filesystem, not Visual Studio) and call it workshop_three
+  5 Right click on the created workshop solution, and add a new Filter and call it agent
+	 
+3. Navigate back to the `workshop_three` directory on your file system, create a new directory, and name it `agents`.
 4. Locate the Workshop 3 code snippet files in `self-sdk-develop/docs/workshops-devcon/3/code-snippets/WorkshopThreeAgent_start`, copy the `WorkshopThreeAgent.cpp` and the `WorkshopThreeAgent.h` files, and paste them into the `agents` directory that you created.
-5. Open the `WorkshopThreeAgent.cpp` file, which contains the following functions that enable the emotion agent you'll create:
+5. Open the `WorkshopThreeAgent.cpp` file, add, which contains the following functions that enable the emotion agent you'll create (if you are on Windows, to add, right click the agent directory in VS and add Existing Items and navigate to where you placed the cpp and header file):
 
   * **OnStart()**: Initializes for the emotion agent. It subscribes the emotion agent to the blackboard. After initialization is complete, the emotion agent subscribes to OnEmotion, OnLearningIntent, and OnEmotionCheck functions. 
   * **OnStop()**: Stops the emotion agent. After the emotion agent is called, it is no longer subscribed to the blackboard.
@@ -89,6 +101,11 @@ Follow the instructions for your platform.
   * **OnEmotionCheck()**: Restores the EmotionalState to a basel level of 0.5. For every 30 seconds the OnEmotionCheck() increases when EmotionalState is less than 0.5 and decreases when EmotionalState is more than 0.5 the EmotionalState variable. This ensures that the EmotionalState will trend back to neutral over time. 
   * **PublishEmotionalState()**: Formats the current EmotionalState value, formats it into the json value, and adds it to the blackboard.
 
+** IF ON WINDOWS in Visual Studio:
+  Right click on solution and go to Properties and make the following changes:
+  C/C++ -> General -> Additional Include Directories -> add: ..\..\examples\workshop_three;..\..\include\self;..\..\include\wdc;..\..\lib\boost_1_60_0;..\..\lib;%(AdditionalIncludeDirectories)
+  C/C++ -> Precompiled Headers -> Confirm Precompile Header is left blank
+  
 The Serialize, Deserialize, OnStart, OnStop, OnEmotion, OnLearningIntent, OnEmotionCheck, and PublishEmotionalState functions are already completely built out.
 
 In the next step, you build the OnText and OnTone function bodies yourself.
