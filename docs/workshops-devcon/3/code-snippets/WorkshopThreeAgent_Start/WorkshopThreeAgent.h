@@ -32,7 +32,7 @@ class SkillInstance;
 
 //! This agent handles emotions
 
-class SELF_API WorkshopThreeAgent : public IAgent
+class WorkshopThreeAgent : public IAgent
 {
 public:
     RTTI_DECL();
