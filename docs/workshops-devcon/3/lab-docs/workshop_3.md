@@ -119,6 +119,7 @@ Known toolchains are:
 
 1. Open the `self-sdk-develop` file as a project in the IDE for your platform.
 2. Now, let's create and populate directory specifically for this workshop.
+** For OSX
   1. Locate the `examples` directory under the `self-sdk-develop` project that you opened. This directory contains a `sensor` directory and a `CMakeLists.txt` file.
   2. Right-click the `examples` directory, and click **New**->**Directory**. Name it `workshop_three`. Your new directory is created.
   3. Right-click the `CMakeLists.txt` file in the `examples` directory, and click **Copy**.
@@ -153,6 +154,11 @@ Known toolchains are:
   * **OnEmotionCheck()**: Restores the EmotionalState to a basel level of 0.5. For every 30 seconds the OnEmotionCheck() increases when EmotionalState is less than 0.5 and decreases when EmotionalState is more than 0.5 the EmotionalState variable. This ensures that the EmotionalState will trend back to neutral over time. 
   * **PublishEmotionalState()**: Formats the current EmotionalState value, formats it into the json value, and adds it to the blackboard.
 
+** IF ON WINDOWS in Visual Studio:
+  Right click on solution and go to Properties and make the following changes:
+  C/C++ -> General -> Additional Include Directories -> add: ..\..\examples\workshop_three;..\..\include\self;..\..\include\wdc;..\..\lib\boost_1_60_0;..\..\lib;%(AdditionalIncludeDirectories)
+  C/C++ -> Precompiled Headers -> Confirm Precompile Header is left blank
+  
 The Serialize, Deserialize, OnStart, OnStop, OnEmotion, OnLearningIntent, OnEmotionCheck, and PublishEmotionalState functions are already completely built out.
 
 In the next step, you build the OnText and OnTone function bodies yourself.
@@ -246,7 +252,8 @@ the "m_EmbodimentCreds" field. Delete the this "m_EmbodimentCreds" field and pas
 8. Run the following commands:
   * `export LD_LIBRARY_PATH={$HOME}/Self/self-sdk-develop/bin/mac`
   * `export LD_LIBRARY_PATH=*the path returned in Step 7*`
-9. In the `mac` directory, run Self by issuing the following command: `./self_instance -c 0 -f 0`.
+9. ** For OSX** In the `mac` directory, run Self by issuing the following command: `./self_instance -c 0 -f 0`.
+10. ** For Windows**  Run Self by clicking Local Windows Debugger in Visual Studio
 
 ## After DevCon ends
 
