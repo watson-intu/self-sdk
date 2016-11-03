@@ -56,6 +56,7 @@ Follow the instructions for your platform.
 
 1. Open the `self-sdk-develop` file as a project in the IDE for your platform.
 2. Now, let's create and populate directory specifically for this workshop.
+** For OSX
   1. Locate the `examples` directory under the `self-sdk-develop` project that you opened. This directory contains a `sensor` directory and a `CMakeLists.txt` file.
   2. Right-click the `examples` directory, and click **New**->**Directory**. Name it `workshop_six`. Your new directory is created.
   3. Copy the `CMakeLists.txt` file from the examples directory, and paste it in the `workshop_six` directory. This file helps to build the plugin for the emotion agent.
@@ -76,6 +77,18 @@ Follow the instructions for your platform.
 	qi_use_lib(workshop_six_plugin self wdc OPENCV2_CORE OPENCV2_HIGHGUI)
 	qi_stage_lib(workshop_six_plugin)
   ```
+  
+  	** For Windows 
+	1. In Visual Studio, in the examples directory, add a new Win32 Project called workshop_six_plugin and hit OK. Click Next and select Application Type as DLL and uncheck Precompiled header and Security Development Lifecycle (SDL) checks under Additional options. Click Finish 
+	2. Remove the Header Files, Resource Files, and Source Files directories that were newly created in the solution. 
+	3. Right click solution and go to Properties and make the following changes (Make sure Configuration at top left is set to All Configurations): 
+	General -> Character Set -> Change to Use Multi-Byte Character Set 
+	Linker -> General -> Additional Library Directories -> add: ../../lib/$(Configuration);../../lib/boost_1_60_0/stage/lib/ 
+	Linker -> Input -> Additional Dependencies -> replace with: jsoncpp.lib;self.lib;wdc.lib;%(AdditionalDependencies) 
+	Build Events -> Post-Build Event -> Command Line -> add: copy /Y "$(TargetPath)" "$(ProjectDir)....\bin\$(Configuration)\" 
+  4. Make a folder in the sdk/examples folder (in filesystem, not Visual Studio) and call it workshop_six 
+  5 Right click on the created workshop solution, and add a new Filter and call it agent
+  
 3. Navigate back to the `workshop_six` directory, create a new directory, and name it `agents`.
 4. Locate the Workshop 3 code snippet files in `self-sdk-develop/docs/workshops-devcon/6/code-snippets/WorkshopSixAgent_start`, copy the `WorkshopSixAgent.cpp` and the `WorkshopSixAgent.h` files, and paste them into the `agents` directory that you created.
 4. Open the `WorkshopSixAgent.cpp` file, which contains the following functions that enable the camera sensor you'll create:
@@ -88,6 +101,11 @@ Follow the instructions for your platform.
   * **SendingData()**: Checks whether the camera is paused. If it's not paused, data is sent.
 
 The OnStart, OnStop, OnPause and OnResume functions are already completely built out.
+
+** IF ON WINDOWS in Visual Studio:
+  Right click on solution and go to Properties and make the following changes:
+  C/C++ -> General -> Additional Include Directories -> add: ..\..\examples\workshop_six;..\..\include\self;..\..\include\wdc;..\..\lib\boost_1_60_0;..\..\lib;%(AdditionalIncludeDirectories)
+  C/C++ -> Precompiled Headers -> Confirm Precompile Header is left blank
 
 In the next step, you build the CaptureVideo and SendingData function bodies yourself.
 
@@ -141,8 +159,8 @@ In the next task, you update the `body.json` file to include the new plugin so t
 7. Run `export LD_LIBRARY_PATH=*the path returned in Step 7*`. 
 **Important**: You must run this command for every terminal session that is running Self. If you close the terminal that's running Self, you must run this export command to run Self again.
 8. Run Self for your platform.
-  * If you're using OS X, navigate to the `mac` directory, and run `./self_instance -c 0 -f 0`.
-  * If you're using Windows, NEED INFO HERE.
+    * For OSX** In the `mac` directory, run Self by issuing the following command: `./self_instance -c 0 -f 0`.
+    * For Windows**  Run Self by clicking Local Windows Debugger in Visual Studio
 
 Self runs with logging. Within the terminal, you can see the logs. If the camera sensor is set up correctly, messages like these will be near the beginning of the log:
 ```
