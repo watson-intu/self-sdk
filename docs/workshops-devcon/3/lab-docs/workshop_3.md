@@ -241,30 +241,38 @@ First, this code iterates over the response to find the emotion that has the hig
 
 In the next task, you update the `body.json` file to include the new plugin so that Intu can use it.
 
-## Configuring Intu to include your emotion agent
+## Retrieving embodiment credentials for you organisation. 
+To get the embodiment credentials for your organisation, without closing the terminal you are in, go back to the Robot Gateway: https://rg-gateway01.mybluemix.net/Downloads 
 
-1. Navigate to the `self/self-sdk-develop/bin/mac/etc`  directory, and open the `body.json` file.
-2. Change EmotionAgent to WorkshopThreeAgent or the name you gave your class. The instructions use WorkshopThreeAgent, so the Type_ field should be changed to `"Type_" : "WorkshopThreeAgent"`.
-3. Save your changes to the `body.json` file.
-4. In a new terminal window, navigate to the `self/self-sdk-develop/bin/mac` directory. You can run `cd self/self-sdk-develop/bin/mac` to get there.
-4. Keep the Intu terminal open, and return to the Gateway. 
-7. On the left side of the page, click **View Credentials**. A new frame on the right side of the page is displayed.
-8. In the dropdown menus in the **Filter By** section, select the organization and group that you created in Workshop 1.
-9. Click **Get Credentials** and copy the this "m_EmbodimentCreds":
+On the left hand side of the page, locate and click on VIEW CREDENTIALS.
 
- Now go back to the body.json file and locate 
+This should direct to a new frame on the right hand side of the page. Under Filter By: find the organisation you created in Workshop 1 and find the group you created in the scroll down. 
 
-the "m_EmbodimentCreds" field. Delete the this "m_EmbodimentCreds" field and paste the "m_EmodimentCreds" copied from the RG (robot gateway).
+Now click "Get Credentials" and then copy the credentials by clicking the copy button. 
 
-6. Save your changes to the `body.json` file.
-7. Return to the directory for you platform in the `/bin` directory, and run one of the following commands:
+Now go back to the terminal you had the Intu directory.
+
+## Configuring your Intu instance to include the emotion agent
+
+1. Navigate to the **self**->**etc**->**profile** directory, and open the `body.json` file (For Windows, this will be in the sdk/bin/Debug).
+2. Locate the `m_Libs` variable.
+  * If you're using OS X, the variable is `"m_Libs" : [ "platform_mac" ],`
+  * If you're using Windows, the variable is `"m_Libs" : [ "platform_win" ],`
+3. Add the information for the new plugin to the end of the `m_Libs` variable for your platform:
+  * If you're using OS X, the variable is `"m_Libs" : [ "platform_mac", "workshop_three_plugin"],`
+  * If you're using Windows, the variable is `"m_Libs" : [ "platform_win", "workshop_three_plugin"],`
+4. Locate `EmotionAgent` in the `body.json` file, and notice the `m_NegativeTones` and `m_PositiveTones` strings. To understand the tone of the input, these strings are compared to OnTone().
+5. Change EmotionAgent to WorkshopThreeAgent or the name you gave your class. The instructions use WorkshopThreeAgent, so the Type_ field is `"Type_" : "WorkshopThreeAgent"`.
+6. Now find the `"m_EmbodimentCreds":{ ... }`, and replace this with the `"m_EmbodimentCreds":{ ... }` copied from the robot gateway.
+7. Save your changes.
+8. Return to the directory for you platform in the `/bin` directory, and run one of the following commands:
   * If you're using OS X, run `pwd`.
   * If you're using Windows, run `cd`.
-8. Run the following commands:
+9. Run the following commands:
   * `export LD_LIBRARY_PATH={$HOME}/Self/self-sdk-develop/bin/mac`
   * `export LD_LIBRARY_PATH=*the path returned in Step 7*`
-9. ** For OSX** In the `mac` directory, run Self by issuing the following command: `./self_instance -c 0 -f 0`.
-10. ** For Windows**  Run Self by clicking Local Windows Debugger in Visual Studio
+10. ** For OSX** In the `mac` directory, run Self by issuing the following command: `./self_instance -c 0 -f 0`.
+11. ** For Windows**  Run Self by clicking Local Windows Debugger in Visual Studio
 
 ## After DevCon ends
 
