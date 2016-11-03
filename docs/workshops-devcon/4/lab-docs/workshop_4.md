@@ -14,24 +14,21 @@ Complete the following tasks:
 4. [Understanding plans](#understanding-plans)
 5. [Modifying plans to have the telephony service call your phone number](#modifying-plans-to-have-the-telephony-service-call-your-phone-number)
 
-## Signing up for a Nexmo account
+## 1. Signing up for a Nexmo account
 
-1. [Sign up for a Nexmo account](https://dashboard.nexmo.com/sign-up).
-2. Claim your IBM Watson credit.
-  1. Click the .... 
+1. [Sign up for a Nexmo account](https://dashboard.nexmo.com/sign-up)
   
-## Getting your Nexmo credentials
+## 2. Getting your Nexmo credentials
 
-**Pro tip:** As you complete this task, you'll receive Nexmo credentials that you'll need later. Open a new file in your favorite text editor where you can temporarily store your credentials.
 
 1. On the [Nexmo dashboard](https://dashboard.nexmo.com/), click your account name in the top right of the window to expand the account menu.
 2. Click **Settings**.
-3. Copy the values of the API key and API Secret parameters and paste them in your text file.
+3. Copy the values of the API key and API Secret parameters, and paste them into a new text file using for your favorite text editor.
 
-## Adding the telephony service to Intu
+## 3. Adding the telephony service to Intu
 
 1. Open the [Intu Gateway](https://rg-gateway.mybluemix.net/).
-2. Click **Manage** on the right side of the page, and click **Services**.
+2. Click **Manage** on the left side of the page, and click **Services**.
 3. In the **Filter By** fields, select your Organization and Group.
 4. Click **Add Service**.
 5. Specify your Nexmo credentials.
@@ -42,7 +39,7 @@ Complete the following tasks:
 6. Click **Add**.
 7. Restart your device to enable the telephony service and automatically provision a US phone number for your device.
 
-## Understanding plans 
+## 4. Understanding plans 
 
 Plans are the primary driving factor in how Intu can accomplish goals. For example, you can preconfigure a plan that tells Intu how to act in a certain situation without any code changes.
 
@@ -52,13 +49,19 @@ Plans contain two major components:
 
 All plans are loaded when Intu starts. When a goal object is placed on the blackboard, the GoalAgent finds the best possible plan, executes the plan, and establish whether that goal was completed successfully (i.e., the plan finished with no action failures) or failed (i.e., no plan was found to carry out execution).
 
-## Modifying plans to have the telephony service call your phone number
+## 5. Modifying plans to have the telephony service call your phone number
 
-1. Navigate to the `./etc/shared/plans` directory from the directory where you installed Self (if you used the installer and you are on a mac the directory is: /Applications/IBM/Self/latest and on Windows it is: C:\Users\{user}\AppData\LocalLow\IBM\Self\{latest_version}), and open the `default.json` file.
-2. Browse through the different plans, and notice how plans can have different preconditions based on the data that is represented.
+1. From the directory where you installed Self, navigate to the `./etc/shared/plans` directory. If you used the Installer and you are using a **Mac**, the directory is: `/Applications/IBM/Self/latest`. If you are using **Windows**, it is: `C:\Users\{user}\AppData\LocalLow\IBM\Self\{latest_version}`.
+2.  Open the `default.json` file.
+3. Browse through the different plans, and notice how plans can have different preconditions based on the data that is represented.
 For example, look at the first plan called "dialog_answer". It contains a set of preconditions (key is m_PreConditions) that must be answered for that plan to execute. The first parameter, the array with the key m_Params, in that precondition states that the data being analyzed must have a format as "{"answer" : {"response" : ["some value"] }, }", where the array in response must not be equal to null, while the second precondition states the response array must not have a key of "id" in the response array.
 3. Search for a plan called "outgoing_call", and change the value of m_ToNumber in the second action to your phone number. Now, look at the actions for this plan. The first action will have Intu "Dialing", while the second action will carry out the execution to call the number specified.
-4. Run Intu, and say "can you call me". When your phone rings, answer it, and have a conversation with Intu. Say "tell me a joke". You should hear Watson tell you a joke. You can continue to talk or hang up.
+4. **Run Intu**. 
+(In the directory where you installed Intu, if you're using a Mac, right-click on the Intu Manager and select Open. If you're using Windows, double-click on the Intu Manager to run it. If a security warning is displayed, accept the risk and open the file.
+Select the Windowed checkbox, accept the other default values, and click Play!. If a security warning is displayed, accept the risk. The Intu Manager page is displayed. Click Log In. You are prompted to return to the Intu Manager application.) 
+Click **Manage Intu**. A new Intu Tooling sign-in page is displayed. Click Log in. 
+5. Click on the **small grey swipe icon** next to your device to **restart Intu**.
+6. Ask Intu "Can you call me". When your phone rings, answer it, and have a conversation with Intu. Say "Tell me a joke". You should hear Watson tell you a joke. You can continue to talk or hang up.
 
 ## After DevCon ends
 
