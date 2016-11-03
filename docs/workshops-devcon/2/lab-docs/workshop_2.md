@@ -24,17 +24,15 @@ To complete this workshop, you must create your own instance of the Conversation
 4. Click the **Conversation** tile.
   1. Keep all the default values, and click **Create**.
   2. Click the **Service Credentials** tab.
-  3. Click **View Credentials** for the new service instance. You'll return for these later.
+  3. Click **View Credentials** in the row for the new service instance.
+  4. Copy the values of the `password` and `username` parameters and paste them in your text file.
+  
 5. Configure Intu to use your Conversation service instance.
-  1. Return to the Watson Intu Gateway window in your browser. Expand **All Organizations** by clicking the arrow icon.
-  2. Click the name of your organization.
-  3. Expand your organization by clicking the arrow icon.
-  4. Click the name of your group.
-  5. Click **Services** in the navigation bar.
-  6. For your instance of the Conversation service, click **Edit**.
-  7. Return to the window where your Conversation service credentials are displayed.
-  8. Copy the user ID and password values, and paste them in the appropriate fields for the Conversation service in the Gateway window.
-  8. Do not close the Conversation service credentials tab in your browser. You will return to it later.
+  1.  Return to the Watson Intu Gatewa and login.
+  2.  Under **MANAGE** on the left hand navigation bar click on **Services**
+  3.  To the right of "Filter By:" select your Orgnaization and Group
+  4.  For your instance of the Conversation service, click **Edit**, paste the user ID and password values, and click **Save**.
+  5.  Do not close the conversation service credentials tab in your browser. You will return to it later.
 
 **Important:** Do not change the service endpoint unless you are an enterprise user.
 
