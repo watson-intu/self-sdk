@@ -140,6 +140,17 @@ Known toolchains are:
     qi_create_lib(workshop_three_plugin SHARED ${SELF_CPP})
     qi_use_lib(workshop_three_plugin self wdc)
     qi_stage_lib(workshop_three_plugin)
+	
+	** For Windows 
+	1. In Visual Studio, in the examples directory, add a new Win32 Project called workshop_three_plugin and hit OK. Click Next and select Application Type as DLL and uncheck Precompiled header and Security Development Lifecycle (SDL) checks under Additional options. Click Finish 
+	2. Remove the Header Files, Resource Files, and Source Files directories that were newly created in the solution. 
+	3. Right click solution and go to Properties and make the following changes (Make sure Configuration at top left is set to All Configurations): 
+	General -> Character Set -> Change to Use Multi-Byte Character Set 
+	Linker -> General -> Additional Library Directories -> add: ../../lib/$(Configuration);../../lib/boost_1_60_0/stage/lib/ 
+	Linker -> Input -> Additional Dependencies -> replace with: jsoncpp.lib;self.lib;wdc.lib;%(AdditionalDependencies) 
+	Build Events -> Post-Build Event -> Command Line -> add: copy /Y "$(TargetPath)" "$(ProjectDir)....\bin\$(Configuration)\" 
+  4. Make a folder in the sdk/examples folder (in filesystem, not Visual Studio) and call it workshop_three 
+  5 Right click on the created workshop solution, and add a new Filter and call it agent
   ```
 3. Navigate back to the `workshop_three` directory, create a new directory, and name it `agents`.
 4. Locate the Workshop 3 code snippet files in `self-sdk-develop/docs/workshops-devcon/3/code-snippets/WorkshopThreeAgent_start`. Copy the `WorkshopThreeAgent.cpp` and the `WorkshopThreeAgent.h` files, and paste them into the `agents` directory that you created.
