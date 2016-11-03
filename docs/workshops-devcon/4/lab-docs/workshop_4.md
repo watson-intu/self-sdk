@@ -35,10 +35,10 @@ Complete the following tasks:
 3. In the **Filter By** fields, select your Organization and Group.
 4. Click **Add Service**.
 5. Specify your Nexmo credentials.
-  1. In the **Service Name** field, specify `Telephony B1`.
+  1. In the **Service Name** field, specify `TelephonyV1`.
   2. In the **User ID** field, specify the API key value from your text file.
   3. In the **Password** field, specify the API Secret value from your text file.
-  4. In the **Service Endpoint** field, specify `https://nexmo-watson.mybluemix.net/`.
+  4. In the **Service Endpoint** field, specify `ws://nexmo-watson.mybluemix.net/ws-embodiment`.
 6. Click **Add**.
 7. Restart your device to enable the telephony service and automatically provision a US phone number for your device.
 
@@ -54,12 +54,11 @@ All plans are loaded when Intu starts. When a goal object is placed on the black
 
 ## Modifying plans to have the telephony service call your phone number
 
-1. Navigate to the `./etc/shared/plans` directory, and open the `default.json file`.
+1. Navigate to the `./etc/shared/plans` directory from the directory where you installed Self, and open the `default.json` file.
 2. Browse through the different plans, and notice how plans can have different preconditions based on the data that is represented.
 For example, look at the first plan called "dialog_answer". It contains a set of preconditions (key is m_PreConditions) that must be answered for that plan to execute. The first parameter, the array with the key m_Params, in that precondition states that the data being analyzed must have a format as "{"answer" : {"response" : ["some value"] }, }", where the array in response must not be equal to null, while the second precondition states the response array must not have a key of "id" in the response array.
 3. Search for a plan called "outgoing_call", and change the value of m_ToNumber in the second action to your phone number. Now, look at the actions for this plan. The first action will have Intu "Dialing", while the second action will carry out the execution to call the number specified.
-4. Search for a plan called "ending_call", and change the number parameter to your phone number. When the phone call ends, your phone will be notified via SMS that the call ended.
-5. Run Intu, and say "can you call me". When your phone rings, answer it, and have a conversation with Intu. Say "tell me a joke". After you hang up the phone, you'll receive a text message to let you know the phone call ended.
+4. Run Intu, and say "can you call me". When your phone rings, answer it, and have a conversation with Intu. Say "tell me a joke". You should hear Watson tell you a joke. You can continue to talk or hang up.
 
 ## After DevCon ends
 
