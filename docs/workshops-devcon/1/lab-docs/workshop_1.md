@@ -25,7 +25,7 @@ Getting started includes the following tasks:
 
 ### Downloading Intu
 
-1. On the Intu Downloads page, download the appropriate installation package for your platform.
+1. On the Intu Downloads page, download the appropriate Intu Tooling installation package for your platform.
 2. Extract the files from the package into your working directory.
 
 ### Installing Intu

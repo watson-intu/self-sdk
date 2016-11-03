@@ -6,32 +6,11 @@ In this workshop, you create an emotion agent. Agents make decisions about how I
 
 Complete the following tasks:
 
-1. [Setting up the Tone Analyzer service](#setting-up-the-tone-analyzer-service)
-2. [Understanding some Intu terminology](#understanding-some-intu-terminology)
-3. [Building the Intu SDK](#building-the-intu-sdk)
+1. [Understanding some Intu terminology](#understanding-some-intu-terminology)
+2. [Building the Intu SDK](#building-the-intu-sdk)
 3. [Creating an emotion agent](#creating-an-emotion-agent)
 4. [Configuring Intu to include your emotion agent](#configuring-intu-to-include-your-emotion-agent)
 
-## Setting up the Tone Analyzer service
-
-You must create your own instance of the Tone Analyzer service and configure Intu to use the service credentials.
-
-1. [Log in to Bluemix](https://idaas.iam.ibm.com/idaas/mtfim/sps/authsvc?PolicyId=urn:ibm:security:authentication:asf:basicldapuser).
-2. On the Bluemix dashboard, click **Catalog** in the navigation bar.
-3. Click **Watson** in the categories menu.
-4. Click the **Tone Analyzer** tile.
-  1. Keep all the default values, and click **Create**.
-  2. Click the **Service Credentials** tab.
-  3. Click **View Credentials** for the new service instance.
-  4. Copy the values of the `password` and `username` parameters and paste them in your text file.
-5. Configure Intu to use your Tone Analyzer service instance.
-  1. Return to the Watson Intu Gateway. Expand **All Organizations** by clicking the arrow icon.
-  2. Click the name of your organization.
-  3. Expand your organization by clicking the arrow icon.
-  4. Click the name of your group.
-  5. Click **Services** in the navigation bar.
-  6. For your instance of the Tone Analyzer service, click **Edit**, paste the user ID and password values, and click **Save**.
-  
 ## Understanding some Intu terminology
 
 Before you create an emotion agent, become familiar with the following terminology:
@@ -60,7 +39,6 @@ Follow the instructions for your platform.
   * `cd {Self root directory}`
   * `./scripts/build_mac.sh`
 
-
 ### Building the SDK for Windows
 
 1. Install [Visual Studio 2015](https://www.visualstudio.com/downloads/).
@@ -73,25 +51,22 @@ Follow the instructions for your platform.
 **Important**: If you use SourceTree, the process might get stuck when trying to pull by using SSH. Run the following commands on the command line to fix the problem with the git client that's trying to be interactive:
 * cd "C:\Program Files (x86)\Atlassian\SourceTree\tools\putty"
 * plink git@github.ibm.com
+
 ## Creating an emotion agent
 
-1. Download the [Workshop 3 code snippets](https://github.ibm.com/watson-labs-austin/self-sdk/tree/develop/docs/workshops-devcon/3/code-snippets).
-2. Open the `self-sdk-develop` file as a project in the IDE for your platform.
-3. Now, let's create and populate directory specifically for this workshop.
-  1. Locate the `examples` directory under the `self-sdk-develop` project that you opened. This directory contains only a `sensor` directory.
-  2. Right-click the `examples` directory, and click **New**->**Directory**, and name it `workshop_three`. Your new directory is created.
-  3. Name the directory `workshop_three`.
-  4. Navigate to the `sensor` directory, copy the `CMakeLists.txt` file, and paste it in the `workshop_three` directory. This file helps to build the plugin for the emotion agent.
-  5. Open the `CMakeLists.txt` file, and change its content to this:
-  
+1. Open the `self-sdk-develop` file as a project in the IDE for your platform.
+2. Now, let's create and populate directory specifically for this workshop.
+  1. Locate the `examples` directory under the `self-sdk-develop` project that you opened. This directory contains a `sensor` directory and a `CMakeLists.txt` file.
+  2. Right-click the `examples` directory, and click **New**->**Directory**. Name it `workshop_three`. Your new directory is created.
+  3. Copy the `CMakeLists.txt` file from the examples directory, and paste it in the `workshop_three` directory. This file helps to build the plugin for the emotion agent.
+  4. Open the `CMakeLists.txt` file in the `examples` directory, and add the following line: `add_subdirectory(workshop_three)`. Your file contains the following three lines:
   ```
     include_directories(".")
 
     add_subdirectory(sensor)
     add_subdirectory(workshop_three)
   ```
-  6. Navigate back to the `workshop_three` directory, create a new directory, and name it `agents`.
-  7. Copy and paste a `CMakeLists.txt` file into the `agents` directory, and change its content to this:
+  5. Open the `CMakeLists.txt` file in the `workshop_three` directory, and overwrite its content with this code:
   
   ```
     include_directories(.)
@@ -101,8 +76,9 @@ Follow the instructions for your platform.
     qi_use_lib(workshop_three_plugin self wdc)
     qi_stage_lib(workshop_three_plugin)
   ```
-  8. Locate the Workshop 3 code snippet files you downloaded in Step 1, copy the `WorkshopThreeAgent.cpp` and the `WorkshopThreeAgent.h` files, and paste them into the `agents` directory that you created.
-4. Open the `WorkshopThreeAgent.cpp` file, which contains the following functions that enable the emotion agent you'll create:
+3. Navigate back to the `workshop_three` directory, create a new directory, and name it `agents`.
+4. Locate the Workshop 3 code snippet files in `self-sdk-develop/docs/workshops-devcon/3/code-snippets/WorkshopThreeAgent_start`, copy the `WorkshopThreeAgent.cpp` and the `WorkshopThreeAgent.h` files, and paste them into the `agents` directory that you created.
+5. Open the `WorkshopThreeAgent.cpp` file, which contains the following functions that enable the emotion agent you'll create:
 
   * **OnStart()**: Initializes for the emotion agent. It subscribes the emotion agent to the blackboard. After initialization is complete, the emotion agent subscribes to OnEmotion, OnLearningIntent, and OnEmotionCheck functions. 
   * **OnStop()**: Stops the emotion agent. After the emotion agent is called, it is no longer subscribed to the blackboard.
@@ -117,7 +93,7 @@ The Serialize, Deserialize, OnStart, OnStop, OnEmotion, OnLearningIntent, OnEmot
 
 In the next step, you build the OnText and OnTone function bodies yourself.
 
-4. Write the OnText and OnTone function bodies.
+6. Write the OnText and OnTone function bodies.
   1. For OnText(), copy the following code and paste it into the function body:
   ```
   Text::SP spText = DynamicCast<Text>(a_ThingEvent.GetIThing());
@@ -178,7 +154,7 @@ In the next step, you build the OnText and OnTone function bodies yourself.
   ```
 First, this code iterates over the response to find the emotion that has the highest probability. Then, it check whether the emotion is positive, and, if it is, the EmotionalState variable is incremented by 0.1. The EmotionalState variable cannot exceed one. If the highest probability tone is negative, the EmotionalState variable is decreased by 0.1. The EmotionalState variable cannot be less than zero.
 
-5. Rebuild this project in the SDK.
+7. Rebuild this project in the SDK.
 
 **Congratulations!** You just built all the functions required for the emotion agent. This process created the `libworkshop_three_plugin.dylib` in the `bin` directory for your platform in the `self-sdk-develop` directory. If you're using OS X, the path is `Self/self-sdk-develop/bin/mac`.
 
