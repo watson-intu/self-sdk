@@ -54,7 +54,7 @@ All plans are loaded when Intu starts. When a goal object is placed on the black
 
 ## Modifying plans to have the telephony service call your phone number
 
-1. Navigate to the `./etc/shared/plans` directory from the directory where you installed Self, and open the `default.json` file.
+1. Navigate to the `./etc/shared/plans` directory from the directory where you installed Self (if you used the installer and you are on a mac the directory is: /Applications/IBM/Self/latest and on Windows it is: C:\Users\{user}\AppData\LocalLow\IBM\Self\{latest_version}, and open the `default.json` file.
 2. Browse through the different plans, and notice how plans can have different preconditions based on the data that is represented.
 For example, look at the first plan called "dialog_answer". It contains a set of preconditions (key is m_PreConditions) that must be answered for that plan to execute. The first parameter, the array with the key m_Params, in that precondition states that the data being analyzed must have a format as "{"answer" : {"response" : ["some value"] }, }", where the array in response must not be equal to null, while the second precondition states the response array must not have a key of "id" in the response array.
 3. Search for a plan called "outgoing_call", and change the value of m_ToNumber in the second action to your phone number. Now, look at the actions for this plan. The first action will have Intu "Dialing", while the second action will carry out the execution to call the number specified.
