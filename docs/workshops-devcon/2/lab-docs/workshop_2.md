@@ -56,14 +56,13 @@ To complete this task, you must download a Intu Starter Kit, which contains a co
 3. Expand this branch of the dialog tree by clicking through the following dialog nodes: **#dialog** -> **@greeting** -> **@greeting:hello**.
 4. In the **Watson Response** box of **greeting:hello**, in `“values”: [ ]`, the current four responses for when you say "hello" are displayed. You can edit, remove, and add to these. For now, add a comma (,) directly after the final quotation mark (") at the end of "why hello there[emote=wave_anim]" and on a new line directly below it, add "Hello Workshop Two participant!".
 5. Click the **conversation bubble** icon on the top right to open a **Try it out** panel where you can test your new response.
-6. Test your change. 
+6. Test your change. Note that Conversation may take a few minutes to train, as indicated by the message in purple.
   1. In the **Enter something to test your bot** field at the bottom of the **Try it out** panel, type Hello, and press **Enter**. Submit hello until your new response is returned.
   2. Now, say hello to your embodiment. Say hello until your new response is returned through speech.
   
 ## Adding a new conversation flow with a new intent, new entities, and new dialog
 
-1. Click your Self-Dialog workspace on the top left. The Workspace page is displayed.
-2. Click anywhere inside the Intu-Dialog box.
+1. Click on Intents on the top navigation bar.
 3. Create a new intent.
   1. Click the green **Create new** button on the top left to create a new intent.
   2. The hashtag (#) identifies intents. After the # for intent name, type `dialog_capitals`.
@@ -77,20 +76,38 @@ To complete this task, you must download a Intu Starter Kit, which contains a co
   10. Repeat step 9 for `What is the capital of Canada` and `What is the capital of New Zealand`.
 4. Create new entities.
   1. Click **Entities** on the top navigation bar, and click **Create new**.
-  2. Type the new entity `@countries`, and click **Create**. The entity @countries is displayed in your Entities list.
+  2. Type the new entity `countries`, and click **Create**. The entity @countries is displayed in your Entities list.
   3. Click the @countries entity, and select **Add a new value**.
   4. Type `Australia`, and press **Enter**.
   5. Repeat step 6 to add two new values for Canada and New Zealand.
 5. Create a new dialog.
   1. Click **Dialog** on the top navigation bar, and click any of the existing branches where you see a green **+** displayed at the bottom of the box that has expanded.
-  2. Click the bottom green **+** and in the new box that opens, type `#dialog_countries`.
-  3. Click within the #dialog_countries. It becomes outlined in green. Now, click the green **+** icon on the right side of the box. 
+  2. Click the bottom green **+** and in the new box that opens, type `#dialog_capitals`.
+  3. Click within the #dialog_capitals. It becomes outlined in green. Now, click the green **+** icon on the right side of the box. 
   4. In the new box that is displayed, under **Enter new condition**, type `@countries:Australia`.
-  5. Click the three dots in the #dialog_countries box, and select **Continue from**. 
-  6. In the white @countries:Australia box, type the following response, `The capital of Australia is Canberra`.
-  7. Click the @countries:Australia box where you just typed the `The capital of Australia is Canberra` response. It becomes outlined in green.
-  8. Click the green **+** icon on the bottom of the box. 
-  9. In the new box that is displayed, under **Enter a condition**, type `@capitals:Canada`, and for the response type `The capital of Canada is Ottawa`.
+  5. Click the three dots in the #dialog_capitals box, and select **Continue from**. 
+
+6.	Click on the @countries:Australia box, then click on Go to condition which has just popped us.
+7.	Finally, in the white @countries:Australia box, type in the response: The capital of Australia is Canberra.
+8.	Click on the @countries:Australia where you just typed in the response: The capital of Australia is Canberra, which will become outlined in green. Click on the green + icon on the bottom of the box. 
+9.	In the new box that appears, under Enter a condition, type in: @ countries:Canada, and for the response: The capital of Canada is Ottawa.
+10.	Repeat for @capitals:New Zealand, where the response will be The capital of Canada is Wellington.
+11.	Test your change.
+In the **Enter something to test your bot**field down the bottom, type **What is the capital of Australia?**. You should see the response: The capital of Australia is Canberra. Note that Conversation may take a few minutes to train, as indicated by the message in purple.
+
+
+## Configuring Self to use your new Conversation instance
+
+Your installation of Self is preconfigured to use the default Conversation service. To configure Self to use your new Conversation instance which you just modified, complete the following steps:
+
+1.	After testing your changes in the previous step above, click on the name of your Conversation Workspace Self-Dialog in the top left.
+2.	This returns you to your Workspaces page, where you will see the Self-Dialog Workspace box. Click on the three dots in the top right hand corner of this box. Select View details.   
+3.	Now copy the Workspace ID into the text file you created earlier.
+4.	Navigate and log in to the Intu Gateway. 
+5.	Under Manage, select Services. Select your Organization and Group in the top Filter by menu, if not already selected.
+6.	For your instance of Conversation, click Edit, and copy in your username and password you saved earlier, and your workspace ID from your text file. Click Save.
+7.	If Intu is running, ask it a question, e.g. What is the capital of Australia?
+If Intu is not running, run Intu Manager, as per the instructions in the first section of this workshop. 
 
 ## After DevCon ends
 
