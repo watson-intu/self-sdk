@@ -118,22 +118,32 @@ If Intu is **not running, run Intu Manager**.
 	6. Your Organization and Group should be preselected in the dropdown menu and Intu should now be running.
 
 ## After DevCon ends
+Your instance of Intu is preconfigured with the following Watson services: Natural Language Classifier, Speech to Text, and Text to Speech. The preconfiguration is enabled for 30 days. If you want to test Intu after 30 days, you must create your own instances of these services and configure Intu to use them.
 
-If you want to test Intu after the trial period ends, you must create your own instances of these services and configure Intu to use them.
-
-### Creating instances of Watson services
+### 1. Creating instances of Watson services
 To use Intu, you need operational instances of the following services in Bluemix: Conversation, Natural Language Classifier, Speech to Text, and Text to Speech.
 
-**Pro tip:** As you complete this task, you'll receive credentials for each service instance, and you'll need these credentials later. Open a new file in your favorite text editor and create a section for each service so that you can temporarily store its credentials.
+**Pro tip:** As you complete this task, you'll receive credentials for each service instance, and you'll need these credentials later. Open a new file in your favourite text editor and create a section for each service so that you can temporarily store its credentials.
 
-1. On the Bluemix dashboard, click **Catalog** in the navigation bar.
-2. Click **Watson** in the categories menu.
-3. Create an instance of the Natural Language Classifer service.
+1. On the Bluemix dashboard, click **Catalog** in the top right navigation bar.
+2. In the All Categories menu on the left, under Services, click on **Watson**.
+3. Create an instance of the Conversation service.
   1. Click the **Natural Language Classifier** tile.
   2. Keep all the default values, and click **Create**.
   3. Click the **Service Credentials** tab.
-  4. Click **View Credentials** for the new service instance.
-  5. Copy the values of the `password` and `username` parameters and paste them into a new text file in your favourite text editor.
-  6. Click the **Watson** back arrow on the upper left corner. The list of your service instances is displayed.
-  7. Add the next service instance by clicking the hexagonal **Create Watson +** button. The Watson service catalog is displayed.
-4. Create an instance of **Speech to Text** and **Text to Speech** services by repeating the same steps 1 - 7 that you completed to create the Natural Language Classifier instance.
+  4. Click **View Credentials** for the new Conversation service instance.
+  5. Copy the values for your password and username and paste them into a new text file in your favourite text editor.
+  6. Click the **<--Watson** breadcrumb near the top left (directly above your Natural Language Classifier service name). The list of your service instances is displayed.
+  7. Add the next service instance by clicking the **Create Watson** **+** button. The Watson service catalog is displayed.
+4. Create instances of the Speech to Text and Text to Speech services by repeating the same substeps 1 - 7 that you completed to create the Natural Language Classifier service instance.
+
+
+### 2. Configuring Intu to use your service instances
+
+To configure Intu to use your instances of these Watson services, log in to to the [Watson Intu Gateway](https://rg-gateway.mybluemix.net/) and complete the following steps:
+
+1. Click on **MANAGE** on the left hand side navigation bar, and select **Services**. 
+2. Select your Organization and Group in the top Filter by menu, if not already selected.
+3. For your instances of the Natural Language Classifier, Speech to Text, and Text to Speech services, click **Edit**, and specify the user ID and password (saved in your text file in the previous section **Creating instances of Watson services**), and click **Save**.
+
+**Important:** Do not change the service endpoint unless you are an enterprise user.
