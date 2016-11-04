@@ -55,10 +55,12 @@ Follow the instructions for your platform.
 **Before you begin**:
 
 1. [Download the Intu SDK](https://github.ibm.com/watson-labs-austin/self-sdk). Click on **Clone or download** and select **Download Zip**.
-2. Create a new directory named **intu** in your home directory.
+2. Create a new directory named **intu** in a directory of your choosing.
 3. Unzip the self-sdk-develop.zip file into **intu**, making sure that you retain the folder structure. I.e. Your intu directory should now contain the unzipped **self-sdk-develop** folder.
 
-### Building the SDK for OS X
+### Preparing OS X
+
+**Note**: If you have already completed **Preparing OS X** in another workshop, you can skip this section.
 
 1. Install Homebrew by completing the following steps:
    1. Open a new terminal window, and run the command:
@@ -97,39 +99,48 @@ Follow the instructions for your platform.
    * `qibuild config --wizard`. Be sure to include the two hyphens before the word wizard in the last command.
    2. When the "Please choose a generator" prompt is displayed, specify **1**, and press **Enter**.
    3. When the "Please choose an IDE" prompt is displayed, specify **1**, and press **Enter**.
-5. Navigate to the **self-sdk-develop** directory in the Intu directory you created at the very beginning of this workshop. Open a **new** terminal window, and run the following commands:
-  * `cd intu/self-sdk-develop`
-  * `./scripts/build_mac.sh`
-  
+
+### Building the Intu SDK for OS X
+1. In a new Terminal window, navigate to the **self-sdk-develop** directory inside **Intu**. You should just be able to run: `cd intu/self-sdk-develop` 
+
+	**Note:** If you have **already built the Intu SDK for OS X** in another workshop, run: `./scripts/clean.sh`    
+
+
+2. Run:
+`./scripts/build_mac.sh`  
 If you're running this script for the first time and you see the following message, don't worry. You don't have the toolchain.
 ```
 [ERROR]: Exception No such toolchain: mac-self
 Known toolchains are:
 ```
 
-### Building the SDK for Windows
+### Building the Intu SDK for Windows
 
-1. Install [Visual Studio 2015](https://www.visualstudio.com/downloads/).
-2. Open the solution found in vs2015/self-sdk.sln
-3. Right click on the "self-sdk" project and select "Set as Startup Project".
-4. Right click on the "self-sdk" projet, open properties. In the Debugging tab of the properties, you will need to change "Working Directory" to "$(TargetDir)".
-5. Select Build->Build Solution
-6. Select Debug->Start Debugging to run the project with debugging
+1. Preparing Windows only requires installing [Visual Studio 2015](https://www.visualstudio.com/downloads/).
+2. Visual Studio should launch automatically after installing. If it does not, open Visual Studio.
+3. Select **Open solution**.
+2. Open the solution found in **vs2015/self-sdk.sln**.
+3. Right click on the **self-sdk** project and select **Set as Startup Project**.
+4. Right click on the **self-sdk** project, and open **properties**. In the **Debugging tab** of the properties, you will need to change **Working Directory** to **$(TargetDir)**.
+5. Select **Build->Build Solution**.
+6. Select **Debug->Start Debugging** to run the project with debugging.
 
 **Important**: If you use SourceTree, the process might get stuck when trying to pull by using SSH. Run the following commands on the command line to fix the problem with the git client that's trying to be interactive:
 * cd "C:\Program Files (x86)\Atlassian\SourceTree\tools\putty"
 * plink git@github.ibm.com
 
 ## 4. Creating an emotion agent
+### 1. Preparing your directories and files
 
-### OS X and Windows users do the following two steps
+**For OS X users:**
 
 1. If you do not have it installed already, download the trial version of the [CLion C++ IDE](https://www.jetbrains.com/clion/download/).
+
 2. In **CLion**, select Open -> home directory -> intu -> self-sdk-develop and click **OK**. 
 
-Note that a window may appear prompting you to open your project in a New Window or This Window. Select **New Window**. At the bottom of your CLion window, in the Problems tab, you will see the following Error, which you do not need to worry about:
+	Note that a window may appear prompting you to open your project in a New Window or This Window. Select **New Window**. At the bottom of your CLion window, in the Problems tab, you will see the following Error, which you do not need to worry about:
 
-Error: By not providing "FindSELF.cmake" in CMAKE_MODULE_PATH this project has asked CMake to find a package configuration file provided by "SELF", but CMake did not find one.
+	Error: By not providing "FindSELF.cmake" in CMAKE_MODULE_PATH this project has asked CMake to find a package configuration file provided by "SELF", but CMake did not find one.
 Could not find a package configuration file provided by "SELF" with any of the following names:
   SELFConfig.cmake   self-config.cmake
 Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to a directory containing one of the above files.  If "SELF" provides a separate development package or SDK, be sure it has been installed.
@@ -159,29 +170,40 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
     qi_stage_lib(workshop_three_plugin)
   ```
 
-### Windows users do the following five steps
-
-1. In **Visual Studio**, in the **examples** directory, add a new **Win32 Project** called `workshop_three_plugin`, and click **OK**.
-2. Click **Next**, select **Application Type as DLL**, and uncheck **Precompiled header and Security Development Lifecycle (SDL) checks** under **Additional options**.
-3. Click **Finish**.
-4. Remove the Header Files, Resource Files, and Source Files directories that were newly created in the solution. 
-5. Right-click the project, open **Properties**, and make the following changes. Before you begin, make sure Configuration at the top left is set to **All Configurations**.
-
-* Change the value of **General->Character Set** to **Use Multi-Byte Character Set**.
-* Go to **Linker->General->Additional Library Directories->**, and add `../../lib/$(Configuration);../../lib/boost_1_60_0/stage/lib/`.
-* Replace the value of **Linker->Input->Additional Dependencies** with the following value: `jsoncpp.lib;self.lib;wdc.lib;%(AdditionalDependencies)`.
-* Go to **Build Events->Post-Build Event->Command Line**, and add `copy /Y "$(TargetPath)" "$(ProjectDir)....\bin\$(Configuration)\"`.
-
-### OS X and Windows users do the following four steps
-
-1. Navigate back to the **workshop_three** directory and create a new directory inside this called **agents**.
+1. Create a new directory inside this called **agents** in the **workshop_three** directory.
 2. Locate the Workshop 3 code snippet files **to be filled in** in:
 
  `self-sdk-develop/docs/workshops-devcon/3/code-snippets/WorkshopThreeAgent_start`
 
 3. Copy the `WorkshopThreeAgent.cpp` and the `WorkshopThreeAgent.h` files and paste them into the **agents** directory that you created.
 
-3. Open the `WorkshopThreeAgent.cpp` file, which contains the following functions that enable the emotion agent you'll create:
+
+**For Windows users:**
+
+1. Open up File Explorer and navigate to **intu/self-sdk-develop/examples**.
+2. Create a new directory in examples called **workshop_three**. 
+3. Copy across `WorkshopThreeAgent.cpp` and `WorkshopThreeAgent.h` located under **self-sdk/docs/workshops-devcon/3/code-snippets/WorkshopThreeAgent_Start** into the **workshop_three** directory.
+2. In **Visual Studio**, in the **examples** directory, add a new **Win32 Project** called `workshop_three_plugin`, and click **OK**.
+2. Click **Next**, select **Application Type as DLL**, and uncheck **Precompiled header and Security Development Lifecycle (SDL) checks** under **Additional options**.
+3. Click **Finish**.
+4. Inside of `workshop_three_plugin`, remove the **Header Files**, **Resource Files**, and **Source Files** directories that were newly created in the solution.
+7. Inside the **Solution Explorer** window, right click **workshop****_three****_plugin**, and select **Add->New Filter**.
+8. Name the filter **agent**.
+9. Right-click on **agent**, and select **Add->Existing Items**.
+10. Navigate to **self-sdk-develop/examples/workshop_three** and select the files: `WorkshopThreeAgent.cpp` and `WorkshopThreeAgent.h`.
+11. Right-click the **workshop****_three****_plugin** solution, open **Properties**, and make the following changes, but **before you begin, make sure Configuration at the top left is set to "All Configurations"**.
+
+* Change the value of **General->Character Set** to **Use Multi-Byte Character Set**.
+* Go to **C/C++->General->Additional Include Directories->**, and add `..\..\examples\workshop_three;..\..\include\self;..\..\include\wdc;..\..\lib\boost_1_60_0;..\..\lib;%(AdditionalIncludeDirectories)`.
+* Go to **C/C++->Precompiled Headers->Confirm Precompile Header**, and delete the value. Make sure it's blank.
+* Go to **Linker->General->Additional Library Directories->**, and add `../../lib/$(Configuration);../../lib/boost_1_60_0/stage/lib/`.
+* Replace the value of **Linker->Input->Additional Dependencies** with the following value: `jsoncpp.lib;self.lib;wdc.lib;%(AdditionalDependencies)`.
+* Go to **Build Events->Post-Build Event->Command Line**, and add `copy /Y "$(TargetPath)" "$(ProjectDir)..\..\bin\$(Configuration)"`.
+
+
+### 2. Build out the OnText, OnTone and OnLearningIntent functions
+
+Open the `WorkshopThreeAgent.cpp` file, which contains the following functions that enable the emotion agent you'll create:
 
   * **OnStart()**: Initializes for the emotion agent. It subscribes the emotion agent to the blackboard. After initialization is complete, the emotion agent subscribes to OnEmotion, OnLearningIntent, and OnEmotionCheck functions. 
   * **OnStop()**: Stops the emotion agent. After the emotion agent is called, it is no longer subscribed to the blackboard.
@@ -192,18 +214,12 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
   * **OnEmotionCheck()**: Restores the EmotionalState to a basel level of 0.5. For every 30 seconds the OnEmotionCheck() increases when EmotionalState is less than 0.5 and decreases when EmotionalState is more than 0.5 the EmotionalState variable. This ensures that the EmotionalState will trend back to neutral over time. 
   * **PublishEmotionalState()**: Formats the current EmotionalState value, formats it into the json value, and adds it to the blackboard.
 
-**Windows users do the following step**
-
-1. Right-click on the project, go to **Properties**, and make the following changes:
-
-* Go to **C/C++->General->Additional Include Directories->**, and add `..\..\examples\workshop_three;..\..\include\self;..\..\include\wdc;..\..\lib\boost_1_60_0;..\..\lib;%(AdditionalIncludeDirectories)`.
-* Go to **C/C++->Precompiled Headers->Confirm Precompile Header**, and delete the value. Make sure it's blank.
-
-**OS X and Windows do the following two steps**
   
 The Serialize, Deserialize, OnStart, OnStop, OnEmotion, OnLearningIntent, OnEmotionCheck, and PublishEmotionalState functions are already completely built out.
 
 In the next step, you will build out the **OnText**, **OnTone** and **OnLearningIntent** functions using the example code provided.
+
+**For OS X and Windows users:**
 
 1. In **self-sdk-develop/docs/workshops-devcon/3/code-snippets/WorkshopThree_Snippets**, you will see the `WorkshopThreeCodeSnippets.txt` file. Open this file and find the OnText, OnTone and OnLearningIntent functions.
 
@@ -298,18 +314,23 @@ In the next step, you will build out the **OnText**, **OnTone** and **OnLearning
   
 First, this code iterates over the response to find the emotion that has the highest probability. Then, it checks whether the emotion is positive, and, if it is, the EmotionalState variable is incremented by 0.1. The EmotionalState variable cannot exceed one. If the highest probability tone is negative, the EmotionalState variable is decreased by 0.1. The EmotionalState variable cannot be less than zero.
 
-Now rebuild this project in the SDK.
 
-On a **Mac**, open a **new** Terminal window and navigate to **intu/self-sdk-develop/bin/mac**. (You can just run: `cd intu/self-sdk-develop`.)
+**Additional steps for OS X users:**
 
-Run the build script: `./scripts/build_mac.sh`
-**Do not close this Terminal window.**
+1. Open a **new** Terminal window and navigate to **intu/self-sdk-develop** by running: `cd intu/self-sdk-develop`.
+
+	**Note:** If you have built the SDK in a previous workshop, make sure you run: `./scripts/clean.sh`.
+
+2. Run the build script: `./scripts/build_mac.sh`. **Do not close this Terminal window.**
 
 **Congratulations!** You just built all the functions required for the emotion agent. This process created the `libworkshop_three_plugin.dylib` in the **intu/self-sdk-develop/bin/mac** directory.
 
-In the next task, you will update the `body.json` file also located in the **intu/self-sdk-develop/bin/mac??????????** directory to include the new plugin so that Intu can use it.
+In the next task, you will update the `body.json` file also located in the **intu/self-sdk-develop/bin/mac/etc** directory to include the new plugin so that Intu can use it.
 
-### Retrieving the credentials for your Organisation in the Intu Gateway
+
+## 4. Configuring your Intu instance to include the emotion agent
+
+### 1. Retrieving the credentials for your Organization in the Intu Gateway
 1. Log in to the [Watson Intu Gateway](https://rg-gateway.mybluemix.net/). 
 
 2. Click on **VIEW CREDENTIALS** in the left hand navigation bar.
@@ -317,9 +338,14 @@ In the next task, you will update the `body.json` file also located in the **int
 3. Select your Organization and Group in the top Filter by menu, and click on the **Get Credentials** box.
 4. Copy these credentials by clicking the **Copy** icon in the top right of the window, and paste this into a new text file using your favourite text editor.
 
-## 4. Configuring your Intu instance to include the emotion agent
+### 2. Configuring your `body.json` file
 
-1. Open the `body.json` file located in the **mac??????????** directory. You can just open this in a new window of your text editor. (For Windows, this will be in the sdk/bin/Debug).
+1. Open your `body.json` file. 
+
+	* For **Windows**, in **Visual Studio**, in the **Solution Explorer**, go to **sdk->bin->Debug**. 
+	
+	* For **OS X**, this will be in **self-sdk-develop/bin/mac/etc/**.
+	
 2. Locate the `m_Libs` variable.
   * If you're using **OS X**, the variable is `"m_Libs" : [ "platform_mac" ],`
   * If you're using **Windows**, the variable is `"m_Libs" : [ "platform_win" ],`
@@ -330,15 +356,21 @@ In the next task, you will update the `body.json` file also located in the **int
 
 5. Change `EmotionAgent` to `WorkshopThreeAgent` or the name you gave your class. As the instructions used `WorkshopThreeAgent`, the `"Type_"` field becomes `"Type_" : "WorkshopThreeAgent"`.
 6. Now find `"m_EmbodimentCreds":{ ... }` in your `body.json` file. Replace this with the complete set of credentials you copied over into your text editor from the Intu Gateway in step 4 of the previous section.
-7. Save your changes. **LAST FEW STEPS BELOW NEED TO BE CHECKED.**
-8. In your most recent Terminal/command prompt window, return to the **bin** directory, and run one of the following commands:
-  * If you're using **OS X**, run `pwd`.
-  * If you're using **Windows**, run `cd`.
-9. Run the following command:
-  * `export LD_LIBRARY_PATH={$HOME}/Self/self-sdk-develop/bin/mac`
-  
-10. For **OS X**, from the **mac(?)** directory, run Self by issuing the following command: `./self_instance -c 0 -f 0`.
-11. For **Windows**, run Self by clicking Local Windows Debugger in Visual Studio.
+7. Save your changes.
+
+### 3. Building Intu
+
+**For OS X users:**
+
+1. In your most recent Terminal window, navigate to the **bin** directory (**self-sdk-develop/bin**).
+2. Run the following command:
+  `export LD_LIBRARY_PATH={$HOME}/intu/self-sdk-develop/bin/mac`
+3. In the directory **intu/self-sdk-develop/bin/mac**, run Intu by issuing the following command: `./self_instance -c 0 -f 0`.
+
+**For Windows users:**
+
+1. From the Visual Studio Menu, select **Build->Build Solution**.
+2. Run Intu by clicking **Local Windows Debugger** in Visual Studio.
 
 ## After DevCon ends
 
