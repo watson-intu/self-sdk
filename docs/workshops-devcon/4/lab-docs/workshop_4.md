@@ -23,36 +23,39 @@ Complete the following tasks:
 
 1. On the [Nexmo dashboard](https://dashboard.nexmo.com/), click your account name in the top right of the window to expand the account menu.
 2. Click **Settings**.
-3. Copy the values of the API key and API Secret parameters, and paste them into a new text file using for your favorite text editor.
+3. Copy the values of the **API key** and **API Secret** parameters, and paste them into a new text file using your favourite text editor.
 
 ## 3. Adding the telephony service to Intu
 
 1. Open the [Intu Gateway](https://rg-gateway.mybluemix.net/).
-2. Click **Manage** on the left side of the page, and click **Services**.
+2. Click **MANAGE** on the left side of the page, and click **Services**.
 3. In the **Filter By** fields, select your Organization and Group.
 4. Click **Add Service**.
 5. Specify your Nexmo credentials.
-  1. In the **Service Name** field, specify `TelephonyV1`.
-  2. In the **User ID** field, specify the API key value from your text file.
-  3. In the **Password** field, specify the API Secret value from your text file.
-  4. In the **Service Endpoint** field, specify `ws://nexmo-watson.mybluemix.net/ws-embodiment`.
-6. Click **Add**.
-7. If you currently have Intu running stop it to enable the telephony service and automatically provision a US phone number for your device.
+  1. In the **Service Name** field, specify **TelephonyV1**.
+  2. In the **User ID** field, specify the **API key** value from your text file.
+  3. In the **Password** field, specify the **API Secret** value from your text file.
+  4. In the **Service Endpoint** field, specify: **ws://nexmo-watson.mybluemix.net/ws-embodiment**
+6. Click the blue **Add** box.
+7. If you currently have Intu running, stop it to enable the Telephony service and automatically provision a US phone number for your device.
 
 ## 4. Understanding plans 
 
 Plans are the primary driving factor in how Intu can accomplish goals. For example, you can preconfigure a plan that tells Intu how to act in a certain situation without any code changes.
 
 Plans contain two major components:
+
   * **Preconditions**: A set of conditions that must be met for a particular plan to begin execution.
   * **Actions**: After all preconditions are met, a series of actions are taken to to complete a plan. Intu supports two types of actions: CreateAction, which creates a blackboard object and places it on the blackboard, and UseSkillAction, which tells Intu to execute a specified skill.
 
 All plans are loaded when Intu starts. When a goal object is placed on the blackboard, the GoalAgent finds the best possible plan, executes the plan, and establish whether that goal was completed successfully (i.e., the plan finished with no action failures) or failed (i.e., no plan was found to carry out execution).
 
-## 5. Modifying plans to have the telephony service call your phone number
+## 5. Modifying plans to have the Telephony service call your phone number
 
-1. From the directory where you installed Self, navigate to the `./etc/shared/plans` **CHANGE THE PATH** directory. If you used the Installer and you are using a **Mac**, the directory is: `/Applications/IBM/Self/latest`. If you are using **Windows**, it is: `C:\Users\{user}\AppData\LocalLow\IBM\Self\{latest_version}`.
-2.  Open the `default.json` file.
+1. From the directory where you installed Intu, navigate to the **plans** directory. 
+	* If you used the Installer and you are using a **Mac**, the directory is: **/Applications/IBM/Self/latest/etc/shared/plans** 
+	* If you are using **Windows**, it is: **C:\Users\{user}\AppData\LocalLow\IBM\Self\{latest_version}\etc\shared\latest\plans**
+2.  Open the `default.json` file in **plans**.
 3. Browse through the different plans, and notice how plans can have different preconditions based on the data that is represented.
 For example, look at the first plan called "dialog_answer". It contains a set of preconditions (key is m_PreConditions) that must be answered for that plan to execute. The first parameter, the array with the key m_Params, in that precondition states that the data being analyzed must have a format as "{"answer" : {"response" : ["some value"] }, }", where the array in response must not be equal to null, while the second precondition states the response array must not have a key of "id" in the response array.
 4. Search for a plan called **outgoing_call**, and change the value of **m_ToNumber** in the second action to your phone number (Be sure to include country code first i.e. **1555333213**). Now, look at the actions for this plan. The first action will have Intu "Dialing", while the second action will carry out the execution to call the number specified.
