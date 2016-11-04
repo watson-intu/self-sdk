@@ -4,11 +4,6 @@ Self is an architecture that enables Watson services in devices that perceive by
 
 The SDK allows users of the "Self" middle-ware to implement their own sensors, agents, classifiers, extractors, and more using C++.
 
-
-# Binaries
-You can download the latest build of the binaries from the following URL:
-http://75.126.4.99/xray/?action=/download&packageId=Self-SDK-bin.zip
-
 # Building Examples
 
 ## Building for Windows
