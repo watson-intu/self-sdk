@@ -37,7 +37,7 @@ Complete the following tasks:
   3. In the **Password** field, specify the API Secret value from your text file.
   4. In the **Service Endpoint** field, specify `ws://nexmo-watson.mybluemix.net/ws-embodiment`.
 6. Click **Add**.
-7. Restart your device to enable the telephony service and automatically provision a US phone number for your device.
+7. If you currently have Intu running stop it to enable the telephony service and automatically provision a US phone number for your device.
 
 ## 4. Understanding plans 
 
@@ -51,17 +51,17 @@ All plans are loaded when Intu starts. When a goal object is placed on the black
 
 ## 5. Modifying plans to have the telephony service call your phone number
 
-1. From the directory where you installed Self, navigate to the `./etc/shared/plans` directory. If you used the Installer and you are using a **Mac**, the directory is: `/Applications/IBM/Self/latest`. If you are using **Windows**, it is: `C:\Users\{user}\AppData\LocalLow\IBM\Self\{latest_version}`.
+1. From the directory where you installed Self, navigate to the `./etc/shared/plans` **CHANGE THE PATH** directory. If you used the Installer and you are using a **Mac**, the directory is: `/Applications/IBM/Self/latest`. If you are using **Windows**, it is: `C:\Users\{user}\AppData\LocalLow\IBM\Self\{latest_version}`.
 2.  Open the `default.json` file.
 3. Browse through the different plans, and notice how plans can have different preconditions based on the data that is represented.
 For example, look at the first plan called "dialog_answer". It contains a set of preconditions (key is m_PreConditions) that must be answered for that plan to execute. The first parameter, the array with the key m_Params, in that precondition states that the data being analyzed must have a format as "{"answer" : {"response" : ["some value"] }, }", where the array in response must not be equal to null, while the second precondition states the response array must not have a key of "id" in the response array.
-3. Search for a plan called "outgoing_call", and change the value of m_ToNumber in the second action to your phone number. Now, look at the actions for this plan. The first action will have Intu "Dialing", while the second action will carry out the execution to call the number specified.
-4. **Run Intu**. 
+4. Search for a plan called **outgoing_call**, and change the value of **m_ToNumber** in the second action to your phone number (Be sure to include country code first i.e. **1555333213**). Now, look at the actions for this plan. The first action will have Intu "Dialing", while the second action will carry out the execution to call the number specified.
+5. **Run Intu**. 
 (In the directory where you installed Intu, if you're using a Mac, right-click on the Intu Manager and select Open. If you're using Windows, double-click on the Intu Manager to run it. If a security warning is displayed, accept the risk and open the file.
 Select the Windowed checkbox, accept the other default values, and click Play!. If a security warning is displayed, accept the risk. The Intu Manager page is displayed. Click Log In. You are prompted to return to the Intu Manager application.) 
 Click **Manage Intu**. A new Intu Tooling sign-in page is displayed. Click Log in. 
-5. Click on the **small grey swipe icon** next to your device to **restart Intu**.
-6. Ask Intu "Can you call me". When your phone rings, answer it, and have a conversation with Intu. Say "Tell me a joke". You should hear Watson tell you a joke. You can continue to talk or hang up.
+6. Click on the **small grey swipe icon** next to your device to **restart Intu**.
+7. Ask Intu "Can you call me". When your phone rings, answer it, and have a conversation with Intu. Say "Tell me a joke". You should hear Watson tell you a joke. You can continue to talk or hang up.
 
 ## After DevCon ends
 
@@ -88,11 +88,8 @@ To use Intu, you need operational instances of the following services in Bluemix
 
 Your installation is preconfigured to use the default Conversation, Natural Language Classifier, Speech to Text, and Text to Speech services. To configure Intu to use your instances of these services, complete the following steps:
 
-1. Expand **All Organizations** by clicking the arrow icon.
-2. Click the name of your organization.
-3. Expand your organization by clicking the arrow icon.
-4. Click the name of your group.
-5. Click **Services** in the navigation bar.
-6. For your instances of the Conversation service, Natural Language Classifier, Speech to Text, and Text to Speech services, click **Edit**, specify the user ID and password, and click **Save**.
+1. Click **Manage** on the left side of the page, and click **Services**.
+2. In the **Filter By** fields, select your Organization and Group.
+3. For your instances of the Conversation service, Natural Language Classifier, Speech to Text, and Text to Speech services, click **Edit**, specify the user ID and password, and click **Save**.
 
 **Important:** Do not change the service endpoint unless you are an enterprise user.
