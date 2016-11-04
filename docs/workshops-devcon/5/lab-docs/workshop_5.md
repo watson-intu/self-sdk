@@ -8,14 +8,31 @@ For this workshop, you will need the following:
 * USB Mini Microphone
 * PiCamera for the Raspberry Pi 3
 * LED, diode, 3 female-female jumper wires
-*	Workshop 1 completed on your Raspberry Pi which gives you
+* 32 GB SD card already imaged  -  **IF YOU HAVE NOT IMAGED YOUR CARD PLEASE GO TO THE APPENDIX**
+*	Workshop 1 completed which gives you
 	*	An account, organization, group and parent on the Intu Gateway
-	*	32 GB SD card configured to your Intu Gateway with Self-SDK installed
 	*	Body.json configured with your Intu Gateway credentials
 *	Monitor (with a HDMI connection)
 *	Keyboard and Mouse (USB connection)
 
-**Note: Unless explicitly stated, all the steps are to be run on your local computer.**
+
+
+## Setup Wi-Fi on the Raspberry Pi
+1. Connect your Raspberry Pi to a power source, and connect external keyboard, mouse and monitor your Pi.
+2. You should see a window on your monitor. Click on the Wifi networks (w) icon at the top of the window, select your network (at devcon, it will be `ROBOT_PED1`), and enter your password (given by the administrator).
+3. On the right of the Bluetooth icon in the top right corner of the screen, you will see a successful connection to your wifi network - as shown by a blue wifi icon - or an icon with two red crosses if you have been disconnected. To reconnect, click on the two red crosses, select your network, and type in the password.
+4. Get the IP address of the Pi.
+   * 1. Click on the Terminal icon on the top left toolbar.
+   * 2. Type in `ifconfig` and hit Enter.
+        Look for the wlan0 section. The inet addr gives you the address (e.g. 10.0.1.2).
+   * 3. Now you can ssh into the Raspberry Pi from your laptop using: `ssh pi@{ip_address}` (e.g. `ssh pi@10.0.1.2`)
+        You will be prompted for a password. The default password is: `raspberry`.
+        PC Users use Putty to connect to ip_address, then when prompted, username is `pi` and password is `raspberry`
+        If you cannot connect from any OS, reboot the Pi by connecting to your Pi via ssh (or putty ssh) and running the command: `sudo reboot`
+
+At this point, you can disconnect the external monitor, mouse and keyboard from the Pi. Go back to your laptop (make sure it is on the same Wifi network). Now make sure you reboot the Pi: sudo reboot by connecting to your Pi via ssh (or putty ssh) and running the command: `sudo reboot`
+
+**Note: Unless explicitly stated, all the following steps are to be run on your local computer.**
 
 ## Download self-sdk onto your computer and add in the LED gesture code.
 1.	**On your local machine** clone or download the self-sdk (make sure you are on the self-sdk develop branch) from [Github](https://github.ibm.com/watson-labs-austin/self-sdk). If you downloaded this file, unzip it.
