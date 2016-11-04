@@ -1,102 +1,146 @@
-# Workshop 5: Creating a new gesture
+# Workshop 5 – Raspberry Pi
 
-In this workshop, you create a new gesture. Gestures enable Intu to take specific actions, such as make sounds, use SMS, send emails, call the Text to Speech service, wait, update status, turn the volume up or down, and so on.
 
-**Before you begin:** You must have a Mac or Windows laptop.
+For this workshop, you will need the following:
 
-Pick up one of each of the following items in the room:
+* Raspberry Pi 3 with power cable
+* Anker Bluetooth Speaker with power cable and 3.5mm audio cable
+* USB Mini Microphone
+* PiCamera for the Raspberry Pi 3
+* LED, diode, 3 female-female jumper wires
+*	Workshop 1 completed on your Raspberry Pi which gives you
+	*	An account, organization, group and parent on the Intu Gateway
+	*	32 GB SD card configured to your Intu Gateway with Self-SDK installed
+	*	Body.json configured with your Intu Gateway credentials
+*	Monitor (with a HDMI connection)
+*	Keyboard and Mouse (USB connection)
 
-* Raspberry Pi with a power cable
-* Speaker
-* Microphone
-* Camera
-* 32 GB or larger SD card
+**Note: Unless explicitly stated, all the steps are to be run on your local computer.**
 
-The following items are set up for you to use in the room:
+## Download self-sdk onto your computer and add in the LED gesture code.
+1.	**On your local machine** clone or download the self-sdk (make sure you are on the self-sdk develop branch) from [Github](https://github.ibm.com/watson-labs-austin/self-sdk). If you downloaded this file, unzip it.
 
-* Monitor with an HDMI connection
-* Keyboard and mouse with USB connections
+2.	Navigate into:
+	`self-sdk-develop/docs/workshops-devcon/5/code-snippets/WorkshopFiveGesture_Start/`
+	
+	In this directory you should find these two files:
+	
+	`WorkshopFiveGesture.cpp` 
+	`WorkshopFiveGesture.h`
+	
+	Copy these files (using `command + C` for Mac or `Ctrl + C` for Windows). 
+	
+3.	In your computer’s home directory create a new folder called `workshop_five`.
+   
+   Then within the `workshop_five` folder, create a folder called `gesture`. 
+Within the `gesture` directory paste the `WorkshopFiveGesture.cpp` and `WorkshopFiveGesture.h` files you copied, here.
 
-Complete the following tasks:
+4. Now navigate into `self-sdk-develop/docs/workshops-devcon/5/code-snippets/WorkshopFiveGesture_Snippets/` and locate the `WorkshopFiveCodeSnippets.txt` file.
+   
+   Copy all the contents in `WorkshopFiveCodeSnippets.txt`.
 
-1. [Setting up your Raspberry Pi](#setting-up-your-raspberry-pi)
-2. [Setting up the Raspberry Pi build](#setting-up-the-raspberry-pi-build)
+   Open the `self-sdk-develop/examples/workshop_five/gestures/WorkshopFiveGesture.cpp` source file and locate the method `DoAnimateThread()`. Into the body of this function paste the code from the `WorkshopFiveCodeSnippets.txt`. 
 
-## Setting up your Raspberry Pi
+5.	Navigate to `self-sdk-develop/examples/workshop_five` and create a text file called `CMakeLists.txt` and open this file. 
 
-1. Load your new SD card with the required files.
-  1. [Open NOOBS](https://www.raspberrypi.org/downloads/noobs/).
-  2. Under NOOBS offline and network install, click **Download ZIP**, save the package, and extract the files in a local directory. Let's call this directory your NOOBS directory.
-  3. Navigate to the NOOBS directory, open `readme.txt`, complete the instructions to format your SD card.
-  4. After your SD card is formatted, drag all the files in your NOOBS directory and drop them onto the SD card. Now your SD card has all the necessary files.
-  5. Safely remove the SD card, and insert it into your Raspberry Pi.
-2. Install the Raspbian operating system.
-  1. Connect the following items to your Raspberry Pi:
-    * Power source. The following image shows where to plug the power cable into the Raspberry Pi.
-![Alt text](images/pi_charger.png?raw=true "Optional Title")
-    * External keyboard via USB.
-    * Monitor. After you connect a monitor, a window that shows a **Wifi networks (w)** icon is displayed.
-The following image shows the USB port where the keyboard is connected and the HDMI port where the monitor is connected on the Raspberry Pi.
-![Alt text](images/external_monitor_keyboard_to_pi.png?raw=true "Optional Title")
-To complete substes 2 - 6, you'll use the external monitor and keyboard.
-  2. On the window displayed on your monitor, click **Wifi networks (w)**, select your network, and specify your password. If you see a blank screen on your monitor and nothing happens, return to step 3 above and reformat your SD card.
-  3. You're using your Raspberry Pi and SD card for the very first time, so you need to install an OS. Select **Raspbian**.
-  4. At the bottom of the window is a language panel for your keyboard. Select **English (US)**.
-  5. Click the **Install** icon in the top left part of the window. When the confirmation prompt is displayed, select **Yes**. The installation process lasts 30 - 40 minutes. If the installation process stalls at 0%, unplug the power source from your Raspberry Pi, plug the power source in again, and begin at substep 2 again.
-3. Connect your Raspberry Pi to your laptop.
-  1. Ensure you're still connected to the network. If you're still connected to the network, a blue wifi icon is displayed beside the Bluetooth icon on the top right corner of the window. If you're disconnected, the icon is two red crosses. To reconnect, click the two red crosses icon, select your network, and specify your password. This process might reboot your system.
-  2. Click on the **Terminal** window on the top left of the toolbar.
-  3. Specify `ipconfig` to get your IP address, and press Enter.
-  4. Locate the wlan0 section. Your IP address is in the **inet addr** field.
-  5. Test whether you can connect to your Raspberry Pi via SSH. Open a terminal window on your laptop, and run `ssh pi@*ip_address*`, where *ip_adddress* is the IP address you got in Step 3, such as `ssh pi@10.0.1.2`.
-  6. At the password prompt, specify the default password `raspberry`.
+    In this file add in the following text:
 
-If you can't connect to your Raspberry Pi, reboot it by running `sudo reboot`.
-
-4. Disconnect the external monitor and the keyboard from the Raspberry Pi, return to your laptop, and ensure your Raspberry Pi and laptop are connected to the same network.
-
-## Setting up the Raspberry Pi build
-
-1. Reboot the Raspberry Pi from your laptop.
-  1. Open a terminal window on your laptop, and connect to your Raspberry Pi via SSH by issuing the `ssh pi@*ip_address*` command, where *ip_adddress* is the IP address your IP address, such as `ssh pi@10.0.1.2`.
-  2. At the password prompt, specify the default password `raspberry`.
-  3. Reboot your Raspberry Pi by issuing the `sudo reboot` command.
-1. [Download Anaconda 2.7 for Linux 32 bit](https://www.continuum.io/downloads). **Important**: Make sure you download the correct version.
-2. Navigate to the directory where you downloaded the Anaconda package, and copy the package to the Raspberry Pi by issuing the following command:
 ```
-scp Anaconda3-4.2.0-Linux-x86.sh pi@{ip}:~/
+include_directories(. wiringPI)
+SET(GCC_COVERAGE_LINK_FLAGS “-lwiringPi”)
+add_definitions(${GCC_COVERAGE_LINK_FLAGS})
+
+file(GLOB_RECURSE SELF_CPP RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "*.cpp")
+qi_create_lib(workshop_five_plugin SHARED ${SELF_CPP})
+qi_use_lib(workshop_five_plugin self wdc)
+qi_stage_lib(workshop_five_plugin)
+
+target_link_libraries(workshop_five_plugin wiringPi)
+
 ```
-3. Connect to your Raspberry Pi via SSH by issuing `ssh pi@*ip_address*`, where *ip_address* is the IP address you got in the previous task.
-4. Install Anaconda by completing the following steps:
-  1. Issue `bash Anaconda3-4.2.0-Linux-x86.sh`.
-  2. Complete the displayed steps. When you get to the license, press **Enter** until you reach the end, and specify **Yes** to approve the license.
-  3. Press **Enter** to install Anaconda in the default location. Installation might take some time. If the following message is issued, ignore it:
-```
-Anaconda3-4.2.0-Linux-x86.sh: line 484: /home/pi/anaconda3/pkgs/python-3.5.2-0/bin/python: cannot execute binary file: Exec format error
-ERROR:
-cannot execute native linux-32 binary, output from 'uname -a' is:
-Linux raspberrypi 4.4.21-v7+ #911 SMP Thu Sep 15 14:22:38 BST 2016 armv7l GNU/Linux
-```
-5. Run `sudo apt-get install python-pip cmake`. If the command fails, run `sudo apt-get update`, and run `sudo apt-get install python-pip cmake` again.
-6. Run `sudo pip install qibuild`.
-7. Install the **wiringPi** library.
-  1. Navigate to your home directory `/home/pi` and run `git clone git://git.drogon.net/wiringPi`.
-  2. Navigate into the wiringPi directory by issuing `cd wiringPi/`.
-  3. Run `./build`. A list of compiled classes is displayed, and the "All Done" message is at the end.
-8. On your laptop, open the [Self SDK repository](https://github.ibm.com/watson-labs-austin/self-sdk).
-9. Click **Clone or download**, and select **Download Zip**.
-10. Return to the terminal window for your Pi. In the Pi's home directory, `/home/pi`, create a directory called self. Run `mkdir self`.
-11. Navigate to the new self directory.
-12. On your laptop, navigate to the directory where you downloaded the Self SDK, and copy the SDK package to the self directory on your Raspberry Pi by running `scp self-sdk-develop.zip pi@{ip}:~/self/`.
-13. When you're prompted for the Pi's password, specify `raspberry`.
-14. On the Raspberry Pi, open the self directory, and run `unzip self-sdk-develop.zip`.
-15. Navigate to the self-sdk-develop directory by running `cd self-sdk-develop`.
-16. Mark the build script as executable by running `chmod +x scripts/build_raspi.sh`.
-17. Determine which command to run:
-  * If this is your first time going through this process, run `scripts/build_raspi.sh raspi`.
-  * If you've been through this process previously, run `scripts/clean.sh`.
-18. In the self-sdk-develop directory, navigate to raspi by running `cd bin/raspi`.
-19. Run the following commands:
-  * `export LD_LIBRARY_PATH=~/self/self-sdk-develop/bin/raspi`
-  * `export WIRINGPI_GPIOMEM=1`
-20. Run self by running `./self_instance –c 0 –f 0`.
+	
+	
+ And save the file. 
+
+## Updating Raspberry Pi with LED gesture.
+6.	Now move your `self-sdk-develop/examples/workshop_five` directory from your local machine to your Pi. 
+   * For Mac, use Terminal. Run `cd self-sdk-develop/examples` and then:
+ `scp -r workshop_five pi@[IPaddress]:~/self/self-sdk-develop/examples`
+
+   * For PC, use Filezilla.
+	Navigate to `self/self-sdk-develop/examples/` on the remote site side of the screen.
+	Navigate to the `self/self-sdk-develop/examples/` directory that you just created on the local site side of the screen.
+	Drag your examples directory from the local side to the remote site to copy the directory to your Pi.
+
+7.	Now ssh to the Pi using Terminal for Mac (or Putty for Windows):
+
+	`ssh pi@[ip address]`	
+
+  	Run `cd /home/pi/self/self-sdk-develop/examples`
+
+8.	Now edit the `CMakeLists.txt` file in this directory by using:
+
+	`nano CMakeLists.txt`
+
+   and add the line at the end of the file:
+
+	`add_subdirectory(workshop_five)`
+
+   Now save this `CMakeLists.txt` file.
+
+## Updating the body.json configuration.
+
+9. Retrieve the body.json from your Pi to your local machine.
+		 `scp pi@[pi ip address]:/home/pi/self/self-sdk-develop/bin/raspi/etc/profile/ ~/`
+
+	And open this `body.json` file. 
+
+10. Note: If you have updated the body.json with `EmbodimentCreds` in Workshop 1, please skip and proceed to Step 3. 
+
+	On your local machine, open a browser and sign into [Intu Gateway](rg-`gateway.mybluemix.net`).
+ 		
+ Select `View Credentials` from the link on the left hand side of the page
+ 		* On the View Credentials page, use the filters to select your organization and group. Click the Get Credentials button.
+Click the Copy link to save the entire contents to your clipboard.
+
+	Edit the `body.json` that you opened for editing by adding the credentials you just retrieved from the gateway to it. The following steps describe how to do this.
+In the `body.json`, search on `"m_EmbodimentCreds"` to jump to the correct section.
+Then highlight/select everything from `"m_EmbodimentCreds"` up to and including `"m_OrgId": ""},`
+Note: Don’t forget to select the comma.
+Click your delete key on your keyboard
+Then paste the credentials that you copied to your clipboard into the section just deleted. 
+
+11. 
+	In the `body.json` search for the `m_Libs` variable and change it to read:
+ `"m_Libs":["platform_raspi", "workshop_five_plugin"]`
+   * Save the revised body.json file to your machine and transfer to the Pi with the following instructions.
+		* On a Mac
+			* i. Close the `body.json` file.
+			* ii.	Open a terminal and use the following command to copy your saved body.json from your local directory back to your pi
+`scp ~/body.json pi@[ip address]:/home/pi/self/self-sdk-develop/bin/raspi/etc/profile/`
+		* On a PC
+			* i. Exit the window. If you are using Filezilla, you will be prompted in a window to upload the file back on the server. 
+			* ii.	Click the Yes button. This action saves your changes to your pi.
+
+10.	Build Self on your Pi with the following steps:
+
+	a.	In your session ssh’ed into the Pi, navigate into the self-sdk-develop directory: `cd self-sdk-develop`
+	
+	b.	Mark the build script as executable by running: 
+`chmod +x scripts/build_raspi.sh`
+
+	c.	Now run: (*NOTE: If you have done this before run scripts/clean.sh) 
+`scripts/build_raspi.sh`
+
+## Run Self on your Raspberry Pi
+Run Self on your Pi by completing the following steps in your ssh window (Terminal for Mac or Putty for Windows). 
+
+Note: The following steps will need to be repeated each time you power your Pi back up (i.e. unplug power and plug it back in).
+
+1.	First, verify that you do NOT have HDMI plugged into your pi
+2.	Verify that you have a microphone and speaker plugged into your pi. Your speaker may need to be charged first. It will need to be plugged in and on before proceeding to the next step.
+4.	Navigate to the raspi directory using: `cd /home/pi/self/self-sdk-develop/bin/raspi`.
+5.	Run: `export LD_LIBRARY_PATH=./`.
+6.	Run: `export WIRINGPI_GPIOMEM=1`.
+7.	Run: `./self_instance `.
+
