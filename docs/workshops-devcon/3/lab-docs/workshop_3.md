@@ -12,36 +12,34 @@ Complete the following tasks:
 4. [Creating an emotion agent](#creating-an-emotion-agent)
 5. [Configuring Intu to include your emotion agent](#configuring-intu-to-include-your-emotion-agent)
 
-## Setting up the Tone Analyzer service
+## 1. Setting up the Tone Analyzer service
 
 To set up the service, you must create an instance of it, and configure Intu to use it.
 
 ### Creating your own instance of the Tone Analyzer service
 
-1. [Log in to Bluemix](https://idaas.iam.ibm.com/idaas/mtfim/sps/authsvc?PolicyId=urn:ibm:security:authentication:asf:basicldapuser).
+1. [Log in to Bluemix](https://console.ng.bluemix.net/) if you are not already logged in.
 2. On the Bluemix dashboard, click **Catalog** in the top-right navigation bar.
-3. In the Categories menu on the left, under Services, click **Watson**.
+3. In the All Categories menu on the left, under Services, click **Watson**.
 4. Click the **Tone Analyzer** tile.
   1. Keep all the default values, and click **Create**.
   2. Click the **Service Credentials** tab.
-  3. Click **View Credentials** for the new service instance. Leave this window open. You'll need the credentials in the next steps.
-5. Configure Intu to use your Tone Analyzer service instance.
-  1. Return to the Watson Intu Gateway. Expand **All Organizations** by clicking the arrow icon.
-  2. Click the name of your organization.
-  3. Expand your organization by clicking the arrow icon.
-  4. Click the name of your group.
-  5. Click **Services** in the navigation bar.
-  6. Click **Add Service**.
-  7. In the **Service Name** field, specify Tone Analyzer.
-  8. Return to your Tone Analyzer credentials window, and copy the user ID value.
-  8. Return to the Gateway, and paste your Tone Analyzer user ID value in the **User ID** field.
-  9. Return to your Tone Analyzer credentials window, and copy the password value.
-  10. Return to the Gateway, and paste your Tone Analyzer password value in the **Password** field.
-  11. Return to your Tone Analyzer credentials window, and copy the url value.
-  12. Return to the Gateway, and paste your Tone Analyzer url value in the **Service Endpoint** field.
-  13. Click **Add**.
+  3. Click **View Credentials** for the new Tone Analyzer service instance you just created. 
+  4. Copy these credentials (everything inside **{ }**) and paste them into a new text file in your favourite text editor. You will need these credentials to configure your Tone Analyzer service in the section below.
 
-## Understanding some Intu terminology
+### Configure Intu to use your Tone Analyzer service instance
+  1. Open a new browser window and [log in to the Watson Intu Gateway](https://rg-gateway.mybluemix.net/).
+
+  2. Click on **MANAGE** on the left hand side navigation bar, and select **Services**. Select your Organization and Group in the top Filter by menu
+  3. Click the **Add Service** box.
+  
+  7. In the **SERVICE NAME** field, specify **ToneAnalyzerV1**.
+  8. In the **USER ID** field, copy in the username you pasted into your text file in the above.
+  8. In the **PASSWORD** field, copy in the password.
+  9. In the **SERVICE ENDPOINT** field, copy in the url.
+  13. Click the **Add** button at the bottom right of the window.
+
+## 2. Understanding some Intu terminology
 
 Before you create an emotion agent, become familiar with the following terminology:
 
@@ -50,14 +48,15 @@ Before you create an emotion agent, become familiar with the following terminolo
   * **Subscribe**: Subscribing to a topic on the blackboard means to listen to the blackboard and wait for any other agents to post to the blackboard under a particular topic.
   * **Topic**: A channel to which Agents publish and subscribe.
 
-## Building the Intu SDK
+## 3. Building the Intu SDK
 
 Follow the instructions for your platform.
 
 **Before you begin**:
 
-1. [Download the Intu SDK](https://github.ibm.com/watson-labs-austin/self-sdk).
-2. Create a new directory named `intu` in your home directory, and unzip the SDK package into it.
+1. [Download the Intu SDK](https://github.ibm.com/watson-labs-austin/self-sdk). Click on **Clone or download** and select **Download Zip**.
+2. Create a new directory named **intu** in your home directory.
+3. Unzip the self-sdk-develop.zip file into **intu**, making sure that you retain the folder structure. I.e. Your intu directory should now contain the unzipped **self-sdk-develop** folder.
 
 ### Building the SDK for OS X
 
@@ -71,7 +70,7 @@ Follow the instructions for your platform.
    Press RETURN to continue or any other key to abort
    ```
    2. Press **Return** or **Enter**. A prompt for your laptop's password is displayed.
-   3. Specify your password, and press **Return** or **Enter**. If you're using Sierra OS X, the following message is displayed:
+   3. Specify your password, and press **Return** or **Enter**. If you're using **Sierra OS X**, the following message is displayed:
    ```
    HEAD is now at 89fd34b Merge pull request #1368 from MikeMcQuaid/build-options-file
    Error: /usr/local/Cellar is not writable. You should change the
@@ -80,11 +79,17 @@ Follow the instructions for your platform.
    sudo chown -R $(whoami) /usr/local/Cellar
    Failed during: /usr/local/bin/brew update --force
    ```
-   4. Run `sudo chown -R $(whoami) /usr/local/Cellar`.
-2. Install CMake by using Homebrew. Run `brew install cmake`.
-3. Download Anaconda 4.2.0 Python 2.7 version by using the Graphical Installer. It is required to correctly configure pip in the following step.
-   1. Open (https://www.continuum.io/downloads).
-   2. Click the solid blue Graphical Installer button for Python V2.7. It should be 403 MB. The .pkg file downloads.
+   Run: `sudo chown -R $(whoami) /usr/local/Cellar`
+   4. Now repeat step 1 by running: 
+    ```
+   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+   ```
+2. Install CMake using Homebrew.
+	1. Run the command: `sudo chown -R $(whoami) /usr/local`   
+	2. Now run: `brew install cmake`
+3. Download **Anaconda 4.2.0 Python 2.7 version** by using the **Graphical Installer**. It is required to correctly configure pip in the following step.
+   1. Copy and open the following in a browser: https://www.continuum.io/downloads
+   2. Click the solid blue GRAPHICAL INSTALLER button for Python 2.7 Version. It should be 403 MB. The .pkg file downloads.
    3. After the file is downloaded, double-click it, and follow the prompts to install Anaconda.
 4. Set up qiBuild.
    1. Run the following commands:
@@ -92,7 +97,7 @@ Follow the instructions for your platform.
    * `qibuild config --wizard`. Be sure to include the two hyphens before the word wizard in the last command.
    2. When the "Please choose a generator" prompt is displayed, specify **1**, and press **Enter**.
    3. When the "Please choose an IDE" prompt is displayed, specify **1**, and press **Enter**.
-5. Navigate to the `self-sdk-develop` directory in the Intu directory you created at the very beginning of this workshop. Open a new terminal window, and run the following commands:
+5. Navigate to the **self-sdk-develop** directory in the Intu directory you created at the very beginning of this workshop. Open a **new** terminal window, and run the following commands:
   * `cd intu/self-sdk-develop`
   * `./scripts/build_mac.sh`
   
@@ -115,25 +120,36 @@ Known toolchains are:
 * cd "C:\Program Files (x86)\Atlassian\SourceTree\tools\putty"
 * plink git@github.ibm.com
 
-## Creating an emotion agent
+## 4. Creating an emotion agent
 
-**OS X and Windows users do Steps 1 and 2**
+### OS X and Windows users do the following two steps
 
-1. Open the `self-sdk-develop` file as a project in the IDE for your platform.
-2. Now, let's create and populate directory specifically for this workshop.
-** For OSX
-  1. Locate the `examples` directory under the `self-sdk-develop` project that you opened. This directory contains a `sensor` directory and a `CMakeLists.txt` file.
-  2. Right-click the `examples` directory, and click **New**->**Directory**. Name it `workshop_three`. Your new directory is created.
-  3. Right-click the `CMakeLists.txt` file in the `examples` directory, and click **Copy**.
-  4. Right-click the `workshop_three` directory, and click **Paste**. This file helps to build the plugin for the emotion agent.
-  5. Return to the `examples` directory, open the `CMakeLists.txt` file, and add the following line: `add_subdirectory(workshop_three)` at the end. Your file contains the following three lines:
+1. If you do not have it installed already, download the trial version of the [CLion C++ IDE](https://www.jetbrains.com/clion/download/).
+2. In **CLion**, select Open -> home directory -> intu -> self-sdk-develop and click **OK**. 
+
+Note that a window may appear prompting you to open your project in a New Window or This Window. Select **New Window**. At the bottom of your CLion window, in the Problems tab, you will see the following Error, which you do not need to worry about:
+
+Error: By not providing "FindSELF.cmake" in CMAKE_MODULE_PATH this project has asked CMake to find a package configuration file provided by "SELF", but CMake did not find one.
+Could not find a package configuration file provided by "SELF" with any of the following names:
+  SELFConfig.cmake   self-config.cmake
+Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to a directory containing one of the above files.  If "SELF" provides a separate development package or SDK, be sure it has been installed.
+
+2i. Inside the CLion **self-sdk-develop project**, right-click **examples**, select **New**, and select **Directory**. Type in **workshop_three** for the new directory name, and click **OK**.
+ 
+2ii. Right-click the `CMakeLists.txt` file in the **examples** directory, and click **Copy**. (If you are unsure of the directory you are in, look in the top-left navigation bar.)
+  
+2iii. Right-click the **workshop_three** directory, and click **Paste**. This file helps to build the plugin for the emotion agent.
+
+2iv. Return to the **examples** directory, open the `CMakeLists.txt` file, and add the following line: `add_subdirectory(workshop_three)` at the end. Your file contains the following three lines:
+
   ```
     include_directories(".")
 
     add_subdirectory(sensor)
     add_subdirectory(workshop_three)
   ```
-  5. Open the `CMakeLists.txt` file in the `workshop_three` directory, and overwrite its content with this code:
+2v. Open the `CMakeLists.txt` file in the **workshop_three** directory, and overwrite its content with this code:
+
   ```
     include_directories(.)
 
@@ -141,11 +157,11 @@ Known toolchains are:
     qi_create_lib(workshop_three_plugin SHARED ${SELF_CPP})
     qi_use_lib(workshop_three_plugin self wdc)
     qi_stage_lib(workshop_three_plugin)
-```
+  ```
 
-**Windows users do the following five steps.**
+### Windows users do the following five steps
 
-1. In Visual Studio, in the `examples` directory, add a new Win32 Project called `workshop_three_plugin`, and click **OK**.
+1. In **Visual Studio**, in the **examples** directory, add a new **Win32 Project** called `workshop_three_plugin`, and click **OK**.
 2. Click **Next**, select **Application Type as DLL**, and uncheck **Precompiled header and Security Development Lifecycle (SDL) checks** under **Additional options**.
 3. Click **Finish**.
 4. Remove the Header Files, Resource Files, and Source Files directories that were newly created in the solution. 
@@ -156,14 +172,16 @@ Known toolchains are:
 * Replace the value of **Linker->Input->Additional Dependencies** with the following value: `jsoncpp.lib;self.lib;wdc.lib;%(AdditionalDependencies)`.
 * Go to **Build Events->Post-Build Event->Command Line**, and add `copy /Y "$(TargetPath)" "$(ProjectDir)....\bin\$(Configuration)\"`.
 
-**OS X and Windows users do the following four steps.**
+### OS X and Windows users do the following four steps
 
-4. Make a folder in the sdk/examples folder (in filesystem, not Visual Studio) and call it workshop_three 
-5. Right click on the created workshop solution, and add a new Filter and call it agent
-  ```
-3. Navigate back to the `workshop_three` directory, create a new directory, and name it `agents`.
-4. Locate the Workshop 3 code snippet files in `self-sdk-develop/docs/workshops-devcon/3/code-snippets/WorkshopThreeAgent_start`. Copy the `WorkshopThreeAgent.cpp` and the `WorkshopThreeAgent.h` files, and paste them into the `agents` directory that you created.
-5. Open the `WorkshopThreeAgent.cpp` file, which contains the following functions that enable the emotion agent you'll create:
+1. Navigate back to the **workshop_three** directory and create a new directory inside this called **agents**.
+2. Locate the Workshop 3 code snippet files **to be filled in** in:
+
+ `self-sdk-develop/docs/workshops-devcon/3/code-snippets/WorkshopThreeAgent_start`
+
+3. Copy the `WorkshopThreeAgent.cpp` and the `WorkshopThreeAgent.h` files and paste them into the **agents** directory that you created.
+
+3. Open the `WorkshopThreeAgent.cpp` file, which contains the following functions that enable the emotion agent you'll create:
 
   * **OnStart()**: Initializes for the emotion agent. It subscribes the emotion agent to the blackboard. After initialization is complete, the emotion agent subscribes to OnEmotion, OnLearningIntent, and OnEmotionCheck functions. 
   * **OnStop()**: Stops the emotion agent. After the emotion agent is called, it is no longer subscribed to the blackboard.
@@ -174,21 +192,23 @@ Known toolchains are:
   * **OnEmotionCheck()**: Restores the EmotionalState to a basel level of 0.5. For every 30 seconds the OnEmotionCheck() increases when EmotionalState is less than 0.5 and decreases when EmotionalState is more than 0.5 the EmotionalState variable. This ensures that the EmotionalState will trend back to neutral over time. 
   * **PublishEmotionalState()**: Formats the current EmotionalState value, formats it into the json value, and adds it to the blackboard.
 
-**Windows users do the following step.**
+**Windows users do the following step**
 
 1. Right-click on the project, go to **Properties**, and make the following changes:
 
 * Go to **C/C++->General->Additional Include Directories->**, and add `..\..\examples\workshop_three;..\..\include\self;..\..\include\wdc;..\..\lib\boost_1_60_0;..\..\lib;%(AdditionalIncludeDirectories)`.
 * Go to **C/C++->Precompiled Headers->Confirm Precompile Header**, and delete the value. Make sure it's blank.
 
-**OS X and Windows do the following two steps.**
+**OS X and Windows do the following two steps**
   
 The Serialize, Deserialize, OnStart, OnStop, OnEmotion, OnLearningIntent, OnEmotionCheck, and PublishEmotionalState functions are already completely built out.
 
-In the next step, you build the OnText and OnTone function bodies yourself.
+In the next step, you will build out the **OnText**, **OnTone** and **OnLearningIntent** functions using the example code provided.
 
-1. Write the OnText and OnTone function bodies.
-  1. For OnText(), copy the following code and paste it into the function body {}:
+1. In **self-sdk-develop/docs/workshops-devcon/3/code-snippets/WorkshopThree_Snippets**, you will see the `WorkshopThreeCodeSnippets.txt` file. Open this file and find the OnText, OnTone and OnLearningIntent functions.
+
+1. For **OnText()**, copy the code directly below **//Code for OnText()** in `WorkshopThreeCodeSnippets.txt`. Paste this inside the function body **{}** of **OnText()** in `WorkshopThreeAgent.cpp` located inside your **agents** directory. The code which you need is displayed below for completeness; however, it is **not** recommended for you to copy it from here due to formatting issues.
+  
   ```
   Text::SP spText = DynamicCast<Text>(a_ThingEvent.GetIThing());
     if (spText)
@@ -201,7 +221,11 @@ In the next step, you build the OnText and OnTone function bodies yourself.
     }
   ```
       This code accepts the piece of text that the emotion agent is listening for. Then, it finds the Tone Analyzer service and sends the text.
-  2. For OnTone(), copy the following code and paste it into the function body:
+      
+2. For **OnTone()**, copy the code directly below **//Code for OnTone()** in `WorkshopThreeCodeSnippets.txt`. Paste this inside the function body **{}** of **OnTone()** in `WorkshopThreeAgent.cpp` located inside your **agents** directory. 
+
+	The code which you need is displayed below:
+  
   ```
       if (a_Callback != NULL)
     {
@@ -246,46 +270,75 @@ In the next step, you build the OnText and OnTone function bodies yourself.
         PublishEmotionalState();
     }
   ```
-First, this code iterates over the response to find the emotion that has the highest probability. Then, it check whether the emotion is positive, and, if it is, the EmotionalState variable is incremented by 0.1. The EmotionalState variable cannot exceed one. If the highest probability tone is negative, the EmotionalState variable is decreased by 0.1. The EmotionalState variable cannot be less than zero.
+  
+4. For **OnLearningIntent()**, copy the code directly below **//Code for OnLearningIntent()** in `WorkshopThreeCodeSnippets.txt`. Paste this inside the function body **{}** of **OnLearningIntent()** in `WorkshopThreeAgent.cpp` located inside your **agents** directory. 
 
-2. Rebuild this project in the SDK.
+	The code which you need is displayed below:
+  
+  
+  ```
+  LearningIntent::SP spLearningIntent = DynamicCast<LearningIntent>(a_ThingEvent.GetIThing());
+    if (spLearningIntent && spLearningIntent->GetVerb().compare("feedback") == 0)
+    {
+        if (spLearningIntent->GetTarget().compare("positive_feedback") == 0)
+        {
+            if(m_EmotionalState < 1.0)
+                m_EmotionalState += 0.1f;
+        }
+        else
+        {
+            if (m_EmotionalState > 0.0)
+                m_EmotionalState -= 0.1f;
+        }
 
-**Congratulations!** You just built all the functions required for the emotion agent. This process created the `libworkshop_three_plugin.dylib` in the `bin` directory for your platform in the `self-sdk-develop` directory. If you're using OS X, the path is `Self/self-sdk-develop/bin/mac`.
+        PublishEmotionalState();
+    }
+  
+	```
+  
+First, this code iterates over the response to find the emotion that has the highest probability. Then, it checks whether the emotion is positive, and, if it is, the EmotionalState variable is incremented by 0.1. The EmotionalState variable cannot exceed one. If the highest probability tone is negative, the EmotionalState variable is decreased by 0.1. The EmotionalState variable cannot be less than zero.
 
-In the next task, you update the `body.json` file to include the new plugin so that Intu can use it.
+Now rebuild this project in the SDK.
 
-## Retrieving embodiment credentials for you organisation. 
-To get the embodiment credentials for your organisation, without closing the terminal you are in, go back to the Robot Gateway: https://rg-gateway01.mybluemix.net/Downloads 
+On a **Mac**, open a **new** Terminal window and navigate to **intu/self-sdk-develop/bin/mac**. (You can just run: `cd intu/self-sdk-develop`.)
 
-On the left hand side of the page, locate and click on VIEW CREDENTIALS.
+Run the build script: `./scripts/build_mac.sh`
+**Do not close this Terminal window.**
 
-This should direct to a new frame on the right hand side of the page. Under Filter By: find the organisation you created in Workshop 1 and find the group you created in the scroll down. 
+**Congratulations!** You just built all the functions required for the emotion agent. This process created the `libworkshop_three_plugin.dylib` in the **intu/self-sdk-develop/bin/mac** directory.
 
-Now click "Get Credentials" and then copy the credentials by clicking the copy button. 
+In the next task, you will update the `body.json` file also located in the **intu/self-sdk-develop/bin/mac??????????** directory to include the new plugin so that Intu can use it.
 
-Now go back to the terminal you had the Intu directory.
+### Retrieving the credentials for your Organisation in the Intu Gateway
+1. Log in to the [Watson Intu Gateway](https://rg-gateway.mybluemix.net/). 
 
-## Configuring your Intu instance to include the emotion agent
+2. Click on **VIEW CREDENTIALS** in the left hand navigation bar.
 
-1. Navigate to the **self**->**etc**->**profile** directory, and open the `body.json` file (For Windows, this will be in the sdk/bin/Debug).
+3. Select your Organization and Group in the top Filter by menu, and click on the **Get Credentials** box.
+4. Copy these credentials by clicking the **Copy** icon in the top right of the window, and paste this into a new text file using your favourite text editor.
+
+## 4. Configuring your Intu instance to include the emotion agent
+
+1. Open the `body.json` file located in the **mac??????????** directory. You can just open this in a new window of your text editor. (For Windows, this will be in the sdk/bin/Debug).
 2. Locate the `m_Libs` variable.
-  * If you're using OS X, the variable is `"m_Libs" : [ "platform_mac" ],`
-  * If you're using Windows, the variable is `"m_Libs" : [ "platform_win" ],`
-3. Add the information for the new plugin to the end of the `m_Libs` variable for your platform:
-  * If you're using OS X, the variable is `"m_Libs" : [ "platform_mac", "workshop_three_plugin"],`
-  * If you're using Windows, the variable is `"m_Libs" : [ "platform_win", "workshop_three_plugin"],`
+  * If you're using **OS X**, the variable is `"m_Libs" : [ "platform_mac" ],`
+  * If you're using **Windows**, the variable is `"m_Libs" : [ "platform_win" ],`
+3. Add **workshop****_three****_plugin** to the end of the `m_Libs` variable for your platform, **as shown below**:
+  * If you're using **OS X**, the variable is `"m_Libs" : [ "platform_mac", "workshop_three_plugin"],`
+  * If you're using **Windows**, the variable is `"m_Libs" : [ "platform_win", "workshop_three_plugin"],`
 4. Locate `EmotionAgent` in the `body.json` file, and notice the `m_NegativeTones` and `m_PositiveTones` strings. To understand the tone of the input, these strings are compared to OnTone().
-5. Change EmotionAgent to WorkshopThreeAgent or the name you gave your class. The instructions use WorkshopThreeAgent, so the Type_ field is `"Type_" : "WorkshopThreeAgent"`.
-6. Now find the `"m_EmbodimentCreds":{ ... }`, and replace this with the `"m_EmbodimentCreds":{ ... }` copied from the robot gateway.
-7. Save your changes.
-8. Return to the directory for you platform in the `/bin` directory, and run one of the following commands:
-  * If you're using OS X, run `pwd`.
-  * If you're using Windows, run `cd`.
-9. Run the following commands:
+
+5. Change `EmotionAgent` to `WorkshopThreeAgent` or the name you gave your class. As the instructions used `WorkshopThreeAgent`, the `"Type_"` field becomes `"Type_" : "WorkshopThreeAgent"`.
+6. Now find `"m_EmbodimentCreds":{ ... }` in your `body.json` file. Replace this with the complete set of credentials you copied over into your text editor from the Intu Gateway in step 4 of the previous section.
+7. Save your changes. **LAST FEW STEPS BELOW NEED TO BE CHECKED.**
+8. In your most recent Terminal/command prompt window, return to the **bin** directory, and run one of the following commands:
+  * If you're using **OS X**, run `pwd`.
+  * If you're using **Windows**, run `cd`.
+9. Run the following command:
   * `export LD_LIBRARY_PATH={$HOME}/Self/self-sdk-develop/bin/mac`
-  * `export LD_LIBRARY_PATH=*the path returned in Step 7*`
-10. ** For OSX** In the `mac` directory, run Self by issuing the following command: `./self_instance -c 0 -f 0`.
-11. ** For Windows**  Run Self by clicking Local Windows Debugger in Visual Studio
+  
+10. For **OS X**, from the **mac(?)** directory, run Self by issuing the following command: `./self_instance -c 0 -f 0`.
+11. For **Windows**, run Self by clicking Local Windows Debugger in Visual Studio.
 
 ## After DevCon ends
 
