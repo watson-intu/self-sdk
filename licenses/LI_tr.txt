@@ -1,0 +1,24 @@
+LÝSANS BÝLGÝLERÝ
+
+Aþaðýda listelenen programlar, daha önce Müþteri ve IBM tarafýndan kabul edilen Program lisansý koþullarýna ek olarak aþaðýdaki Lisans Bilgilerinin kayýt ve koþullarý kapsamýnda lisanslanýr. Müþteri, Programa iliþkin yürürlükte olan lisans koþullarýný daha önce kabul etmemiþse, Programlarýn Ön Yayýn Düzeyleri Ýçin Uluslararasý Lisans Sözleþmesi (Z125-5544-05) geçerli olur.
+
+Program Adý: Project Intu 1.0
+Program Numarasý: Early Release
+
+Test Süresi
+
+Test süresi, Lisans Alan Tarafýn bu Sözleþmenin koþullarýný kabul ettiði tarihte baþlar ve 90 gün sonra sona erer.
+
+Destekleyici Programlar
+
+Bu Program birden çok ürünün bulunduðu bir paket olarak lisanslanýr ve aþaðýda belirtilen Destekleyici Programlarý içerir. Lisans Alan Tarafa, bu tür Destekleyici Programlarý, Lisans Alan Tarafýn Asýl Programý (Principal Program) (iþbu Lisans Bilgileri Belgesinin baþka herhangi bir yerinde daha geniþ yetkiler saðlanmadýðý sürece) yalnýzca bu Sözleþme kapsamýnda ve bu Programa iliþkin Yetki Belgesinin (POE) sýnýrlarý içinde kullanýmýný desteklemek üzere kurmasý ve kullanmasý için yetki verilir. "Lisans Alan Tarafýn .....kullanýmýný desteklemek üzere" ifadesi, Asýl Programýn veya diðer bir Destekleyici Programýn lisanslý kullanýmý için gerekli olan veya Asýl Programýn veya diðer bir Destekleyici Programýn lisanslý kullanýmýyla baþka bir þekilde doðrudan iliþkili olan bu tür kullanýmlarý içerir. Destekleyici Programlar, baþka hiçbir amaçla kullanýlamaz. Lisans Alan Tarafýn, Destekleyici Programlarý Asýl Programdan ayrý olarak devretme ya da yeniden pazarlama yetkisi yoktur. Bir Destekleyici Programla birlikte lisans koþullarý ve eðer varsa, Lisans Alan Tarafýn bu Destekleyici Programý kullanýmý için geçerli olan koþullar da gönderilebilir. Asýl Programýn koþullarýyla Destekleyici Programýn koþularý arasýnda bir çeliþki olmasý durumundan iþbu Lisans Bilgileri belgesinin koþullarý, Destekleyici Programýn koþullarýný hükümsüz kýlarak onlarýn yerine geçer. Lisans Alan Tarafýn bu Programý kullaným hakký sona erdiðinde ya da sonlandýrýldýðýnda, Destekleyici Programlarýn tüm kopyalarýný kullanmaya son vermesi, bunlarý yok etmesi veya derhal Programý edindiði üçüncü kiþiye iade etmesi gerekir. Lisans Alan Taraf, Destekleyici Programlarý yüklediyse, bu Programý edindiði tarafla baðlantýya geçmelidir. Lisans Alan Taraf, Destekleyici Programlarý, yukarýda belirtilen sýnýrlarý aþacak þekilde kullanmak amacýyla lisanslamak isterse, uygun lisansý edinmek için IBM Satýþ Temsilcisiyle veya bunlarý edindiði tarafla görüþmelidir.
+
+Bu Programlarla birlikte lisanslanan Destekleyici Programlar aþaðýda belirtilmiþtir:
+IBM Compose for Redis for Bluemix
+Weather Company Data for IBM Bluemix
+
+L/N:  L-AJOS-AEUNQ9
+D/N:  L-AJOS-AEUNQ9
+P/N:  L-AJOS-AEUNQ9
+
+

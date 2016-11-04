@@ -1,0 +1,24 @@
+INFORMACJE LICENCYJNE
+
+Programy wymienione poni¿ej s¹ licencjonowane na podstawie przedstawionych poni¿ej warunków Informacji licencyjnych, które stanowi¹ uzupe³nienie warunków licencji na Program uzgodnionych uprzednio miêdzy Klientem a IBM. Jeœli Klient nie dysponuje warunkami licencji uzgodnionymi uprzednio z IBM w odniesieniu do Programu, zastosowanie maj¹ warunki licencji Miêdzynarodowa Umowa Licencyjna na Wstêpne Wydanie Programów (Z125-5544-05).
+
+Nazwa Programu: Project Intu 1.0
+Numer Programu: Early Release
+
+Okres testowania
+
+Okres testowania rozpoczyna siê w dniu, w którym Licencjobiorca wyrazi³ zgodê na warunki niniejszej Umowy i koñczy siê po liczbie dni równej 90.
+
+Programy Wspieraj¹ce
+
+Program jest licencjonowany w postaci pakietu wieloproduktowego, zawieraj¹cego Programy Wspieraj¹ce okreœlone poni¿ej. Licencjobiorca jest upowa¿niony do zainstalowania i u¿ywania takich Programów Wspieraj¹cych jedynie w celu umo¿liwienia Licencjobiorcy u¿ywania Programu G³ównego na mocy niniejszej Umowy i w zakresie ograniczeñ nak³adanych przez dokumenty Proof of Entitlement dla Programu (chyba ¿e w innej czêœci niniejszego dokumentu "Informacje Licencyjne" oferowane s¹ szersze uprawnienia). Fraza "w celu umo¿liwienia Licencjobiorcy u¿ywania" obejmuje jedynie te zastosowania, które s¹ niezbêdne do licencjonowanego u¿ywania Programu G³ównego lub innego Programu Wspieraj¹cego albo bezpoœrednio zwi¹zane z takim licencjonowanym u¿ywaniem. Programów Wspieraj¹cych nie mo¿na wykorzystywaæ do jakichkolwiek innych celów. Licencjobiorca nie jest upowa¿niony do przenoszenia ani odsprzeda¿y Programów Wspieraj¹cych oddzielnie od Programu G³ównego. Do Programu Wspieraj¹cego mog¹ byæ do³¹czone warunki licencji. W takim przypadku warunki te maj¹ zastosowanie do u¿ywania takiego Programu Wspieraj¹cego przez Licencjobiorcê. W przypadku sprzecznoœci miêdzy warunkami niniejszych Informacji licencyjnych a warunkami licencji Programu Wspieraj¹cego znaczenie rozstrzygaj¹ce maj¹ warunki niniejszych Informacji licencyjnych. Kiedy prawo Licencjobiorcy do korzystania z Programu wygaœnie lub zostanie mu wypowiedziane, Licencjobiorca musi zaprzestaæ korzystania z Programów Wspieraj¹cych oraz zniszczyæ lub niezw³ocznie zwróciæ wszystkie ich egzemplarze do strony, od której Licencjobiorca naby³ Program. Jeœli Licencjobiorca pobra³ Programy Wspieraj¹ce, powinien skontaktowaæ siê ze stron¹, od której naby³ Program. Jeœli Licencjobiorca zamierza licencjonowaæ Programy Wspieraj¹ce w celu u¿ywania nieobjêtego ograniczeniami wyszczególnionymi powy¿ej, powinien skontaktowaæ siê z przedstawicielem handlowym IBM lub z podmiotem, od którego naby³ Program, w celu uzyskania odpowiedniej licencji.
+
+Poni¿ej wymieniono Programy Wspieraj¹ce licencjonowane z Programem:
+IBM Compose for Redis for Bluemix
+Weather Company Data for IBM Bluemix
+
+L/N:  L-AJOS-AEUNQ9
+D/N:  L-AJOS-AEUNQ9
+P/N:  L-AJOS-AEUNQ9
+
+
