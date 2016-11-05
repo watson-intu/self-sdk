@@ -220,12 +220,13 @@ In the next task, you will update the `body.json` file also located in the **int
   `"m_Libs" : [ "platform_mac", "workshop_three_plugin"],`
 6. Now find `"m_EmbodimentCreds":{ ... }` in your `body.json` file. Replace this with the complete set of credentials you copied over into your text editor from the Intu Gateway in step 4 of the previous section.
 7. Save your changes.
+8. Navigate to the **scripts** directory (**self-sdk-develop/scripts**) and run `./build_mac.sh` .
 
 ### 3. Building Intu
 
-1. In your most recent Terminal window, navigate to the **bin** directory (**self-sdk-develop/bin**).
+1. In your most recent Terminal window, navigate to the **bin** directory (**self-sdk-develop/bin/mac**).
 2. Run the following command:
-  `export LD_LIBRARY_PATH={$HOME}/intu/self-sdk-develop/bin/mac`
+  `export LD_LIBRARY_PATH=./`
 3. In the directory **intu/self-sdk-develop/bin/mac**, run Intu by issuing the following command: `./self_instance ` .
 
 
