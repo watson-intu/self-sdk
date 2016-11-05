@@ -161,3 +161,206 @@ Note: The following steps will need to be repeated each time you power your Pi b
 6.	Run: `export WIRINGPI_GPIOMEM=1`.
 7.	Run: `./self_instance `.
 
+# APPENDIX
+
+##Steps for putting Intu on your Raspberry Pi using an SD card with the Intu image
+
+**Note:** In this workshop, commands are issued from **Terminal** on **Mac** or **PuTTY** on **Windows**. For **Windows** users, if you do not have **PuTTY** installed already, you can download it using this [link](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
+
+1.	Connect your Raspberry Pi to a power source, and connect an external keyboard, mouse and monitor to your Pi.
+
+2.	You should see a window open on your monitor. Click on the **Wifi networks (w)** icon at the top of the window, select your network (at DevCon, it will be **ROBOT_PED1**), and enter your password (**panda$123**).
+
+3.	Get the IP address of your Pi.
+	1.	Click on the black **Terminal** icon on the top left toolbar.
+	2.	Type in **ifconfig** and hit Enter.
+	3. Look for the **wlan0** section. The **inet addr** gives you the IP address of your pi (e.g. 10.0.1.2). 
+
+4.	Ensure that your laptop is on the **same** network as your Pi from this point onwards.
+	
+	For **Mac** users, open a new Terminal window, and connect to the Pi using: `ssh pi@{ip_address}` (e.g. ssh pi@10.0.1.2)
+
+	You will be prompted for a password. The default password for the Pi is **raspberry**.
+
+	For **Windows** users, open **PuTTY**, type in the Pi's IP address, and when prompted, type in the username (**pi**) and password (**raspberry**) for the Pi.
+
+5. At this point, you can disconnect the external monitor, mouse and keyboard from the Pi. 
+
+6. Check that your laptop is on the same network as the Pi. Reboot the Pi by running `sudo reboot` in your Terminal window or PuTTY. 
+
+1.	Now skip down and complete the following sections from this workshop:
+	1.	**Edit your Body.json with your Intu credentials**
+	2.	**Run Self on your Raspberry Pi**
+
+## Install Raspbian Operating System onto your Raspberry Pi
+
+1. Navigate to the [NOOBS Download page](https://www.raspberrypi.org/downloads/noobs/).
+
+2. Click on the **Download ZIP** button under ‘NOOBS (offline and network install)’. **Note:** This may take an hour or more depending on your network speed. 
+
+3. Extract the files from the zip to a local directory. 
+
+4. Open the “Read Me” text file in the extracted folder and follow the instructions to format your SD card.
+
+5. Once your SD card has been formatted, drag all the files within the extracted NOOBS folder and drop them onto the SD card.
+
+6. The necessary files will then be transferred to your SD card.
+
+7. When this process has finished, safely eject the SD card from your computer, remove the mini SD card from it, and insert it into your Raspberry Pi.
+
+8. Connect your Raspberry Pi to a power source, and connect an external keyboard, mouse and monitor to your Pi.
+
+9.	You should see a window open on your monitor. Click on the **Wifi networks (w)** icon at the top of the window, select your network (at DevCon, it will be **ROBOT_PED1**), and enter your password (**panda$123**).
+
+10. As this is the first time your Raspberry Pi and SD card have been used, you'll have to select an operating system and let it install. Select **Raspbian [RECOMMENDED]**.
+
+11. At the bottom of your screen, you will see a **Language** panel for your keyboard. Select **English (US)**. 
+
+12.	Click on the **Install** icon on the top left of the window. A **Confirm** window will appear; select **Yes**. The installation may take up to 30-40 mins. 
+
+	**Note:** If your installation freezes at any point (as indicated by a frozen progress bar), **unplug** the Pi from its power source and **plug it back in**, and repeat from step 8.
+
+13.	Check that you are connected to the network. On the right of the Bluetooth icon in the top right corner of the screen, you will see a **successful connection** to your wifi network as shown by a **blue wifi icon**, or an **icon with two red crosses** if you have been **disconnected**. To reconnect, click on the two red crosses, select your network, and type in the password when prompted.
+
+14. Get the IP address of your Pi.
+	1.	Click on the black **Terminal** icon on the top left toolbar.
+	2.	Type in **ifconfig** and hit Enter. **Note:** If this command does not work, **unplug** the Pi from its power source and **plug it back in**, and repeat this step.
+	3. Look for the **wlan0** section. The **inet addr** gives you the IP address of your pi (e.g. 10.0.1.2). 
+
+4.	Ensure that your laptop is on the **same** network as your Pi from this point onwards.
+	
+	For **Mac** users, open a new Terminal window, and connect to the Pi using: `ssh pi@{ip_address}` (e.g. ssh pi@10.0.1.2)
+
+	You will be prompted for a password. The default password for the Pi is **raspberry**.
+
+	For **Windows** users, open **PuTTY**, type in the Pi's IP address, and when prompted, type in the username (**pi**) and password (**raspberry**) for the Pi.
+
+5. At this point, you can disconnect the external monitor, mouse and keyboard from the Pi. 
+
+6. Check that your laptop is on the same network as the Pi. Reboot the Pi by running `sudo reboot` in your Terminal window or PuTTY. 
+
+## Set up your Raspberry Pi for Builds
+
+**Note:** If any step below fails or errors, run: `sudo apt-get update`, then repeat the step.
+
+1.	Open up a new browser window on your laptop and download [**Anaconda 4.2.0 For Linux Python 2.7 version**](https://www.continuum.io/downloads).
+
+	**Make sure you download the correct version.** You need the LINUX version no matter what operating system you have. Windows users may have to right click and select **Save as** to save the download locally.
+
+2.	Copy Anaconda from your laptop over to the Pi. **Windows** users may need to [download](https://filezilla-project.org/) and use something like **Filezilla** to copy files over to the Pi.
+	1. Navigate to the directory where you downloaded Anaconda locally. 
+	
+		
+		
+	2. Copy Anaconda from your laptop over to the Pi using the following command: `scp Anaconda2-4.2.0-Linux-x86.sh pi@{ip}:/home/pi` 
+	
+		(e.g. scp Anaconda2-4.2.0-Linux-x86.sh pi@10.0.1.2:/home/pi)
+		
+		If prompted, the username is **pi** and password is **raspberry**
+		
+
+3.	Install Anaconda on your Pi and set up qiBuild.
+	1. In a new Terminal/PuTTY window, ssh into your Pi: `ssh pi@{ip_address}`. When prompted, the username is **pi** and password is **raspberry**.
+
+	2.	Run: `bash Anaconda2-4.2.0-Linux-x86.sh`.
+	3. Follow the steps on the screen to install Anaconda. When you get to the license, keep hitting Enter to jump to the bottom. Type **yes** to approve the license.
+	4.	Hit Enter to install Anaconda in the default location. **Note**: It may take a while for the progress to update, and if you get the following error, please ignore it.
+
+		```
+Anaconda2-4.2.0-Linux-x86.sh: line 484: /home/pi/anaconda2/pkgs/python-3.5.2-0/bin/python: cannot execute binary file: Exec format error
+ERROR:
+cannot execute native linux-32 binary, output from 'uname -a' is:
+Linux raspberrypi 4.4.21-v7+ #911 SMP Thu Sep 15 14:22:38 BST 2016 armv7l GNU/Linux
+
+		```
+
+	5. Once Anaconda has successfully installed, run: `sudo apt-get install python-pip cmake`. 
+	
+		**Note:** If this fails, run `sudo apt-get update`, and then rerun: `sudo apt-get install python-pip cmake`.
+
+	6.	Run: `sudo pip install qibuild`
+ 
+
+4.	Install the wiringPi library on the Pi.
+	1. In a new Terminal/PuTTY window, ssh into your Pi: `ssh pi@{ip_address}`. 
+	2.	Navigate to your Pi's **home directory** by running: `cd /home/pi`. 
+	3.	Run: `git clone git://git.drogon.net/wiringPi`
+	4.	Now navigate into the wiringPi directory by running: `cd wiringPi/`
+	5.	Run: `./build`
+
+	You should see a list of classes compiled and “All Done” at the end.
+	
+Finally, in a new Terminal/PuTTY window, ssh into your Pi, navigate to its home directory by running `cd /home/pi`, and in here, create a new directory called **self**: `mkdir self`. This directory will be used in the steps below.
+
+##Retrieve the latest self-sdk and build Self on your Raspberry Pi
+
+1. [Download the Self SDK](https://github.ibm.com/watson-labs-austin/self-sdk). Click on **Clone or download** and select **Download Zip**.
+
+2. Copy the zip file from your local machine across to the Pi.
+
+	**For Mac users:**
+
+	1. In a Terminal window, navigate to the directory where you downloaded the zip file, and copy it across to the newly created **self** directory on the Pi using: `scp self-sdk-develop.zip pi@{ip}:/home/pi/self/`
+	
+	**For Windows users:**
+
+	1.	Open Filezilla and connect to your Pi.
+	2. In the **Local Site**** side of the screen, navigate to the `self-sdk-develop.zip` file.
+	3.	In the **Remote Site** side of the screen, navigate to the directory: **/home/pi/self**
+	4.	Click on the file `self-sdk-develop.zip` on the **Local Site** side of the screen and drag it to the **Remote site** side of the screen. 
+	5.	You can monitor the progress of the transfer in the panel located at the bottom of the Filezilla screen.
+
+
+4. Unzip the `self-sdk-develop.zip` file into the **self** directory of your Pi. 
+ 	1.	Navigate to the **self** directory on your Pi. You can open a new Terminal/PuTTY window as before, ssh into your Pi, and run: `cd /home/pi/self`. If your prompt reads: `pi@raspberrypi:~/self $`, this confirms that you are in the **self** directory.
+	2.	Run the following command: `unzip self-sdk-develop.zip`
+
+5. Build Self on your Pi with the following steps:
+
+	1.	Navigate into the **self-sdk-develop** directory on your Pi: `cd self-sdk-develop`
+	2.	Mark the build script as executable by running: `chmod +x scripts/build_raspi.sh`
+	3.	**Note:** If you have run the **below** command before, first run: `scripts/clean.sh`. 
+	
+		Run: `scripts/build_raspi.sh`
+
+## Edit your `body.json` file with your Intu Credentials
+
+1. Retrieve the `body.json` file from your Raspberry Pi for editing.
+
+	**For Mac users:**
+	1. Open a new Terminal window and run: `scp pi@{pi_ip_address}:/home/pi/self/self-sdk-develop/bin/raspi/etc/profile/body.json ~/`. This copies across the `body.json` file to your **home** directory.
+	
+	2. Open the local copy of this `body.json` file with your favourite text editor.
+	
+	**For Windows users:**
+
+	1. Open Filezilla and connect to your Raspberry Pi.
+	2.	On the **Remote site** side of the Filezilla screen, navigate to **/home/pi/self/self-sdk-develop/bin/raspi/etc/profile**.
+	3. Locate the `body.json` file in the **profile** directory, right click and select **View/Edit**.
+
+2. Retrieve the credentials for your Organization in the Intu Gateway.
+	1. Log in to the [Intu Gateway](https://rg-gateway.mybluemix.net/). You should already have completed Workshop 1 and created an Organization and Group.
+	2.  Click on **VIEW CREDENTIALS** in the left hand navigation bar.
+
+	3. Select your Organization and Group in the top Filter by menu, and click on the **Get Credentials** box.
+
+	4. Copy these credentials by clicking the **Copy** icon in the top right of the window, and paste this into a new text file in your text editor.
+
+ 
+3. Edit `the body.json` that you opened for editing by adding the credentials you just retrieved from the Intu Gateway.
+	1.	In the `body.json` file, search for `“m_EmbodimentCreds”` to jump to the correct section.
+	2.	Highlight/Select the entire section of the file from `“m_EmbodimentCreds”` to `“m_OrgId”: “”},`
+	3.	Delete this section of the file.
+	4.	Now paste the credentials you saved from the Intu Gateway into this section of the `body.json` file. 
+
+4. Copy the edited `body.json` file across to the Pi.
+
+	**For Mac users:**
+
+	1. After saving your changes to the `body.json` file, open a new Terminal window and run the following command to copy it across to the Pi: `scp ~/body.json pi@[pi ip address]:/home/pi/self/self-sdk-develop/bin/raspi/etc/profile/`
+
+	**For Windows users:**
+	
+	1.	Exit the window you were using to edit the `body.json` file. If you are using Filezilla, you will be prompted to upload the file back on the server. 
+	2.	Click the **Yes** button. This action saves your changes to your Pi.
+
