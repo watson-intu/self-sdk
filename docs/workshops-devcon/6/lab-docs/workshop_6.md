@@ -1,4 +1,4 @@
-# Workshop 3: Creating a camera agent
+# Workshop 6: Creating a camera agent
 
 In this workshop, you create an camera sensors. Sensors take in data from the outside world to process. The camera sensor will aim to take in visual data from the environment, ready to be processed on Intu. 
 
