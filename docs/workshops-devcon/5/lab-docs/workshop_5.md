@@ -108,7 +108,7 @@ target_link_libraries(workshop_five_plugin wiringPi)
 ## Updating the body.json configuration.
 
 9. Retrieve the body.json from your Pi to your local machine.
-		 `scp pi@[pi ip address]:/home/pi/self/self-sdk-develop/bin/raspi/etc/profile/ ~/`
+		 `scp pi@[pi ip address]:/home/pi/self/self-sdk-develop/bin/raspi/etc/profile/body.json ~/`
 
 	And open this `body.json` file. 
 
