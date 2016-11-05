@@ -15,7 +15,7 @@ For this workshop, you will need the following:
 *	Monitor (with a HDMI connection)
 *	Keyboard and Mouse (USB connection)
 
-
+**Note: you should have assembled the Raspberry Pi from the instructions file**
 
 ## Setup Wi-Fi on the Raspberry Pi
 1. Connect your Raspberry Pi to a power source, and connect external keyboard, mouse and monitor your Pi.
@@ -160,6 +160,8 @@ Note: The following steps will need to be repeated each time you power your Pi b
 5.	Run: `export LD_LIBRARY_PATH=./`.
 6.	Run: `export WIRINGPI_GPIOMEM=1`.
 7.	Run: `./self_instance `.
+
+You have now added a gesture for the LED light.  When you say, "can you laugh" to the robot, the LED light should blink i.e. you have added the blinking of the LED to Intu as a gesture. 
 
 # APPENDIX
 
