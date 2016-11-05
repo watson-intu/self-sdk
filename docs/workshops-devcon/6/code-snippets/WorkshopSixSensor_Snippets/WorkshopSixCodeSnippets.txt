@@ -1,3 +1,20 @@
+//Code snippets for OnStart()
+Log::Debug("WorkshopSixSensor", "Starting Camera!");
+  m_StopThread = false;
+  m_ThreadStopped = false;
+#ifndef _WIN32
+m_Capture.open(0);
+
+if( !m_Capture.isOpened() )
+{
+    Log::Error("MacCamera", "Could not open Mac Camera - closing sensor");
+    return false;
+}
+Log::Debug("WorkshopSixSensor", "Video Capture is now opened!");
+#endif
+ThreadPool::Instance()->InvokeOnThread<void *>(DELEGATE(WorkshopSixSensor, CaptureVideo, void *, this), 0);
+return true;
+
 
 //Code snippets for CaptureVideo()
 #ifndef _WIN32
