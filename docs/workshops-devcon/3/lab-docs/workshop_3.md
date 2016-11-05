@@ -390,6 +390,8 @@ In the next task, you will update the `body.json` file also located in the **int
 1. From the Visual Studio Menu, select **Build->Build Solution**.
 2. Run Intu by clicking **Local Windows Debugger** in Visual Studio.
 
+**Now you have added an Emotion Agent Intu will start to will adapt to you. First ask Intu "how are you" and listen to the response. Now feed it a few positve emotion 'sentences' like "Good job", and then ask "how are you", again. Intu should now give a "happier" response than it gave before. Try the same for negative emotion, like saying "wrong answer" multiple times and then ask "how are you", Intu should respond with a "sadder" tone. 
+
 ## After DevCon ends
 
 If you want to test Intu after the trial period ends, you must create your own instances of these services and configure Intu to use them.
