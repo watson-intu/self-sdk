@@ -120,12 +120,12 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
 2v. Open the `CMakeLists.txt` file in the **workshop_six** directory, and overwrite its content with this code:
 
   ```
-    include_directories(.)
-	
-    file(GLOB_RECURSE SELF_CPP RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "*.cpp")
-    qi_create_lib(workshop_six_plugin SHARED ${SELF_CPP})
-    qi_use_lib(workshop_six_plugin self wdc)
-    qi_stage_lib(workshop_six_plugin)
+include_directories(.)
+
+file(GLOB_RECURSE SELF_CPP RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "*.cpp")
+qi_create_lib(workshop_six_plugin SHARED ${SELF_CPP})
+qi_use_lib(workshop_six_plugin self wdc OPENCV2_CORE OPENCV2_HIGHGUI)
+qi_stage_lib(workshop_six_plugin)
   ```
 
 1. Create a new directory inside this called **sensors** in the **workshop_six** directory.
@@ -228,6 +228,7 @@ In the next task, you will update the `body.json` file also located in the **int
   `export LD_LIBRARY_PATH=./`
 3. In the directory **intu/self-sdk-develop/bin/mac**, run Intu by issuing the following command: `./self_instance ` .
 
+Now self is running, you should see your Mac camera turn on. Now Intu will be able to learn objects. Hold an object [i.e. a pen] to the camera and say "this is an [object name i.e. a pen]". Intu should now be able to recognise the object [i.e. a pen].
 
 ### 4. [Challenge]: Add camera sensor to the Raspberry Pi
 
