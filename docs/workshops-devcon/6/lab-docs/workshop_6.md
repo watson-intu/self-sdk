@@ -272,7 +272,7 @@ Save your changes.
   `export LD_LIBRARY_PATH=./`
 3. In the directory **intu/self-sdk-develop/bin/mac**, run Intu by issuing the following command: `./self_instance ` .
 
-Now self is running, you should see your Mac camera turn on. Now Intu will be able to learn objects. Hold an object [i.e. a pen] to the camera and say "this is an [object name i.e. a pen]". Intu should now be able to recognise the object [i.e. a pen].
+Now Intu is running, you should see your Mac camera turn on. Now Intu will be able to capture vision through your Mac camera.
 
 ### 4. [Challenge]: Add camera sensor to the Raspberry Pi
 
