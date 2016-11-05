@@ -35,7 +35,7 @@ At this point, you can disconnect the external monitor, mouse and keyboard from 
 **Note: Unless explicitly stated, all the following steps are to be run on your local computer.**
 
 ## Download self-sdk onto your computer and add in the LED gesture code.
-1.	**On your local machine** clone or download the self-sdk (make sure you are on the self-sdk develop branch) from [Github](https://github.ibm.com/watson-labs-austin/self-sdk). If you downloaded this file, unzip it.
+1.	**On your local machine** clone or download the self-sdk (make sure you are on the self-sdk develop branch) from [Github](https://hub.jazz.net/project/wlabs/self-sdk). If you downloaded this file, unzip it.
 
 2.	Navigate into:
 	`self-sdk-develop/docs/workshops-devcon/5/code-snippets/WorkshopFiveGesture_Start/`

@@ -54,7 +54,7 @@ Follow the instructions for your platform.
 
 **Before you begin**:
 
-1. [Download the Intu SDK](https://github.ibm.com/watson-labs-austin/self-sdk). Click on **Clone or download** and select **Download Zip**.
+1. [Download the Intu SDK](https://hub.jazz.net/project/wlabs/self-sdk). Click on **Clone or download** and select **Download Zip**.
 2. Create a new directory named **intu** in a directory of your choosing.
 3. Unzip the self-sdk-develop.zip file into **intu**, making sure that you retain the folder structure. I.e. Your intu directory should now contain the unzipped **self-sdk-develop** folder.
 
