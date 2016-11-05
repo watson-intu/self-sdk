@@ -29,7 +29,7 @@ Follow the instructions for your platform.
 
 1. [Download the Intu SDK](https://hub.jazz.net/project/wlabs/self-sdk). Click on **Clone or download** and select **Download Zip**.
 2. Create a new directory named **intu** in a directory of your choosing.
-3. Unzip the self-sdk-develop.zip file into **intu**, making sure that you retain the folder structure. I.e. Your intu directory should now contain the unzipped **self-sdk-develop** folder.
+3. Unzip the walbs_self-sdk-master.zip file into **intu**, making sure that you retain the folder structure. I.e. Your intu directory should now contain the unzipped **wlabs_self-sdk-master** folder.
 
 ### Preparing OS X
 
@@ -74,7 +74,7 @@ Follow the instructions for your platform.
    3. When the "Please choose an IDE" prompt is displayed, specify **1**, and press **Enter**.
 
 ### Building the Intu SDK for OS X
-1. In a new Terminal window, navigate to the **self-sdk-develop** directory inside **Intu**. You should just be able to run: `cd intu/self-sdk-develop` 
+1. In a new Terminal window, navigate to the **wlabs_self-sdk-master** directory inside **Intu**. You should just be able to run: `cd intu/wlabs_self-sdk-master` 
 
 	**Note:** If you have **already built the Intu SDK for OS X** in another workshop, run: `./scripts/clean.sh`    
 
@@ -94,14 +94,16 @@ Known toolchains are:
 
 1. If you do not have it installed already, download the trial version of the [CLion C++ IDE](https://www.jetbrains.com/clion/download/).
 
-2. In **CLion**, select Open -> home directory -> intu -> self-sdk-develop and click **OK**. 
+2. In **CLion**, select Open -> home directory -> intu -> wlabs_self-sdk-master and click **OK**. 
 
 	Note that a window may appear prompting you to open your project in a New Window or This Window. Select **New Window**. At the bottom of your CLion window, in the Problems tab, you will see the following Error, which you do not need to worry about:
-
+	
+	```
 	Error: By not providing "FindSELF.cmake" in CMAKE_MODULE_PATH this project has asked CMake to find a package configuration file provided by "SELF", but CMake did not find one.
 Could not find a package configuration file provided by "SELF" with any of the following names:
   SELFConfig.cmake   self-config.cmake
 Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to a directory containing one of the above files.  If "SELF" provides a separate development package or SDK, be sure it has been installed.
+	```
 
 2i. Inside the CLion **self-sdk-develop project**, right-click **examples**, select **New**, and select **Directory**. Type in **workshop_six** for the new directory name, and click **OK**.
  
@@ -131,12 +133,12 @@ qi_stage_lib(workshop_six_plugin)
 1. Create a new directory inside this called **sensors** in the **workshop_six** directory.
 2. Locate the Workshop 6 code snippet files **to be filled in** in:
 
- `self-sdk-develop/docs/workshops-devcon/6/code-snippets/WorkshopSixSensor_start`
+ `wlabs_self-sdk-master/docs/workshops-devcon/6/code-snippets/WorkshopSixSensor_start`
 
 3. Copy the `WorkshopSixSensor.cpp` and the `WorkshopSixSensor.h` files and paste them into the **sensors** directory that you created.
 
 
-### 2. Build out the CaptureVideo() and SendingData() functions
+### 2. Build out the OnStart(), CaptureVideo() and SendingData() functions
 
 Open the `WorkshopSixSensor.cpp` file, which contains the following functions that enable the emotion agent you'll create:
 
@@ -159,26 +161,26 @@ In the next step, you will build out the **OnStart**, **CaptureVideo** and **Sen
 
 **Building the sensor function bodies**
 
-1. In **self-sdk-develop/docs/workshops-devcon/3/code-snippets/WorkshopSix_Snippets**, you will see the `WorkshopSixCodeSnippets.txt` file. Open this file and find the OnStart, CaptureVideo and SendingData functions.
+1. In **wlabs_self-sdk-master/docs/workshops-devcon/6/code-snippets/WorkshopSix_Snippets**, you will see the `WorkshopSixCodeSnippets.txt` file. Open this file and find the OnStart, CaptureVideo and SendingData functions.
 
 1. For **OnStart()**, copy the code directly below **//Code for OnStart()** in `WorkshopSixCodeSnippets.txt`. Paste this inside the function body **{}** of **OnStart()** in `WorkshopSixSensor.cpp` located inside your **sensors** directory. The code which you need is displayed below for completeness; however, it is **not** recommended for you to copy it from here due to formatting issues. Copy the code and overwrite the all code already in **OnStart()**.
 
   ```
-  	    Log::Debug("WorkshopSixSensor", "Starting Camera!");
-    m_StopThread = false;
-    m_ThreadStopped = false;
-#ifndef _WIN32
-    m_Capture.open(0);
-
-    if( !m_Capture.isOpened() )
-    {
-        Log::Error("MacCamera", "Could not open Mac Camera - closing sensor");
-        return false;
-    }
-    Log::Debug("WorkshopSixSensor", "Video Capture is now opened!");
-#endif
-    ThreadPool::Instance()->InvokeOnThread<void *>(DELEGATE(WorkshopSixSensor, CaptureVideo, void *, this), 0);
-    return true;
+	Log::Debug("WorkshopSixSensor", "Starting Camera!");
+	    	m_StopThread = false;
+	    	m_ThreadStopped = false;
+	#ifndef _WIN32
+	    m_Capture.open(0);
+	
+	    if( !m_Capture.isOpened() )
+	    {
+	        Log::Error("MacCamera", "Could not open Mac Camera - closing sensor");
+	        return false;
+	    }
+	    Log::Debug("WorkshopSixSensor", "Video Capture is now opened!");
+	#endif
+	    ThreadPool::Instance()->InvokeOnThread<void *>(DELEGATE(WorkshopSixSensor, CaptureVideo, void *, this), 0);
+	    return true;
     
     ```
 
@@ -211,7 +213,7 @@ In the next step, you will build out the **OnStart**, **CaptureVideo** and **Sen
   ```
 
 
-1. Open a **new** Terminal window and navigate to **intu/self-sdk-develop** by running: `cd intu/self-sdk-develop`.
+1. Open a **new** Terminal window and navigate to **intu/wlabs_self-sdk-master** by running: `cd intu/wlabs_self-sdk-master`.
 
 	**Note:** If you have built the SDK in a previous workshop, make sure you run: `./scripts/clean.sh`.
 
@@ -219,7 +221,7 @@ In the next step, you will build out the **OnStart**, **CaptureVideo** and **Sen
 
 **Congratulations!** You just built all the functions required for the camera sensor. 
 
-In the next task, you will update the `body.json` file also located in the **intu/self-sdk-develop/bin/mac/etc** directory to include the new plugin so that Intu can use it.
+In the next task, you will update the `body.json` file also located in the **intu/wlabs_self-sdk-master/bin/mac/etc** directory to include the new plugin so that Intu can use it.
 
 
 ## 4. Configuring your Intu instance to include the camera sensor
@@ -234,7 +236,7 @@ In the next task, you will update the `body.json` file also located in the **int
 
 ### 2. Configuring your `body.json` file
 
-1. Open your `body.json` file. This will be in **self-sdk-develop/bin/mac/etc/**.
+1. Open your `body.json` file. This will be in **master_self-sdk-master/bin/mac/etc/**.
 	
 2. Locate the `m_Libs` variable. The variable should look like `"m_Libs" : [ "platform_mac" ],`
 3. Add **workshop****_six****_plugin** to the end of the `m_Libs` variable for your platform, **as shown below**:
@@ -267,10 +269,10 @@ Save your changes.
 
 ### 3. Building Intu
 
-1. In your most recent Terminal window, navigate to the **bin** directory (**self-sdk-develop/bin/mac**).
+1. In your most recent Terminal window, navigate to the **bin** directory (**wlabs_self-sdk-master/bin/mac**).
 2. Run the following command:
   `export LD_LIBRARY_PATH=./`
-3. In the directory **intu/self-sdk-develop/bin/mac**, run Intu by issuing the following command: `./self_instance ` .
+3. In the directory **intu/wlabs_self-sdk-master/bin/mac**, run Intu by issuing the following command: `./self_instance ` .
 
 Now Intu is running, you should see your Mac camera turn on. Now Intu will be able to capture vision through your Mac camera.
 
