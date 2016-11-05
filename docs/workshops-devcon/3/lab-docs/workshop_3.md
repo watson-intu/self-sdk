@@ -72,16 +72,18 @@ Follow the instructions for your platform.
    Press RETURN to continue or any other key to abort
    ```
    2. Press **Return** or **Enter**. A prompt for your laptop's password is displayed.
-   3. Specify your password, and press **Return** or **Enter**. If you're using **Sierra OS X**, the following message is displayed:
-   ```
+   3. Specify your password, and press **Return** or **Enter**. If you have **macOS Sierra**, the following message is displayed:
+   
+   		```
    HEAD is now at 89fd34b Merge pull request #1368 from MikeMcQuaid/build-options-file
    Error: /usr/local/Cellar is not writable. You should change the
    ownership and permissions of /usr/local/Cellar back to your
    user account:
    sudo chown -R $(whoami) /usr/local/Cellar
    Failed during: /usr/local/bin/brew update --force
-   ```
-   Run: `sudo chown -R $(whoami) /usr/local/Cellar`
+   		```
+   
+   		Run: `sudo chown -R $(whoami) /usr/local/Cellar`
    4. Now repeat step 1 by running: 
     ```
    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -89,10 +91,26 @@ Follow the instructions for your platform.
 2. Install CMake using Homebrew.
 	1. Run the command: `sudo chown -R $(whoami) /usr/local`   
 	2. Now run: `brew install cmake`
+
+	**Note**: If you have **macOS Sierra**, you may see the following message if you happen to have an outdated version of **Xcode**: 
+	
+	```
+	Your Xcode (7.3.1) is outdated.
+	Please update to Xcode 8.1 (or delete it).
+	Xcode can be updated from the App Store.
+	```
+	
+	If you see this message, you will need to update **Xcode**.
+	
 3. Download **Anaconda 4.2.0 Python 2.7 version** by using the **Graphical Installer**. It is required to correctly configure pip in the following step.
    1. Copy and open the following in a browser: https://www.continuum.io/downloads
    2. Click the solid blue GRAPHICAL INSTALLER button for Python 2.7 Version. It should be 403 MB. The .pkg file downloads.
    3. After the file is downloaded, double-click it, and follow the prompts to install Anaconda.
+   4. Open a **new** Terminal window and make sure your version of Python has been successfully updated by running the command: `python --version`. 
+ 	
+ 		You should see: `Python 2.7.12 :: Anaconda 4.2.0 (x86_64)`
+  
+   
 4. Set up qiBuild.
    1. Run the following commands:
    * `pip install qibuild`
