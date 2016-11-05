@@ -120,16 +120,12 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
 2v. Open the `CMakeLists.txt` file in the **workshop_six** directory, and overwrite its content with this code:
 
   ```
-    include_directories(. wiringPI)
-    SET(GCC_COVERAGE_LINK_FLAGS "-lwiringPi")
-    add_definitions(${GCC_COVERAGE_LINK_FLAGS})
+    include_directories(.)
 	
     file(GLOB_RECURSE SELF_CPP RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "*.cpp")
     qi_create_lib(workshop_six_plugin SHARED ${SELF_CPP})
     qi_use_lib(workshop_six_plugin self wdc)
     qi_stage_lib(workshop_six_plugin)
-    
-    target_link_libraries(workshop_five_plugin wiringPi)
   ```
 
 1. Create a new directory inside this called **sensors** in the **workshop_six** directory.
