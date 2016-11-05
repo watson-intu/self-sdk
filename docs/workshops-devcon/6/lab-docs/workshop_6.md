@@ -120,12 +120,12 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
 2v. Open the `CMakeLists.txt` file in the **workshop_six** directory, and overwrite its content with this code:
 
   ```
-    include_directories(.)
-	
-    file(GLOB_RECURSE SELF_CPP RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "*.cpp")
-    qi_create_lib(workshop_six_plugin SHARED ${SELF_CPP})
-    qi_use_lib(workshop_six_plugin self wdc)
-    qi_stage_lib(workshop_six_plugin)
+include_directories(.)
+
+file(GLOB_RECURSE SELF_CPP RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "*.cpp")
+qi_create_lib(workshop_six_plugin SHARED ${SELF_CPP})
+qi_use_lib(workshop_six_plugin self wdc OPENCV2_CORE OPENCV2_HIGHGUI)
+qi_stage_lib(workshop_six_plugin)
   ```
 
 1. Create a new directory inside this called **sensors** in the **workshop_six** directory.
@@ -153,13 +153,34 @@ Open the `WorkshopSixSensor.cpp` file, which contains the following functions th
 * **SendingData()** - Is used to first check if the camera is paused or not. If the camera is not then the data is sent.
 
   
-The OnStart, OnStop, OnPause and OnResume functions are already completely built out.
+The OnStop, OnPause and OnResume functions are already completely built out.
 
-In the next step, you will build out the **CaptureVideo** and **SendingData** functions using the example code provided.
+In the next step, you will build out the **OnStart**, **CaptureVideo** and **SendingData** functions using the example code provided.
 
 **Building the sensor function bodies**
 
-1. In **self-sdk-develop/docs/workshops-devcon/3/code-snippets/WorkshopSix_Snippets**, you will see the `WorkshopSixCodeSnippets.txt` file. Open this file and find the OnText, OnTone and OnLearningIntent functions.
+1. In **self-sdk-develop/docs/workshops-devcon/3/code-snippets/WorkshopSix_Snippets**, you will see the `WorkshopSixCodeSnippets.txt` file. Open this file and find the OnStart, CaptureVideo and SendingData functions.
+
+1. For **OnStart()**, copy the code directly below **//Code for OnStart()** in `WorkshopSixCodeSnippets.txt`. Paste this inside the function body **{}** of **OnStart()** in `WorkshopSixSensor.cpp` located inside your **sensors** directory. The code which you need is displayed below for completeness; however, it is **not** recommended for you to copy it from here due to formatting issues. Copy the code and overwrite the all code already in **OnStart()**.
+
+  ```
+  	    Log::Debug("WorkshopSixSensor", "Starting Camera!");
+    m_StopThread = false;
+    m_ThreadStopped = false;
+#ifndef _WIN32
+    m_Capture.open(0);
+
+    if( !m_Capture.isOpened() )
+    {
+        Log::Error("MacCamera", "Could not open Mac Camera - closing sensor");
+        return false;
+    }
+    Log::Debug("WorkshopSixSensor", "Video Capture is now opened!");
+#endif
+    ThreadPool::Instance()->InvokeOnThread<void *>(DELEGATE(WorkshopSixSensor, CaptureVideo, void *, this), 0);
+    return true;
+    
+    ```
 
 1. For **CaptureVideo()**, copy the code directly below **//Code for CaptureVideo()** in `WorkshopSixCodeSnippets.txt`. Paste this inside the function body **{}** of **CaptureVideo()** in `WorkshopSixSensor.cpp` located inside your **sensors** directory. The code which you need is displayed below for completeness; however, it is **not** recommended for you to copy it from here due to formatting issues.
   
@@ -219,7 +240,30 @@ In the next task, you will update the `body.json` file also located in the **int
 3. Add **workshop****_six****_plugin** to the end of the `m_Libs` variable for your platform, **as shown below**:
   `"m_Libs" : [ "platform_mac", "workshop_six_plugin"],`
 6. Now find `"m_EmbodimentCreds":{ ... }` in your `body.json` file. Replace this with the complete set of credentials you copied over into your text editor from the Intu Gateway in step 4 of the previous section.
-7. Save your changes.
+7. Locate `m_Sensors` inside the `body.json`. Add the following
+
+```
+{
+       "Type_" : "Camera",
+       "m_SensorId" : "8f385c2a-ecb0-3bfb-32af-3c54ec18db5c",
+       "m_fFramesPerSec" : 10
+    },
+    
+```
+
+It should look something like
+
+```
+"m_Sensors" : [
+      {
+       "Type_" : "Camera",
+       "m_SensorId" : "8f385c2a-ecb0-3bfb-32af-3c54ec18db5c",
+       "m_fFramesPerSec" : 10
+    },
+      {....
+```
+
+Save your changes.
 
 ### 3. Building Intu
 
@@ -228,6 +272,7 @@ In the next task, you will update the `body.json` file also located in the **int
   `export LD_LIBRARY_PATH=./`
 3. In the directory **intu/self-sdk-develop/bin/mac**, run Intu by issuing the following command: `./self_instance ` .
 
+Now Intu is running, you should see your Mac camera turn on. Now Intu will be able to capture vision through your Mac camera.
 
 ### 4. [Challenge]: Add camera sensor to the Raspberry Pi
 
