@@ -217,7 +217,7 @@ In the next task, you will update the `body.json` file also located in the **int
 	
 2. Locate the `m_Libs` variable. The variable should look like `"m_Libs" : [ "platform_mac" ],`
 3. Add **workshop****_six****_plugin** to the end of the `m_Libs` variable for your platform, **as shown below**:
-  `"m_Libs" : [ "platform_mac", "workshop_three_plugin"],`
+  `"m_Libs" : [ "platform_mac", "workshop_six_plugin"],`
 6. Now find `"m_EmbodimentCreds":{ ... }` in your `body.json` file. Replace this with the complete set of credentials you copied over into your text editor from the Intu Gateway in step 4 of the previous section.
 7. Save your changes.
 
