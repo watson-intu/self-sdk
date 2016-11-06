@@ -15,7 +15,7 @@ For this workshop, you will need the following:
 *	Monitor (with a HDMI connection)
 *	Keyboard and Mouse (USB connection)
 
-
+**Note: you should have assembled the Raspberry Pi from the instructions file**
 
 ## Setup Wi-Fi on the Raspberry Pi
 1. Connect your Raspberry Pi to a power source, and connect external keyboard, mouse and monitor your Pi.
@@ -35,10 +35,10 @@ At this point, you can disconnect the external monitor, mouse and keyboard from 
 **Note: Unless explicitly stated, all the following steps are to be run on your local computer.**
 
 ## Download self-sdk onto your computer and add in the LED gesture code.
-1.	**On your local machine** clone or download the self-sdk (make sure you are on the self-sdk develop branch) from [Github](https://hub.jazz.net/project/wlabs/self-sdk). If you downloaded this file, unzip it.
+1.	**On your local machine** clone or download the self-sdk (make sure you are on the self-sdk master branch) from [Github](https://hub.jazz.net/project/wlabs/self-sdk). If you downloaded this file, unzip it.
 
 2.	Navigate into:
-	`self-sdk-develop/docs/workshops-devcon/5/code-snippets/WorkshopFiveGesture_Start/`
+	`wlabs_self-sdk-master/docs/workshops-devcon/5/code-snippets/WorkshopFiveGesture_Start/`
 	
 	In this directory you should find these two files:
 	
@@ -52,11 +52,12 @@ At this point, you can disconnect the external monitor, mouse and keyboard from 
    Then within the `workshop_five` folder, create a folder called `gesture`. 
 Within the `gesture` directory paste the `WorkshopFiveGesture.cpp` and `WorkshopFiveGesture.h` files you copied, here.
 
-4. Now navigate into `self-sdk-develop/docs/workshops-devcon/5/code-snippets/WorkshopFiveGesture_Snippets/` and locate the `WorkshopFiveCodeSnippets.txt` file.
+4. Now navigate into `wlabs_self-sdk-master/docs/workshops-devcon/5/code-snippets/WorkshopFiveGesture_Snippets/` and locate the `WorkshopFiveCodeSnippets.txt` file.
    
    Copy all the contents in `WorkshopFiveCodeSnippets.txt`.
 
-   Open the `self-sdk-develop/examples/workshop_five/gestures/WorkshopFiveGesture.cpp` source file and locate the method `DoAnimateThread()`. Into the body of this function paste the code from the `WorkshopFiveCodeSnippets.txt`. 
+   Open the `wlabs_self-sdk-master/examples/workshop_five/gestures/WorkshopFiveGesture.cpp` source file and locate the method `DoAnimateThread()`. Into the body of this function paste the code from the `WorkshopFiveCodeSnippets.txt`. 
+   (This pasted into the brackets under `void WorkshopFiveGesture::DoAnimateThread(WorkshopFiveGesture::Request * a_pReq)` ).
 
 5.	Navigate to `self-sdk-develop/examples/workshop_five` and create a text file called `CMakeLists.txt` and open this file. 
 
@@ -80,13 +81,13 @@ target_link_libraries(workshop_five_plugin wiringPi)
  And save the file. 
 
 ## Updating Raspberry Pi with LED gesture.
-6.	Now move your `self-sdk-develop/examples/workshop_five` directory from your local machine to your Pi. 
-   * For Mac, use Terminal. Run `cd self-sdk-develop/examples` and then:
+6.	Now move your `wlabs_self-sdk-master/examples/workshop_five` directory from your local machine to your Pi. 
+   * For Mac, use Terminal. Run `cd wlabs_self-sdk-master/examples` and then:
  `scp -r workshop_five pi@[IPaddress]:~/self/self-sdk-develop/examples`
 
    * For PC, use Filezilla.
 	Navigate to `self/self-sdk-develop/examples/` on the remote site side of the screen.
-	Navigate to the `self/self-sdk-develop/examples/` directory that you just created on the local site side of the screen.
+	Navigate to the `self/wlabs_self-sdk-master/examples/` directory that you just created on the local site side of the screen.
 	Drag your examples directory from the local side to the remote site to copy the directory to your Pi.
 
 7.	Now ssh to the Pi using Terminal for Mac (or Putty for Windows):
@@ -160,6 +161,8 @@ Note: The following steps will need to be repeated each time you power your Pi b
 5.	Run: `export LD_LIBRARY_PATH=./`.
 6.	Run: `export WIRINGPI_GPIOMEM=1`.
 7.	Run: `./self_instance `.
+
+You have now added a gesture for the LED light.  When you say, "can you laugh" to the robot, the LED light should blink i.e. you have added the blinking of the LED to Intu as a gesture. 
 
 # APPENDIX
 

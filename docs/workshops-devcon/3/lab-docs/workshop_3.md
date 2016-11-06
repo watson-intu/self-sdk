@@ -56,7 +56,7 @@ Follow the instructions for your platform.
 
 1. [Download the Intu SDK](https://hub.jazz.net/project/wlabs/self-sdk). Click on **Clone or download** and select **Download Zip**.
 2. Create a new directory named **intu** in a directory of your choosing.
-3. Unzip the self-sdk-develop.zip file into **intu**, making sure that you retain the folder structure. I.e. Your intu directory should now contain the unzipped **self-sdk-develop** folder.
+3. Unzip the wlabs_self-sdk-master.zip file into **intu**, making sure that you retain the folder structure. I.e. Your intu directory should now contain the unzipped **wlabs_self-sdk-master** folder.
 
 ### Preparing OS X
 
@@ -119,7 +119,7 @@ Follow the instructions for your platform.
    3. When the "Please choose an IDE" prompt is displayed, specify **1**, and press **Enter**.
 
 ### Building the Intu SDK for OS X
-1. In a new Terminal window, navigate to the **self-sdk-develop** directory inside **Intu**. You should just be able to run: `cd intu/self-sdk-develop` 
+1. In a new Terminal window, navigate to the **wlabs_self-sdk-master** directory inside **Intu**. You should just be able to run: `cd intu/wlabs_self-sdk-master` 
 
 	**Note:** If you have **already built the Intu SDK for OS X** in another workshop, run: `./scripts/clean.sh`    
 
@@ -154,7 +154,7 @@ Known toolchains are:
 
 1. If you do not have it installed already, download the trial version of the [CLion C++ IDE](https://www.jetbrains.com/clion/download/).
 
-2. In **CLion**, select Open -> home directory -> intu -> self-sdk-develop and click **OK**. 
+2. In **CLion**, select Open -> home directory -> intu -> wlabs_self-sdk-master and click **OK**. 
 
 	Note that a window may appear prompting you to open your project in a New Window or This Window. Select **New Window**. At the bottom of your CLion window, in the Problems tab, you will see the following Error, which you do not need to worry about:
 
@@ -163,7 +163,7 @@ Could not find a package configuration file provided by "SELF" with any of the f
   SELFConfig.cmake   self-config.cmake
 Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to a directory containing one of the above files.  If "SELF" provides a separate development package or SDK, be sure it has been installed.
 
-2i. Inside the CLion **self-sdk-develop project**, right-click **examples**, select **New**, and select **Directory**. Type in **workshop_three** for the new directory name, and click **OK**.
+2i. Inside the CLion **wlabs_self-sdk-master project**, right-click **examples**, select **New**, and select **Directory**. Type in **workshop_three** for the new directory name, and click **OK**.
  
 2ii. Right-click the `CMakeLists.txt` file in the **examples** directory, and click **Copy**. (If you are unsure of the directory you are in, look in the top-left navigation bar.)
   
@@ -191,14 +191,14 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
 1. Create a new directory inside this called **agents** in the **workshop_three** directory.
 2. Locate the Workshop 3 code snippet files **to be filled in** in:
 
- `self-sdk-develop/docs/workshops-devcon/3/code-snippets/WorkshopThreeAgent_start`
+ `wlabs_self-sdk-master/docs/workshops-devcon/3/code-snippets/WorkshopThreeAgent_start`
 
 3. Copy the `WorkshopThreeAgent.cpp` and the `WorkshopThreeAgent.h` files and paste them into the **agents** directory that you created.
 
 
 **For Windows users:**
 
-1. Open up File Explorer and navigate to **intu/self-sdk-develop/examples**.
+1. Open up File Explorer and navigate to **intu/wlabs_self-sdk-master/examples**.
 2. Create a new directory in examples called **workshop_three**. 
 3. Copy across `WorkshopThreeAgent.cpp` and `WorkshopThreeAgent.h` located under **self-sdk/docs/workshops-devcon/3/code-snippets/WorkshopThreeAgent_Start** into the **workshop_three** directory.
 2. In **Visual Studio**, in the **examples** directory, add a new **Win32 Project** called `workshop_three_plugin`, and click **OK**.
@@ -208,7 +208,7 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
 7. Inside the **Solution Explorer** window, right click **workshop****_three****_plugin**, and select **Add->New Filter**.
 8. Name the filter **agent**.
 9. Right-click on **agent**, and select **Add->Existing Items**.
-10. Navigate to **self-sdk-develop/examples/workshop_three** and select the files: `WorkshopThreeAgent.cpp` and `WorkshopThreeAgent.h`.
+10. Navigate to **wlabs_self-sdk-master/examples/workshop_three** and select the files: `WorkshopThreeAgent.cpp` and `WorkshopThreeAgent.h`.
 11. Right-click the **workshop****_three****_plugin** solution, open **Properties**, and make the following changes, but **before you begin, make sure Configuration at the top left is set to "All Configurations"**.
 
 * Change the value of **General->Character Set** to **Use Multi-Byte Character Set**.
@@ -239,7 +239,7 @@ In the next step, you will build out the **OnText**, **OnTone** and **OnLearning
 
 **For OS X and Windows users:**
 
-1. In **self-sdk-develop/docs/workshops-devcon/3/code-snippets/WorkshopThree_Snippets**, you will see the `WorkshopThreeCodeSnippets.txt` file. Open this file and find the OnText, OnTone and OnLearningIntent functions.
+1. In **wlabs_self-sdk-master/docs/workshops-devcon/3/code-snippets/WorkshopThree_Snippets**, you will see the `WorkshopThreeCodeSnippets.txt` file. Open this file and find the OnText, OnTone and OnLearningIntent functions.
 
 1. For **OnText()**, copy the code directly below **//Code for OnText()** in `WorkshopThreeCodeSnippets.txt`. Paste this inside the function body **{}** of **OnText()** in `WorkshopThreeAgent.cpp` located inside your **agents** directory. The code which you need is displayed below for completeness; however, it is **not** recommended for you to copy it from here due to formatting issues.
   
@@ -335,15 +335,15 @@ First, this code iterates over the response to find the emotion that has the hig
 
 **Additional steps for OS X users:**
 
-1. Open a **new** Terminal window and navigate to **intu/self-sdk-develop** by running: `cd intu/self-sdk-develop`.
+1. Open a **new** Terminal window and navigate to **intu/wlabs_self-sdk-master** by running: `cd intu/wlabs_self-sdk-master`.
 
 	**Note:** If you have built the SDK in a previous workshop, make sure you run: `./scripts/clean.sh`.
 
 2. Run the build script: `./scripts/build_mac.sh`. **Do not close this Terminal window.**
 
-**Congratulations!** You just built all the functions required for the emotion agent. This process created the `libworkshop_three_plugin.dylib` in the **intu/self-sdk-develop/bin/mac** directory.
+**Congratulations!** You just built all the functions required for the emotion agent. This process created the `libworkshop_three_plugin.dylib` in the **intu/wlabs_self-sdk-master/bin/mac** directory.
 
-In the next task, you will update the `body.json` file also located in the **intu/self-sdk-develop/bin/mac/etc** directory to include the new plugin so that Intu can use it.
+In the next task, you will update the `body.json` file also located in the **intu/wlabs_self-sdk-master/bin/mac/etc** directory to include the new plugin so that Intu can use it.
 
 
 ## 4. Configuring your Intu instance to include the emotion agent
@@ -362,7 +362,7 @@ In the next task, you will update the `body.json` file also located in the **int
 
 	* For **Windows**, in **Visual Studio**, in the **Solution Explorer**, go to **sdk->bin->Debug**. 
 	
-	* For **OS X**, this will be in **self-sdk-develop/bin/mac/etc/**.
+	* For **OS X**, this will be in **wlabs_self-sdk-master/bin/mac/etc/**.
 	
 2. Locate the `m_Libs` variable.
   * If you're using **OS X**, the variable is `"m_Libs" : [ "platform_mac" ],`
@@ -380,10 +380,10 @@ In the next task, you will update the `body.json` file also located in the **int
 
 **For OS X users:**
 
-1. In your most recent Terminal window, navigate to the **bin** directory (**self-sdk-develop/bin**).
+1. In your most recent Terminal window, navigate to the **bin** directory (**wlabs_self-sdk-master/bin**).
 2. Run the following command:
-  `export LD_LIBRARY_PATH={$HOME}/intu/self-sdk-develop/bin/mac`
-3. In the directory **intu/self-sdk-develop/bin/mac**, run Intu by issuing the following command: `./self_instance -c 0 -f 0`.
+  `export LD_LIBRARY_PATH={$HOME}/intu/wlabs_self-sdk-master/bin/mac`
+3. In the directory **intu/wlabs_self-sdk-master/bin/mac**, run Intu by issuing the following command: `./self_instance`.
 
 **For Windows users:**
 
