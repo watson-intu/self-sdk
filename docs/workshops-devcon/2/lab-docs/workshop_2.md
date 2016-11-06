@@ -54,7 +54,7 @@ To complete this task, you must download the **Intu Starter Kit**, which contain
 3. Expand this branch of the dialog tree by clicking through the following dialog nodes: **#dialog** -> **@greeting** -> **@greeting:hello**. You may need to scroll down as you're clicking through.
 4. In the **Watson Response** box of **greeting:hello**, in `“values”: [ ]`, the current four responses for when you say "hello" are displayed. You can edit, remove, and add to these. For now, add a comma (,) directly after the final quotation mark (") at the end of "why hello there[emote=wave_anim]" and on a new line directly below it, add "Hello Workshop Two participant!".
 5. Click the **Conversation bubble** icon on the top right to open a **Try it out** panel where you can test your new response.
-6. Test your change.
+6. Test your response.
   1. In the **Enter something to test your bot** field at the bottom of the **Try it out** panel, type Hello, and press **Enter**. 
   2. Submit hello a few times until your new response is returned. 
   
@@ -74,8 +74,8 @@ To complete this task, you must download the **Intu Starter Kit**, which contain
   4. Click **#question** in your intents list, and search for **capital**. (You can use **Ctrl + F** or **Cmd + F**). Four entries for "What is the capital of..." should be displayed.
   5. Select the checkbox beside each of the four entries.
   6. Scroll to the top of **#question**, and select **Move to...**.
-  7. In the **# Intent name** box that is displayed, start typing **dialog_capitals**, and select it when it appears in the dropdown list. 
-  8. Scroll to the top of your intents list and click on **#dialog_capitals**, where you should see the four entries that you moved. This may take a minute or more to update, and and you may need to refresh your page.
+  7. In the **# Intent name** box that is displayed, start typing **dialog_capitals**, and select it when it appears in the dropdown list. **Note:** The move of the four entries from **#question** to **#dialog_capitals** may take a minute or more to update, and you may need to refresh your page. 
+  8. Scroll to the top of your intents list and click on **#dialog_capitals**, where you should see the four entries that you moved.
   8. Click **#dialog_capitals**, and select **Add a new user example…**.
   9. Type **What is the capital of Australia**, and press **Enter**. This entry is added to the list.
   10. Repeat steps 8 and 9 for **What is the capital of Canada** and **What is the capital of New Zealand**.
@@ -102,9 +102,14 @@ To complete this task, you must download the **Intu Starter Kit**, which contain
 7.	In the white **@countries:Australia** box, type in the response: **The capital of Australia is Canberra.**
 8.	Click on the **@countries:Australia** where you just typed in the response: The capital of Australia is Canberra. The box will become outlined in green. Click on the green **+** icon on the bottom of the box. 
 9.	In the new box that appears, under **Enter a condition**, type in: **@ countries:Canada,** and for the response: **The capital of Canada is Ottawa.**
-10.	Repeat for **@capitals:New Zealand**, where the response will be **The capital of Canada is Wellington.**
-11.	Test your change.
-In the **Enter something to test your bot** field down the bottom, type **What is the capital of Australia?** You should see the response: **The capital of Australia is Canberra.** Note that Conversation may take a few minutes to train, as indicated by the pop-up message: **Watson is training on your recent changes** in purple.
+10.	Repeat for **@capitals:New Zealand**, where the response will be **The capital of New Zealand is Wellington.**
+11. Click the **Conversation bubble** icon on the top right to open a **Try it out** panel where you can test your new response.
+
+12.	Test your response.
+
+	1. In the **Enter something to test your bot** field at the bottom of the **Try it out** panel, type: **What is the capital of Australia?** You should see the response: **The capital of Australia is Canberra.** Note that Conversation may take a few minutes to train, as indicated by the pop-up message: **Watson is training on your recent changes** in purple.
+	2. Try asking for the capital of Canada and New Zealand.
+
 
 
 ## 4. Configuring Self to use your new Conversation instance
