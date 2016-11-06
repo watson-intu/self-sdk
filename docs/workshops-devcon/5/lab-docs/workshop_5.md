@@ -203,7 +203,7 @@ You have now added a gesture for the LED light.  When you say, "can you laugh" t
 
 3. Extract the files from the zip to a local directory. 
 
-4. Open the "Read Me” text file in the extracted folder and follow the instructions to format your SD card.
+4. Open the "Read Me" text file in the extracted folder and follow the instructions to format your SD card.
 
 5. Once your SD card has been formatted, drag all the files within the extracted NOOBS folder and drop them onto the SD card.
 
