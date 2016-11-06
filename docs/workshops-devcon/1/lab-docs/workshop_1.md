@@ -11,7 +11,7 @@ In this workshop, you install Intu on your laptop and get it to say hello to you
 
 Getting started includes the following tasks:
 
-1. [Requesting access to the Watson Intu Gateway](#requesting-access-to-the-watson-intu-gateway)
+1. [Requesting access to the Intu Gateway](#requesting-access-to-the-watson-intu-gateway)
 2. [Downloading Intu](#downloading-intu)
 3. [Installing Intu](#installing-intu)
 
@@ -41,7 +41,7 @@ Getting started includes the following tasks:
 
 ### 3. Installing Intu
 
-1. Open the Intu-Tooling-OSX64 or Intu-Tooling-Win64 directory, where you will the **Intu Manager**. Open Intu Manager.
+1. Open the Intu-Tooling-OSX64 or Intu-Tooling-Win64 directory, where you will find the **Intu Manager**. Open Intu Manager.
 	
 	**For Mac users:** Right-click on the Intu Manager and select **Open**
 	
@@ -81,9 +81,9 @@ Your instance of Intu is preconfigured with the following Watson services: Conve
 ### 1. Creating instances of Watson services
 To use Intu, you need operational instances of the following services in Bluemix: Conversation, Natural Language Classifier, Speech to Text, and Text to Speech.
 
-**Pro tip:** As you complete this task, you'll receive credentials for each service instance, and you'll need these credentials later. Open a new file in your favourite text editor and create a section for each service so that you can temporarily store its credentials.
+**Pro tip:** As you complete this task, you'll receive credentials for each service instance, and you'll need these credentials later. Open a new file in your favorite text editor and create a section for each service so that you can temporarily store its credentials.
 
-1. On the Bluemix dashboard, click **Catalog** in the top right navigation bar.
+1. On the Bluemix dashboard, click [**Catalog**](https://console.ng.bluemix.net/catalog/) in the top right navigation bar.
 
 2. In the All Categories menu on the left, under Services, click on **Watson**.
 3. Create an instance of the Conversation service.
@@ -91,7 +91,7 @@ To use Intu, you need operational instances of the following services in Bluemix
   2. Keep all the default values, and click **Create**.
   3. Click the **Service Credentials** tab.
   4. Click **View Credentials** for the new Conversation service instance.
-  5. Copy the values for your password and username and paste them into a new text file in your favourite text editor.
+  5. Copy the values for your password and username and paste them into a new text file in your favorite text editor.
   6. Click the **<--Watson** breadcrumb near the top left (directly above your Conversation service name). The list of your service instances is displayed.
   7. Add the next service instance by clicking the **Create Watson** **+** button. The Watson service catalog is displayed.
 4. Create instances of the Natural Language Classifier, Speech to Text, and Text to Speech services by repeating the same substeps 1 - 7 that you completed to create the Conversation service instance.
@@ -99,7 +99,7 @@ To use Intu, you need operational instances of the following services in Bluemix
 
 ### 2. Configuring Intu to use your service instances
 
-To configure Intu to use your instances of these Watson services, log in to to the [Intu Gateway](https://rg-gateway.mybluemix.net/) and complete the following steps:
+To configure Intu to use your instances of these Watson services, [log in to the Intu Gateway](https://rg-gateway.mybluemix.net/) and complete the following steps:
 
 1. Click on **MANAGE** on the left hand side navigation bar, and select **Services**. 
 
