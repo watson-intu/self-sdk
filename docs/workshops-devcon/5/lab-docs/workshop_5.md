@@ -66,7 +66,7 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
 
   ```
 include_directories(. wiringPI)
-SET(GCC_COVERAGE_LINK_FLAGS “-lwiringPi”)
+SET(GCC_COVERAGE_LINK_FLAGS "-lwiringPi")
 add_definitions(${GCC_COVERAGE_LINK_FLAGS})
 
 file(GLOB_RECURSE SELF_CPP RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "*.cpp")
