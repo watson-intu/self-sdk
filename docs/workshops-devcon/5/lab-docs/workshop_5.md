@@ -291,7 +291,7 @@ Linux raspberrypi 4.4.21-v7+ #911 SMP Thu Sep 15 14:22:38 BST 2016 armv7l GNU/Li
 	4.	Now navigate into the wiringPi directory by running: `cd wiringPi/`
 	5.	Run: `./build`
 
-	You should see a list of classes compiled and "All Done” at the end.
+	You should see a list of classes compiled and "All Done" at the end.
 	
 Finally, in a new Terminal/PuTTY window, ssh into your Pi, navigate to its home directory by running `cd /home/pi`, and in here, create a new directory called **self**: `mkdir self`. This directory will be used in the steps below.
 
@@ -352,7 +352,7 @@ Finally, in a new Terminal/PuTTY window, ssh into your Pi, navigate to its home 
  
 3. Edit `the body.json` that you opened for editing by adding the credentials you just retrieved from the Intu Gateway.
 	1.	In the `body.json` file, search for `"m_EmbodimentCreds"` to jump to the correct section.
-	2.	Highlight/Select the entire section of the file from `"m_EmbodimentCreds”` to `""m_OrgId”: "”},`
+	2.	Highlight/Select the entire section of the file from `"m_EmbodimentCreds"` to `""m_OrgId": ""},`
 	3.	Delete this section of the file.
 	4.	Now paste the credentials you saved from the Intu Gateway into this section of the `body.json` file. 
 
