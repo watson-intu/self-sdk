@@ -56,7 +56,7 @@ Within the `gesture` directory paste the `WorkshopFiveGesture.cpp` and `Workshop
    
    Copy all the contents in `WorkshopFiveCodeSnippets.txt`.
 
-   Open the `wlabs_self-sdk-master/examples/workshop_five/gestures/WorkshopFiveGesture.cpp` source file and locate the method `DoAnimateThread()`. Into the body of this function paste the code from the `WorkshopFiveCodeSnippets.txt`. 
+   Open the `wlabs_self-sdk-master/docs/workshops-devcon/5/code-snippets/WorkshopSixSensor_Start/WorkshopFiveGesture.cpp` source file and locate the method `DoAnimateThread()`. Into the body of this function paste the code from the `WorkshopFiveCodeSnippets.txt`. 
    (This pasted into the brackets under `void WorkshopFiveGesture::DoAnimateThread(WorkshopFiveGesture::Request * a_pReq)` ).
 
 5.	Navigate to `self-sdk-develop/examples/workshop_five` and create a text file called `CMakeLists.txt` and open this file. 
