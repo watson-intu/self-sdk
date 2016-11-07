@@ -1,4 +1,4 @@
-# Workshop 1: Saying hello!
+# Workshop 1: Saying Hello!
 
 In this workshop, you install Intu on your laptop and get it to say hello to you.
 
@@ -74,6 +74,7 @@ Now that Intu is installed successfully, explore how you can test conversations 
 ## Challenge: Configuring the Intu avatar for your instance
 
 To complete this challenge, do the tasks in Workshop 7: Installing, configuring, and running the Intu Avatar.
+
   
 ## After DevCon ends
 Your instance of Intu is preconfigured with the following Watson services: Conversation, Natural Language Classifier, Speech to Text, and Text to Speech. The preconfiguration is enabled for 30 days. If you want to test Intu after 30 days, you must create your own instances of these services and configure Intu to use them.
@@ -81,17 +82,16 @@ Your instance of Intu is preconfigured with the following Watson services: Conve
 ### 1. Creating instances of Watson services
 To use Intu, you need operational instances of the following services in Bluemix: Conversation, Natural Language Classifier, Speech to Text, and Text to Speech.
 
-**Pro tip:** As you complete this task, you'll receive credentials for each service instance, and you'll need these credentials later. Open a new file in your favorite text editor and create a section for each service so that you can temporarily store its credentials.
+**Pro tip:** As you complete this task, you'll receive credentials for each service instance, and you'll need these credentials later. Open a new file in your favourite text editor and create a section for each service so that you can temporarily store its credentials.
 
-1. On the Bluemix dashboard, click [**Catalog**](https://console.ng.bluemix.net/catalog/) in the top right navigation bar.
-
+1. On the Bluemix dashboard, click **Catalog** in the top right navigation bar.
 2. In the All Categories menu on the left, under Services, click on **Watson**.
 3. Create an instance of the Conversation service.
   1. Click the **Conversation** tile.
   2. Keep all the default values, and click **Create**.
   3. Click the **Service Credentials** tab.
   4. Click **View Credentials** for the new Conversation service instance.
-  5. Copy the values for your password and username and paste them into a new text file in your favorite text editor.
+  5. Copy the values for your password and username and paste them into a new text file in your favourite text editor.
   6. Click the **<--Watson** breadcrumb near the top left (directly above your Conversation service name). The list of your service instances is displayed.
   7. Add the next service instance by clicking the **Create Watson** **+** button. The Watson service catalog is displayed.
 4. Create instances of the Natural Language Classifier, Speech to Text, and Text to Speech services by repeating the same substeps 1 - 7 that you completed to create the Conversation service instance.
@@ -99,11 +99,13 @@ To use Intu, you need operational instances of the following services in Bluemix
 
 ### 2. Configuring Intu to use your service instances
 
-To configure Intu to use your instances of these Watson services, [log in to the Intu Gateway](https://rg-gateway.mybluemix.net/) and complete the following steps:
+To configure Intu to use your instances of these Watson services, log in to the [Intu Gateway](https://rg-gateway.mybluemix.net/) and complete the following steps:
 
 1. Click on **MANAGE** on the left hand side navigation bar, and select **Services**. 
 
 2. Select your Organization and Group in the top Filter by menu, if not already selected.
-3. For your instances of the Conversation, Natural Language Classifier, Speech to Text, and Text to Speech services, click **Edit**, and specify the user ID and password (saved in your text file in the previous section **Creating instances of Watson services**), and click **Save**.
+3. For your instances of the Natural Language Classifier, Speech to Text, and Text to Speech services, click **Edit**, and specify the user ID and password (saved in your text file in the previous section **Creating instances of Watson services**), and click **Save**.
+4. To configure your instance of **Conversation**, navigate to **DOWNLOADS** on the left of your Intu Gateway browser page, download the **Intu Starter Kit**, and follow the instructions in the `readme.txt` file. Alternatively, go to the instructions for **Workshop 2**, and follow the steps in: **1. Setting up the Conversation service**.
+ 
 
-**Important:** Do not change the service endpoint unless you are an enterprise user.
+**Important:** Do not change the service endpoint for your services unless you are an enterprise user.
