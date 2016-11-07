@@ -1,6 +1,6 @@
 # Workshop 5 – Raspberry Pi
 
-In this workshop, you ?????. 
+In this workshop, you will (NEEDS TO BE FINISHED). 
 
 **Before you begin:** 
 
@@ -20,19 +20,19 @@ In this workshop, you ?????.
 	* Keyboard and Mouse (with USB connections)
 	* An imaged 32 GB SD card  
 
-	**Note:** If you **do not** have an imaged card from Devcon, please go to the Appendix.	
+	**Note:** If you **do not** have an imaged card from Devcon, please go to the **Appendix**.	
 
 3. You should have **assembled the Raspberry Pi** using the instructions from: [Workshop 5 Lab Docs - Assembling the Raspberry Pi.pdf](https://hub.jazz.net/project/wlabs/self-sdk/overview#https://hub.jazz.net/git/wlabs%252Fself-sdk/contents/master/docs/workshops-devcon/5/lab-docs/Assembling%2520the%2520Raspberry%2520Pi.pdf)
 
-**Note:** In this workshop, commands are issued from **Terminal** on **Mac** or **PuTTY** on **Windows**. For **Windows** users, if you do not have **PuTTY** installed, you can download it using this [link](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html). **Windows** users may also prefer to use a file management tool like **Filezilla** or similar to manage file transfer between their local machine and the Raspberry Pi. Filezilla can be downloaded using this [link](https://filezilla-project.org/).
+**Note:** In this workshop, commands are issued from **Terminal** on **Mac** or **PuTTY** on **Windows**. For **Windows** users, if you do not have **PuTTY** installed, you can download it using this [link](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html). **Windows** users will also require a file management tool to copy files over a network between their local machine and the Raspberry Pi. You can use a stand-alone tool like **Filezilla**, or you may prefer scp via Putty. **Filezilla** can be downloaded using this [link](https://filezilla-project.org/).
 
 Complete the following tasks:
 
-1. Set up the Wi-Fi connection for your Raspberry Pi
-2. Download the Self Sdk onto your computer and add in the code for the LED gesture
-3. Updating your Raspberry Pi with the LED gesture
-4. Updating the body.json configuration
-5. Run Intu on your Raspberry Pi
+1. [Set up the Wi-Fi connection for your Raspberry Pi](#set-up-the-wi-fi-connection-for-your-raspberry-pi)
+2. [Download the Self SDK onto your computer and add in the code for the LED gesture](#download-the-self-sdk-onto-your-computer-and-add-in-the-code-for-the-led-gesture)
+3. [Updating your Raspberry Pi with the LED gesture](#updating-your-raspberry-pi-with-the-LED-gesture)
+4. [Updating the body.json configuration](#updating-the-body.json-configuration)
+5. [Run Intu on your Raspberry Pi](#run-intu-on-your-raspberry-pi)
 
 ## Set up the Wi-Fi connection for your Raspberry Pi
 
@@ -55,24 +55,24 @@ Complete the following tasks:
 
 	**For Windows users**: Open PuTTY, type in the Raspberry Pi's IP address, and when prompted, type in the username (**pi**) and password (**raspberry**) for the Raspberry Pi.
 
-5. At this point, you can disconnect the external monitor, mouse and keyboard from the Raspberry Pi. **Do not disconnect the Raspberry Pi from its power source.**
+6. At this point, you can disconnect the external monitor, mouse and keyboard from the Raspberry Pi. **Do not disconnect the Raspberry Pi from its power source.**
 
-6. Check that your laptop is still on the same network as the Raspberry Pi, and reboot the Raspberry Pi by running `sudo reboot` in your ssh window (Terminal for Mac and PuTTY for Windows). 
+7. Check that your laptop is still on the same network as the Raspberry Pi, and reboot the Raspberry Pi by running `sudo reboot` in your ssh window (Terminal for Mac and PuTTY for Windows). 
 
 **Note:** Unless explicitly stated, all the following steps are to be run on your local computer.
 
-## Download the Self Sdk onto your computer and add in the code for the LED gesture
+## Download the Self SDK onto your computer and add in the code for the LED gesture
 
-### Download the Self SDK
+### 1. Download the Self SDK
 
 1. [Download the Self SDK](https://hub.jazz.net/project/wlabs/self-sdk). Click on the **download icon** next to the default **master** branch selected.
 
 2. Create a new directory named **intu** in your **home** directory.
 
-3. Unzip the **wlabs_self-sdk-master.zip** file into **intu**, making sure that you retain the folder structure, i.e. your intu directory should now contain the unzipped **wlabs_self-sdk-master** folder.
+3. Unzip the **wlabs_self-sdk-master.zip** file into **intu**, making sure that you retain the folder structure, i.e. your intu directory should now contain the unzipped **wlabs_self-sdk-master** folder. This may take some time.
 
+### 2. Creating the LED gesture on OS X
 
-### ?????? Preparing the ???? for the LED gesture on OS X
 1. If you do not have it installed already, download the trial version of the [CLion C++ IDE](https://www.jetbrains.com/clion/download/).
 
 2. In **CLion**, select Open -> home directory -> intu -> wlabs_self-sdk-master and click **OK**. 
@@ -115,18 +115,15 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
 
 5. Copy the `WorkshopFiveGesture.cpp` and the `WorkshopFiveGesture.h` files and paste them into the **gestures** directory that you created.
 
-
 	* Open the `WorkshopFiveGesture.cpp` file, which contains the following functions that enable the gesture you'll create:
 
 	* The Execute, Abort, AnimateThread and AnimateDone functions are already completely built out.
 
 	* In the next step, you will build out the **DoAnimateThread** function using the example code provided.
 
-### ??? Building out the LED gesture function for OS X
+6. In **wlabs_****self-sdk-master/docs/workshops-devcon/5/code-snippets/WorkshopFive_Snippets**, you will see the `WorkshopFiveCodeSnippets.txt` file. Open this file and find the **DoAnimateThread** function.
 
-1. In **wlabs_****self-sdk-master/docs/workshops-devcon/5/code-snippets/WorkshopFive_Snippets**, you will see the `WorkshopFiveCodeSnippets.txt` file. Open this file and find the **DoAnimateThread** function.
-
-2. Copy the entire contents of `WorkshopFiveCodeSnippets.txt ` for the **DoAnimateThread()** function. Paste this inside the function body **{}** of **DoAnimateThread()** in `WorkshopFiveGesture.cpp` located in your **gestures** directory, directly above the line of code which reads: `Log::Debug("WorkshopFiveGesture", "in DoAnimateThread");`. The code which you need is displayed below for completeness; however, it is **not** recommended for you to copy it from here due to formatting issues.
+7. Copy the entire contents of `WorkshopFiveCodeSnippets.txt ` for the **DoAnimateThread()** function. Paste this inside the function body **{}** of **DoAnimateThread()** in `WorkshopFiveGesture.cpp` located in your **gestures** directory, directly above the line of code which reads: `Log::Debug("WorkshopFiveGesture", "in DoAnimateThread");`. The code which you need is displayed below for completeness; however, it is **not** recommended for you to copy it from here due to formatting issues.
 
 
   ```
@@ -163,9 +160,9 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
     
     ```
 
-3. Save your changes (**Cmd + S**). 
+8. Save your changes (**Cmd + S**). 
 
-### ???????? Preparing for Windows
+### 3. Creating the LED gesture on Windows
 
 1.	Open up File Explorer and navigate to your **home** directory. This should be: **C:\Users\username** ("username" should read your name)
 
@@ -176,16 +173,12 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
 	`WorkshopFiveGesture.cpp` 
 	
 	`WorkshopFiveGesture.h`
+		
+4. Copy `WorkshopFiveGesture.cpp` and `WorkshopFiveGesture.h` from **WorkshopFiveGesture_Start/** to the **gestures** directory which you just created.
 	
-	
-3. Copy `WorkshopFiveGesture.cpp` and `WorkshopFiveGesture.h` from **WorkshopFiveGesture_Start/** to the **gestures** directory which you just created.
-	
+5. Now navigate to **wlabs_****self-sdk-master/docs/workshops-devcon/5/code-snippets/WorkshopFiveGesture_Snippets** and locate the `WorkshopFiveCodeSnippets.txt` file and find the **DoAnimateThread** function.
 
-4. Now navigate to **wlabs_****self-sdk-master/docs/workshops-devcon/5/code-snippets/WorkshopFiveGesture_Snippets** and locate the `WorkshopFiveCodeSnippets.txt` file.
-
- and find the **DoAnimateThread** function.
-
-2. Copy the entire contents of `WorkshopFiveCodeSnippets.txt ` for the **DoAnimateThread()** function. Paste this inside the function body **{}** of **DoAnimateThread()** in `WorkshopFiveGesture.cpp` located in your **gestures** directory, directly above the line of code which reads: `Log::Debug("WorkshopFiveGesture", "in DoAnimateThread");`. The code which you need is displayed below for completeness; however, it is **not** recommended for you to copy it from here due to formatting issues.
+6. Copy the entire contents of `WorkshopFiveCodeSnippets.txt ` for the **DoAnimateThread()** function. Paste this inside the function body **{}** of **DoAnimateThread()** in `WorkshopFiveGesture.cpp` located in your **gestures** directory, directly above the line of code which reads: `Log::Debug("WorkshopFiveGesture", "in DoAnimateThread");`. The code which you need is displayed below for completeness; however, it is **not** recommended for you to copy it from here due to formatting issues.
 
 
   ```
@@ -221,11 +214,10 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
     }
     
     ```
-
  
-5.	Navigate to the **workshop_five** directory you created in your home directory, and create a new text file called `CMakeLists.txt`. 
+7.	Navigate to the **workshop_five** directory you created in your home directory, and create a new text file called `CMakeLists.txt`. 
 
-6. Open this file and add in the following lines of code:
+8. Open this file and add in the following lines of code:
 
 	```
 	include_directories(. wiringPI)
@@ -247,37 +239,42 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
 
 1.	Copy the **workshop_five** directory from your local machine over to your Raspberry Pi. 
    
-   **For Mac and Windows users using an ssh window:** 
-   1. Open a new ssh window and navigate to the **examples** directory (the parent directory of workshop_five) by running: `cd intu/wlabs_self-sdk-master/examples`
+   **For Mac users:** 
+   1. Open a new SSH window and navigate to the **examples** directory (the parent directory of workshop_five) by running: `cd intu/wlabs_self-sdk-master/examples`
 	2. Run: `scp -r workshop_five pi@{IPaddress}:~/self/self-sdk-develop/examples`
 
-	**For Windows users using Filezilla:** 
+	**For Windows users:** 
 	
-   1. Open Filezilla.
+   1. Open Filezilla and connect to your Raspberry Pi. 
+		1. In the **Host** field, specify your Raspberry Pi's IP address.
+		2. In the **Username** field, specify your Raspberry Pi's username (**pi**).
+		3. In the **Password** field, specify your Raspberry Pi's password (**raspberry**).
+		4. In the **Port** field, specify **22**.  	
 	2. Navigate to **self/self-sdk-develop/examples/** on the **Remote site** side of the screen.
-	Navigate to the **intu/wlabs_self-sdk-master/examples/** directory on the **Local site** side of the screen.
-	3. Drag your **examples** directory from the **Local site** to the **Remote site** to copy the directory across to your Raspberry Pi.
+	
+	3. Navigate to the **intu/wlabs_self-sdk-master/examples/** directory on the **Local site** side of the screen.
+	
+	4. Drag your **examples** directory from the **Local site** to the **Remote site** to copy the directory across to your Raspberry Pi.
 
-2.	ssh to the Raspberry Pi in a new ssh window:
+2.	SSH to the Raspberry Pi in a new SSH window (Terminal for Mac or PuTTY for Windows):
 
 	1. Run:`ssh pi@{pi's_ip_address}`	
-  	2. Run `cd /home/pi/self/self-sdk-develop/examples`
+  	2. Run: `cd /home/pi/self/self-sdk-develop/examples`
 
 3.	Edit the `CMakeLists.txt` file in the examples directory you're currently in.
 
 	1. Run: `nano CMakeLists.txt`
-   2. Carefully add the following line at the end of the file:		`add_subdirectory(workshop_five)`
-   3. Save your changes to the `CMakeLists.txt` file. 
+	2. Carefully add the following line at the end of the file:		`add_subdirectory(workshop_five)`
+	3. Save your changes to the `CMakeLists.txt` file. 
    		1. Use **Ctrl + X** to `Exit`.
    		2. When prompted with: `Save modified buffer (ANSWERING "No" WILL DESTROY CHANGES) ? `, type **Y** for **Yes**. 
    		3. When prompted with: `File Name to Write: CMakeLists.txt`, hit **Return** or **Enter** to finalise your changes.
 
 ## Updating the `body.json` configuration
 
-### Retrieving the credentials for your Organization in the Intu Gateway
+### 1. Retrieving the credentials for your Organization in the Intu Gateway
 
 **Note:** If you have updated your `body.json` file with your `EmbodimentCreds` from the [Intu Gateway](rg-`gateway.mybluemix.net`) in Workshop 1, please skip down to **Configuring your `body.json` file**. 
-
 
 1. [Log in to the Intu Gateway](https://rg-gateway.mybluemix.net/). 
 
@@ -287,47 +284,45 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
 
 4. Copy these credentials by clicking the **Copy** icon in the top right of the window, and paste this into a new text file using your favorite text editor.
 
+### 2. Configuring your `body.json` file
 
+**For Mac users:**
 
-
-### Configuring your `body.json` file
-
-**For Mac and Windows users using a ssh window:**
-
-1. Copy the `body.json` from your Raspberry Pi to your local machine by running the following command in a new ssh window:
+1. Copy the `body.json` from your Raspberry Pi to your local machine by running the following command in a new SSH window:
 		 `scp pi@[pi ip address]:/home/pi/self/self-sdk-develop/bin/raspi/etc/profile/body.json ~/`
 
 	Note that this copies the `body.json` file to your **home** directory.
 
-1. Open your `body.json` file using your favorite text editor. 
+2. Open your `body.json` file using your favorite text editor. 
 
-2. Locate the `m_Libs` variable, and change it to read: `"m_Libs":["platform_raspi", "workshop_five_plugin"]`
+3. Locate the `m_Libs` variable, and change it to read: `"m_Libs":["platform_raspi", "workshop_five_plugin"]`
 
-3. Locate `"m_EmbodimentCreds":{ ... }`, and replace this with the complete set of credentials you copied over into your text editor from the Intu Gateway in step 4 of the previous section.
+4. Locate `"m_EmbodimentCreds":{ ... }`, and replace this with the complete set of credentials you copied over into your text editor from the Intu Gateway in step 4 of the previous section.
 
-4. Save your changes and close the file.
+5. Save your changes and close the file.
 
-5. Now copy your newly edited `body.json` from your local machine to the Raspberry Pi by running the following command from a **new** Terminal or PuTTY window: 
+6. Now copy your newly edited `body.json` from your local machine to the Raspberry Pi by running the following command from a **new** Terminal window: 
 `scp ~/body.json pi@{pi'sip_address}:/home/pi/self/self-sdk-develop/bin/raspi/etc/profile/`
 
-
-**For Windows users using Filezilla:**
+**For Windows users:**
 
 1. Open Filezilla and connect to your Raspberry Pi.
 
 2. On the **Remote site** side of the Filezilla screen, navigate to **/home/pi/self/self-sdk-develop/bin/raspi/etc/profile**.
-3. Locate the body.json file in the profile directory, and right click and select View/Edit.
-2. Locate the `m_Libs` variable, and change it to read: `"m_Libs":["platform_raspi", "workshop_five_plugin"]`
 
-3. Locate `"m_EmbodimentCreds":{ ... }`, and replace this with the complete set of credentials you copied over into your text editor from the Intu Gateway the previous section.
+3. Locate the `body.json` file in the profile directory, and right click and select **View/Edit**.
 
-4. Exit the window you were using to edit the `body.json` file, upon which you will be prompted to upload the file back onto the server.
+4. Locate the `m_Libs` variable, and change it to read: `"m_Libs":["platform_raspi", "workshop_five_plugin"]`
 
-5. Click **Yes**. This action saves your changes to your Raspberry Pi.
+5. Locate `"m_EmbodimentCreds":{ ... }`, and replace this with the complete set of credentials you copied over into your text editor from the Intu Gateway the previous section.
 
-### Building the Self SDK on your Raspberry Pi
+6. Exit the window you were using to edit the `body.json` file, upon which you will be prompted to upload the file back onto the server.
 
-1. In your current (or a new) ssh session to the Raspberry Pi, navigate to the **self-sdk-develop** directory: `cd self-sdk-develop`
+7. Click **Yes**. This action saves your changes to your Raspberry Pi.
+
+### 3. Building the Self SDK on your Raspberry Pi
+
+1. In your current (or a new) SSH session to the Raspberry Pi, navigate to the **self-sdk-develop** directory: `cd self-sdk-develop`
 	
 2.	Mark the build script as executable by running: 
 `chmod +x scripts/build_raspi.sh`
@@ -337,17 +332,22 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
 	**Note:** If you have any build errors, run: `scripts/clean.sh` and then rerun: `scripts/build_raspi.sh`
 
 ## Run Intu on your Raspberry Pi
-Run Intu on your Raspberry Pi by completing the following steps in your ssh window. 
+
+Run Intu on your Raspberry Pi by completing the following steps in your SSH window. 
 
 **Note:** The following steps will need to be repeated each time you power up your Raspberry Pi (i.e. unplug and plug back in the power source to your Raspberry Pi).
 
-1.	If you have a HDMI cable plugged into your Raspberry Pi, verify that the sound is set to **analog**. This can be done by **right clicking** the **speaker icon** at the top right hand corner of the Raspberry Pi's homescreen, and selecting **analog**. 
+1.	If you have a HDMI cable plugged into your Raspberry Pi, verify that the sound is set to **analog**. This can be done by right clicking the **speaker icon** at the top right hand corner of the Raspberry Pi's homescreen, and selecting **analog**. 
 
 2.	Verify that you have a microphone and speaker plugged into your Raspberry Pi. Note that your speaker may need to be charged before use. Make sure that it is turned on before proceeding with the next step.
-4.	Navigate to the **raspi** directory using: `cd /home/pi/self/self-sdk-develop/bin/raspi`.
-5.	Run: `export LD_LIBRARY_PATH=./`
-6.	Run: `export WIRINGPI_GPIOMEM=1`
-7.	Run: `./self_instance `
+
+3.	Navigate to the **raspi** directory using: `cd /home/pi/self/self-sdk-develop/bin/raspi`.
+
+4.	Run: `export LD_LIBRARY_PATH=./`
+
+5.	Run: `export WIRINGPI_GPIOMEM=1`
+
+6.	Run: `./self_instance `
 
 **Note:** Each time you want to run Intu, you must follow steps 4-6 each time:
 
@@ -369,7 +369,7 @@ It is from the configuration file `raspi.anims`, in `Intu/wlabs_self-sdk-master/
 
 ##Steps for putting Intu on your Raspberry Pi using an SD card with the Intu image
 
-**Note:** In this workshop, commands are issued from **Terminal** on **Mac** or **PuTTY** on **Windows**. For **Windows** users, if you do not have **PuTTY** installed already, you can download it using this [link](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
+**Note:** Commands are assumed to be issued from **Terminal** on **Mac** or **PuTTY** on **Windows**. For **Windows** users, if you do not have **PuTTY** installed, you can download it using this [link](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html). **Windows** users will also require a file management tool to copy files over a network between their local machine and the Raspberry Pi. You can use a stand-alone tool like **Filezilla**. **Filezilla** can be downloaded using this [link](https://filezilla-project.org/).
 
 1.	Connect your Raspberry Pi to a power source, and connect an external keyboard, mouse and monitor to your Raspberry Pi.
 
@@ -392,7 +392,7 @@ It is from the configuration file `raspi.anims`, in `Intu/wlabs_self-sdk-master/
 
 6. Check that your laptop is on the same network as the Raspberry Pi. Reboot the Raspberry Pi by running `sudo reboot` in your Terminal window or PuTTY. 
 
-1.	Now skip down and complete the following sections from this workshop:
+7.	Now skip down and complete the following sections from this workshop:
 	1.	**Edit your Body.json with your Intu credentials**
 	2.	**Run Self on your Raspberry Pi**
 
@@ -431,7 +431,7 @@ It is from the configuration file `raspi.anims`, in `Intu/wlabs_self-sdk-master/
 	2.	Type in **ifconfig** and hit Enter. **Note:** If this command does not work, **unplug** the Raspberry Pi from its power source and **plug it back in**, and repeat this step.
 	3. Look for the **wlan0** section. The **inet addr** gives you the IP address of your Raspberry (e.g. 10.0.1.2). 
 
-4.	Ensure that your laptop is on the **same** network as your Raspberry Pi from this point onwards.
+15.	Ensure that your laptop is on the **same** network as your Raspberry Pi from this point onwards.
 	
 	For **Mac** users, open a new Terminal window, and connect to the Raspberry Pi using: `ssh pi@{ip_address}` (e.g. ssh pi@10.0.1.2)
 
@@ -439,9 +439,9 @@ It is from the configuration file `raspi.anims`, in `Intu/wlabs_self-sdk-master/
 
 	For **Windows** users, open **PuTTY**, type in the Raspberry Pi's IP address, and when prompted, type in the username (**pi**) and password (**raspberry**) for the Raspberry Pi.
 
-5. At this point, you can disconnect the external monitor, mouse and keyboard from the Raspberry Pi. 
+16. At this point, you can disconnect the external monitor, mouse and keyboard from the Raspberry Pi. 
 
-6. Check that your laptop is on the same network as the Raspberry Pi. Reboot the Raspberry Pi by running `sudo reboot` in your Terminal window or PuTTY. 
+17. Check that your laptop is on the same network as the Raspberry Pi. Reboot the Raspberry Pi by running `sudo reboot` in your Terminal window or PuTTY. 
 
 ## Set up your Raspberry Pi for Builds
 
@@ -452,20 +452,16 @@ It is from the configuration file `raspi.anims`, in `Intu/wlabs_self-sdk-master/
 	**Make sure you download the correct version.** You need the LINUX version no matter what operating system you have. Windows users may have to right click and select **Save as** to save the download locally.
 
 2.	Copy Anaconda from your laptop over to the Raspberry Pi. **Windows** users may need to [download](https://filezilla-project.org/) and use something like **Filezilla** to copy files over to the Raspberry Pi.
-	1. Navigate to the directory where you downloaded Anaconda locally. 
-	
-		
+	1. Navigate to the directory where you downloaded Anaconda locally.
 		
 	2. Copy Anaconda from your laptop over to the Raspberry Pi using the following command: `scp Anaconda2-4.2.0-Linux-x86.sh pi@{ip}:/home/pi` 
 	
 		(e.g. scp Anaconda2-4.2.0-Linux-x86.sh pi@10.0.1.2:/home/pi)
 		
 		If prompted, the username is **pi** and password is **raspberry**
-		
 
 3.	Install Anaconda on your Raspberry Pi and set up qiBuild.
 	1. In a new Terminal/PuTTY window, ssh into your Raspberry Pi: `ssh pi@{ip_address}`. When prompted, the username is **pi** and password is **raspberry**.
-
 	2.	Run: `bash Anaconda2-4.2.0-Linux-x86.sh`.
 	3. Follow the steps on the screen to install Anaconda. When you get to the license, keep hitting Enter to jump to the bottom. Type **yes** to approve the license.
 	4.	Hit Enter to install Anaconda in the default location. **Note**: It may take a while for the progress to update, and if you get the following error, please ignore it.
@@ -515,11 +511,11 @@ Finally, in a new Terminal/PuTTY window, ssh into your Raspberry Pi, navigate to
 	5.	You can monitor the progress of the transfer in the panel located at the bottom of the Filezilla screen.
 
 
-4. Unzip the `self-sdk-develop.zip` file into the **self** directory of your Raspberry Pi. 
+3. Unzip the `self-sdk-develop.zip` file into the **self** directory of your Raspberry Pi. 
  	1.	Navigate to the **self** directory on your Raspberry Pi. You can open a new Terminal/PuTTY window as before, ssh into your Raspberry Pi, and run: `cd /home/pi/self`. If your prompt reads: `pi@raspberrypi:~/self $`, this confirms that you are in the **self** directory.
 	2.	Run the following command: `unzip self-sdk-develop.zip`
 
-5. Build Self on your Raspberry Pi with the following steps:
+4. Build Self on your Raspberry Pi with the following steps:
 
 	1.	Navigate into the **self-sdk-develop** directory on your Raspberry Pi: `cd self-sdk-develop`
 	2.	Mark the build script as executable by running: `chmod +x scripts/build_raspi.sh`
