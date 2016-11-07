@@ -2,7 +2,9 @@
 
 In this workshop, you create an emotion agent. Agents make decisions about how Intu operates and responds. The emotion agent uses the Tone Analyzer service on Bluemix, which analyzes a person's tone and determines whether that tone is positive or negative.
 
-**Before you begin:** You must have a Mac or Windows laptop, and you must have completed Workshop 1: Say Hello!.
+**Before you begin:** You must have a Mac or Windows laptop, and you must have completed Workshop 1: Say Hello!. You will notice that Intu and Self are used interchangeably. Self is the technical name for Intu.
+
+**Note for Windows users:** You will need to have [**Visual Studio Community**](https://www.visualstudio.com/vs/community/) installed. This will take some time to download.
 
 Complete the following tasks:
 
@@ -12,17 +14,16 @@ Complete the following tasks:
 4. [Creating an emotion agent](#creating-an-emotion-agent)
 5. [Configuring Intu to include your emotion agent](#configuring-intu-to-include-your-emotion-agent)
 
-
-
 ## 1. Setting up the Tone Analyzer service
-
 
 ### 1. Creating your own instance of the Tone Analyzer service
 
 1. [Log in to Bluemix](https://console.ng.bluemix.net/) if you are not already logged in.
 
 2. On the Bluemix dashboard, click **Catalog** in the top-right navigation bar.
+
 3. In the All Categories menu on the left, under Services, click **Watson**.
+
 4. Click the **Tone Analyzer** tile.
   1. Keep all the default values, and click **Create**.
   2. Click the **Service Credentials** tab.
@@ -30,16 +31,22 @@ Complete the following tasks:
   4. Copy these credentials (everything inside **{ }**) and paste them into a new text file in your favourite text editor. You will need these credentials to configure your Tone Analyzer service in the section below.
 
 ### 2. Configure Intu to use your Tone Analyzer service instance
-  1. Open a new browser window and [log in to the Intu Gateway](https://rg-gateway.mybluemix.net/).
 
-  2. Click on **MANAGE** on the left hand side navigation bar, and select **Services**. Select your Organization and Group in the top Filter by menu
-  3. Click the **Add Service** box.
+1. Open a new browser window and [log in to the Intu Gateway](https://rg-gateway.mybluemix.net/).
+
+2. Click on **MANAGE** on the left hand side navigation bar, and select **Services**. Select your Organization and Group in the top Filter by menu
+
+3. Click the **Add Service** box.
   
-  7. In the **SERVICE NAME** field, specify **ToneAnalyzerV1**.
-  8. In the **USER ID** field, copy in the username you pasted into your text file in the above.
-  8. In the **PASSWORD** field, copy in the password.
-  9. In the **SERVICE ENDPOINT** field, copy in the url.
-  13. Click the **Add** button at the bottom right of the window.
+4. In the **SERVICE NAME** field, specify **ToneAnalyzerV1**.
+
+5. In the **USER ID** field, copy in the username you pasted into your text file in the above.
+
+6. In the **PASSWORD** field, copy in the password.
+
+7. In the **SERVICE ENDPOINT** field, copy in the url.
+
+8. Click the **Add** button at the bottom right of the window.
 
 ## 2. Understanding some Intu terminology
 
@@ -60,9 +67,10 @@ Follow the instructions for your platform.
 1. [Download the Self SDK](https://hub.jazz.net/project/wlabs/self-sdk). Click on the **download icon** next to the default **master** branch selected.
 
 2. Create a new directory named **intu** in a directory of your choosing.
-3. Unzip the **wlabs_self-sdk-master.zip** file into **intu**, making sure that you retain the folder structure, i.e. your intu directory should now contain the unzipped **wlabs_self-sdk-master** folder.
 
-### 1.1 Preparing for OS X
+3. Unzip the **wlabs_self-sdk-master.zip** file into **intu**, making sure that you retain the folder structure, i.e. your intu directory should now contain the unzipped **wlabs_self-sdk-master** folder. This may take some time.
+
+### 1.1. Preparing for OS X
 
 **Note**: If you have already completed **Preparing for OS X** in another workshop, you can skip this section.
 
@@ -114,18 +122,17 @@ Follow the instructions for your platform.
  	
  		You should see: `Python 2.7.12 :: Anaconda 4.2.0 (x86_64)`
   
-   
 4. Set up qiBuild.
    1. Run: `pip install qibuild`
    2. Run: `qibuild config --wizard` and be sure to include the two hyphens before **wizard** in the last command.
    3. When the "Please choose a generator" prompt is displayed, specify **1**, and press **Enter**.
    4. When the "Please choose an IDE" prompt is displayed, specify **1**, and press **Enter**.
 
-### 1.2 Building the Intu SDK for OS X
+### 1.2. Building the Self SDK for OS X
+
 1. In a new Terminal window, navigate to the **wlabs_self-sdk-master** directory inside **intu**. You should just be able to run: `cd intu/wlabs_self-sdk-master` 
 
-	**Note:** If you have **already built the Intu SDK for OS X** in another workshop, run: `./scripts/clean.sh`    
-
+	**Note:** If you have **already built the Self SDK for OS X** in another workshop, run: `./scripts/clean.sh`    
 
 2. Run:
 `./scripts/build_mac.sh`  
@@ -135,23 +142,36 @@ If you are running this script for the first time and you see the following mess
 Known toolchains are:
 ```
 
-### 2. Building the Intu SDK for Windows
+### 2. Building the Self SDK for Windows
 
-1. Preparing Windows only requires installing [Visual Studio 2015](https://www.visualstudio.com/downloads/).
+1. Preparing Windows only requires installing **[Visual Studio Community](https://www.visualstudio.com/vs/community/)**. **Note:** This will take some time to download.
 
-2. Visual Studio should launch automatically after installing. If it does not, open Visual Studio.
-3. Select **Open solution**.
-2. Open the solution found in **vs2015/self-sdk.sln**.
-3. Right click on the **self-sdk** project and select **Set as Startup Project**.
-4. Right click on the **self-sdk** project, and open **properties**. In the **Debugging tab** of the properties, you will need to change **Working Directory** to **$(TargetDir)**.
-5. Select **Build->Build Solution**.
-6. Select **Debug->Start Debugging** to run the project with debugging.
+2. **Important:** When you install Visual Studio, in **Features**, inside the **Select features** box, make sure that **Visual C++** is selected under **Programming Languages**. 
 
-**Important**: If you use SourceTree, the process might get stuck when trying to pull by using SSH. Run the following commands on the command line to fix the problem with the git client that's trying to be interactive:
-* cd "C:\Program Files (x86)\Atlassian\SourceTree\tools\putty"
-* plink git@github.ibm.com
+3. Visual Studio should launch automatically after installing. If it does not, open Visual Studio.
+
+4. Select **Open solution**.
+
+5. Open the solution found in **vs2015/self-sdk.sln**.
+
+6. Right click on the **self-sdk** project and select **Set as Startup Project**.
+
+7. Right click on the **self-sdk** project, and open **properties**. In the **Debugging tab** of the properties, you will need to change **Working Directory** to **$(TargetDir)**.
+
+8. The first time you open your Visual Studio project, Visual Studio will want to compile for the **x86** architecture. In order to build Self, you will need to change this to **Win32**. Next to **Debug** in the task menu bar (directly below **File**), select the dropdown arrow and change **x86** to **Win32**.
+
+9. Select **Build -> Build Solution**.
+
+10. Select **Debug -> Start Debugging** to run the project with debugging.
+
+**Important:** If you use SourceTree, the process might get stuck when trying to pull by using SSH. This is because SourceTree will try to launch an interactive window that will be hidden. Run the following commands on the command line to fix the problem:
+
+1. `cd "C:\Program Files (x86)\Atlassian\SourceTree\tools\putty"`
+	
+2. `plink git@github.ibm.com`
 
 ## 4. Creating an emotion agent
+
 ### 1. Preparing your directories and files for the emotion agent
 
 **For OS X users:**
@@ -181,7 +201,7 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
     add_subdirectory(sensor)
     add_subdirectory(workshop_three)
   ```
-2v. Open the `CMakeLists.txt` file in the **workshop_three** directory, and overwrite its content with this code:
+	2v. Open the `CMakeLists.txt` file in the **workshop_three** directory, and overwrite its content with this code:
 
   ```
     include_directories(.)
@@ -193,6 +213,7 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
   ```
 
 1. Create a new directory inside this called **agents** in the **workshop_three** directory.
+
 2. Locate the Workshop 3 code snippet files **to be filled in** in:
 
  `wlabs_self-sdk-master/docs/workshops-devcon/3/code-snippets/WorkshopThreeAgent_start`
@@ -205,24 +226,38 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
 1. Open up File Explorer and navigate to **intu/wlabs_self-sdk-master/examples**.
 
 2. Create a new directory in examples called **workshop_three**. 
+
 3. Copy across `WorkshopThreeAgent.cpp` and `WorkshopThreeAgent.h` located under **self-sdk/docs/workshops-devcon/3/code-snippets/WorkshopThreeAgent_Start** into the **workshop_three** directory.
-2. In **Visual Studio**, in the **examples** directory, add a new **Win32 Project** called `workshop_three_plugin`, and click **OK**.
-2. Click **Next**, select **Application Type as DLL**, and uncheck **Precompiled header and Security Development Lifecycle (SDL) checks** under **Additional options**.
-3. Click **Finish**.
-4. Inside of `workshop_three_plugin`, remove the **Header Files**, **Resource Files**, and **Source Files** directories that were newly created in the solution.
-7. Inside the **Solution Explorer** window, right click **workshop****_three****_plugin**, and select **Add->New Filter**.
-8. Name the filter **agent**.
-9. Right-click on **agent**, and select **Add->Existing Items**.
-10. Navigate to **wlabs_self-sdk-master/examples/workshop_three** and select the files: `WorkshopThreeAgent.cpp` and `WorkshopThreeAgent.h`.
-11. Right-click the **workshop****_three****_plugin** solution, open **Properties**, and make the following changes, but **before you begin, make sure Configuration at the top left is set to "All Configurations"**.
 
-* Change the value of **General->Character Set** to **Use Multi-Byte Character Set**.
+4. In **Visual Studio**, in the **examples** directory, add a new **Win32 Project** called `workshop_three_plugin`, and click **OK**.
 
-* Go to **C/C++->General->Additional Include Directories->**, and add `..\..\examples\workshop_three;..\..\include\self;..\..\include\wdc;..\..\lib\boost_1_60_0;..\..\lib;%(AdditionalIncludeDirectories)`.
-* Go to **C/C++->Precompiled Headers->Confirm Precompile Header**, and delete the value. Make sure it's blank.
-* Go to **Linker->General->Additional Library Directories->**, and add `../../lib/$(Configuration);../../lib/boost_1_60_0/stage/lib/`.
-* Replace the value of **Linker->Input->Additional Dependencies** with the following value: `jsoncpp.lib;self.lib;wdc.lib;%(AdditionalDependencies)`.
-* Go to **Build Events->Post-Build Event->Command Line**, and add `copy /Y "$(TargetPath)" "$(ProjectDir)..\..\bin\$(Configuration)"`.
+5. Click **Next**, select **Application Type as DLL**, and uncheck **Precompiled header and Security Development Lifecycle (SDL) checks** under **Additional options**.
+
+6. Click **Finish**.
+
+7. Inside of `workshop_three_plugin`, remove the **Header Files**, **Resource Files**, and **Source Files** directories that were newly created in the solution.
+
+8. Inside the **Solution Explorer** window, right click **workshop_three****_plugin**, and select **Add -> New Filter**.
+
+9. Name the filter **agent**.
+
+10. Right-click on **agent**, and select **Add -> Existing Items**.
+
+11. Navigate to **wlabs_****self-sdk-master/examples/workshop_three** and select the files: `WorkshopThreeAgent.cpp` and `WorkshopThreeAgent.h`.
+
+12. Right-click the **workshop****_three****_plugin** solution, open **Properties**, and make the following changes, but **before you begin, make sure Configuration at the top left is set to "All Configurations"**.
+
+* Change the value of **General -> Character Set** to **Use Multi-Byte Character Set**.
+
+* Go to **C/C++ -> General** **-> Additional Include Directories** **->**, and add: `..\..\examples\workshop_three;..\..\include\self;..\..\include\wdc;..\..\lib\boost_1_60_0;..\..\lib;%(AdditionalIncludeDirectories)`
+
+* Go to **C/C++ -> Precompiled Headers -> Confirm Precompile Header**, and delete the value. Make sure it's blank.
+
+* Go to **Linker -> General -> Additional Library Directories ->**, and add: `../../lib/$(Configuration);../../lib/boost_1_60_0/stage/lib/`
+
+* Replace the value of **Linker -> Input -> Additional Dependencies** with the following value: `jsoncpp.lib;self.lib;wdc.lib;%(AdditionalDependencies)`
+
+* Go to **Build Events -> Post-Build Event -> Command Line**, and add: `copy /Y "$(TargetPath)" "$(ProjectDir)..\..\bin\$(Configuration)"`
 
 
 ### 2. Building out the OnText, OnTone and OnLearningIntent functions for your emotion agent
@@ -367,9 +402,8 @@ In the next task, you will update the `body.json` file also located in the **int
 
 1. Open your `body.json` file. 
 
-	* For **Windows**, in **Visual Studio**, in the **Solution Explorer**, go to **sdk->bin->Debug**. 
-	
 	* For **OS X**, this will be in **wlabs_self-sdk-master/bin/mac/etc/profile**.
+	* For **Windows**, in **Visual Studio**, in the **Solution Explorer**, go to **sdk -> bin -> Debug**. 
 	
 2. Locate the `m_Libs` variable.
   * If you're using **OS X**, the variable is `"m_Libs" : [ "platform_mac" ],`
@@ -394,7 +428,7 @@ In the next task, you will update the `body.json` file also located in the **int
 
 **For Windows users:**
 
-1. From the Visual Studio Menu, select **Build->Build Solution**.
+1. From the Visual Studio Menu, select **Build -> Build Solution**.
 
 2. Run Intu by clicking **Local Windows Debugger** in Visual Studio.
 
@@ -409,7 +443,9 @@ To use Intu, you need operational instances of the following services in Bluemix
 **Pro tip:** As you complete this task, you'll receive credentials for each service instance, and you'll need these credentials later. Open a new file in your favourite text editor and create a section for each service so that you can temporarily store its credentials.
 
 1. On the Bluemix dashboard, click **Catalog** in the top right navigation bar.
+
 2. In the All Categories menu on the left, under Services, click on **Watson**.
+
 3. Create an instance of the Conversation service.
   1. Click the **Conversation** tile.
   2. Keep all the default values, and click **Create**.
@@ -418,6 +454,7 @@ To use Intu, you need operational instances of the following services in Bluemix
   5. Copy the values for your password and username and paste them into a new text file in your favourite text editor.
   6. Click the **<--Watson** breadcrumb near the top left (directly above your Conversation service name). The list of your service instances is displayed.
   7. Add the next service instance by clicking the **Create Watson** **+** button. The Watson service catalog is displayed.
+
 4. Create instances of the Natural Language Classifier, Speech to Text, and Text to Speech services by repeating the same substeps 1 - 7 that you completed to create the Conversation service instance.
 
 
@@ -428,7 +465,9 @@ To configure Intu to use your instances of these Watson services, log in to the 
 1. Click on **MANAGE** on the left hand side navigation bar, and select **Services**. 
 
 2. Select your Organization and Group in the top Filter by menu, if not already selected.
+
 3. For your instances of the Natural Language Classifier, Speech to Text, and Text to Speech services, click **Edit**, and specify the user ID and password (saved in your text file in the previous section **Creating instances of Watson services**), and click **Save**.
+
 4. To configure your instance of **Conversation**, navigate to **DOWNLOADS** on the left of your Intu Gateway browser page, download the **Intu Starter Kit**, and follow the instructions in the `readme.txt` file. Alternatively, go to the instructions for **Workshop 2**, and follow the steps in: **1. Setting up the Conversation service**.
  
 
