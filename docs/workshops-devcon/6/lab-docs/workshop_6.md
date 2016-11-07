@@ -1,8 +1,8 @@
 # Workshop 6: Creating a camera sensor.
 
-In this workshop, you create an camera sensors. Sensors take in data from the outside world to process. The camera sensor will aim to take in visual data from the environment, ready to be processed on Intu. 
+In this workshop, you create a camera sensor. Sensors take in data from the outside world to process. The camera sensor will aim to take in visual data from the environment, ready to be processed on Intu. 
 
-**Before you begin:** You must have a **Mac**, and you must have completed Workshop 1: Say Hello!.
+**Before you begin:** You must have a **Mac**, and you must have completed Workshop 1: Say Hello!. You will notice that Intu and Self are used interchangeably. Self is the technical name for Intu.
 
 Complete the following tasks:
 
@@ -19,10 +19,12 @@ Before you create an emotion agent, become familiar with the following terminolo
   * **Blackboard**: The central message broker on which all the agents post data and listen for incoming data.
   
   * **Publish**: To push data onto the blackboard under a particular topic. 
+  
   * **Subscribe**: Subscribing to a topic on the blackboard means to listen to the blackboard and wait for any other agents to post to the blackboard under a particular topic.
+  
   * **Topic**: A channel to which Agents publish and subscribe.
 
-##2. Building the Self SDK
+## 2. Building the Self SDK
 
 Follow the instructions for your platform.
 
@@ -31,6 +33,7 @@ Follow the instructions for your platform.
 1. [Download the Self SDK](https://hub.jazz.net/project/wlabs/self-sdk). Click on the **download icon** next to the default **master** branch selected.
 
 2. Create a new directory named **intu** in a directory of your choosing.
+
 3. Unzip the **wlabs_self-sdk-master.zip** file into **intu**, making sure that you retain the folder structure, i.e. your intu directory should now contain the unzipped **wlabs_self-sdk-masterr** folder.
 
 ### 1. Preparing for OS X
@@ -85,7 +88,6 @@ Follow the instructions for your platform.
  	
  		You should see: `Python 2.7.12 :: Anaconda 4.2.0 (x86_64)`
   
-
 4. Set up qiBuild.
    1. Run: `pip install qibuild`
    2. Run: `qibuild config --wizard` and be sure to include the two hyphens before **wizard** in the last command.
@@ -93,10 +95,10 @@ Follow the instructions for your platform.
    4. When the "Please choose an IDE" prompt is displayed, specify **1**, and press **Enter**.
    
 ### 2 Building the Intu SDK for OS X
+
 1. In a new Terminal window, navigate to the **wlabs_self-sdk-master** directory inside **intu**. You should just be able to run: `cd intu/wlabs_self-sdk-master` 
 
 	**Note:** If you have **already built the Intu SDK for OS X** in another workshop, run: `./scripts/clean.sh`    
-
 
 2. Run:
 `./scripts/build_mac.sh`  
@@ -107,10 +109,9 @@ Follow the instructions for your platform.
 Known toolchains are:
 ```
 
-
 ## 3. Creating a camera sensor
-### 1. Preparing your directories and files for the camera sensor
 
+### 1. Preparing your directories and files for the camera sensor
 
 1. If you do not have it installed already, download the trial version of the [CLion C++ IDE](https://www.jetbrains.com/clion/download/).
 
@@ -151,13 +152,13 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
 	qi_stage_lib(workshop_six_plugin)
   ```
 
-1. Create a new directory inside this called **sensors** in the **workshop_six** directory.
-2. Locate the Workshop 6 code snippet files **to be filled in** in:
+3. Create a new directory inside this called **sensors** in the **workshop_six** directory.
+
+4. Locate the Workshop 6 code snippet files **to be filled in** in:
 
  `wlabs_self-sdk-master/docs/workshops-devcon/6/code-snippets/WorkshopSixSensor_start`
 
-3. Copy the `WorkshopSixSensor.cpp` and the `WorkshopSixSensor.h` files and paste them into the **sensors** directory that you created.
-
+5. Copy the `WorkshopSixSensor.cpp` and the `WorkshopSixSensor.h` files and paste them into the **sensors** directory that you created.
 
 ### 2. Building out the OnStart(), CaptureVideo() and SendingData() functions for the camera sensor
 
@@ -175,11 +176,9 @@ Open the `WorkshopSixSensor.cpp` file, which contains the following functions th
 
 * **SendingData()** - Is used to first check if the camera is paused or not. If the camera is not then the data is sent.
 
-  
 The OnStop, OnPause and OnResume functions are already completely built out.
 
 In the next step, you will build out the **OnStart**, **CaptureVideo** and **SendingData** functions using the example code provided.
-
 
 1. In **wlabs_self-sdk-master****w/docs/workshops-devcon/6/code-snippets/WorkshopSix_Snippets**, you will see the `WorkshopSixCodeSnippets.txt` file. Open this file and find the OnStart, CaptureVideo and SendingData functions.
 
@@ -205,7 +204,7 @@ In the next step, you will build out the **OnStart**, **CaptureVideo** and **Sen
     
     ```
 
-4. For the **CaptureVideo()** function, copy the code directly below **//Code for CaptureVideo()**. Now paste this inside the function body **{}** of ** CaptureVideo()** in `WorkshopSixSensor.cpp`. The code which you need is displayed below for completeness; however, it is **not** recommended for you to copy it from here due to formatting issues.
+3. For the **CaptureVideo()** function, copy the code directly below **//Code for CaptureVideo()**. Now paste this inside the function body **{}** of ** CaptureVideo()** in `WorkshopSixSensor.cpp`. The code which you need is displayed below for completeness; however, it is **not** recommended for you to copy it from here due to formatting issues.
 
 
   
@@ -225,7 +224,6 @@ In the next step, you will build out the **OnStart**, **CaptureVideo** and **Sen
 	#endif
   ```
       The above code will capture the vision from the camera. Using OpenCV the buffer will be filled as a JPEG, as long as it hasn't been paused.
-      
 
 4. For the **SendingData()** function, copy the code directly below **//Code for SendingData()**. Now paste this inside the function body **{}** of **SendingData()** in `WorkshopSixSensor.cpp`. The code which you need is displayed below for completeness; however, it is **not** recommended for you to copy it from here due to formatting issues.
 
@@ -236,11 +234,11 @@ In the next step, you will build out the **OnStart**, **CaptureVideo** and **Sen
   ```
 
 
-1. Open a **new** Terminal window and navigate to **intu/wlabs_self-sdk-master** by running: `cd intu/wlabs_self-sdk-master`.
+5. Open a **new** Terminal window and navigate to **intu/wlabs_self-sdk-master** by running: `cd intu/wlabs_self-sdk-master`.
 
 	**Note:** If you have built the SDK in a previous workshop, make sure you run: `./scripts/clean.sh`.
 
-2. Run the build script: `./scripts/build_mac.sh`. **Do not close this Terminal window.**
+6. Run the build script: `./scripts/build_mac.sh`. **Do not close this Terminal window.**
 
 **Congratulations!** You just built all the functions required for the camera sensor. 
 
@@ -250,11 +248,13 @@ In the next task, you will update the `body.json` file also located in the **int
 ## 4. Configuring your Intu instance to include the camera sensor
 
 ### 1. Retrieving the credentials for your Organization in the Intu Gateway
+
 1. [Log in to the Intu Gateway](https://rg-gateway.mybluemix.net/). 
 
 2. Click on **VIEW CREDENTIALS** in the left hand navigation bar.
 
 3. Select your Organization and Group in the top Filter by menu, and click on the **Get Credentials** box.
+
 4. Copy these credentials by clicking the **Copy** icon in the top right of the window, and paste this into a new text file using your favourite text editor.
 
 ### 2. Configuring your `body.json` file
@@ -265,8 +265,9 @@ In the next task, you will update the `body.json` file also located in the **int
 
 3. Add **workshop****_six****_plugin** to the end of the `m_Libs` variable for your platform, **as shown below**:
   `"m_Libs" : [ "platform_mac", "workshop_six_plugin"],`
-6. Now find `"m_EmbodimentCreds":{ ... }` in your `body.json` file. Replace this with the complete set of credentials you copied over into your text editor from the Intu Gateway in step 4 of the previous section.
-7. Locate `m_Sensors` inside the `body.json`. Add the following
+4. Now find `"m_EmbodimentCreds":{ ... }` in your `body.json` file. Replace this with the complete set of credentials you copied over into your text editor from the Intu Gateway in step 4 of the previous section.
+
+5. Locate `m_Sensors` inside the `body.json`. Add the following
 
 ```
 {
@@ -305,16 +306,29 @@ Now Intu is running, you should see your Mac camera turn on. Now Intu will be ab
 
 The process you have just undertaken was adding a camera into your Intu instance on your Mac, by extending the self-sdk. The challenge is to now add a camera instance for the Raspberry Pi. (Hint: do workshop 5 first and think how you can alter the process and think how how could get the code for the camera on the Raspberry Pi instead of the LED gesture. 
 
+**Pro Tips:** 
+
+1. In your Terminal/PuTTY window, SSH into your Raspberry Pi, and run: `sudo modprobe bcm2835-v4l2` to ensure that the PiCam data is passed through. 
+
+2. Enable the camera on your Raspberry Pi. 
+	1. Open the raspi-config tool from your SSH session to the Raspberry Pi by running: `sudo raspi-config`.
+	2. Select `Enable camera` and hit **Enter**. 
+	3. Then go to **Finish** and you'll be prompted to reboot.
+
 ## After DevCon ends
+
 Your instance of Intu is preconfigured with the following Watson services: Conversation, Natural Language Classifier, Speech to Text, and Text to Speech. The preconfiguration is enabled for 30 days. If you want to test Intu after 30 days, you must create your own instances of these services and configure Intu to use them.
 
 ### 1. Creating instances of Watson services
+
 To use Intu, you need operational instances of the following services in Bluemix: Conversation, Natural Language Classifier, Speech to Text, and Text to Speech.
 
 **Pro tip:** As you complete this task, you'll receive credentials for each service instance, and you'll need these credentials later. Open a new file in your favourite text editor and create a section for each service so that you can temporarily store its credentials.
 
 1. On the Bluemix dashboard, click **Catalog** in the top right navigation bar.
+
 2. In the All Categories menu on the left, under Services, click on **Watson**.
+
 3. Create an instance of the Conversation service.
   1. Click the **Conversation** tile.
   2. Keep all the default values, and click **Create**.
@@ -323,6 +337,7 @@ To use Intu, you need operational instances of the following services in Bluemix
   5. Copy the values for your password and username and paste them into a new text file in your favourite text editor.
   6. Click the **<--Watson** breadcrumb near the top left (directly above your Conversation service name). The list of your service instances is displayed.
   7. Add the next service instance by clicking the **Create Watson** **+** button. The Watson service catalog is displayed.
+
 4. Create instances of the Natural Language Classifier, Speech to Text, and Text to Speech services by repeating the same substeps 1 - 7 that you completed to create the Conversation service instance.
 
 
@@ -333,7 +348,9 @@ To configure Intu to use your instances of these Watson services, log in to the 
 1. Click on **MANAGE** on the left hand side navigation bar, and select **Services**. 
 
 2. Select your Organization and Group in the top Filter by menu, if not already selected.
+
 3. For your instances of the Natural Language Classifier, Speech to Text, and Text to Speech services, click **Edit**, and specify the user ID and password (saved in your text file in the previous section **Creating instances of Watson services**), and click **Save**.
+
 4. To configure your instance of **Conversation**, navigate to **DOWNLOADS** on the left of your Intu Gateway browser page, download the **Intu Starter Kit**, and follow the instructions in the `readme.txt` file. Alternatively, go to the instructions for **Workshop 2**, and follow the steps in: **1. Setting up the Conversation service**.
  
 
