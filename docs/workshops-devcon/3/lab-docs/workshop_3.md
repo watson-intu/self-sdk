@@ -117,31 +117,7 @@ Known toolchains are:
 
 ## Creating an emotion agent
 
-**OS X and Windows users do Steps 1 and 2**
-
-1. Open the `self-sdk-develop` file as a project in the IDE for your platform.
-2. Now, let's create and populate directory specifically for this workshop.
-** For OSX
-  1. Locate the `examples` directory under the `self-sdk-develop` project that you opened. This directory contains a `sensor` directory and a `CMakeLists.txt` file.
-  2. Right-click the `examples` directory, and click **New**->**Directory**. Name it `workshop_three`. Your new directory is created.
-  3. Right-click the `CMakeLists.txt` file in the `examples` directory, and click **Copy**.
-  4. Right-click the `workshop_three` directory, and click **Paste**. This file helps to build the plugin for the emotion agent.
-  5. Return to the `examples` directory, open the `CMakeLists.txt` file, and add the following line: `add_subdirectory(workshop_three)` at the end. Your file contains the following three lines:
-  ```
-    include_directories(".")
-
-    add_subdirectory(sensor)
-    add_subdirectory(workshop_three)
-  ```
-  5. Open the `CMakeLists.txt` file in the `workshop_three` directory, and overwrite its content with this code:
-  ```
-    include_directories(.)
-
-    file(GLOB_RECURSE SELF_CPP RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "*.cpp")
-    qi_create_lib(workshop_three_plugin SHARED ${SELF_CPP})
-    qi_use_lib(workshop_three_plugin self wdc)
-    qi_stage_lib(workshop_three_plugin)
-```
+1
 
 **Windows users do the following five steps.**
 
@@ -163,16 +139,16 @@ Known toolchains are:
   ```
 3. Navigate back to the `workshop_three` directory, create a new directory, and name it `agents`.
 4. Locate the Workshop 3 code snippet files in `self-sdk-develop/docs/workshops-devcon/3/code-snippets/WorkshopThreeAgent_start`. Copy the `WorkshopThreeAgent.cpp` and the `WorkshopThreeAgent.h` files, and paste them into the `agents` directory that you created.
-5. Open the `WorkshopThreeAgent.cpp` file, which contains the following functions that enable the emotion agent you'll create:
+5. Open the `WorkshopThreeAgent.cpp` file, which contains the following functions that enable the emotion agent you'll create. All Agents in Intu inherit from the IAgent interface. Agent's are responsible for listening for messages that are placed on the Blackboard and react accordingly. All agents will have a Serialize and Deserialize function (from the ISerializable interface). Deserialize function will deserialize JSON text (text from the body.json file) to instantiate an object, while Serialize will serialize the the data back into JSON to update the body.json file. Additionally, all agents will have an OnStart and OnStop function which is inherited from the IAgent interface. See below for more information on what these functions are doing.
 
-  * **OnStart()**: Initializes for the emotion agent. It subscribes the emotion agent to the blackboard. After initialization is complete, the emotion agent subscribes to OnEmotion, OnLearningIntent, and OnEmotionCheck functions. 
-  * **OnStop()**: Stops the emotion agent. After the emotion agent is called, it is no longer subscribed to the blackboard.
-  * **OnEmotion()**: Listens to the blackboard for emotion topics being posted to the blackboard. 
-  * **OnText()**: Waits for and receives responses from the Tone Analyzer service.
-  * **OnLearningIntent()**: Updates the EmotionalState variable. Initially, the EmotionalState is 0.5 and must be 0 - 1. Each time the agent receives a piece of positive or negative feedback, the OnLearningIntent() function increases for positive feedback or decreases for negative feedback the EmotionalState variable score by 0.1. 
-  * **OnTone()**:
+  * **OnStart()**: Starts the Emotion Agent. The manager that starts all agents is in the AgentSociety class. The OnStart function is called on the main thread, so we will do as little processing as necessary in this function. Mainly, all agents should initialize any services that they will use in this function (i.e., Tone Analyzer), as well as subscribe to any blackboard objects. In OnStart, look at line number 66. There we are getting an instance of the BlackBoard and declaring to notify us whenever an Emotion object has been placed there. When data is received (in this case a ThingEvent object), we set our callback to be the OnEmotion function. The macro TE_ALL states that we are only interested when the object has been added to the Blackboard. Another example of a macro we may be interested in is the TE_STATE, which says tha we are interested in only when the Blackboard object state has changed (i.e., from processing to finished). Look in the Blackboard.h file to see other macros. Additionally, we can start timers in the OnStart function like we do on line 71. A timer will be executed after a predefined float value (in this case it's m_EmotionTime). The VOID_DELEGATE argument is our callback function to allow functions to be called on different threads. There are Delegate calls, which call functions that take arguments, and VOID_DELEGATES which call functions with no arguments. When the timer has been reached, the OnEmotionCheck function will be called. The last two boolean parameters state if the function should be invoked on the main thread and if the timer should continually repeat. In this case, we want the function OnEmotion to be executed on the main thread and to continually repeat.
+  * **OnStop()**: Stops the emotion agent. The manager that stops all agents is in the AgentSociety class. Functionally, we want to unsubscribe from any blacboard objects that we subscribed to in the OnStart function, as well as reset any timers that may still be in use, like the m_spEmotionTimer. 
+  * **OnEmotion()**: Is the callback when the Emotion object is posted to the blackboard. 
+  * **OnText()**: The callback when a Text object is placed on the blackboard. A Text object is created from the TextExtractor with the transcription of what the user has said. When a text object is received, we will send it off to the Tone Analyzer service to process the tone of the user.
+  * **OnLearningIntent()**: Updates the EmotionalState variable when Positive or Negative feedback have been posted to the blackbaord. An example of positive feedback is when the user says something like "good job!" while negative feedback could be "Bad job!". Initially, the EmotionalState is 0.5 and must be 0 - 1. Each time the agent receives a piece of positive or negative feedback, the OnLearningIntent() function increases for positive feedback or decreases for negative feedback the EmotionalState variable score by 0.1. 
+  * **OnTone()**: The callback when we receive the results from the Tone Analyzer service. We define positve and negative tone from the body, or can be declared when we deserialize the class. If positive tone is identified, then we will increment our emotional state, while if tone is considiered negative, then we will decrement it.
   * **OnEmotionCheck()**: Restores the EmotionalState to a basel level of 0.5. For every 30 seconds the OnEmotionCheck() increases when EmotionalState is less than 0.5 and decreases when EmotionalState is more than 0.5 the EmotionalState variable. This ensures that the EmotionalState will trend back to neutral over time. 
-  * **PublishEmotionalState()**: Formats the current EmotionalState value, formats it into the json value, and adds it to the blackboard.
+  * **PublishEmotionalState()**: Formats the current EmotionalState value, formats it into the json value, and adds it to the blackboard. Currently, the TextClassifier is subscribed to listen for EmotionalState blackboard objects. The state will be added as pre-context that can then be useful when modifying conversation (see Workshop 2 on how to update the conversational service).
 
 **Windows users do the following step.**
 
@@ -200,7 +176,7 @@ In the next step, you build the OnText and OnTone function bodies yourself.
         }
     }
   ```
-      This code accepts the piece of text that the emotion agent is listening for. Then, it finds the Tone Analyzer service and sends the text.
+      This code implements the logic for what to do when a Text object is placed on the blackboard. First, we cast the ThingEvent object to a Text object. All Blackboard objects inherit from the IThing interface. If we are successful in casting to a Text object, we will invoke the Tone Analysis service, which can be read from the SelfInstance class. If the service is not null (i.e., it has been declared in the body.json file), then we will send a REST request to Tone Analysis and provide the callback to be the OnTone function.
   2. For OnTone(), copy the following code and paste it into the function body:
   ```
       if (a_Callback != NULL)

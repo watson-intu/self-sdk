@@ -100,3 +100,38 @@ Linux raspberrypi 4.4.21-v7+ #911 SMP Thu Sep 15 14:22:38 BST 2016 armv7l GNU/Li
   * `export LD_LIBRARY_PATH=~/self/self-sdk-develop/bin/raspi`
   * `export WIRINGPI_GPIOMEM=1`
 20. Run self by running `./self_instance –c 0 –f 0`.
+
+**For Development**
+
+1. Locate the `examples` directory under the `self-sdk-develop` project that you opened. This directory contains a `sensor` directory and a `CMakeLists.txt` file.
+2. Make a new directory in the `examples` directory, and name it `workshop_five`. Additionally, make a subdirectory in `workshop_five` and name it `sensors` (this will be where you can take the WorkshopFive code samples and paste them here)
+3. Copy the `CMakeLists.txt` file in the `examples` directory to your newly created workshop_five directory.
+4. Return to the `examples` directory, open the `CMakeLists.txt` file, and add the following line: `add_subdirectory(workshop_five)` at the end. Your file contains the following three lines:
+```
+  include_directories(".")
+
+  add_subdirectory(sensor)
+  add_subdirectory(workshop_five)
+```
+5. Open the `CMakeLists.txt` file in the `workshop_five` directory, and overwrite its content with this code:
+```
+  include_directories(.)
+
+  file(GLOB_RECURSE SELF_CPP RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "*.cpp")
+  qi_create_lib(workshop_five_plugin SHARED ${SELF_CPP})
+  qi_use_lib(workshop_five_plugin self wdc)
+  qi_stage_lib(workshop_five_plugin)
+```
+6. Add the WorkshopFiveGesture files to your workshop_five/sensors directory.
+
+**Code Overview**
+1. All classes in Intu inherit from the ISerializable interface. All objects can be deserialized from the Deserialize function and serialized from the Serialize function. All deserialization and serialization occurs from the body.json file found in the etc/profiles directory.
+2. All gestures inherit from the IGesture interface. Therefore, all gestures have a Start(), Stop(), Execute(), and Abort():
+  * **Start()** This function is called from the GestureManager class. If the function returns false, then the GestureManager will not register the gesture.
+  * **Stop()** This function is called when the GestureManager is stopped
+  * **Execute()** The main implementatino on how to carry out the execution of the gesture. If we look at the top of the cpp file, you will see two macros defined: REG_SERIALIZABLE and RTTI_IMPL. REG_SERIALIZABLE will serialize the object type to our system so we can get a handle on it using reflection, while RTTI_IMPL states that our implementation of the class WorkshopFiveGesture will override our base AnimateGesture class. The power of this allows us to have platform specific code to carry out execution of gestures while still keeping the core Intu platform agnostic. Therefore, when AnimateGesture is called to execute, our WorkshopFiveAnimation execute function will be called.
+  * **Abort()** Will stop the execution of the gesture if the gesture is still in progress.
+
+4. The flow of how this gesture gets execute has led up to working on the previous workshops. In workshop two, you have configured a conversation service to have it respond to questions in a variety of ways. One thing that can be done in conversation is to add an `[emote=show_laugh]` tag after a response. The text that gets returned from the Conversation service eventually makes it's way to the SpeakingAgent. The SpeakingAgent will see the `[emote=show_laugh]` tag, and create an Emotion object and place that on the BlackBoard. The agent that was developed in Workshop 3 subscribes to Emotion objects on start up. In the callback, OnEmotion() function will execute an AnimateGesture skill. The code provided in this workshop allows the programmer to override the AnimateGesture class with their own implementation, here for a raspberry pi specific platform.
+
+5. For more information of how different skills can be used, look at the etc/shared/skills and etc/shared/gestures directory. You will see there that there is a `show_laugh` key in both the skills and gestures directory. Additional skills/gestures can be added to these configurations, and when Intu starts up then different concrete gestures for different skills can be executed, all defined in the configuration file.

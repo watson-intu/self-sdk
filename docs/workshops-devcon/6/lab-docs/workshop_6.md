@@ -89,16 +89,16 @@ Follow the instructions for your platform.
   4. Make a folder in the sdk/examples folder (in filesystem, not Visual Studio) and call it workshop_six 
   5 Right click on the created workshop solution, and add a new Filter and call it agent
   
-3. Navigate back to the `workshop_six` directory, create a new directory, and name it `agents`.
-4. Locate the Workshop 3 code snippet files in `self-sdk-develop/docs/workshops-devcon/6/code-snippets/WorkshopSixAgent_start`, copy the `WorkshopSixAgent.cpp` and the `WorkshopSixAgent.h` files, and paste them into the `agents` directory that you created.
-4. Open the `WorkshopSixAgent.cpp` file, which contains the following functions that enable the camera sensor you'll create:
+3. Navigate back to the `workshop_six` directory, create a new directory, and name it `sensors`.
+4. Locate the Workshop 3 code snippet files in `self-sdk-develop/docs/workshops-devcon/6/code-snippets/WorkshopSixAgent_start`, copy the `WorkshopSixAgent.cpp` and the `WorkshopSixAgent.h` files, and paste them into the `sensors` directory that you created.
+4. Open the `WorkshopSixAgent.cpp` file, which contains the following functions that enable the camera sensor you'll create. All sensors in Intu inherit from the ISensor interface. Sensors are a bit different from other components found in Intu. Sensors do not interact with the blackboard, but rather send their raw data directly to an extractor which will instantiate an object and place that on the blackboard. This is mainly because sensors are platform specific, and there needs to be a level of seperation to make core Intu platform independent. See below for more details on what the functions are doing:
 
-  * **OnStart()**: Initializes the camera sensor. It subscribes the sensor to the blackboard. After initialization is complete, the sensor subscribes to the OnEmotion, OnLearningIntent, and OnEmotionCheck functions. 
-  * **OnStop()**: Stops the camera sensor. After the sensor is called, it is no longer subscribed to the blackboard.
-  * **OnPause()**: Pauses the camera sensor.
-  * **OnResume()**: Resumes the camera sensor's recording.
-  * **CaptureVideo()**: Records by using the Mac Camera Sensor. OpenCV is used to fill the buffer by calling encoding to .JPEG.
-  * **SendingData()**: Checks whether the camera is paused. If it's not paused, data is sent.
+  * **OnStart()**: Initializes the camera sensor. The OnStart() function is called by the SensorManager class. Because OnStart occurs on the main thread, we want to do as little as possible processing and do the core logic on a background thread. Here we instantiate the VideoCapture object from opencv and spawn a background thread to capture the images. Using our Delegate class, we can call functions in C++ on different threads.
+  * **OnStop()**: Stops the camera sensor. After the sensor is called, it should wait for any processing to occur and release any objects in memory.
+  * **OnPause()**: Pauses the camera sensor. The pause function increments an m_Pause integer. The reason this is not a boolean is because other places throughout core Intu can pause a sensor, and we need to keep track how many times pause is called before we know we can resume. When Pause is called, no data is sent to the extractor that has subscribed to it's data.
+  * **OnResume()**: Resumes the sensor. The sensor can then start sending data to the extractor that is subscribed to it.
+  * **CaptureVideo()**: Using opencv, we take raw buffers from the camera and encode them in JPEG format. This will continually happen based on the framers per second that is declared from the m_FramesPerSecond variable, and will stop when the OnStop() function is called.
+  * **SendingData()**: Checks whether the camera is paused. If it's not paused, data is sent to all extractors that have subscribed to it.
 
 The OnStart, OnStop, OnPause and OnResume functions are already completely built out.
 
