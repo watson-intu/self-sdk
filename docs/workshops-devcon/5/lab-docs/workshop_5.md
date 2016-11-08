@@ -626,6 +626,7 @@ As you have already downloaded the `wlabs_self-sdk-master.zip` file, your first 
 .
 
 **Code Overview**
+
 1. All classes in Intu inherit from the ISerializable interface. All objects can be deserialized from the Deserialize function and serialized from the Serialize function. All deserialization and serialization occurs from the body.json file found in the etc/profiles directory.
 
 2. The flow of how this gesture gets execute has led up to working on the previous workshops. In workshop two, you have configured a conversation service to have it respond to questions in a variety of ways. One thing that can be done in conversation is to add an `[emote=show_laugh]` tag after a response. The text that gets returned from the Conversation service eventually makes it's way to the SpeakingAgent. The SpeakingAgent will see the `[emote=show_laugh]` tag, and create an Emotion object and place that on the BlackBoard. The agent that was developed in Workshop 3 subscribes to Emotion objects on start up. In the callback, OnEmotion() function will execute an AnimateGesture skill
