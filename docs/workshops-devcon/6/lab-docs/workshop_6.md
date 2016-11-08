@@ -168,14 +168,13 @@ Open the `WorkshopSixSensor.cpp` file, which contains the following functions th
   
   * **OnStop()**: Stops the camera sensor. After the sensor is called, it should wait for any processing to occur and release any objects in memory.
   
-  * **OnPause()**: Pauses the camera sensor. The pause function increments an m_Pause integer. The reason this is not a boolean is because other places throughout core Intu can pause a sensor, and we need to keep track how many times pause is called before we know we can resume. When Pause is called, no data is sent to the extractor that has subscribed to it's data.
+  * **OnPause()**: Pauses the camera sensor. The pause function increments an m_Pause integer. The reason this is not a boolean is because other places throughout core Intu can pause a sensor, and we need to keep track how many times pause is called before we know we can resume. When Pause is called, no data is sent to the extractor that has subscribed to its data.
   
   * **OnResume()**: Resumes the sensor. The sensor can then start sending data to the extractor that is subscribed to it.
   
-  * **CaptureVideo()**: Using opencv, we take raw buffers from the camera and encode them in JPEG format. This will continually happen based on the framers per second that is declared from the m_FramesPerSecond variable, and will stop when the OnStop() function is called.
+  * **CaptureVideo()**: Using opencv, we take raw buffers from the camera and encode them in JPEG format. This will continually happen based on the frames per second that is declared from the m_FramesPerSecond variable, and will stop when the OnStop() function is called.
  
   * **SendingData()**: Checks whether the camera is paused. If it's not paused, data is sent to all extractors that have subscribed to it.
-
 
 The OnStop, OnPause and OnResume functions are already completely built out.
 
@@ -224,8 +223,7 @@ In the next step, you will build out the **OnStart**, **CaptureVideo** and **Sen
     }
 	#endif
   ```
-      The above code will capture the vision from the camera. Using OpenCV the buffer will be filled as a JPEG, as long as it hasn't been paused.
-
+  
 4. For the **SendingData()** function, copy the code directly below **//Code for SendingData()**. Now paste this inside the function body **{}** of **SendingData()** in `WorkshopSixSensor.cpp`. The code which you need is displayed below for completeness; however, it is **not** recommended for you to copy it from here due to formatting issues.
 
   
