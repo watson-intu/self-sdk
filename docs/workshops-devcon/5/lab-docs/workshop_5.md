@@ -523,40 +523,6 @@ It is from the configuration file `raspi.anims`, in `Intu/wlabs_self-sdk-master/
 
 ## 3. Setting up your Raspberry Pi for Builds
 
-
-###**xxxxxdklghsdlfghs;ghs;fghs;flghsfk;ghfs;ghsfkg;lgfhs;ghks;lf**
-	
-3. Open up a new browser window on your laptop and [**Anaconda 4.2.0 For Linux Python 2.7 version**](https://www.continuum.io/downloads).
-
-   1. Copy and open the following in a browser: https://www.continuum.io/downloads
-   2. Click the solid blue GRAPHICAL INSTALLER button for Python 2.7 Version. It should be 403 MB. The .pkg file downloads.
-   3. After the file is downloaded, double-click it, and follow the prompts to install Anaconda.
-   4. Open a **new** Terminal window and make sure your version of Python has been successfully updated by running the command: `python --version` 
- 	
- 		You should see: `Python 2.7.12 :: Anaconda 4.2.0 (x86_64)`
-  
-4. Set up qiBuild.
-   1. Run: `pip install qibuild`
-   2. Run: `qibuild config --wizard` and be sure to include the two hyphens before **wizard** in the last command.
-   3. When the "Please choose a generator" prompt is displayed, specify **1**, and press **Enter**.
-   4. When the "Please choose an IDE" prompt is displayed, specify **1**, and press **Enter**.
-
-### 1.2. Building the Self SDK for OS X
-
-1. In a new Terminal window, navigate to the **wlabs_self-sdk-master** directory inside **intu**. You should just be able to run: `cd intu/wlabs_self-sdk-master` 
-
-	**Note:** If you have **already built the Self SDK for OS X** in another workshop, run: `./scripts/clean.sh`    
-
-2. Run:
-`./scripts/build_mac.sh`  
-If you are running this script for the first time and you see the following message, do not worry as you do not have the toolchain. Let the script run and proceed with the next step.
-```
-[ERROR]: Exception No such toolchain: mac-self
-Known toolchains are:
-```
-
-###**xxxxxdklghsdlfghs;ghs;fghs;flghsfk;ghfs;ghsfkg;lgfhs;ghks;lf**
-
 **Note:** If any step below fails or errors, run: `sudo apt-get update`, then repeat the step.
 
 1.	Open up a new browser window on your laptop and download [**Anaconda 4.2.0 For Linux Python 2.7 version**](https://www.continuum.io/downloads).
@@ -568,26 +534,27 @@ Known toolchains are:
 
 	**For Mac users:**
 	
-	Navigate to the directory where you downloaded Anaconda on your local machine (the file should be named: `Anaconda3-4.2.0-Linux-x86.sh`) and run: `scp Anaconda2-4.2.0-Linux-x86.sh pi@{pi's_IP_address}:/home/pi` 
+	1. Navigate to the directory where you downloaded Anaconda on your local machine. The file should be named: `Anaconda3-4.2.0-Linux-x86.sh`.
+	2. Run: `scp Anaconda2-4.2.0-Linux-x86.sh pi@{pi's_IP_address}:/home/pi` 
 
 	**For Windows users:**
+	
  	1. Open Filezilla and connect to your Raspberry Pi. 
     	1. In the **Host** field, specify your Raspberry Pi's IP address.
 		2. In the **Username** field, specify your Raspberry Pi's username (**pi**).
 		3. In the **Password** field, specify your Raspberry Pi's password (**raspberry**).
 		4. In the **Port** field, specify **22**. 
-
 	2. In the **Local site** side of the screen, navigate to the `Anaconda2-4.2.0-Linux-x86.sh` file.
 	
 	3.	In the **Remote site** side of the screen, navigate to the directory: **/home/pi**
 	
 	4.	Click on the file `Anaconda2-4.2.0-Linux-x86.sh` on the **Local site** side of the screen and drag it to the **Remote site** side of the screen. You can monitor the progress of the transfer in the panel located at the bottom of the Filezilla screen.
 
-3.	Install Anaconda on your Raspberry Pi and set up qiBuild.
+3.	Install Anaconda on your Raspberry Pi and set up the qiBuild.
 	1. In a new Terminal/PuTTY window, SSH into your Raspberry Pi: `ssh pi@{ip_address}`. You will be prompted for the username (**pi**) and/or password (**raspberry**) for the Raspberry Pi.
 	2.	Run: `bash Anaconda2-4.2.0-Linux-x86.sh`
-	3. Follow the steps on the screen to install Anaconda. When you get to the license, keep hitting Enter to jump to the bottom. Type **yes** to approve the license.
-	4.	Hit Enter to install Anaconda in the default location. **Note**: It may take a while for the progress to update, and if you get the following error, please ignore it. proceed with the next step.
+	3. Follow the steps on the screen to install Anaconda. When you get to the license, keep hitting **Enter** to jump to the bottom. Type **yes** to approve the license.
+	4.	Hit **Enter** to install Anaconda in the default location. **Note**: It may take a while for the progress to update, and if you get the following error, please ignore it. Proceed with the next step.
 
 		```
 Anaconda2-4.2.0-Linux-x86.sh: line 484: /home/pi/anaconda2/pkgs/python-3.5.2-0/bin/python: cannot execute binary file: Exec format error
@@ -599,21 +566,21 @@ Linux raspberrypi 4.4.21-v7+ #911 SMP Thu Sep 15 14:22:38 BST 2016 armv7l GNU/Li
 
 	5. Once Anaconda has successfully installed, run: `sudo apt-get install python-pip cmake` 
 	
-		**Note:** If this fails, run `sudo apt-get update`, and then rerun: `sudo apt-get install python-pip cmake`
+		**Note:** If this fails, run `sudo apt-get update` and then rerun: `sudo apt-get install python-pip cmake`
 
 	6.	Run: `sudo pip install qibuild`
  
 
 4.	Install the wiringPi library on the Raspberry Pi.
 	1. In a new Terminal/PuTTY window, SSH into your Raspberry Pi: `ssh pi@{ip_address}`. You will be prompted for the username (**pi**) and/or password (**raspberry**) for the Raspberry Pi.
-	2.	Navigate to your Raspberry Pi's **home directory** by running: `cd /home/pi`. 
+	2.	Navigate to your Raspberry Pi's **home directory** by running: `cd /home/pi` 
 	3.	Run: `git clone git://git.drogon.net/wiringPi`
 	4.	Now navigate into the wiringPi directory by running: `cd wiringPi/`
 	5.	Run: `./build`
 
 	You should see a list of classes compiled and "All Done" at the end.
 	
-Finally, in a new Terminal/PuTTY window, SSH into your Raspberry Pi, navigate to its home directory by running `cd /home/pi`, and in here, create a new directory called **self**: `mkdir self`. This directory will be used in the steps below.
+5. Finally, in a new Terminal/PuTTY window, SSH into your Raspberry Pi, navigate to its home directory by running: `cd /home/pi` and in here, create a new directory called **self** by running: `mkdir self`. This directory will be used in the steps below.
 
 ## 4. Download the Self SDK and build Self on your Raspberry Pi
 
@@ -621,15 +588,6 @@ Finally, in a new Terminal/PuTTY window, SSH into your Raspberry Pi, navigate to
 ### A. Download the Self SDK
 
 1. [Download the Self SDK](https://hub.jazz.net/project/wlabs/self-sdk). Click on the **download icon** next to the default **master** branch selected.
-
-2. Create a new directory named **intu** in your **home** directory.
-
-3. Unzip the **wlabs_self-sdk-master.zip** file into **intu**, making sure that you retain the folder structure, i.e. your intu directory should now contain the unzipped **wlabs_self-sdk-master** folder. This may take some time.
-
-
-###ORIGINAL xxxxxxxxxxxxxxx
-
-1. [Download the Self SDK](https://github.ibm.com/watson-labs-austin/self-sdk). Click on **Clone or download** and select **Download Zip**.
 
 2. Copy the zip file from your local machine across to the Raspberry Pi.
 
