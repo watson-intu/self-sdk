@@ -121,7 +121,7 @@ Download the code to your computer. You can do download the code in either of th
 
 1. Set up [Visual Studio 2015](https://www.visualstudio.com/downloads/).
 2. Open `/vs2015/self.sln` in this project.
-3. Select self_instance as your startup project, compile, and run.
+3. Select self-sdk as your startup project, compile, and run.
 
 ### OS X
 
