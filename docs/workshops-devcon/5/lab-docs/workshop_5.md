@@ -1,6 +1,6 @@
 # Workshop 5 – Running Intu on a Raspberry Pi
 
-In this workshop, you will assemble your own Raspberry Pi, which is a credit card-sized computer. You will then program an LED gesture for Intu, and run Intu off of your Raspberry Pi and see your LED gesture in action. (NEED TO FINISH)
+In this workshop, you will assemble your own Raspberry Pi, which is a credit card-sized computer. You will then program an LED gesture for Intu, and run Intu off of your Raspberry Pi and see your LED gesture in action.
 
 **Before you begin:** 
 
@@ -43,23 +43,23 @@ Complete the following tasks:
 
 1. Before assembling your Raspberry Pi, charge your speaker by connecting it to your laptop using the USB to micro-USB cable. The indicator light will be red while the speaker is charging and blue when fully charged.
 
-	![Speaker charging.](https://github.ibm.com/watson-labs-austin/self-sdk/blob/rebecca-workshops/docs/workshops-devcon/5/lab-docs/speaker_charging_in_laptop.png?raw=true)
+	![Speaker charging.](https://github.ibm.com/watson-labs-austin/self-sdk/blob/develop/docs/workshops-devcon/5/lab-docs/speaker_charging_in_laptop.png?raw=true)
 
 2. After your speaker is charged, connect it to your Raspberry Pi using the 3.5mm audio cable.
 
-	![Speaker plugged into your Raspberry Pi.](https://github.ibm.com/watson-labs-austin/self-sdk/blob/rebecca-workshops/docs/workshops-devcon/5/lab-docs/speaker_in_pi.png?raw=true)
+	![Speaker plugged into your Raspberry Pi.](https://github.ibm.com/watson-labs-austin/self-sdk/blob/develop/docs/workshops-devcon/5/lab-docs/speaker_in_pi.png?raw=true)
 					
 ### B. Heat sinks
 
 Place the two heat sinks on your Raspberry Pi.
 				
-![Heat sinks.](https://github.ibm.com/watson-labs-austin/self-sdk/blob/rebecca-workshops/docs/workshops-devcon/5/lab-docs/heat_sinks.png?raw=true)
+![Heat sinks.](https://github.ibm.com/watson-labs-austin/self-sdk/blob/develop/docs/workshops-devcon/5/lab-docs/heat_sinks.png?raw=true)
 
 ### C. Microphone
 
 Plug the USB microphone into any one of the USB ports of your Raspberry Pi.
 
-![Microphone](https://github.ibm.com/watson-labs-austin/self-sdk/blob/rebecca-workshops/docs/workshops-devcon/5/lab-docs/microphone.png?raw=true)
+![Microphone](https://github.ibm.com/watson-labs-austin/self-sdk/blob/develop/docs/workshops-devcon/5/lab-docs/microphone.png?raw=true)
 
 ### D. Camera
 
@@ -73,7 +73,7 @@ Plug the USB microphone into any one of the USB ports of your Raspberry Pi.
 
 5.	Refer to the image below for a properly assembled camera.
 
-	![Camera.](https://github.ibm.com/watson-labs-austin/self-sdk/blob/rebecca-workshops/docs/workshops-devcon/5/lab-docs/camera4.png?raw=true)
+	![Camera.](https://github.ibm.com/watson-labs-austin/self-sdk/blob/develop/docs/workshops-devcon/5/lab-docs/camera4.png?raw=true)
 
 ### E. LED
 
@@ -92,23 +92,23 @@ Plug the USB microphone into any one of the USB ports of your Raspberry Pi.
 
 6.	Connect **Jumper Wire 3** to the **shorter** leg of the **LED**. This is called the **Cathode** pin.
 
-	![LED and jumper wires.](https://github.ibm.com/watson-labs-austin/self-sdk/blob/rebecca-workshops/docs/workshops-devcon/5/lab-docs/led_wires.png?raw=true)
+	![LED and jumper wires.](https://github.ibm.com/watson-labs-austin/self-sdk/blob/develop/docs/workshops-devcon/5/lab-docs/led_wires.png?raw=true)
 
 7.	Now position your Raspberry Pi such that the **power cable** is on the **bottom**. Connect the **Cathode end** (Jumper Wire 3) to **pin #3** on the **top row**. Then connect the **Anode end **(Jumper Wire 2) to **pin #4** on the **bottom row**. Refer to the image below for a fully assembled Raspberry Pi.
 
-	![Assembled Raspberry Pi.](https://github.ibm.com/watson-labs-austin/self-sdk/blob/rebecca-workshops/docs/workshops-devcon/5/lab-docs/anode_cathode.png?raw=true)
+	![Assembled Raspberry Pi.](https://github.ibm.com/watson-labs-austin/self-sdk/blob/develop/docs/workshops-devcon/5/lab-docs/anode_cathode.png?raw=true)
 	
 ### F. Power
 
 To power up your Raspberry Pi, connect the power cable to your Raspberry Pi as shown in the image below. 
 
-![Power cable for Raspberry Pi.](https://github.ibm.com/watson-labs-austin/self-sdk/blob/rebecca-workshops/docs/workshops-devcon/5/lab-docs/pi_charger.png?raw=true)
+![Power cable for Raspberry Pi.](https://github.ibm.com/watson-labs-austin/self-sdk/blob/develop/docs/workshops-devcon/5/lab-docs/pi_charger.png?raw=true)
 
 ### G. Connecting the Raspberry Pi to an external monitor, keyboard and mouse
 
 Connect your Raspberry Pi to an external monitor, keyboard and mouse as shown in the image below.
 
-![Raspberry Pi and external connections.](https://github.ibm.com/watson-labs-austin/self-sdk/blob/rebecca-workshops/docs/workshops-devcon/5/lab-docs/external_monitor_keyboard_to_pi.png?raw=true)
+![Raspberry Pi and external connections.](https://github.ibm.com/watson-labs-austin/self-sdk/blob/develop/docs/workshops-devcon/5/lab-docs/external_monitor_keyboard_to_pi.png?raw=true)
 
 ## 2. Set up the Wi-Fi connection for your Raspberry Pi
 
@@ -535,15 +535,17 @@ It is from the configuration file `raspi.anims`, in `Intu/wlabs_self-sdk-master/
 	**For Mac users:**
 	
 	1. Navigate to the directory where you downloaded Anaconda on your local machine. The file should be named: `Anaconda3-4.2.0-Linux-x86.sh`.
+	
 	2. Run: `scp Anaconda2-4.2.0-Linux-x86.sh pi@{pi's_IP_address}:/home/pi` 
 
 	**For Windows users:**
 	
- 	1. Open Filezilla and connect to your Raspberry Pi. 
+	1. Open Filezilla and connect to your Raspberry Pi. 
     	1. In the **Host** field, specify your Raspberry Pi's IP address.
 		2. In the **Username** field, specify your Raspberry Pi's username (**pi**).
 		3. In the **Password** field, specify your Raspberry Pi's password (**raspberry**).
 		4. In the **Port** field, specify **22**. 
+	
 	2. In the **Local site** side of the screen, navigate to the `Anaconda2-4.2.0-Linux-x86.sh` file.
 	
 	3.	In the **Remote site** side of the screen, navigate to the directory: **/home/pi**
@@ -551,9 +553,13 @@ It is from the configuration file `raspi.anims`, in `Intu/wlabs_self-sdk-master/
 	4.	Click on the file `Anaconda2-4.2.0-Linux-x86.sh` on the **Local site** side of the screen and drag it to the **Remote site** side of the screen. You can monitor the progress of the transfer in the panel located at the bottom of the Filezilla screen.
 
 3.	Install Anaconda on your Raspberry Pi and set up the qiBuild.
+	
 	1. In a new Terminal/PuTTY window, SSH into your Raspberry Pi: `ssh pi@{ip_address}`. You will be prompted for the username (**pi**) and/or password (**raspberry**) for the Raspberry Pi.
+	
 	2.	Run: `bash Anaconda2-4.2.0-Linux-x86.sh`
+	
 	3. Follow the steps on the screen to install Anaconda. When you get to the license, keep hitting **Enter** to jump to the bottom. Type **yes** to approve the license.
+	
 	4.	Hit **Enter** to install Anaconda in the default location. **Note**: It may take a while for the progress to update, and if you get the following error, please ignore it. Proceed with the next step.
 
 		```
@@ -572,10 +578,15 @@ Linux raspberrypi 4.4.21-v7+ #911 SMP Thu Sep 15 14:22:38 BST 2016 armv7l GNU/Li
  
 
 4.	Install the wiringPi library on the Raspberry Pi.
+	
 	1. In a new Terminal/PuTTY window, SSH into your Raspberry Pi: `ssh pi@{ip_address}`. You will be prompted for the username (**pi**) and/or password (**raspberry**) for the Raspberry Pi.
+	
 	2.	Navigate to your Raspberry Pi's **home directory** by running: `cd /home/pi` 
+	
 	3.	Run: `git clone git://git.drogon.net/wiringPi`
+	
 	4.	Now navigate into the wiringPi directory by running: `cd wiringPi/`
+	
 	5.	Run: `./build`
 
 	You should see a list of classes compiled and "All Done" at the end.
@@ -597,10 +608,14 @@ Linux raspberrypi 4.4.21-v7+ #911 SMP Thu Sep 15 14:22:38 BST 2016 armv7l GNU/Li
 	
 	**For Windows users:**
  
- 1. Open Filezilla and connect to your Raspberry Pi. 
+ 1. Open Filezilla and connect to your Raspberry Pi.
+  
     	1. In the **Host** field, specify your Raspberry Pi's IP address.
+		
 		2. In the **Username** field, specify your Raspberry Pi's username (**pi**).
+		
 		3. In the **Password** field, specify your Raspberry Pi's password (**raspberry**).
+		
 		4. In the **Port** field, specify **22**. 
 
 	2. In the **Local site** side of the screen, navigate to the `self-sdk-develop.zip` file.
@@ -610,14 +625,19 @@ Linux raspberrypi 4.4.21-v7+ #911 SMP Thu Sep 15 14:22:38 BST 2016 armv7l GNU/Li
 	4.	Click on the file `self-sdk-develop.zip` on the **Local site** side of the screen and drag it to the **Remote site** side of the screen. You can monitor the progress of the transfer in the panel located at the bottom of the Filezilla screen.
 
 3. Unzip the `self-sdk-develop.zip` file into the **self** directory of your Raspberry Pi. 
+ 	
  	1.	Navigate to the **self** directory on your Raspberry Pi. You can open a new Terminal/PuTTY window as before, SSH into your Raspberry Pi, and run: `cd /home/pi/self`. If your prompt reads: `pi@raspberrypi:~/self $`, this confirms that you are in the **self** directory.
+	
 	2.	Run the following command: `unzip self-sdk-develop.zip`
 
 4. Build Self on your Raspberry Pi with the following steps:
 
 	1.	Navigate into the **self-sdk-develop** directory on your Raspberry Pi: `cd self-sdk-develop`
+	
 	2.	Mark the build script as executable by running: `chmod +x scripts/build_raspi.sh`
+	
 	3. Run: `scripts/clean.sh` 
+	
 	4. Run: `scripts/build_raspi.sh`
 
 ###You are now ready to proceed from **Section 3: Download the Self SDK onto your computer and add in the code for the LED gesture.** 
