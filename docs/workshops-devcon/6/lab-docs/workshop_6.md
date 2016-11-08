@@ -36,7 +36,7 @@ Follow the instructions for your platform.
 
 3. Unzip the **wlabs_self-sdk-master.zip** file into **intu**, making sure that you retain the folder structure, i.e. your intu directory should now contain the unzipped **wlabs_self-sdk-masterr** folder.
 
-### 1. Preparing for OS X
+### A. Preparing for OS X
 
 **Note**: If you have already completed **Preparing for OS X** in another workshop, you can skip this section.
 
@@ -81,7 +81,7 @@ Follow the instructions for your platform.
 		If you see this message, you will need to update **Xcode**.
 	
 3. Download **Anaconda 4.2.0 Python 2.7 version** by using the **Graphical Installer**. It is required to correctly configure pip in the following step.
-   1. Copy and open the following in a browser: https://www.continuum.io/downloads
+   1. Open a new browser window and [download Anaconda 4.2.0 Python 2.7 version](https://www.continuum.io/downloads).
    2. Click the solid blue GRAPHICAL INSTALLER button for Python 2.7 Version. It should be 403 MB. The .pkg file downloads.
    3. After the file is downloaded, double-click it, and follow the prompts to install Anaconda.
    4. Open a **new** Terminal window and make sure your version of Python has been successfully updated by running the command: `python --version` 
@@ -94,7 +94,7 @@ Follow the instructions for your platform.
    3. When the "Please choose a generator" prompt is displayed, specify **1**, and press **Enter**.
    4. When the "Please choose an IDE" prompt is displayed, specify **1**, and press **Enter**.
    
-### 2 Building the Intu SDK for OS X
+### B. Building the Intu SDK for OS X
 
 1. In a new Terminal window, navigate to the **wlabs_self-sdk-master** directory inside **intu**. You should just be able to run: `cd intu/wlabs_self-sdk-master` 
 
@@ -111,7 +111,7 @@ Known toolchains are:
 
 ## 3. Creating a camera sensor
 
-### 1. Preparing your directories and files for the camera sensor
+### A. Preparing your directories and files for the camera sensor
 
 1. If you do not have it installed already, download the trial version of the [CLion C++ IDE](https://www.jetbrains.com/clion/download/).
 
@@ -160,7 +160,7 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
 
 5. Copy the `WorkshopSixSensor.cpp` and the `WorkshopSixSensor.h` files and paste them into the **sensors** directory that you created.
 
-### 2. Building out the OnStart(), CaptureVideo() and SendingData() functions for the camera sensor
+### B. Building out the OnStart(), CaptureVideo() and SendingData() functions for the camera sensor
 
 Open the `WorkshopSixSensor.cpp` file, which contains the following functions that enable the emotion agent you'll create:
 
@@ -247,7 +247,7 @@ In the next task, you will update the `body.json` file also located in the **int
 
 ## 4. Configuring your Intu instance to include the camera sensor
 
-### 1. Retrieving the credentials for your Organization in the Intu Gateway
+### A. Retrieving the credentials for your Organization in the Intu Gateway
 
 1. [Log in to the Intu Gateway](https://rg-gateway.mybluemix.net/). 
 
@@ -257,7 +257,7 @@ In the next task, you will update the `body.json` file also located in the **int
 
 4. Copy these credentials by clicking the **Copy** icon in the top right of the window, and paste this into a new text file using your favourite text editor.
 
-### 2. Configuring your `body.json` file
+### B. Configuring your `body.json` file
 
 1. Open your `body.json` file. This will be in **master_self-sdk-master/bin/mac/etc/profile**.
 	
@@ -292,7 +292,7 @@ It should look something like
 
 Save your changes.
 
-### 3. Building Intu
+### C. Building Intu
 
 1. Return to your most recent Terminal window, where you should already be in the **mac** directory. Otherwise, open a **new** Terminal window and navigate to this directory by running: `cd intu/wlabs_self-sdk-master/bin/mac`
 
@@ -302,7 +302,7 @@ Save your changes.
 
 Now Intu is running, you should see your Mac camera turn on. Now Intu will be able to capture vision through your Mac camera.
 
-### 4. Challenge: Add a camera sensor to a Raspberry Pi
+### D. Challenge: Add a camera sensor to a Raspberry Pi
 
 The process you have just undertaken was adding a camera into your Intu instance on your Mac, by extending the self-sdk. The challenge is to now add a camera instance for the Raspberry Pi. (Hint: do workshop 5 first and think how you can alter the process and think how how could get the code for the camera on the Raspberry Pi instead of the LED gesture. 
 
@@ -319,7 +319,7 @@ The process you have just undertaken was adding a camera into your Intu instance
 
 Your instance of Intu is preconfigured with the following Watson services: Conversation, Natural Language Classifier, Speech to Text, and Text to Speech. The preconfiguration is enabled for 30 days. If you want to test Intu after 30 days, you must create your own instances of these services and configure Intu to use them.
 
-### 1. Creating instances of Watson services
+### A. Creating instances of Watson services
 
 To use Intu, you need operational instances of the following services in Bluemix: Conversation, Natural Language Classifier, Speech to Text, and Text to Speech.
 
@@ -341,7 +341,7 @@ To use Intu, you need operational instances of the following services in Bluemix
 4. Create instances of the Natural Language Classifier, Speech to Text, and Text to Speech services by repeating the same substeps 1 - 7 that you completed to create the Conversation service instance.
 
 
-### 2. Configuring Intu to use your service instances
+### B. Configuring Intu to use your service instances
 
 To configure Intu to use your instances of these Watson services, log in to the [Intu Gateway](https://rg-gateway.mybluemix.net/) and complete the following steps:
 
