@@ -2,64 +2,77 @@
 
 In this workshop, you create an emotion agent. Agents make decisions about how Intu operates and responds. The emotion agent uses the Tone Analyzer service on Bluemix, which analyzes a person's tone and determines whether that tone is positive or negative.
 
-**Before you begin:** You must have a Mac or Windows laptop, and you must have completed Workshop 1: Say Hello!.
+**Before you begin:** You must have a Mac or Windows laptop, and you must have completed Workshop 1: Say Hello!. You will notice that Intu and Self are used interchangeably. Self is the technical name for Intu.
+
+**Note for Windows users:** You will need to have [**Visual Studio Community**](https://www.visualstudio.com/vs/community/) installed. This will take some time to download.
 
 Complete the following tasks:
 
 1. [Setting up the Tone Analyzer service](#setting-up-the-tone-analyzer-service)
 2. [Understanding some Intu terminology](#understanding-some-intu-terminology)
-3. [Building the Intu SDK](#building-the-intu-sdk)
+3. [Building the Self SDK](#building-the-intu-sdk)
 4. [Creating an emotion agent](#creating-an-emotion-agent)
 5. [Configuring Intu to include your emotion agent](#configuring-intu-to-include-your-emotion-agent)
 
-## Setting up the Tone Analyzer service
+## 1. Setting up the Tone Analyzer service
 
-To set up the service, you must create an instance of it, and configure Intu to use it.
+### A. Creating your own instance of the Tone Analyzer service
 
-### Creating your own instance of the Tone Analyzer service
+1. [Log in to Bluemix](https://console.ng.bluemix.net/) if you are not already logged in.
 
-1. [Log in to Bluemix](https://idaas.iam.ibm.com/idaas/mtfim/sps/authsvc?PolicyId=urn:ibm:security:authentication:asf:basicldapuser).
 2. On the Bluemix dashboard, click **Catalog** in the top-right navigation bar.
-3. In the Categories menu on the left, under Services, click **Watson**.
+
+3. In the All Categories menu on the left, under Services, click **Watson**.
+
 4. Click the **Tone Analyzer** tile.
   1. Keep all the default values, and click **Create**.
   2. Click the **Service Credentials** tab.
-  3. Click **View Credentials** for the new service instance. Leave this window open. You'll need the credentials in the next steps.
-5. Configure Intu to use your Tone Analyzer service instance.
-  1. Return to the Watson Intu Gateway. Expand **All Organizations** by clicking the arrow icon.
-  2. Click the name of your organization.
-  3. Expand your organization by clicking the arrow icon.
-  4. Click the name of your group.
-  5. Click **Services** in the navigation bar.
-  6. Click **Add Service**.
-  7. In the **Service Name** field, specify Tone Analyzer.
-  8. Return to your Tone Analyzer credentials window, and copy the user ID value.
-  8. Return to the Gateway, and paste your Tone Analyzer user ID value in the **User ID** field.
-  9. Return to your Tone Analyzer credentials window, and copy the password value.
-  10. Return to the Gateway, and paste your Tone Analyzer password value in the **Password** field.
-  11. Return to your Tone Analyzer credentials window, and copy the url value.
-  12. Return to the Gateway, and paste your Tone Analyzer url value in the **Service Endpoint** field.
-  13. Click **Add**.
+  3. Click **View Credentials** for the new Tone Analyzer service instance you just created. 
+  4. Copy these credentials (everything inside **{ }**) and paste them into a new text file in your favourite text editor. You will need these credentials to configure your Tone Analyzer service in the section below.
 
-## Understanding some Intu terminology
+### B. Configure Intu to use your Tone Analyzer service instance
+
+1. Open a new browser window and [log in to the Intu Gateway](https://rg-gateway.mybluemix.net/).
+
+2. Click on **MANAGE** on the left hand side navigation bar, and select **Services**. Select your Organization and Group in the top Filter by menu
+
+3. Click the **Add Service** box.
+  
+4. In the **SERVICE NAME** field, specify **ToneAnalyzerV1**.
+
+5. In the **USER ID** field, copy in the username you pasted into your text file in the above.
+
+6. In the **PASSWORD** field, copy in the password.
+
+7. In the **SERVICE ENDPOINT** field, copy in the url.
+
+8. Click the **Add** button at the bottom right of the window.
+
+## 2. Understanding some Intu terminology
 
 Before you create an emotion agent, become familiar with the following terminology:
 
   * **Blackboard**: The central message broker on which all the agents post data and listen for incoming data.
+  
   * **Publish**: To push data onto the blackboard under a particular topic. 
   * **Subscribe**: Subscribing to a topic on the blackboard means to listen to the blackboard and wait for any other agents to post to the blackboard under a particular topic.
   * **Topic**: A channel to which Agents publish and subscribe.
 
-## Building the Intu SDK
+## 3. Building the Self SDK
 
 Follow the instructions for your platform.
 
 **Before you begin**:
 
-1. [Download the Intu SDK](https://github.ibm.com/watson-labs-austin/self-sdk).
-2. Create a new directory named `intu` in your home directory, and unzip the SDK package into it.
+1. [Download the Self SDK](https://hub.jazz.net/project/wlabs/self-sdk). Click on the **download icon** next to the default **master** branch selected.
 
-### Building the SDK for OS X
+2. Create a new directory named **intu** in a directory of your choosing.
+
+3. Unzip the **wlabs_self-sdk-master.zip** file into the **intu** directory, making sure that you retain the folder structure, i.e. your intu directory should now contain the unzipped **wlabs_self-sdk-master** folder. This may take some time.
+
+### A. Preparing for OS X
+
+**Note**: If you have already completed **Preparing for OS X** in another workshop, you can skip this section.
 
 1. Install Homebrew by completing the following steps:
    1. Open a new terminal window, and run the command:
@@ -71,100 +84,212 @@ Follow the instructions for your platform.
    Press RETURN to continue or any other key to abort
    ```
    2. Press **Return** or **Enter**. A prompt for your laptop's password is displayed.
-   3. Specify your password, and press **Return** or **Enter**. If you're using Sierra OS X, the following message is displayed:
-   ```
+   3. Specify your password, and press **Return** or **Enter**. If you have **macOS Sierra**, the following message is displayed:
+   
+   		```
    HEAD is now at 89fd34b Merge pull request #1368 from MikeMcQuaid/build-options-file
    Error: /usr/local/Cellar is not writable. You should change the
    ownership and permissions of /usr/local/Cellar back to your
    user account:
    sudo chown -R $(whoami) /usr/local/Cellar
    Failed during: /usr/local/bin/brew update --force
+   		```
+   
+   		Run: `sudo chown -R $(whoami) /usr/local/Cellar`
+   4. Now repeat step 1 by running: 
+    ```
+   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
    ```
-   4. Run `sudo chown -R $(whoami) /usr/local/Cellar`.
-2. Install CMake by using Homebrew. Run `brew install cmake`.
-3. Download Anaconda 4.2.0 Python 2.7 version by using the Graphical Installer. It is required to correctly configure pip in the following step.
-   1. Open (https://www.continuum.io/downloads).
-   2. Click the solid blue Graphical Installer button for Python V2.7. It should be 403 MB. The .pkg file downloads.
+2. Install CMake using Homebrew.
+	1. Run the command: `sudo chown -R $(whoami) /usr/local`   
+	2. Now run: `brew install cmake`
+
+		**Note**: If you have **macOS Sierra**, you may see the following message if you happen to have an outdated version of **Xcode**: 
+	
+		```
+	Your Xcode (7.3.1) is outdated.
+	Please update to Xcode 8.1 (or delete it).
+	Xcode can be updated from the App Store.
+		```
+	
+		If you see this message, you will need to update **Xcode**.
+	
+3. Download **Anaconda 4.2.0 Python 2.7 version** by using the **Graphical Installer**. It is required to correctly configure pip in the following step.
+   1. Open a new browser window and [download Anaconda 4.2.0 Python 2.7 version](https://www.continuum.io/downloads).
+   2. Click the solid blue GRAPHICAL INSTALLER button for Python 2.7 Version. It should be 403 MB. The .pkg file downloads.
    3. After the file is downloaded, double-click it, and follow the prompts to install Anaconda.
-4. Set up qiBuild.
-   1. Run the following commands:
-   * `pip install qibuild`
-   * `qibuild config --wizard`. Be sure to include the two hyphens before the word wizard in the last command.
-   2. When the "Please choose a generator" prompt is displayed, specify **1**, and press **Enter**.
-   3. When the "Please choose an IDE" prompt is displayed, specify **1**, and press **Enter**.
-5. Navigate to the `self-sdk-develop` directory in the Intu directory you created at the very beginning of this workshop. Open a new terminal window, and run the following commands:
-  * `cd intu/self-sdk-develop`
-  * `./scripts/build_mac.sh`
+   4. Open a **new** Terminal window and make sure your version of Python has been successfully updated by running the command: `python --version` 
+ 	
+ 		You should see: `Python 2.7.12 :: Anaconda 4.2.0 (x86_64)`
   
-If you're running this script for the first time and you see the following message, don't worry. You don't have the toolchain.
+4. Set up qiBuild.
+   1. Run: `pip install qibuild`
+   2. Run: `qibuild config --wizard` and be sure to include the two hyphens before **wizard** in the last command.
+   3. When the "Please choose a generator" prompt is displayed, specify **1**, and press **Enter**.
+   4. When the "Please choose an IDE" prompt is displayed, specify **1**, and press **Enter**.
+
+### B. Building the Self SDK for OS X
+
+1. In a new Terminal window, navigate to the **wlabs_self-sdk-master** directory inside **intu**. You should just be able to run: `cd intu/wlabs_self-sdk-master` 
+
+	**Note:** If you have **already built the Self SDK for OS X** in another workshop, run: `./scripts/clean.sh`    
+
+2. Run:
+`./scripts/build_mac.sh`  
+If you are running this script for the first time and you see the following message, do not worry as you do not have the toolchain. Let the script run and proceed with the next step.
 ```
 [ERROR]: Exception No such toolchain: mac-self
 Known toolchains are:
 ```
 
-### Building the SDK for Windows
+### C. Building the Self SDK for Windows
 
-1. Install [Visual Studio 2015](https://www.visualstudio.com/downloads/).
-2. Open the solution found in vs2015/self-sdk.sln
-3. Right click on the "self-sdk" project and select "Set as Startup Project".
-4. Right click on the "self-sdk" projet, open properties. In the Debugging tab of the properties, you will need to change "Working Directory" to "$(TargetDir)".
-5. Select Build->Build Solution
-6. Select Debug->Start Debugging to run the project with debugging
+1. Preparing Windows only requires installing **[Visual Studio Community](https://www.visualstudio.com/vs/community/)**. **Note:** This will take some time to download.
 
-**Important**: If you use SourceTree, the process might get stuck when trying to pull by using SSH. Run the following commands on the command line to fix the problem with the git client that's trying to be interactive:
-* cd "C:\Program Files (x86)\Atlassian\SourceTree\tools\putty"
-* plink git@github.ibm.com
+2. **Important:** When you install Visual Studio, in **Features**, inside the **Select features** box, make sure that **Visual C++** is selected under **Programming Languages**. 
 
-## Creating an emotion agent
+3. Visual Studio should launch automatically after installing. If it does not, open Visual Studio.
 
-1
+4. Select **Open solution**.
 
-**Windows users do the following five steps.**
+5. Open the solution found in **vs2015/self-sdk.sln**.
 
-1. In Visual Studio, in the `examples` directory, add a new Win32 Project called `workshop_three_plugin`, and click **OK**.
-2. Click **Next**, select **Application Type as DLL**, and uncheck **Precompiled header and Security Development Lifecycle (SDL) checks** under **Additional options**.
-3. Click **Finish**.
-4. Remove the Header Files, Resource Files, and Source Files directories that were newly created in the solution. 
-5. Right-click the project, open **Properties**, and make the following changes. Before you begin, make sure Configuration at the top left is set to **All Configurations**.
+6. Right click on the **self-sdk** project and select **Set as Startup Project**.
 
-* Change the value of **General->Character Set** to **Use Multi-Byte Character Set**.
-* Go to **Linker->General->Additional Library Directories->**, and add `../../lib/$(Configuration);../../lib/boost_1_60_0/stage/lib/`.
-* Replace the value of **Linker->Input->Additional Dependencies** with the following value: `jsoncpp.lib;self.lib;wdc.lib;%(AdditionalDependencies)`.
-* Go to **Build Events->Post-Build Event->Command Line**, and add `copy /Y "$(TargetPath)" "$(ProjectDir)....\bin\$(Configuration)\"`.
+7. Right click on the **self-sdk** project, and open **properties**. In the **Debugging tab** of the properties, you will need to change **Working Directory** to **$(TargetDir)**.
 
-**OS X and Windows users do the following four steps.**
+8. The first time you open your Visual Studio project, Visual Studio will want to compile for the **x86** architecture. In order to build Self, you will need to change this to **Win32**. Next to **Debug** in the task menu bar (directly below **File**), select the dropdown arrow and change **x86** to **Win32**.
 
-4. Make a folder in the sdk/examples folder (in filesystem, not Visual Studio) and call it workshop_three 
-5. Right click on the created workshop solution, and add a new Filter and call it agent
+9. Select **Build -> Build Solution**.
+
+10. Select **Debug -> Start Debugging** to run the project with debugging.
+
+**Important:** If you use SourceTree, the process might get stuck when trying to pull by using SSH. This is because SourceTree will try to launch an interactive window that will be hidden. Run the following commands on the command line to fix the problem:
+
+1. `cd "C:\Program Files (x86)\Atlassian\SourceTree\tools\putty"`
+	
+2. `plink git@github.ibm.com`
+
+## 4. Creating an emotion agent
+
+### A. Preparing your directories and files for the emotion agent
+
+**For OS X users:**
+
+1. If you do not have it installed already, download the trial version of the [CLion C++ IDE](https://www.jetbrains.com/clion/download/).
+
+2. In **CLion**, select **Open** -> **your home directory** -> **intu** -> **wlabs_self-sdk-master** and click **OK**. 
+
+	Note that a window may appear prompting you to open your project in a New Window or This Window. Select **New Window**. At the bottom of your CLion window, in the Problems tab, you will see the following Error, which you do not need to worry about:
+
+	Error: By not providing "FindSELF.cmake" in CMAKE_MODULE_PATH this project has asked CMake to find a package configuration file provided by "SELF", but CMake did not find one.
+Could not find a package configuration file provided by "SELF" with any of the following names:
+  SELFConfig.cmake   self-config.cmake
+Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to a directory containing one of the above files.  If "SELF" provides a separate development package or SDK, be sure it has been installed.
+
+	2i. Inside the CLion **wlabs_self-sdk-master project**, right-click **examples**, select **New**, and select **Directory**. Type in **workshop_three** for the new directory name, and click **OK**.
+ 
+	2ii. Right-click the `CMakeLists.txt` file in the **examples** directory, and click **Copy**. (If you are unsure of the directory you are in, look in the top-left navigation bar.)
+  
+	2iii. Right-click the **workshop_three** directory, and click **Paste**. This file helps to build the plugin for the emotion agent.
+
+	2iv. Return to the **examples** directory, open the `CMakeLists.txt` file, and add the following line: `add_subdirectory(workshop_three)` at the end. Your file contains the following three lines:
+
   ```
-3. Navigate back to the `workshop_three` directory, create a new directory, and name it `agents`.
-4. Locate the Workshop 3 code snippet files in `self-sdk-develop/docs/workshops-devcon/3/code-snippets/WorkshopThreeAgent_start`. Copy the `WorkshopThreeAgent.cpp` and the `WorkshopThreeAgent.h` files, and paste them into the `agents` directory that you created.
-5. Open the `WorkshopThreeAgent.cpp` file, which contains the following functions that enable the emotion agent you'll create. All Agents in Intu inherit from the IAgent interface. Agent's are responsible for listening for messages that are placed on the Blackboard and react accordingly. All agents will have a Serialize and Deserialize function (from the ISerializable interface). Deserialize function will deserialize JSON text (text from the body.json file) to instantiate an object, while Serialize will serialize the the data back into JSON to update the body.json file. Additionally, all agents will have an OnStart and OnStop function which is inherited from the IAgent interface. See below for more information on what these functions are doing.
+    include_directories(".")
 
-  * **OnStart()**: Starts the Emotion Agent. The manager that starts all agents is in the AgentSociety class. The OnStart function is called on the main thread, so we will do as little processing as necessary in this function. Mainly, all agents should initialize any services that they will use in this function (i.e., Tone Analyzer), as well as subscribe to any blackboard objects. In OnStart, look at line number 66. There we are getting an instance of the BlackBoard and declaring to notify us whenever an Emotion object has been placed there. When data is received (in this case a ThingEvent object), we set our callback to be the OnEmotion function. The macro TE_ALL states that we are only interested when the object has been added to the Blackboard. Another example of a macro we may be interested in is the TE_STATE, which says tha we are interested in only when the Blackboard object state has changed (i.e., from processing to finished). Look in the Blackboard.h file to see other macros. Additionally, we can start timers in the OnStart function like we do on line 71. A timer will be executed after a predefined float value (in this case it's m_EmotionTime). The VOID_DELEGATE argument is our callback function to allow functions to be called on different threads. There are Delegate calls, which call functions that take arguments, and VOID_DELEGATES which call functions with no arguments. When the timer has been reached, the OnEmotionCheck function will be called. The last two boolean parameters state if the function should be invoked on the main thread and if the timer should continually repeat. In this case, we want the function OnEmotion to be executed on the main thread and to continually repeat.
-  * **OnStop()**: Stops the emotion agent. The manager that stops all agents is in the AgentSociety class. Functionally, we want to unsubscribe from any blacboard objects that we subscribed to in the OnStart function, as well as reset any timers that may still be in use, like the m_spEmotionTimer. 
-  * **OnEmotion()**: Is the callback when the Emotion object is posted to the blackboard. 
-  * **OnText()**: The callback when a Text object is placed on the blackboard. A Text object is created from the TextExtractor with the transcription of what the user has said. When a text object is received, we will send it off to the Tone Analyzer service to process the tone of the user.
-  * **OnLearningIntent()**: Updates the EmotionalState variable when Positive or Negative feedback have been posted to the blackbaord. An example of positive feedback is when the user says something like "good job!" while negative feedback could be "Bad job!". Initially, the EmotionalState is 0.5 and must be 0 - 1. Each time the agent receives a piece of positive or negative feedback, the OnLearningIntent() function increases for positive feedback or decreases for negative feedback the EmotionalState variable score by 0.1. 
-  * **OnTone()**: The callback when we receive the results from the Tone Analyzer service. We define positve and negative tone from the body, or can be declared when we deserialize the class. If positive tone is identified, then we will increment our emotional state, while if tone is considiered negative, then we will decrement it.
+    add_subdirectory(sensor)
+    add_subdirectory(workshop_three)
+  ```
+	2v. Open the `CMakeLists.txt` file in the **workshop_three** directory, and overwrite its content with this code:
+
+  ```
+    include_directories(.)
+
+    file(GLOB_RECURSE SELF_CPP RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "*.cpp")
+    qi_create_lib(workshop_three_plugin SHARED ${SELF_CPP})
+    qi_use_lib(workshop_three_plugin self wdc)
+    qi_stage_lib(workshop_three_plugin)
+  ```
+
+3. Create a new directory inside this called **agents** in the **workshop_three** directory.
+
+4. Locate the Workshop 3 code snippet files **to be filled in** in:
+
+ `wlabs_self-sdk-master/docs/workshops-devcon/3/code-snippets/WorkshopThreeAgent_start`
+
+5. Copy the `WorkshopThreeAgent.cpp` and the `WorkshopThreeAgent.h` files and paste them into the **agents** directory that you created.
+
+
+**For Windows users:**
+
+1. Open up File Explorer and navigate to **intu/wlabs_self-sdk-master/examples**.
+
+2. Create a new directory in examples called **workshop_three**. 
+
+3. Copy across `WorkshopThreeAgent.cpp` and `WorkshopThreeAgent.h` located under **self-sdk/docs/workshops-devcon/3/code-snippets/WorkshopThreeAgent_Start** into the **workshop_three** directory.
+
+4. In **Visual Studio**, in the **examples** directory, add a new **Win32 Project** called `workshop_three_plugin`, and click **OK**.
+
+5. Click **Next**, select **Application Type as DLL**, and uncheck **Precompiled header and Security Development Lifecycle (SDL) checks** under **Additional options**.
+
+6. Click **Finish**.
+
+7. Inside of `workshop_three_plugin`, remove the **Header Files**, **Resource Files**, and **Source Files** directories that were newly created in the solution.
+
+8. Inside the **Solution Explorer** window, right click **workshop_three****_plugin**, and select **Add -> New Filter**.
+
+9. Name the filter **agent**.
+
+10. Right-click on **agent**, and select **Add -> Existing Items**.
+
+11. Navigate to **wlabs_****self-sdk-master/examples/workshop_three** and select the files: `WorkshopThreeAgent.cpp` and `WorkshopThreeAgent.h`.
+
+12. Right-click the **workshop****_three****_plugin** solution, open **Properties**, and make the following changes, but **before you begin, make sure Configuration at the top left is set to "All Configurations"**.
+
+* Change the value of **General -> Character Set** to **Use Multi-Byte Character Set**.
+
+* Go to **C/C++ -> General** **-> Additional Include Directories** **->**, and add: `..\..\examples\workshop_three;..\..\include\self;..\..\include\wdc;..\..\lib\boost_1_60_0;..\..\lib;%(AdditionalIncludeDirectories)`
+
+* Go to **C/C++ -> Precompiled Headers -> Confirm Precompile Header**, and delete the value. Make sure it's blank.
+
+* Go to **Linker -> General -> Additional Library Directories ->**, and add: `../../lib/$(Configuration);../../lib/boost_1_60_0/stage/lib/`
+
+* Replace the value of **Linker -> Input -> Additional Dependencies** with the following value: `jsoncpp.lib;self.lib;wdc.lib;%(AdditionalDependencies)`
+
+* Go to **Build Events -> Post-Build Event -> Command Line**, and add: `copy /Y "$(TargetPath)" "$(ProjectDir)..\..\bin\$(Configuration)"`
+
+
+### B. Building out the OnText, OnTone and OnLearningIntent functions for your emotion agent
+
+Open the `WorkshopThreeAgent.cpp` file, which contains the following functions that enable the emotion agent you'll create:
+
+  * **OnStart()**: Initializes for the emotion agent. It subscribes the emotion agent to the blackboard. After initialization is complete, the emotion agent subscribes to OnEmotion, OnLearningIntent, and OnEmotionCheck functions. 
+  
+  * **OnStop()**: Stops the emotion agent. After the emotion agent is called, it is no longer subscribed to the blackboard.
+  
+  * **OnEmotion()**: Listens to the blackboard for emotion topics being posted to the blackboard. 
+  
+  * **OnText()**: Waits for and receives responses from the Tone Analyzer service.
+  
+  * **OnLearningIntent()**: Updates the EmotionalState variable. Initially, the EmotionalState is 0.5 and must be 0 - 1. Each time the agent receives a piece of positive or negative feedback, the OnLearningIntent() function increases for positive feedback or decreases for negative feedback the EmotionalState variable score by 0.1. 
+  
+  * **OnTone()**:
+  
   * **OnEmotionCheck()**: Restores the EmotionalState to a basel level of 0.5. For every 30 seconds the OnEmotionCheck() increases when EmotionalState is less than 0.5 and decreases when EmotionalState is more than 0.5 the EmotionalState variable. This ensures that the EmotionalState will trend back to neutral over time. 
-  * **PublishEmotionalState()**: Formats the current EmotionalState value, formats it into the json value, and adds it to the blackboard. Currently, the TextClassifier is subscribed to listen for EmotionalState blackboard objects. The state will be added as pre-context that can then be useful when modifying conversation (see Workshop 2 on how to update the conversational service).
+  * **PublishEmotionalState()**: Formats the current EmotionalState value, formats it into the json value, and adds it to the blackboard.
 
-**Windows users do the following step.**
-
-1. Right-click on the project, go to **Properties**, and make the following changes:
-
-* Go to **C/C++->General->Additional Include Directories->**, and add `..\..\examples\workshop_three;..\..\include\self;..\..\include\wdc;..\..\lib\boost_1_60_0;..\..\lib;%(AdditionalIncludeDirectories)`.
-* Go to **C/C++->Precompiled Headers->Confirm Precompile Header**, and delete the value. Make sure it's blank.
-
-**OS X and Windows do the following two steps.**
   
 The Serialize, Deserialize, OnStart, OnStop, OnEmotion, OnLearningIntent, OnEmotionCheck, and PublishEmotionalState functions are already completely built out.
 
-In the next step, you build the OnText and OnTone function bodies yourself.
+In the next step, you will build out the **OnText**, **OnTone** and **OnLearningIntent** functions using the example code provided.
 
-1. Write the OnText and OnTone function bodies.
-  1. For OnText(), copy the following code and paste it into the function body {}:
+**For OS X and Windows users:**
+
+1. In **wlabs_self-sdk-master****/docs/workshops-devcon/3/code-snippets/WorkshopThree_Snippets**, you will see the `WorkshopThreeCodeSnippets.txt` file. Open this file and find the OnText, OnTone and OnLearningIntent functions.
+
+2. From `WorkshopThreeCodeSnippets.txt`, for the **OnText()** function, copy the code directly below **//Code for OnText()**. Now paste this inside the function body **{}** of **OnText()** in `WorkshopThreeAgent.cpp`, which is located inside your **agents** directory. The code which you need is displayed below for completeness; however, it is **not** recommended for you to copy it from here due to formatting issues.
+  
   ```
   Text::SP spText = DynamicCast<Text>(a_ThingEvent.GetIThing());
     if (spText)
@@ -176,8 +301,13 @@ In the next step, you build the OnText and OnTone function bodies yourself.
         }
     }
   ```
-      This code implements the logic for what to do when a Text object is placed on the blackboard. First, we cast the ThingEvent object to a Text object. All Blackboard objects inherit from the IThing interface. If we are successful in casting to a Text object, we will invoke the Tone Analysis service, which can be read from the SelfInstance class. If the service is not null (i.e., it has been declared in the body.json file), then we will send a REST request to Tone Analysis and provide the callback to be the OnTone function.
-  2. For OnTone(), copy the following code and paste it into the function body:
+      This code accepts the piece of text that the emotion agent is listening for. Then, it finds the Tone Analyzer service and sends the text.
+      
+2. For the **OnTone()** function, copy the code directly below **//Code for OnTone()**. Now paste this inside the function body **{}** of **OnTone()** in `WorkshopThreeAgent.cpp`. The code which you need is displayed below for completeness; however, it is **not** recommended for you to copy it from here due to formatting issues.
+
+
+	The code which you need is displayed below:
+  
   ```
       if (a_Callback != NULL)
     {
@@ -222,76 +352,128 @@ In the next step, you build the OnText and OnTone function bodies yourself.
         PublishEmotionalState();
     }
   ```
-First, this code iterates over the response to find the emotion that has the highest probability. Then, it check whether the emotion is positive, and, if it is, the EmotionalState variable is incremented by 0.1. The EmotionalState variable cannot exceed one. If the highest probability tone is negative, the EmotionalState variable is decreased by 0.1. The EmotionalState variable cannot be less than zero.
+  
 
-2. Rebuild this project in the SDK.
+4. For the **OnLearningIntent()** function, copy the code directly below **//Code for OnLearningIntent()**. Now paste this inside the function body **{}** of **OnLearningIntent()** in `WorkshopThreeAgent.cpp`. The code which you need is displayed below for completeness; however, it is **not** recommended for you to copy it from here due to formatting issues.
+  
+  
+  ```
+  LearningIntent::SP spLearningIntent = DynamicCast<LearningIntent>(a_ThingEvent.GetIThing());
+    if (spLearningIntent && spLearningIntent->GetVerb().compare("feedback") == 0)
+    {
+        if (spLearningIntent->GetTarget().compare("positive_feedback") == 0)
+        {
+            if(m_EmotionalState < 1.0)
+                m_EmotionalState += 0.1f;
+        }
+        else
+        {
+            if (m_EmotionalState > 0.0)
+                m_EmotionalState -= 0.1f;
+        }
 
-**Congratulations!** You just built all the functions required for the emotion agent. This process created the `libworkshop_three_plugin.dylib` in the `bin` directory for your platform in the `self-sdk-develop` directory. If you're using OS X, the path is `Self/self-sdk-develop/bin/mac`.
+        PublishEmotionalState();
+    }
+  
+	```
+  
+First, this code iterates over the response to find the emotion that has the highest probability. Then, it checks whether the emotion is positive, and, if it is, the EmotionalState variable is incremented by 0.1. The EmotionalState variable cannot exceed one. If the highest probability tone is negative, the EmotionalState variable is decreased by 0.1. The EmotionalState variable cannot be less than zero.
 
-In the next task, you update the `body.json` file to include the new plugin so that Intu can use it.
 
-## Retrieving embodiment credentials for you organisation. 
-To get the embodiment credentials for your organisation, without closing the terminal you are in, go back to the Robot Gateway: https://rg-gateway01.mybluemix.net/Downloads 
+**Additional steps for OS X users:**
 
-On the left hand side of the page, locate and click on VIEW CREDENTIALS.
+1. Open a **new** Terminal window and navigate to **intu/wlabs_self-sdk-master** by running: `cd intu/wlabs_self-sdk-master`.
 
-This should direct to a new frame on the right hand side of the page. Under Filter By: find the organisation you created in Workshop 1 and find the group you created in the scroll down. 
+	**Note:** If you have built the SDK in a previous workshop, make sure you run: `./scripts/clean.sh`.
 
-Now click "Get Credentials" and then copy the credentials by clicking the copy button. 
+2. Run the build script: `./scripts/build_mac.sh`. **Do not close this Terminal window.**
 
-Now go back to the terminal you had the Intu directory.
+**Congratulations!** You just built all the functions required for the emotion agent. This process created the `libworkshop_three_plugin.dylib` in the **intu/wlabs_self-sdk-master/bin/mac** directory.
 
-## Configuring your Intu instance to include the emotion agent
+In the next task, you will update the `body.json` file also located in the **intu/wlabs_self-sdk-master/bin/mac/etc/profile** directory to include the new plugin so that Intu can use it.
 
-1. Navigate to the **self**->**etc**->**profile** directory, and open the `body.json` file (For Windows, this will be in the sdk/bin/Debug).
+
+## 4. Configuring your Intu instance to include the emotion agent
+
+### A. Retrieving the credentials for your Organization in the Intu Gateway
+1. [Log in to the Intu Gateway](https://rg-gateway.mybluemix.net/). 
+
+2. Click on **VIEW CREDENTIALS** in the left hand navigation bar.
+
+3. Select your Organization and Group in the top Filter by menu, and click on the **Get Credentials** box.
+4. Copy these credentials by clicking the **Copy** icon in the top right of the window, and paste this into a new text file using your favourite text editor.
+
+### B. Configuring your `body.json` file
+
+1. Open your `body.json` file. 
+
+	* For **OS X**, this will be in **wlabs_self-sdk-master/bin/mac/etc/profile**.
+	* For **Windows**, in **Visual Studio**, in the **Solution Explorer**, go to **sdk -> bin -> Debug**. 
+	
 2. Locate the `m_Libs` variable.
-  * If you're using OS X, the variable is `"m_Libs" : [ "platform_mac" ],`
-  * If you're using Windows, the variable is `"m_Libs" : [ "platform_win" ],`
-3. Add the information for the new plugin to the end of the `m_Libs` variable for your platform:
-  * If you're using OS X, the variable is `"m_Libs" : [ "platform_mac", "workshop_three_plugin"],`
-  * If you're using Windows, the variable is `"m_Libs" : [ "platform_win", "workshop_three_plugin"],`
+  * If you're using **OS X**, the variable is `"m_Libs" : [ "platform_mac" ],`
+  * If you're using **Windows**, the variable is `"m_Libs" : [ "platform_win" ],`
+3. Add **workshop****_three****_plugin** to the end of the `m_Libs` variable for your platform, **as shown below**:
+  * If you're using **OS X**, the variable is `"m_Libs" : [ "platform_mac", "workshop_three_plugin"],`
+  * If you're using **Windows**, the variable is `"m_Libs" : [ "platform_win", "workshop_three_plugin"],`
 4. Locate `EmotionAgent` in the `body.json` file, and notice the `m_NegativeTones` and `m_PositiveTones` strings. To understand the tone of the input, these strings are compared to OnTone().
-5. Change EmotionAgent to WorkshopThreeAgent or the name you gave your class. The instructions use WorkshopThreeAgent, so the Type_ field is `"Type_" : "WorkshopThreeAgent"`.
-6. Now find the `"m_EmbodimentCreds":{ ... }`, and replace this with the `"m_EmbodimentCreds":{ ... }` copied from the robot gateway.
+
+5. Change `EmotionAgent` to `WorkshopThreeAgent` or the name you gave your class. As the instructions used `WorkshopThreeAgent`, the `"Type_"` field becomes `"Type_" : "WorkshopThreeAgent"`.
+6. Now find `"m_EmbodimentCreds":{ ... }` in your `body.json` file. Replace this with the complete set of credentials you copied over into your text editor from the Intu Gateway in step 4 of the previous section.
 7. Save your changes.
-8. Return to the directory for you platform in the `/bin` directory, and run one of the following commands:
-  * If you're using OS X, run `pwd`.
-  * If you're using Windows, run `cd`.
-9. Run the following commands:
-  * `export LD_LIBRARY_PATH={$HOME}/Self/self-sdk-develop/bin/mac`
-  * `export LD_LIBRARY_PATH=*the path returned in Step 7*`
-10. ** For OSX** In the `mac` directory, run Self by issuing the following command: `./self_instance -c 0 -f 0`.
-11. ** For Windows**  Run Self by clicking Local Windows Debugger in Visual Studio
+
+### 3. Building Intu
+
+**For OS X users:**
+
+1. Return to your most recent Terminal window, where you should already be in the **mac** directory. Otherwise, open a **new** Terminal window and navigate to this directory by running: `cd intu/wlabs_self-sdk-master/bin/mac`
+
+2. Run: `export LD_LIBRARY_PATH=./`
+3. Run Intu by issuing the following command: `./self_instance`
+
+**For Windows users:**
+
+1. From the Visual Studio Menu, select **Build -> Build Solution**.
+
+2. Run Intu by clicking **Local Windows Debugger** in Visual Studio.
+
+Now you have added an Emotion Agent Intu will start to will adapt to you. First ask Intu "how are you" and listen to the response. Now feed it a few positve emotion 'sentences' like "Good job", and then ask "how are you", again. Intu should now give a "happier" response than it gave before. Try the same for negative emotion, like saying "wrong answer" multiple times and then ask "how are you", Intu should respond with a "sadder" tone.
 
 ## After DevCon ends
+Your instance of Intu is preconfigured with the following Watson services: Conversation, Natural Language Classifier, Speech to Text, and Text to Speech. The preconfiguration is enabled for 30 days. If you want to test Intu after 30 days, you must create your own instances of these services and configure Intu to use them.
 
-If you want to test Intu after the trial period ends, you must create your own instances of these services and configure Intu to use them.
-
-### Creating instances of Watson services
+### A. Creating instances of Watson services
 To use Intu, you need operational instances of the following services in Bluemix: Conversation, Natural Language Classifier, Speech to Text, and Text to Speech.
 
-**Pro tip:** As you complete this task, you'll receive credentials for each service instance, and you'll need these credentials later. Open a new file in your favorite text editor and create a section for each service so that you can temporarily store its credentials.
+**Pro tip:** As you complete this task, you'll receive credentials for each service instance, and you'll need these credentials later. Open a new file in your favourite text editor and create a section for each service so that you can temporarily store its credentials.
 
-1. On the Bluemix dashboard, click **Catalog** in the navigation bar.
-2. Click **Watson** in the categories menu.
+1. On the Bluemix dashboard, click **Catalog** in the top right navigation bar.
+
+2. In the All Categories menu on the left, under Services, click on **Watson**.
+
 3. Create an instance of the Conversation service.
   1. Click the **Conversation** tile.
   2. Keep all the default values, and click **Create**.
   3. Click the **Service Credentials** tab.
-  4. Click **View Credentials** for the new service instance, and keep this window open.
-  5. Click the **Watson** breadcrumb. The list of your service instances is displayed.
-  6. Add the next service instance by clicking the hexagonal **+** button. The Watson service catalog is displayed.
-5. Create instances of the Natural Language Classifier, Speech to Text, and Text to Speech services by repeating the same steps 1 - 7 that you completed to create the Conversation service instance.
+  4. Click **View Credentials** for the new Conversation service instance.
+  5. Copy the values for your password and username and paste them into a new text file in your favourite text editor.
+  6. Click the **<--Watson** breadcrumb near the top left (directly above your Conversation service name). The list of your service instances is displayed.
+  7. Add the next service instance by clicking the **Create Watson** **+** button. The Watson service catalog is displayed.
 
-### Configuring Intu to use your service instances
+4. Create instances of the Natural Language Classifier, Speech to Text, and Text to Speech services by repeating the same substeps 1 - 7 that you completed to create the Conversation service instance.
 
-Your installation is preconfigured to use the Conversation, Natural Language Classifier, Speech to Text, and Text to Speech services. To configure Intu to use your instances of these services, complete the following steps:
 
-1. Expand **All Organizations** by clicking the arrow icon.
-2. Click the name of your organization.
-3. Expand your organization by clicking the arrow icon.
-4. Click the name of your group.
-5. Click **Services** in the navigation bar.
-6. For your instances of the Conversation service, Natural Language Classifier, Speech to Text, and Text to Speech services, click **Edit**, specify the user ID and password, and click **Save**.
+### B. Configuring Intu to use your service instances
 
-**Important:** Do not change the service endpoint unless you are an enterprise user.
+To configure Intu to use your instances of these Watson services, log in to the [Intu Gateway](https://rg-gateway.mybluemix.net/) and complete the following steps:
+
+1. Click on **MANAGE** on the left hand side navigation bar, and select **Services**. 
+
+2. Select your Organization and Group in the top Filter by menu, if not already selected.
+
+3. For your instances of the Natural Language Classifier, Speech to Text, and Text to Speech services, click **Edit**, and specify the user ID and password (saved in your text file in the previous section **Creating instances of Watson services**), and click **Save**.
+
+4. To configure your instance of **Conversation**, navigate to **DOWNLOADS** on the left of your Intu Gateway browser page, download the **Intu Starter Kit**, and follow the instructions in the `readme.txt` file. Alternatively, go to the instructions for **Workshop 2**, and follow the steps in: **1. Setting up the Conversation service**.
+ 
+
+**Important:** Do not change the service endpoint for your services unless you are an enterprise user.

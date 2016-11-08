@@ -1,75 +1,149 @@
-# Workshop 6: Creating a new sensor for a camera
+# Workshop 6: Creating a camera sensor.
 
-In this workshop, you create a new camera sensor. Sensors, such as cameras, microphones, and so on produce data and send it to extractors.
+In this workshop, you create a camera sensor. Sensors take in data from the outside world to process. The camera sensor will aim to take in visual data from the environment, ready to be processed on Intu. 
 
-**Before you begin:** You must have a Mac or Windows laptop, and you must have completed Workshop 1: Say Hello!.
+**Before you begin:** You must have a **Mac**, and you must have completed Workshop 1: Say Hello!. You will notice that Intu and Self are used interchangeably. Self is the technical name for Intu.
 
 Complete the following tasks:
 
-1. [Understanding some Intu terminology](#understanding-some-intu-terminology)
-2. [Building the Intu SDK](#building-the-intu-sdk)
-3. [Creating a new sensor](#creating-a-new-sensor)
-4. [Configuring Intu to include your new camera sensor](#configuring-intu-to-include-your-new-camera-sensor)
+1. [Understanding some Self terminology](#understanding-some-intu-terminology)
+2. [Building the Self SDK](#building-the-intu-sdk)
+3. [Creating a camera sensor](#creating-a-camera-sensor)
+4. [Configuring your Intu instance to include the camera sensor](#configuring-your-Intu-instance-to-include-the-emotion-agent)
 
-## Understanding some Intu terminology
 
-Before you create new sensor, become familiar with the following terminology:
+## 1. Understanding some Self terminology
+
+Before you create an emotion agent, become familiar with the following terminology:
 
   * **Blackboard**: The central message broker on which all the agents post data and listen for incoming data.
+  
   * **Publish**: To push data onto the blackboard under a particular topic. 
+  
   * **Subscribe**: Subscribing to a topic on the blackboard means to listen to the blackboard and wait for any other agents to post to the blackboard under a particular topic.
-  * **Topic**: A channel to which agents publish and subscribe.
+  
+  * **Topic**: A channel to which Agents publish and subscribe.
 
-## Building the Intu SDK
+## 2. Building the Self SDK
 
 Follow the instructions for your platform.
 
 **Before you begin**:
 
-1. [Download the Intu SDK](https://github.ibm.com/watson-labs-austin/self-sdk).
-2. Create a new directory named `intu`, and unzip the SDK package into it.
+1. [Download the Self SDK](https://hub.jazz.net/project/wlabs/self-sdk). Click on the **download icon** next to the default **master** branch selected.
 
-### Building the SDK for OS X
+2. Create a new directory named **intu** in a directory of your choosing.
 
-1. Set up [CMake](http://doc.aldebaran.com/2-1/dev/cpp/install_guide.html#required-buidsys). To install CMake by using Homebrew, run `brew install cmake`. To install Homebrew, run the following command in your terminal: `ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`.
-2. Set up [qiBuild](http://doc.aldebaran.com/2-1/dev/cpp/install_guide.html#qibuild-install) by running the following commands:
-  * `pip install qibuild`: To correctly configure pip, download [Anaconda Python Version 2.7](https://www.continuum.io/downloads))
-  * `qibuild config --wizard`: Use the default setup for steps by pressing 1 twice.
-3. Run the following commands:
-  * `cd {Self root directory}`
-  * `./scripts/build_mac.sh`
+3. Unzip the **wlabs_self-sdk-master.zip** file into **intu**, making sure that you retain the folder structure, i.e. your intu directory should now contain the unzipped **wlabs_self-sdk-masterr** folder.
 
+### A. Preparing for OS X
 
-### Building the SDK for Windows
+**Note**: If you have already completed **Preparing for OS X** in another workshop, you can skip this section.
 
-1. Install [Visual Studio 2015](https://www.visualstudio.com/downloads/).
-2. Open the solution found in vs2015/self-sdk.sln
-3. Right click on the "self-sdk" project and select "Set as Startup Project".
-4. Right click on the "self-sdk" projet, open properties. In the Debugging tab of the properties, you will need to change "Working Directory" to "$(TargetDir)".
-5. Select Build->Build Solution
-6. Select Debug->Start Debugging to run the project with debugging
+1. Install Homebrew by completing the following steps:
+   1. Open a new terminal window, and run the command:
+   ```
+   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+   ```
+   The following message is displayed:
+   ```
+   Press RETURN to continue or any other key to abort
+   ```
+   2. Press **Return** or **Enter**. A prompt for your laptop's password is displayed.
+   3. Specify your password, and press **Return** or **Enter**. If you have **macOS Sierra**, the following message is displayed:
+   
+   		```
+   HEAD is now at 89fd34b Merge pull request #1368 from MikeMcQuaid/build-options-file
+   Error: /usr/local/Cellar is not writable. You should change the
+   ownership and permissions of /usr/local/Cellar back to your
+   user account:
+   sudo chown -R $(whoami) /usr/local/Cellar
+   Failed during: /usr/local/bin/brew update --force
+   		```
+   
+   		Run: `sudo chown -R $(whoami) /usr/local/Cellar`
+   4. Now repeat step 1 by running: 
+    ```
+   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+   ```
+2. Install CMake using Homebrew.
+	1. Run the command: `sudo chown -R $(whoami) /usr/local`   
+	2. Now run: `brew install cmake`
 
-**Important**: If you use SourceTree, the process might get stuck when trying to pull by using SSH. Run the following commands on the command line to fix the problem with the git client that's trying to be interactive:
-* cd "C:\Program Files (x86)\Atlassian\SourceTree\tools\putty"
-* plink git@github.ibm.com
-## Creating a new sensor
+		**Note**: If you have **macOS Sierra**, you may see the following message if you happen to have an outdated version of **Xcode**: 
+	
+		```
+	Your Xcode (7.3.1) is outdated.
+	Please update to Xcode 8.1 (or delete it).
+	Xcode can be updated from the App Store.
+		```
+	
+		If you see this message, you will need to update **Xcode**.
+	
+3. Download **Anaconda 4.2.0 Python 2.7 version** by using the **Graphical Installer**. It is required to correctly configure pip in the following step.
+   1. Open a new browser window and [download Anaconda 4.2.0 Python 2.7 version](https://www.continuum.io/downloads).
+   2. Click the solid blue GRAPHICAL INSTALLER button for Python 2.7 Version. It should be 403 MB. The .pkg file downloads.
+   3. After the file is downloaded, double-click it, and follow the prompts to install Anaconda.
+   4. Open a **new** Terminal window and make sure your version of Python has been successfully updated by running the command: `python --version` 
+ 	
+ 		You should see: `Python 2.7.12 :: Anaconda 4.2.0 (x86_64)`
+  
+4. Set up qiBuild.
+   1. Run: `pip install qibuild`
+   2. Run: `qibuild config --wizard` and be sure to include the two hyphens before **wizard** in the last command.
+   3. When the "Please choose a generator" prompt is displayed, specify **1**, and press **Enter**.
+   4. When the "Please choose an IDE" prompt is displayed, specify **1**, and press **Enter**.
+   
+### B. Building the Intu SDK for OS X
 
-1. Open the `self-sdk-develop` file as a project in the IDE for your platform.
-2. Now, let's create and populate directory specifically for this workshop.
-** For OSX
-  1. Locate the `examples` directory under the `self-sdk-develop` project that you opened. This directory contains a `sensor` directory and a `CMakeLists.txt` file.
-  2. Right-click the `examples` directory, and click **New**->**Directory**. Name it `workshop_six`. Your new directory is created.
-  3. Copy the `CMakeLists.txt` file from the examples directory, and paste it in the `workshop_six` directory. This file helps to build the plugin for the emotion agent.
-  4. Open the `CMakeLists.txt` file in the `examples` directory, and add the following line: `add_subdirectory(workshop_six)`. Your file contains the following three lines:
+1. In a new Terminal window, navigate to the **wlabs_self-sdk-master** directory inside **intu**. You should just be able to run: `cd intu/wlabs_self-sdk-master` 
+
+	**Note:** If you have **already built the Intu SDK for OS X** in another workshop, run: `./scripts/clean.sh`    
+
+2. Run:
+`./scripts/build_mac.sh`  
+
+	**Note:** If you are running this script for the first time and you see the following message, do not worry as you do not have the toolchain. Let the script run and proceed with the next step.
+```
+[ERROR]: Exception No such toolchain: mac-self
+Known toolchains are:
+```
+
+## 3. Creating a camera sensor
+
+### A. Preparing your directories and files for the camera sensor
+
+1. If you do not have it installed already, download the trial version of the [CLion C++ IDE](https://www.jetbrains.com/clion/download/).
+
+2. In **CLion**, select Open -> home directory -> intu -> wlabs_self-sdk-master and click **OK**. 
+
+	Note that a window may appear prompting you to open your project in a New Window or This Window. Select **New Window**. At the bottom of your CLion window, in the Problems tab, you will see the following Error, which you do not need to worry about:
+	
+	```
+	Error: By not providing "FindSELF.cmake" in CMAKE_MODULE_PATH this project has asked CMake to find a package configuration file provided by "SELF", but CMake did not find one.
+Could not find a package configuration file provided by "SELF" with any of the following names:
+  SELFConfig.cmake   self-config.cmake
+Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to a directory containing one of the above files.  If "SELF" provides a separate development package or SDK, be sure it has been installed.
+	```
+
+	2i. Inside the CLion **self-sdk-develop project**, right-click **examples**, select **New**, and select **Directory**. Type in **workshop_six** for the new directory name, and click **OK**.
+ 
+	2ii. Right-click the `CMakeLists.txt` file in the **examples** directory, and click **Copy**. (If you are unsure of the directory you are in, look in the top-left navigation bar.)
+  
+	2iii. Right-click the **workshop_six** directory, and click **Paste**. This file helps to build the plugin for the camera sensor.
+
+	2iv. Return to the **examples** directory, open the `CMakeLists.txt` file, and add the following line: `add_subdirectory(workshop_six)` at the end. Your file contains the following three lines:
+
   ```
+  
     include_directories(".")
 
     add_subdirectory(sensor)
     add_subdirectory(workshop_six)
   ```
-  5. Open the `CMakeLists.txt` file in the `workshop_six` directory, and overwrite its content with this code:
-  
-  ```
+	2v. Open the `CMakeLists.txt` file in the **workshop_six** directory, and overwrite its content with this code:
+
+ 	 ```
 	include_directories(.)
 
 	file(GLOB_RECURSE SELF_CPP RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "*.cpp")
@@ -77,40 +151,63 @@ Follow the instructions for your platform.
 	qi_use_lib(workshop_six_plugin self wdc OPENCV2_CORE OPENCV2_HIGHGUI)
 	qi_stage_lib(workshop_six_plugin)
   ```
+
+3. Create a new directory inside this called **sensors** in the **workshop_six** directory.
+
+4. Locate the Workshop 6 code snippet files **to be filled in** in:
+
+ `wlabs_self-sdk-master/docs/workshops-devcon/6/code-snippets/WorkshopSixSensor_start`
+
+5. Copy the `WorkshopSixSensor.cpp` and the `WorkshopSixSensor.h` files and paste them into the **sensors** directory that you created.
+
+### B. Building out the OnStart(), CaptureVideo() and SendingData() functions for the camera sensor
+
+Open the `WorkshopSixSensor.cpp` file, which contains the following functions that enable the emotion agent you'll create:
+
+* **OnStart()** - This function will act as the initialisation for the Camera Sensor i.e. it will subscribe the Camera Sensor to the Blackboard. Once initialised the Camera Sensor which will Subscribe to OnEmotion, OnLearningIntent and OnEmotionCheck. 
+
+* **OnStop()** - This function will act to cease the Camera Sensor i.e. once called the Camera Sensor will no longer be subscribed to the Blackboard (and cease to exist?).
+
+* **OnPause()** - This function is used to pause the Camera Sensor.
+
+* **OnResume()** - This function is used to resume the Camera Sensor to start recording.
+
+* **CaptureVideo()** - This function is responsible for recording from using the Mac Camera Sensor. OpenCV will be used to fill the buffer by calling encoding to a JPEG. decrease(negative) the EmotionalState score by 0.1. 
+
+* **SendingData()** - Is used to first check if the camera is paused or not. If the camera is not then the data is sent.
+
+The OnStop, OnPause and OnResume functions are already completely built out.
+
+In the next step, you will build out the **OnStart**, **CaptureVideo** and **SendingData** functions using the example code provided.
+
+1. In **wlabs_self-sdk-master****w/docs/workshops-devcon/6/code-snippets/WorkshopSix_Snippets**, you will see the `WorkshopSixCodeSnippets.txt` file. Open this file and find the OnStart, CaptureVideo and SendingData functions.
+
+2. From `WorkshopSixCodeSnippets.txt `, for the **OnStart()** function, copy the code directly below **//Code for OnStart()**. Now paste this inside the function body **{}** of **OnStart()** in `WorkshopSixSensor.cpp` inside your **sensors** directory, overwriting all the code already inside the function body **{}**. The code which you need is displayed below for completeness; however, it is **not** recommended for you to copy it from here due to formatting issues.
+
+
+  ```
+	Log::Debug("WorkshopSixSensor", "Starting Camera!");
+	    	m_StopThread = false;
+	    	m_ThreadStopped = false;
+	#ifndef _WIN32
+	    m_Capture.open(0);
+	
+	    if( !m_Capture.isOpened() )
+	    {
+	        Log::Error("MacCamera", "Could not open Mac Camera - closing sensor");
+	        return false;
+	    }
+	    Log::Debug("WorkshopSixSensor", "Video Capture is now opened!");
+	#endif
+	    ThreadPool::Instance()->InvokeOnThread<void *>(DELEGATE(WorkshopSixSensor, CaptureVideo, void *, this), 0);
+	    return true;
+    
+    ```
+
+3. For the **CaptureVideo()** function, copy the code directly below **//Code for CaptureVideo()**. Now paste this inside the function body **{}** of ** CaptureVideo()** in `WorkshopSixSensor.cpp`. The code which you need is displayed below for completeness; however, it is **not** recommended for you to copy it from here due to formatting issues.
+
+
   
-  	** For Windows 
-	1. In Visual Studio, in the examples directory, add a new Win32 Project called workshop_six_plugin and hit OK. Click Next and select Application Type as DLL and uncheck Precompiled header and Security Development Lifecycle (SDL) checks under Additional options. Click Finish 
-	2. Remove the Header Files, Resource Files, and Source Files directories that were newly created in the solution. 
-	3. Right click solution and go to Properties and make the following changes (Make sure Configuration at top left is set to All Configurations): 
-	General -> Character Set -> Change to Use Multi-Byte Character Set 
-	Linker -> General -> Additional Library Directories -> add: ../../lib/$(Configuration);../../lib/boost_1_60_0/stage/lib/ 
-	Linker -> Input -> Additional Dependencies -> replace with: jsoncpp.lib;self.lib;wdc.lib;%(AdditionalDependencies) 
-	Build Events -> Post-Build Event -> Command Line -> add: copy /Y "$(TargetPath)" "$(ProjectDir)....\bin\$(Configuration)\" 
-  4. Make a folder in the sdk/examples folder (in filesystem, not Visual Studio) and call it workshop_six 
-  5 Right click on the created workshop solution, and add a new Filter and call it agent
-  
-3. Navigate back to the `workshop_six` directory, create a new directory, and name it `sensors`.
-4. Locate the Workshop 3 code snippet files in `self-sdk-develop/docs/workshops-devcon/6/code-snippets/WorkshopSixAgent_start`, copy the `WorkshopSixAgent.cpp` and the `WorkshopSixAgent.h` files, and paste them into the `sensors` directory that you created.
-4. Open the `WorkshopSixAgent.cpp` file, which contains the following functions that enable the camera sensor you'll create. All sensors in Intu inherit from the ISensor interface. Sensors are a bit different from other components found in Intu. Sensors do not interact with the blackboard, but rather send their raw data directly to an extractor which will instantiate an object and place that on the blackboard. This is mainly because sensors are platform specific, and there needs to be a level of seperation to make core Intu platform independent. See below for more details on what the functions are doing:
-
-  * **OnStart()**: Initializes the camera sensor. The OnStart() function is called by the SensorManager class. Because OnStart occurs on the main thread, we want to do as little as possible processing and do the core logic on a background thread. Here we instantiate the VideoCapture object from opencv and spawn a background thread to capture the images. Using our Delegate class, we can call functions in C++ on different threads.
-  * **OnStop()**: Stops the camera sensor. After the sensor is called, it should wait for any processing to occur and release any objects in memory.
-  * **OnPause()**: Pauses the camera sensor. The pause function increments an m_Pause integer. The reason this is not a boolean is because other places throughout core Intu can pause a sensor, and we need to keep track how many times pause is called before we know we can resume. When Pause is called, no data is sent to the extractor that has subscribed to it's data.
-  * **OnResume()**: Resumes the sensor. The sensor can then start sending data to the extractor that is subscribed to it.
-  * **CaptureVideo()**: Using opencv, we take raw buffers from the camera and encode them in JPEG format. This will continually happen based on the framers per second that is declared from the m_FramesPerSecond variable, and will stop when the OnStop() function is called.
-  * **SendingData()**: Checks whether the camera is paused. If it's not paused, data is sent to all extractors that have subscribed to it.
-
-The OnStart, OnStop, OnPause and OnResume functions are already completely built out.
-
-** IF ON WINDOWS in Visual Studio:
-  Right click on solution and go to Properties and make the following changes:
-  C/C++ -> General -> Additional Include Directories -> add: ..\..\examples\workshop_six;..\..\include\self;..\..\include\wdc;..\..\lib\boost_1_60_0;..\..\lib;%(AdditionalIncludeDirectories)
-  C/C++ -> Precompiled Headers -> Confirm Precompile Header is left blank
-
-In the next step, you build the CaptureVideo and SendingData function bodies yourself.
-
-4. Write the CaptureVideo and SendingData function bodies.
-  1. For CaptureVideo(), copy the following code and paste it into the function body:
   ```
 	 #ifndef _WIN32
     while(!m_StopThread)
@@ -126,79 +223,135 @@ In the next step, you build the CaptureVideo and SendingData function bodies you
     }
 	#endif
   ```
-This code captures the vision from the camera. Using OpenCV, the buffer is encoded as a JPEG as long as the it hasn't been paused. This 
-  2. For SendingData(), copy the following code and paste it into the function body:
+      The above code will capture the vision from the camera. Using OpenCV the buffer will be filled as a JPEG, as long as it hasn't been paused.
+
+4. For the **SendingData()** function, copy the code directly below **//Code for SendingData()**. Now paste this inside the function body **{}** of **SendingData()** in `WorkshopSixSensor.cpp`. The code which you need is displayed below for completeness; however, it is **not** recommended for you to copy it from here due to formatting issues.
+
+  
   ```
 	if (m_Paused <= 0)
-    SendData(a_pData);
+        SendData(a_pData);
   ```
-First, this code checks whether the sensor has been paused. If it hasn't been paused, it calls the SendData() function to post the data in the buffer. 
 
-5. Rebuild this project in the SDK.
 
-**Congratulations!** You just built all the functions required for a new camera sensor. This process created the `libworkshop_six_plugin.dylib` in the `bin` directory for your platform in the `self-sdk-develop` directory. If you're using OS X, the path is `Self/self-sdk-develop/bin/mac`.
+5. Open a **new** Terminal window and navigate to **intu/wlabs_self-sdk-master** by running: `cd intu/wlabs_self-sdk-master`.
 
-In the next task, you update the `body.json` file to include the new plugin so that Intu can use it.
+	**Note:** If you have built the SDK in a previous workshop, make sure you run: `./scripts/clean.sh`.
 
-## Configuring Intu to include your new camera sensor
+6. Run the build script: `./scripts/build_mac.sh`. **Do not close this Terminal window.**
 
-1. Navigate to the `self/etc/profile` directory, and open the `body.json` file.
-2. Locate the `m_Libs` variable.
-  * If you're using OS X, the variable is `"m_Libs" : [ "platform_mac" ],`
-  * If you're using Windows, the variable is `"m_Libs" : [ "platform_win" ],`
-3. Add the information for the new plugin to the end of the `m_Libs` variable for your platform:
-  * If you're using OS X, the variable is `"m_Libs" : [ "platform_mac", "workshop_six_plugin"],`
-  * If you're using Windows, the variable is `"m_Libs" : [ "platform_win", "workshop_six_plugin"],`
+**Congratulations!** You just built all the functions required for the camera sensor. 
 
-**Important**: If you completed Workshop 3, your m_Libs variable contains the workshop_six_plugin, too.
+In the next task, you will update the `body.json` file also located in the **intu/wlabs_self-sdk-master/bin/mac/etc/profile** directory to include the new plugin so that Intu can use it.
 
-5. Save your changes.
-6. Return to the directory for you platform in the `/bin` directory, and run one of the following commands:
-  * If you're using OS X, run `pwd`.
-  * If you're using Windows, run `cd`.
-7. Run `export LD_LIBRARY_PATH=*the path returned in Step 7*`. 
-**Important**: You must run this command for every terminal session that is running Self. If you close the terminal that's running Self, you must run this export command to run Self again.
-8. Run Self for your platform.
-    * For OSX** In the `mac` directory, run Self by issuing the following command: `./self_instance -c 0 -f 0`.
-    * For Windows**  Run Self by clicking Local Windows Debugger in Visual Studio
 
-Self runs with logging. Within the terminal, you can see the logs. If the camera sensor is set up correctly, messages like these will be near the beginning of the log:
+## 4. Configuring your Intu instance to include the camera sensor
+
+### A. Retrieving the credentials for your Organization in the Intu Gateway
+
+1. [Log in to the Intu Gateway](https://rg-gateway.mybluemix.net/). 
+
+2. Click on **VIEW CREDENTIALS** in the left hand navigation bar.
+
+3. Select your Organization and Group in the top Filter by menu, and click on the **Get Credentials** box.
+
+4. Copy these credentials by clicking the **Copy** icon in the top right of the window, and paste this into a new text file using your favourite text editor.
+
+### B. Configuring your `body.json` file
+
+1. Open your `body.json` file. This will be in **master_self-sdk-master/bin/mac/etc/profile**.
+	
+2. Locate the `m_Libs` variable. The variable should look like `"m_Libs" : [ "platform_mac" ],`
+
+3. Add **workshop****_six****_plugin** to the end of the `m_Libs` variable for your platform, **as shown below**:
+  `"m_Libs" : [ "platform_mac", "workshop_six_plugin"],`
+4. Now find `"m_EmbodimentCreds":{ ... }` in your `body.json` file. Replace this with the complete set of credentials you copied over into your text editor from the Intu Gateway in step 4 of the previous section.
+
+5. Locate `m_Sensors` inside the `body.json`. Add the following
+
+```
+{
+       "Type_" : "Camera",
+       "m_SensorId" : "8f385c2a-ecb0-3bfb-32af-3c54ec18db5c",
+       "m_fFramesPerSec" : 10
+    },
+    
 ```
 
-	[11/01/16 17:17:18][DEBH][WorkshopSixSensor] Starting Camera!
-	[11/01/16 17:17:19][DEBH][WorkshopSixSensor] Video Capture is now opened!
+It should look something like
+
 ```
-**Congratulations!** You created a new camera sensor for your Intu embodiment.
+"m_Sensors" : [
+      {
+       "Type_" : "Camera",
+       "m_SensorId" : "8f385c2a-ecb0-3bfb-32af-3c54ec18db5c",
+       "m_fFramesPerSec" : 10
+    },
+      {....
+```
+
+Save your changes.
+
+### C. Building Intu
+
+1. Return to your most recent Terminal window, where you should already be in the **mac** directory. Otherwise, open a **new** Terminal window and navigate to this directory by running: `cd intu/wlabs_self-sdk-master/bin/mac`
+
+2. Run the following command:
+  `export LD_LIBRARY_PATH=./`
+3. Run Intu by issuing the following command: `./self_instance `
+
+Now Intu is running, you should see your Mac camera turn on. Now Intu will be able to capture vision through your Mac camera.
+
+### D. Challenge: Add a camera sensor to a Raspberry Pi
+
+The process you have just undertaken was adding a camera into your Intu instance on your Mac, by extending the self-sdk. The challenge is to now add a camera instance for the Raspberry Pi. (Hint: do workshop 5 first and think how you can alter the process and think how how could get the code for the camera on the Raspberry Pi instead of the LED gesture. 
+
+**Pro Tips:** 
+
+1. In your Terminal/PuTTY window, SSH into your Raspberry Pi, and run: `sudo modprobe bcm2835-v4l2` to ensure that the PiCam data is passed through. 
+
+2. Enable the camera on your Raspberry Pi. 
+	1. Open the raspi-config tool from your SSH session to the Raspberry Pi by running: `sudo raspi-config`.
+	2. Select `Enable camera` and hit **Enter**. 
+	3. Then go to **Finish** and you'll be prompted to reboot.
 
 ## After DevCon ends
 
-If you want to test Intu after the trial period ends, you must create your own instances of these services and configure Intu to use them.
+Your instance of Intu is preconfigured with the following Watson services: Conversation, Natural Language Classifier, Speech to Text, and Text to Speech. The preconfiguration is enabled for 30 days. If you want to test Intu after 30 days, you must create your own instances of these services and configure Intu to use them.
 
-### Creating instances of Watson services
+### A. Creating instances of Watson services
+
 To use Intu, you need operational instances of the following services in Bluemix: Conversation, Natural Language Classifier, Speech to Text, and Text to Speech.
 
-**Pro tip:** As you complete this task, you'll receive credentials for each service instance, and you'll need these credentials later. Open a new file in your favorite text editor and create a section for each service so that you can temporarily store its credentials.
+**Pro tip:** As you complete this task, you'll receive credentials for each service instance, and you'll need these credentials later. Open a new file in your favourite text editor and create a section for each service so that you can temporarily store its credentials.
 
-1. On the Bluemix dashboard, click **Catalog** in the navigation bar.
-2. Click **Watson** in the categories menu.
+1. On the Bluemix dashboard, click **Catalog** in the top right navigation bar.
+
+2. In the All Categories menu on the left, under Services, click on **Watson**.
+
 3. Create an instance of the Conversation service.
   1. Click the **Conversation** tile.
   2. Keep all the default values, and click **Create**.
   3. Click the **Service Credentials** tab.
-  4. Click **View Credentials** for the new service instance.
-  5. Copy the values of the `password` and `username` parameters and paste them in your text file.
-  6. Click the **Watson** breadcrumb. The list of your service instances is displayed.
-  7. Add the next service instance by clicking the hexagonal **+** button. The Watson service catalog is displayed.
-5. Create instances of the Natural Language Classifier, Speech to Text, and Text to Speech services by repeating the same steps 1 - 7 that you completed to create the Conversation service instance.
+  4. Click **View Credentials** for the new Conversation service instance.
+  5. Copy the values for your password and username and paste them into a new text file in your favourite text editor.
+  6. Click the **<--Watson** breadcrumb near the top left (directly above your Conversation service name). The list of your service instances is displayed.
+  7. Add the next service instance by clicking the **Create Watson** **+** button. The Watson service catalog is displayed.
 
-### Configuring Intu to use your service instances
-Your installation is preconfigured to use the Conversation, Natural Language Classifier, Speech to Text, and Text to Speech services. To configure Intu to use your instances of these services, complete the following steps:
+4. Create instances of the Natural Language Classifier, Speech to Text, and Text to Speech services by repeating the same substeps 1 - 7 that you completed to create the Conversation service instance.
 
-1. Expand **All Organizations** by clicking the arrow icon.
-2. Click the name of your organization.
-3. Expand your organization by clicking the arrow icon.
-4. Click the name of your group.
-5. Click **Services** in the navigation bar.
-6. For your instances of the Conversation service, Natural Language Classifier, Speech to Text, and Text to Speech services, click **Edit**, specify the user ID and password, and click **Save**.
 
-**Important:** Do not change the service endpoint unless you are an enterprise user.
+### B. Configuring Intu to use your service instances
+
+To configure Intu to use your instances of these Watson services, log in to the [Intu Gateway](https://rg-gateway.mybluemix.net/) and complete the following steps:
+
+1. Click on **MANAGE** on the left hand side navigation bar, and select **Services**. 
+
+2. Select your Organization and Group in the top Filter by menu, if not already selected.
+
+3. For your instances of the Natural Language Classifier, Speech to Text, and Text to Speech services, click **Edit**, and specify the user ID and password (saved in your text file in the previous section **Creating instances of Watson services**), and click **Save**.
+
+4. To configure your instance of **Conversation**, navigate to **DOWNLOADS** on the left of your Intu Gateway browser page, download the **Intu Starter Kit**, and follow the instructions in the `readme.txt` file. Alternatively, go to the instructions for **Workshop 2**, and follow the steps in: **1. Setting up the Conversation service**.
+ 
+
+**Important:** Do not change the service endpoint for your services unless you are an enterprise user.
