@@ -264,17 +264,23 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
 
 Open the `WorkshopThreeAgent.cpp` file, which contains the following functions that enable the emotion agent you'll create:
 
-  * **OnStart()**: Initializes for the emotion agent. It subscribes the emotion agent to the blackboard. After initialization is complete, the emotion agent subscribes to OnEmotion, OnLearningIntent, and OnEmotionCheck functions. 
+  * **Serialize()**: All classes in Intu inherit from our base interface ISerializable. We have the ability to serialize any object back into json format, which usually will get stored in the body.json (found in same directory as self_instance)
+
+  * **Deserialize()**: All classes in Intu inherit from our base interface ISerializable. We have the ability to deserialize any object from json into memory, which is usually from the body.json (found in the same directory as self_instance)
+
+  * **OnStart()**: Starts the agent. The OnStart() function is called from the AgentSociety, which will start and stop all agents on start up and shut down. Since the OnStart()
+  function is called on the main thread, we want to do as little processing as possible. For agents, we want to subscribe to objects that are placed on the blackboard, start
+  timers, or potentially instantiate a service. To subscribe to a blackbaord object, look at the BlackBoard.h file for SubscribeToType function. There we can specify the type of the object we want subscribe to, our callback information, and a macro stating what type of event we are interested in. For example, TE_ADDED specifies to let the agent know when the blackboard object has been added to the blackboard, while TE_STATE specifies to let the agent know when the blackboard object state has changed (i.e., from processing to finished).
   
-  * **OnStop()**: Stops the emotion agent. After the emotion agent is called, it is no longer subscribed to the blackboard.
+  * **OnStop()**: Stops the agent. The OnStop() function is called from the AgentSociety, which will start and stop all agents on start up and shut down. The OnStop() function is called on the main thread, so it is important that this call blocks and waits for all lingering processes to finish in the agent. Here, we typically will unsubscribe from blackboard objects and make sure to reset any timers that may be currently active.
   
-  * **OnEmotion()**: Listens to the blackboard for emotion topics being posted to the blackboard. 
+  * **OnEmotion()**: Is our callback function when an emotion object was placed on the blackboard. All blackboard objects inherit from the IThing interface. That means we receive a ThingEvent, we grab the IThing object and dynamically cast it to the object we believe we have. Always make sure to check the object is not null before proceeding with your logic.
   
-  * **OnText()**: Waits for and receives responses from the Tone Analyzer service.
+  * **OnText()**: Is our callback function when a Text object is placed on the blackboard. Text objects typically are created from the TextExtractor class, which subscribes to Audio sensors, takes in raw audio, send it to the STT service, and instantiates a Text object with the final transcription. Here, we are interested in text objects so we can determine the tone of the user. Once a text object is receieved, then we want to send the transcript to the Tone Analyzer service.
   
-  * **OnLearningIntent()**: Updates the EmotionalState variable. Initially, the EmotionalState is 0.5 and must be 0 - 1. Each time the agent receives a piece of positive or negative feedback, the OnLearningIntent() function increases for positive feedback or decreases for negative feedback the EmotionalState variable score by 0.1. 
+  * **OnLearningIntent()**: This is our callback for when we receive a learning intent. A learning intent could be many things, but for this particular case we are only interested in positive and negative feedback. An example of each could be "Good Job!"/"Bad Job!" respectively. Initially, the EmotionalState is 0.5 and must be 0 - 1. Each time the agent receives a piece of positive or negative feedback, the OnLearningIntent() function increases for positive feedback or decreases for negative feedback the EmotionalState variable score by 0.1. 
   
-  * **OnTone()**:
+  * **OnTone()**: This is our callback for when we receive data from the Tone Analyzer service. Depending on the response, we iterate through pre-determined vectors of positive and negative moods. If there is a match with a positive moode (i.e., "Joy"), then we will increment the emotional state, while if there is a negative tone (i.e., "Disgust") then we will decrement the emotional state.
   
   * **OnEmotionCheck()**: Restores the EmotionalState to a basel level of 0.5. For every 30 seconds the OnEmotionCheck() increases when EmotionalState is less than 0.5 and decreases when EmotionalState is more than 0.5 the EmotionalState variable. This ensures that the EmotionalState will trend back to neutral over time. 
   * **PublishEmotionalState()**: Formats the current EmotionalState value, formats it into the json value, and adds it to the blackboard.

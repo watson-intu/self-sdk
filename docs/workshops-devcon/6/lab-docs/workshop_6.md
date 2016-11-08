@@ -164,17 +164,18 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
 
 Open the `WorkshopSixSensor.cpp` file, which contains the following functions that enable the emotion agent you'll create:
 
-* **OnStart()** - This function will act as the initialisation for the Camera Sensor i.e. it will subscribe the Camera Sensor to the Blackboard. Once initialised the Camera Sensor which will Subscribe to OnEmotion, OnLearningIntent and OnEmotionCheck. 
+  * **OnStart()**: Initializes the camera sensor. The OnStart() function is called by the SensorManager class. Because OnStart occurs on the main thread, we want to do as little as possible processing and do the core logic on a background thread. Here we instantiate the VideoCapture object from opencv and spawn a background thread to capture the images. Using our Delegate class, we can call functions in C++ on different threads.
+  
+  * **OnStop()**: Stops the camera sensor. After the sensor is called, it should wait for any processing to occur and release any objects in memory.
+  
+  * **OnPause()**: Pauses the camera sensor. The pause function increments an m_Pause integer. The reason this is not a boolean is because other places throughout core Intu can pause a sensor, and we need to keep track how many times pause is called before we know we can resume. When Pause is called, no data is sent to the extractor that has subscribed to it's data.
+  
+  * **OnResume()**: Resumes the sensor. The sensor can then start sending data to the extractor that is subscribed to it.
+  
+  * **CaptureVideo()**: Using opencv, we take raw buffers from the camera and encode them in JPEG format. This will continually happen based on the framers per second that is declared from the m_FramesPerSecond variable, and will stop when the OnStop() function is called.
+ 
+  * **SendingData()**: Checks whether the camera is paused. If it's not paused, data is sent to all extractors that have subscribed to it.
 
-* **OnStop()** - This function will act to cease the Camera Sensor i.e. once called the Camera Sensor will no longer be subscribed to the Blackboard (and cease to exist?).
-
-* **OnPause()** - This function is used to pause the Camera Sensor.
-
-* **OnResume()** - This function is used to resume the Camera Sensor to start recording.
-
-* **CaptureVideo()** - This function is responsible for recording from using the Mac Camera Sensor. OpenCV will be used to fill the buffer by calling encoding to a JPEG. decrease(negative) the EmotionalState score by 0.1. 
-
-* **SendingData()** - Is used to first check if the camera is paused or not. If the camera is not then the data is sent.
 
 The OnStop, OnPause and OnResume functions are already completely built out.
 
