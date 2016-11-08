@@ -2,7 +2,7 @@
 
 In this workshop, you customize the greeting in the dialog from the Conversation service workspace and extend the conversation by adding new intents, new entities, and new dialog.
 
-**Before you begin:** You must have a Mac or Windows laptop, and you must have completed Workshop 1: Say Hello!
+**Before you begin:** You must have a Mac or Windows laptop, and you must have completed Workshop 1: Say Hello!. You will notice that Intu and Self are used interchangeably. Self is the technical name for Intu.
 
 Complete the following tasks:
 
@@ -11,12 +11,11 @@ Complete the following tasks:
 3. [Adding a new conversation flow with a new intent, new entities, and new dialog](#adding-a-new-conversation-flow-with-a-new-intent,-new-entities,-and-new-dialog)
 4. [Configuring Self to use your new Conversation instance](#configuring-Self-to-use-your-new-Conversation-instance) 
 
-
 ## 1. Setting up the Conversation service
 
 You must create your own instance of the Conversation service in Bluemix, configure Intu to use this service instance, and import a Conversation workspace.
 
-### Creating your own instance of the Conversation service
+### A. Creating your own instance of the Conversation service
 
 1. Open a new browser window, and [log in to Bluemix](https://console.ng.bluemix.net/dashboard/applications/).
 
@@ -28,7 +27,7 @@ You must create your own instance of the Conversation service in Bluemix, config
   3. Click **View Credentials** for your newly created Conversation service.
   4. Copy the values for your `password` and `username` and paste them into a new text file in your favourite text editor. You will need these credentials in Section 4 below. **Leave this browser window open.**
 
-### Importing a workspace into the Conversation service
+### B. Importing a workspace into the Conversation service
 
 To complete this task, you must download the **Intu Starter Kit**, which contains a complete Conversation service workspace **Self-Dialog** that you need for this workshop.
 
@@ -63,7 +62,7 @@ To complete this task, you must download the **Intu Starter Kit**, which contain
   
 ## 3. Adding a new conversation flow with a new intent, new entities, and new dialog
 
-### Create a new intent
+### A. Create a new intent
 
 1. Click on **Intents** on the top navigation bar of the Conversation browser window you're currently in.
 
@@ -80,8 +79,7 @@ To complete this task, you must download the **Intu Starter Kit**, which contain
   9. Type **What is the capital of Australia**, and press **Enter**. This entry is added to the list.
   10. Repeat steps 8 and 9 for **What is the capital of Canada** and **What is the capital of New Zealand**.
 
-### Create new entities
-
+### B. Create new entities
 
   1. Click **Entities** on the top navigation bar, and click **Create new**.
   
@@ -90,27 +88,34 @@ To complete this task, you must download the **Intu Starter Kit**, which contain
   4. Type **Australia**, and press **Enter**.
   5. Repeat steps 3 and 4 to add two new values for **Canada** and **New Zealand**.
 
-### Create new dialog
+### C. Create new dialog
 
-  1. Click **Dialog** on the top navigation bar, and click on any of the existing branches in grey, e.g. **#dialog**. You will see a green **+** displayed at the **bottom** of the box that has expanded.
+1. Click **Dialog** on the top navigation bar, and click on any of the existing branches in grey, e.g. **#dialog**. You will see a green **+** displayed at the **bottom** of the box that has expanded.
   
-  2. Click on this bottom green **+** and in the new box that opens, type **#dialog_capitals**.
-  3. Click within the **#dialog_capitals**. The box becomes outlined in green. Now, click the green **+** icon on the right side of the box. 
-  4. In the new box that is displayed, under **Enter new condition**, type **@countries:Australia**.
-  5. Click the **three dots** in the top right of the #dialog_capitals box, and select **Continue from**. 
+2. Click on this bottom green **+** and in the new box that opens, type **#dialog_capitals**.
+  
+3. Click within the **#dialog_capitals**. The box becomes outlined in green. Now, click the green **+** icon on the right side of the box. 
+  
+4. In the new box that is displayed, under **Enter new condition**, type **@countries:Australia**.
+  
+5. Click the **three dots** in the top right of the #dialog_capitals box, and select **Continue from**. 
+
 6.	Click on the **@countries:Australia box**, then click on **Go to condition** which has just popped up.
+
 7.	In the white **@countries:Australia** box, type in the response: **The capital of Australia is Canberra.**
+
 8.	Click on the **@countries:Australia** where you just typed in the response: The capital of Australia is Canberra. The box will become outlined in green. Click on the green **+** icon on the bottom of the box. 
+
 9.	In the new box that appears, under **Enter a condition**, type in: **@ countries:Canada,** and for the response: **The capital of Canada is Ottawa.**
+
 10.	Repeat for **@capitals:New Zealand**, where the response will be **The capital of New Zealand is Wellington.**
+
 11. Click the **Conversation bubble** icon on the top right to open a **Try it out** panel where you can test your new response.
 
 12.	Test your response.
 
 	1. In the **Enter something to test your bot** field at the bottom of the **Try it out** panel, type: **What is the capital of Australia?** You should see the response: **The capital of Australia is Canberra.** Note that Conversation may take a few minutes to train, as indicated by the pop-up message: **Watson is training on your recent changes** in purple.
 	2. Try asking for the capital of Canada and New Zealand.
-
-
 
 ## 4. Configuring Self to use your new Conversation instance
 
@@ -119,13 +124,18 @@ Your installation of Self is preconfigured to use the default Conversation servi
 1.	After testing your changes in the previous step above, click on the name of your Conversation Workspace **Self-Dialog** in the top left of your browser window.
 
 2.	This returns you to your Workspaces page, where you will see the Self-Dialog Workspace box. Click on the **three dots** in the top right hand corner of this box. Select **View details**.   
+
 3.	Now copy the Workspace ID into the text file you created earlier in Section 1.
+
 4.	Return to the [Intu Gateway](https://rg-gateway.mybluemix.net/).
+
 5.	Click on **MANAGE** on the left hand side navigation bar, and select **Services**. Select your Organization and Group in the top Filter by menu, if not already selected.
+
 6.	For your instance of **Conversation** click **Edit**, and copy in your username and password you saved earlier, and your Workspace ID from your text file. Note that your Workspace ID is to be pasted into the **self_dialog** parameter. **Important:** Do not change the service endpoint unless you are an enterprise user. Click **Save**.
+
 7.	If Intu is already **running** (from Workshop 1), ask it a question, e.g. **What is the capital of Australia?**
-8. 
-If Intu is **not running, run Intu Manager**.
+
+8. If Intu is **not running, run Intu Manager**.
 
 	1. Navigate to the directory where you installed the Intu Manager from Workshop 1 and run the application. (If you're using a **Mac**, right-click on the Intu Manager and select Open. If you're using **Windows**, double-click on the Intu Manager to run it.) 
 	2. If a security warning is displayed, accept the risk and open the file.
@@ -137,7 +147,7 @@ If Intu is **not running, run Intu Manager**.
 ## After DevCon ends
 Your instance of Intu is preconfigured with the following Watson services: Natural Language Classifier, Speech to Text, and Text to Speech. The preconfiguration is enabled for 30 days. If you want to test Intu after 30 days, you must create your own instances of these services and configure Intu to use them.
 
-### 1. Creating instances of Watson services
+### A. Creating instances of Watson services
 To use Intu, you need operational instances of the following services in Bluemix: Conversation, Natural Language Classifier, Speech to Text, and Text to Speech.
 
 **Pro tip:** As you complete this task, you'll receive credentials for each service instance, and you'll need these credentials later. Open a new file in your favourite text editor and create a section for each service so that you can temporarily store its credentials.
@@ -145,6 +155,7 @@ To use Intu, you need operational instances of the following services in Bluemix
 1. On the Bluemix dashboard, click **Catalog** in the top right navigation bar.
 
 2. In the All Categories menu on the left, under Services, click on **Watson**.
+
 3. Create an instance of the Conversation service.
   1. Click the **Natural Language Classifier** tile.
   2. Keep all the default values, and click **Create**.
@@ -153,16 +164,17 @@ To use Intu, you need operational instances of the following services in Bluemix
   5. Copy the values for your password and username and paste them into a new text file in your favourite text editor.
   6. Click the **<--Watson** breadcrumb near the top left (directly above your Natural Language Classifier service name). The list of your service instances is displayed.
   7. Add the next service instance by clicking the **Create Watson** **+** button. The Watson service catalog is displayed.
+
 4. Create instances of the Speech to Text and Text to Speech services by repeating the same substeps 1 - 7 that you completed to create the Natural Language Classifier service instance.
 
-
-### 2. Configuring Intu to use your service instances
+### B. Configuring Intu to use your service instances
 
 To configure Intu to use your instances of these Watson services, log in to to the [Intu Gateway](https://rg-gateway.mybluemix.net/) and complete the following steps:
 
 1. Click on **MANAGE** on the left hand side navigation bar, and select **Services**. 
 
 2. Select your Organization and Group in the top Filter by menu, if not already selected.
+
 3. For your instances of the Natural Language Classifier, Speech to Text, and Text to Speech services, click **Edit**, and specify the user ID and password (saved in your text file in the previous section **Creating instances of Watson services**), and click **Save**.
 
 **Important:** Do not change the service endpoint unless you are an enterprise user.

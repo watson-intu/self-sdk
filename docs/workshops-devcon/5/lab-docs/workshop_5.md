@@ -649,13 +649,17 @@ As you have already downloaded the `wlabs_self-sdk-master.zip` file, your first 
 
 1. All classes in Intu inherit from the ISerializable interface. All objects can be deserialized from the Deserialize function and serialized from the Serialize function. All deserialization and serialization occurs from the body.json file found in the etc/profiles directory.
 
-2. The flow of how this gesture gets execute has led up to working on the previous workshops. In workshop two, you have configured a conversation service to have it respond to questions in a variety of ways. One thing that can be done in conversation is to add an `[emote=show_laugh]` tag after a response. The text that gets returned from the Conversation service eventually makes it's way to the SpeakingAgent. The SpeakingAgent will see the `[emote=show_laugh]` tag, and create an Emotion object and place that on the BlackBoard. The agent that was developed in Workshop 3 subscribes to Emotion objects on start up. In the callback, OnEmotion() function will execute an AnimateGesture skill
+2. The flow of how this gesture gets executed has led up to working on the previous workshops. In Workshop 2, you have configured a Conversation service to have it respond to questions in a variety of ways. One thing that can be done in Conversation is to add an `[emote=show_laugh]` tag after a response. The text that gets returned from the Conversation service eventually makes its way to the SpeakingAgent. The SpeakingAgent will see the `[emote=show_laugh]` tag, and create an Emotion object and place that on the Blackboard. The agent that was developed in Workshop 3 subscribes to Emotion objects on start up. In the callback, the OnEmotion() function will execute an AnimateGesture skill.
 
 3. All gestures inherit from the IGesture interface. Therefore, all gestures have a Start(), Stop(), Execute(), and Abort():
-  * **Start()** This function is called from the GestureManager class. If the function returns false, then the GestureManager will not register the gesture.
-  * **Stop()** This function is called when the GestureManager is stopped
-  * **Execute()** The main implementatino on how to carry out the execution of the gesture. If we look at the top of the cpp file, you will see two macros defined: REG_SERIALIZABLE and RTTI_IMPL. REG_SERIALIZABLE will serialize the object type to our system so we can get a handle on it using reflection, while RTTI_IMPL states that our implementation of the class WorkshopFiveGesture will override our base AnimateGesture class. The power of this allows us to have platform specific code to carry out execution of gestures while still keeping the core Intu platform agnostic. Therefore, when AnimateGesture is called to execute, our WorkshopFiveAnimation execute function will be called.
-  * **Abort()** Will stop the execution of the gesture if the gesture is still in progress.
+  
+  * **Start():** This function is called from the GestureManager class. If the function returns false, then the GestureManager will not register the gesture.
+  
+  * **Stop():** This function is called when the GestureManager is stopped
+  
+  * **Execute():** The main implementation on how to carry out the execution of the gesture. If we look at the top of the cpp file, you will see two macros defined: REG_SERIALIZABLE and RTTI_IMPL. REG_SERIALIZABLE will serialize the object type to our system so we can get a handle on it using reflection, while RTTI_IMPL states that our implementation of the class WorkshopFiveGesture will override our base AnimateGesture class. The power of this allows us to have platform specific code to carry out execution of gestures while still keeping the core Intu platform agnostic. Therefore, when AnimateGesture is called to execute, our WorkshopFiveAnimation execute function will be called.
+  
+  * **Abort():** Will stop the execution of the gesture if the gesture is still in progress.
 
 
 
