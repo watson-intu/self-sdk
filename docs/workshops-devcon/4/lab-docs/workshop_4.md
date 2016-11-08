@@ -59,7 +59,7 @@ All plans are loaded when Intu starts. When a goal object is placed on the black
 	**For Mac users:** /Applications/IBM/Self/latest/etc/shared/plans
 	
 	**For Windows users:** C:\Users\username\AppData\LocalLow\IBM\Self\latest\etc\shared\latest\plans
-2.  Open the `default.json` file in the **plans** directory using your favourite text editor.
+2.  Open the `default.json` file in the **plans** directory using your favourite text editor (if on mac, refrain from using TextEdit as it will format text and cause the plan not to be found. On Windows, it is preferable to use Notepad/Wordpad and on Mac it is preferable to use Sublime or nano/vim).
 
 3. Browse through the different plans, and notice how plans can have different preconditions based on the data that is represented.
 For example, look at the first plan called `"dialog_answer"`. It contains a set of preconditions (the key is `"m_PreConditions"`) that must be answered for that plan to execute. The first parameter, the array with the key `"m_Params"`, in that precondition states that the data being analyzed must have the format `"{"answer" : {"response" : ["some value"] }, }"`, where the array in response must not be equal to null, while the second precondition states the response array must not have a key of `"id"` in the response array.
