@@ -16,7 +16,7 @@ Complete the following tasks:
 
 ## 1. Setting up the Tone Analyzer service
 
-### 1. Creating your own instance of the Tone Analyzer service
+### A. Creating your own instance of the Tone Analyzer service
 
 1. [Log in to Bluemix](https://console.ng.bluemix.net/) if you are not already logged in.
 
@@ -30,7 +30,7 @@ Complete the following tasks:
   3. Click **View Credentials** for the new Tone Analyzer service instance you just created. 
   4. Copy these credentials (everything inside **{ }**) and paste them into a new text file in your favourite text editor. You will need these credentials to configure your Tone Analyzer service in the section below.
 
-### 2. Configure Intu to use your Tone Analyzer service instance
+### B. Configure Intu to use your Tone Analyzer service instance
 
 1. Open a new browser window and [log in to the Intu Gateway](https://rg-gateway.mybluemix.net/).
 
@@ -68,9 +68,9 @@ Follow the instructions for your platform.
 
 2. Create a new directory named **intu** in a directory of your choosing.
 
-3. Unzip the **wlabs_self-sdk-master.zip** file into **intu**, making sure that you retain the folder structure, i.e. your intu directory should now contain the unzipped **wlabs_self-sdk-master** folder. This may take some time.
+3. Unzip the **wlabs_self-sdk-master.zip** file into the **intu** directory, making sure that you retain the folder structure, i.e. your intu directory should now contain the unzipped **wlabs_self-sdk-master** folder. This may take some time.
 
-### 1.1. Preparing for OS X
+### A. Preparing for OS X
 
 **Note**: If you have already completed **Preparing for OS X** in another workshop, you can skip this section.
 
@@ -115,7 +115,7 @@ Follow the instructions for your platform.
 		If you see this message, you will need to update **Xcode**.
 	
 3. Download **Anaconda 4.2.0 Python 2.7 version** by using the **Graphical Installer**. It is required to correctly configure pip in the following step.
-   1. Copy and open the following in a browser: https://www.continuum.io/downloads
+   1. Open a new browser window and [download Anaconda 4.2.0 Python 2.7 version](https://www.continuum.io/downloads).
    2. Click the solid blue GRAPHICAL INSTALLER button for Python 2.7 Version. It should be 403 MB. The .pkg file downloads.
    3. After the file is downloaded, double-click it, and follow the prompts to install Anaconda.
    4. Open a **new** Terminal window and make sure your version of Python has been successfully updated by running the command: `python --version` 
@@ -128,7 +128,7 @@ Follow the instructions for your platform.
    3. When the "Please choose a generator" prompt is displayed, specify **1**, and press **Enter**.
    4. When the "Please choose an IDE" prompt is displayed, specify **1**, and press **Enter**.
 
-### 1.2. Building the Self SDK for OS X
+### B. Building the Self SDK for OS X
 
 1. In a new Terminal window, navigate to the **wlabs_self-sdk-master** directory inside **intu**. You should just be able to run: `cd intu/wlabs_self-sdk-master` 
 
@@ -142,7 +142,7 @@ If you are running this script for the first time and you see the following mess
 Known toolchains are:
 ```
 
-### 2. Building the Self SDK for Windows
+### C. Building the Self SDK for Windows
 
 1. Preparing Windows only requires installing **[Visual Studio Community](https://www.visualstudio.com/vs/community/)**. **Note:** This will take some time to download.
 
@@ -172,7 +172,7 @@ Known toolchains are:
 
 ## 4. Creating an emotion agent
 
-### 1. Preparing your directories and files for the emotion agent
+### A. Preparing your directories and files for the emotion agent
 
 **For OS X users:**
 
@@ -212,13 +212,13 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
     qi_stage_lib(workshop_three_plugin)
   ```
 
-1. Create a new directory inside this called **agents** in the **workshop_three** directory.
+3. Create a new directory inside this called **agents** in the **workshop_three** directory.
 
-2. Locate the Workshop 3 code snippet files **to be filled in** in:
+4. Locate the Workshop 3 code snippet files **to be filled in** in:
 
  `wlabs_self-sdk-master/docs/workshops-devcon/3/code-snippets/WorkshopThreeAgent_start`
 
-3. Copy the `WorkshopThreeAgent.cpp` and the `WorkshopThreeAgent.h` files and paste them into the **agents** directory that you created.
+5. Copy the `WorkshopThreeAgent.cpp` and the `WorkshopThreeAgent.h` files and paste them into the **agents** directory that you created.
 
 
 **For Windows users:**
@@ -260,17 +260,22 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
 * Go to **Build Events -> Post-Build Event -> Command Line**, and add: `copy /Y "$(TargetPath)" "$(ProjectDir)..\..\bin\$(Configuration)"`
 
 
-### 2. Building out the OnText, OnTone and OnLearningIntent functions for your emotion agent
+### B. Building out the OnText, OnTone and OnLearningIntent functions for your emotion agent
 
 Open the `WorkshopThreeAgent.cpp` file, which contains the following functions that enable the emotion agent you'll create:
 
   * **OnStart()**: Initializes for the emotion agent. It subscribes the emotion agent to the blackboard. After initialization is complete, the emotion agent subscribes to OnEmotion, OnLearningIntent, and OnEmotionCheck functions. 
   
   * **OnStop()**: Stops the emotion agent. After the emotion agent is called, it is no longer subscribed to the blackboard.
+  
   * **OnEmotion()**: Listens to the blackboard for emotion topics being posted to the blackboard. 
+  
   * **OnText()**: Waits for and receives responses from the Tone Analyzer service.
+  
   * **OnLearningIntent()**: Updates the EmotionalState variable. Initially, the EmotionalState is 0.5 and must be 0 - 1. Each time the agent receives a piece of positive or negative feedback, the OnLearningIntent() function increases for positive feedback or decreases for negative feedback the EmotionalState variable score by 0.1. 
+  
   * **OnTone()**:
+  
   * **OnEmotionCheck()**: Restores the EmotionalState to a basel level of 0.5. For every 30 seconds the OnEmotionCheck() increases when EmotionalState is less than 0.5 and decreases when EmotionalState is more than 0.5 the EmotionalState variable. This ensures that the EmotionalState will trend back to neutral over time. 
   * **PublishEmotionalState()**: Formats the current EmotionalState value, formats it into the json value, and adds it to the blackboard.
 
@@ -390,7 +395,7 @@ In the next task, you will update the `body.json` file also located in the **int
 
 ## 4. Configuring your Intu instance to include the emotion agent
 
-### 1. Retrieving the credentials for your Organization in the Intu Gateway
+### A. Retrieving the credentials for your Organization in the Intu Gateway
 1. [Log in to the Intu Gateway](https://rg-gateway.mybluemix.net/). 
 
 2. Click on **VIEW CREDENTIALS** in the left hand navigation bar.
@@ -398,7 +403,7 @@ In the next task, you will update the `body.json` file also located in the **int
 3. Select your Organization and Group in the top Filter by menu, and click on the **Get Credentials** box.
 4. Copy these credentials by clicking the **Copy** icon in the top right of the window, and paste this into a new text file using your favourite text editor.
 
-### 2. Configuring your `body.json` file
+### B. Configuring your `body.json` file
 
 1. Open your `body.json` file. 
 
@@ -437,7 +442,7 @@ Now you have added an Emotion Agent Intu will start to will adapt to you. First 
 ## After DevCon ends
 Your instance of Intu is preconfigured with the following Watson services: Conversation, Natural Language Classifier, Speech to Text, and Text to Speech. The preconfiguration is enabled for 30 days. If you want to test Intu after 30 days, you must create your own instances of these services and configure Intu to use them.
 
-### 1. Creating instances of Watson services
+### A. Creating instances of Watson services
 To use Intu, you need operational instances of the following services in Bluemix: Conversation, Natural Language Classifier, Speech to Text, and Text to Speech.
 
 **Pro tip:** As you complete this task, you'll receive credentials for each service instance, and you'll need these credentials later. Open a new file in your favourite text editor and create a section for each service so that you can temporarily store its credentials.
@@ -458,7 +463,7 @@ To use Intu, you need operational instances of the following services in Bluemix
 4. Create instances of the Natural Language Classifier, Speech to Text, and Text to Speech services by repeating the same substeps 1 - 7 that you completed to create the Conversation service instance.
 
 
-### 2. Configuring Intu to use your service instances
+### B. Configuring Intu to use your service instances
 
 To configure Intu to use your instances of these Watson services, log in to the [Intu Gateway](https://rg-gateway.mybluemix.net/) and complete the following steps:
 
