@@ -141,8 +141,7 @@ PS: If you run into issues with the build, you might have to change a couple of 
 ### Linux
 
 1. Set up qibuild and CMake. You can use your Linux package manager to install CMake, and any distribution of Python (2.7 recommended) to install qibuild through pip.
-2. Download the [Linux Toolchain for Linux (C++ SDK 2.1.4 Linux 64)](https://community.aldebaran.com/en/resources/software) and unzip the package into `~/toolchains/naoqi-sdk-linux64/`.
-3. Run the following commands:
+2. Run the following commands:
   * `./scripts/build_linux.sh [profile]`
 
 ### Raspberry Pi
