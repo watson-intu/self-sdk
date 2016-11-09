@@ -89,12 +89,12 @@ Follow the instructions for your platform.
    3. Specify your password, and press **Return** or **Enter**. If you have **macOS Sierra**, the following message is displayed:
    
    		```
-   HEAD is now at 89fd34b Merge pull request #1368 from MikeMcQuaid/build-options-file
-   Error: /usr/local/Cellar is not writable. You should change the
-   ownership and permissions of /usr/local/Cellar back to your
-   user account:
-   sudo chown -R $(whoami) /usr/local/Cellar
-   Failed during: /usr/local/bin/brew update --force
+   		HEAD is now at 89fd34b Merge pull request #1368 from MikeMcQuaid/build-options-file
+   		Error: /usr/local/Cellar is not writable. You should change the
+   		ownership and permissions of /usr/local/Cellar back to your
+   		user account:
+   		sudo chown -R $(whoami) /usr/local/Cellar
+   		Failed during: /usr/local/bin/brew update --force
    		```
    
    		Run: `sudo chown -R $(whoami) /usr/local/Cellar`
@@ -222,7 +222,6 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
 
 5. Copy the `WorkshopThreeAgent.cpp` and the `WorkshopThreeAgent.h` files and paste them into the **agents** directory that you created.
 
-
 **For Windows users:**
 
 1. Open up File Explorer and navigate to **intu/wlabs_self-sdk-master/examples**.
@@ -245,9 +244,9 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
 
 10. Right-click on **agent**, and select **Add -> Existing Items**.
 
-11. Navigate to **wlabs_****self-sdk-master/examples/workshop_three** and select the files: `WorkshopThreeAgent.cpp` and `WorkshopThreeAgent.h`.
+11. Navigate to **wlabs_self-sdk-master/examples/workshop_three** and select the files: `WorkshopThreeAgent.cpp` and `WorkshopThreeAgent.h`.
 
-12. Right-click the **workshop****_three****_plugin** solution, open **Properties**, and make the following changes, but **before you begin, make sure Configuration at the top left is set to "All Configurations"**.
+12. Right-click the **workshop_three_plugin** solution, open **Properties**, and make the following changes, but **before you begin, make sure Configuration at the top left is set to "All Configurations"**.
 
 * Change the value of **General -> Character Set** to **Use Multi-Byte Character Set**.
 
@@ -310,14 +309,10 @@ In the next step, you will build out the **OnText**, **OnTone** and **OnLearning
         }
     }
   ```
-      This code accepts the piece of text that the emotion agent is listening for. Then, it finds the Tone Analyzer service and sends the text.
-      
-2. For the **OnTone()** function, copy the code directly below **//Code for OnTone()**. Now paste this inside the function body **{}** of **OnTone()** in `WorkshopThreeAgent.cpp`. The code which you need is displayed below for completeness; however, it is **not** recommended for you to copy it from here due to formatting issues.
-
-
-	The code which you need is displayed below:
+            
+3. For the **OnTone()** function, copy the code directly below **//Code for OnTone()**. Now paste this inside the function body **{}** of **OnTone()** in `WorkshopThreeAgent.cpp`. The code which you need is displayed below for completeness; however, it is **not** recommended for you to copy it from here due to formatting issues.
   
-  ```
+  	```
       if (a_Callback != NULL)
     {
         double topScore = 0.0;
@@ -362,11 +357,10 @@ In the next step, you will build out the **OnText**, **OnTone** and **OnLearning
     }
   ```
   
+4. For the **OnLearningIntent()** function, copy the code directly below **//Code for OnLearningIntent()**. Now paste this inside the function body **{}** of **OnLearningIntent()** in `WorkshopThreeAgent.cpp`. The code which you need is displayed below for completeness; however, it is **not** recommended for you to copy it from here due to formatting issues.  
+  
+ ```
 
-4. For the **OnLearningIntent()** function, copy the code directly below **//Code for OnLearningIntent()**. Now paste this inside the function body **{}** of **OnLearningIntent()** in `WorkshopThreeAgent.cpp`. The code which you need is displayed below for completeness; however, it is **not** recommended for you to copy it from here due to formatting issues.
-  
-  
-  ```
   LearningIntent::SP spLearningIntent = DynamicCast<LearningIntent>(a_ThingEvent.GetIThing());
     if (spLearningIntent && spLearningIntent->GetVerb().compare("feedback") == 0)
     {
@@ -471,7 +465,6 @@ To use Intu, you need operational instances of the following services in Bluemix
 
 4. Create instances of the Natural Language Classifier, Speech to Text, and Text to Speech services by repeating the same substeps 1 - 7 that you completed to create the Conversation service instance.
 
-
 ### B. Configuring Intu to use your service instances
 
 To configure Intu to use your instances of these Watson services, log in to the [Intu Gateway](https://rg-gateway.mybluemix.net/) and complete the following steps:
@@ -484,5 +477,4 @@ To configure Intu to use your instances of these Watson services, log in to the 
 
 4. To configure your instance of **Conversation**, navigate to **DOWNLOADS** on the left of your Intu Gateway browser page, download the **Intu Starter Kit**, and follow the instructions in the `readme.txt` file. Alternatively, go to the instructions for **Workshop 2**, and follow the steps in: **1. Setting up the Conversation service**.
  
-
 **Important:** Do not change the service endpoint for your services unless you are an enterprise user.
