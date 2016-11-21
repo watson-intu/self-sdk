@@ -224,4 +224,4 @@ This process installs Intu on the remote device whose user name and IP address y
 
 Post your comments and questions and include the `project-intu` and `intu` tags on 
 [dW Answers](https://developer.ibm.com/answers/questions/ask/?topics=watson)
-or [Stack Overflow](http://stackoverflow.com/questions/ask?tags=ibm-watson).
+or [Stack Overflow](http://stackoverflow.com/questions/ask?tags=project-intu).
