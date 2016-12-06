@@ -27,20 +27,25 @@ You must create your own instance of the Conversation service in Bluemix, config
   3. Click **View Credentials** for your newly created Conversation service.
   4. Copy the values for your `password` and `username` and paste them into a new text file in your favourite text editor. You will need these credentials in Section 4 below. **Leave this browser window open.**
 
-### B. Importing a workspace into the Conversation service
+### B. Importing the example "Self-Dialog" workspace into the Conversation service
 
 To complete this task, you must download the **Intu Starter Kit**, which contains a complete Conversation service workspace **Self-Dialog** that you need for this workshop.
+
+**Important:** Should you wish to use your own **custom** Conversation workspace, please skip down and follow the instructions in **Challenge: Using your own custom Conversation workspace with Intu** below.
 
 1. Open a new browser window and [log in to the Intu Gateway](https://rg-gateway.mybluemix.net/).
 
 1. Click **DOWNLOADS** on the left hand side navigation bar.
+
 2. Click on the big download arrow for **Download Intu Starter Kit**. Extract the contents of the zip file into a working directory and take note of this so that you know where to find it in step 7 below. **Note:** The directory that you select for this starter kit does not matter; it contains only the `intu-workspace-full.json` file required in step 7 below and a `readme.txt` file. 
+
 3. Return to the Conversation service window in Bluemix (left open in your browser in step 4 above), and select **Manage**.
+
 4. Click **Launch tool**. You are directed to the Watson Conversation page. Click **Log in with IBM ID** if you see this window. 
  
 5. **Do not create a new workspace.** Click the **Import** icon next to the green **Create +** button.
-6. Click **Choose a file**, navigate to the directory where you extracted the Intu Starter Kit in step 2, select the `intu-workspace-full.json` file, and click **Import**. Keep the default settings so that you import everything. The workspace titled **Self-Dialog** is imported and is displayed on the Workspaces page.
 
+6. Click **Choose a file**, navigate to the directory where you extracted the Intu Starter Kit in step 2, select the `intu-workspace-full.json` file, and click **Import**. Keep the default settings so that you import everything. The workspace titled **Self-Dialog** is imported and is displayed on the Workspaces page.
 
 
 ## 2. Customizing the greeting
@@ -50,34 +55,50 @@ To complete this task, you must download the **Intu Starter Kit**, which contain
 1. On the Self-Dialog workspace, click **Get started**.
 
 2. Click **Dialog** in the navigation bar at the top.
+
 3. Expand this branch of the dialog tree by clicking through the following dialog nodes: **#dialog** -> **@greeting** -> **@greeting:hello**. You may need to scroll down as you're clicking through.
+
 4. In the **Watson Response** box of **greeting:hello**, in `“values”: [ ]`, the current four responses for when you say "hello" are displayed. You can edit, remove, and add to these. For now, add a comma (,) directly after the final quotation mark (") at the end of "why hello there[emote=wave_anim]" and on a new line directly below it, add "Hello Workshop Two participant!".
+
 5. Click the **Conversation bubble** icon on the top right to open a **Try it out** panel where you can test your new response.
+
 6. Test your response.
   1. In the **Enter something to test your bot** field at the bottom of the **Try it out** panel, type Hello, and press **Enter**. 
   2. Submit hello a few times until your new response is returned. 
   
   		**Note:** Conversation may take a few minutes to train, as indicated by the pop-up message: **Watson is training on your recent changes** in purple.
+
 7. Close the **Try it out** box by clicking on the **X** icon (directly above the  **Clear** icon).
   
 ## 3. Adding a new conversation flow with a new intent, new entities, and new dialog
 
 ### A. Create a new intent
 
+**Important:** Intu is currently configured to recognize intents which are prefixed with **dialog_**. This is why when you do start creating an intent (like you will below for dialog_capitals) it begins with this **dialog** prefix. This is important to make sure Intu recognizes your intent and treats your input as a question that needs to be answered through Conversation. However, you can create your own prefix or pattern for intents should you choose, and you will find instructions for how to do this in **Challenge: Using your own custom Conversation workspace with Intu** below.
+
 1. Click on **Intents** on the top navigation bar of the Conversation browser window you're currently in.
 
-2. Create a new intent.
-  1. Click the green **Create new** button on the top left to create a new intent.
-  2. The hashtag (#) identifies intents. After the # for intent name, type **dialog_capitals**.
-  3. Click **Create** on the top right. The intent **#dialog_capitals** is at the top of your intents list.
-  4. Click **#question** in your intents list, and search for **capital**. (You can use **Ctrl + F** or **Cmd + F**). Four entries for "What is the capital of..." should be displayed.
-  5. Select the checkbox beside each of the four entries.
-  6. Scroll to the top of **#question**, and select **Move to...**.
-  7. In the **# Intent name** box that is displayed, start typing **dialog_capitals**, and select it when it appears in the dropdown list. **Note:** The move of the four entries from **#question** to **#dialog_capitals** may take a minute or more to update, and you may need to refresh your page. 
-  8. Scroll to the top of your intents list and click on **#dialog_capitals**, where you should see the four entries that you moved.
-  8. Click **#dialog_capitals**, and select **Add a new user example…**.
-  9. Type **What is the capital of Australia**, and press **Enter**. This entry is added to the list.
-  10. Repeat steps 8 and 9 for **What is the capital of Canada** and **What is the capital of New Zealand**.
+2. Click the green **Create new** button on the top left to create a new intent.
+
+3. The hashtag (#) identifies intents. After the # for intent name, type **dialog_capitals**.
+
+4. Click **Create** on the top right. The intent **#dialog_capitals** is at the top of your intents list.
+
+5. Click **#question** in your intents list, and search for **capital**. (You can use **Ctrl + F** or **Cmd + F**). Four entries for "What is the capital of..." should be displayed.
+
+6. Select the checkbox beside each of the four entries.
+
+7. Scroll to the top of **#question**, and select **Move to...**.
+
+8. In the **# Intent name** box that is displayed, start typing **dialog_capitals**, and select it when it appears in the dropdown list. **Note:** The move of the four entries from **#question** to **#dialog_capitals** may take a minute or more to update, and you may need to refresh your page. 
+
+9. Scroll to the top of your intents list and click on **#dialog_capitals**, where you should see the four entries that you moved.
+
+10. Click **#dialog_capitals**, and select **Add a new user example…**.
+
+11. Type **What is the capital of Australia**, and press **Enter**. This entry is added to the list.
+
+12. Repeat steps 8 and 9 for **What is the capital of Canada** and **What is the capital of New Zealand**.
 
 ### B. Create new entities
 
@@ -131,7 +152,11 @@ Your installation of Self is preconfigured to use the default Conversation servi
 
 5.	Click on **MANAGE** on the left hand side navigation bar, and select **Services**. Select your Organization and Group in the top Filter by menu, if not already selected.
 
-6.	For your instance of **Conversation** click **Edit**, and copy in your username and password you saved earlier, and your Workspace ID from your text file. Note that your Workspace ID is to be pasted into the **self_dialog** parameter. **Important:** Do not change the service endpoint unless you are an enterprise user. Click **Save**.
+6.	For your instance of **Conversation** click **Edit**, and copy over your username and password you saved earlier in your text file. Now copy your Workspace ID and paste it into the **self_dialog** parameter. 
+
+	**Important:** As you are using the **Self-Dialog** workspace, you do not 	need to worry about the **self_domain** parameter here. You can just leave 	**self_domain** with its default value, or delete it if you wish. If you 	were using your own, custom Conversation workspace (see **Challenge: Using 	your own custom Conversation workspace with Intu**), the **self_domain** 	parameter is where you would paste your Workspace ID.
+	
+	In addition, do 	not change the service endpoint unless you are an enterprise user. 	Click **Save**.
 
 7.	If Intu is already **running** (from Workshop 1), ask it a question, e.g. **What is the capital of Australia?**
 
@@ -143,6 +168,67 @@ Your installation of Self is preconfigured to use the default Conversation servi
 	4. The Intu Manager page is displayed in your browser window. Click **Log In**. You are prompted to return to the Intu Manager. 
 	5. Select **Manage Intu**. A new Intu Tooling log in page is displayed. Click **Log in.**
 	6. Your Organization and Group should be preselected in the dropdown menu and Intu should now be running.
+
+## Challenge: Using your own custom Conversation workspace with Intu
+
+Here you will find the instructions for using your own custom Conversation workspace instead of the example Self-Dialog workspace from above.
+
+**Important:** As you may have read earlier, Intu is currently configured to recognize intents which are prefixed with “dialog_”. This is important to make sure Intu recognizes your intent and treats your input as a question that needs to be answered through Conversation. However, you can create your own prefix or pattern for intents should you choose.
+
+###Configuring your intents for Conversation
+
+All new intents for Conversation must be correctly configured. If you create intents with your own prefix (instead of “dialog_”), you must ensure that a new "QuestionIntent" block specifying this unique prefix is added to your `body.json` configuration file. 
+
+Navigate to your `body.json` file in the **latest** directory.
+
+**For Mac users:** Applications/IBM/Self/latest
+
+**For Windows users:** C:\Users\username\AppData\LocalLow\IBM\Self\latest
+
+Search for "QuestionIntent", and you should find the following:
+            
+            {
+               "m_Class" : "QuestionIntent",
+               "m_Intent" : "dialog*"
+            },
+            {
+               "m_Class" : "QuestionIntent",
+               "m_Intent" : "PLACE*"
+            },
+            {
+               "m_Class" : "QuestionIntent",
+               "m_Intent" : "*INFO"
+            },
+            {
+               "m_Class" : "QuestionIntent",
+               "m_Intent" : "SERVICE*"
+            },
+            {
+               "m_Class" : "QuestionIntent",
+               "m_Intent" : "question*"
+            },
+            
+Notice the first "QuestionIntent" shown for "dialog*". This is what helps Intu to recognize intents prefixed with "dialog_".  Thus, when you create new intents, you can do **either or both** of **Option 1** and **Option 2** below.
+
+**Option 1: Creating intents which are all prefixed with "dialog_"** 
+
+1. If you have already created a working Conversation workspace, edit all of your intents so that they are prefixed with “dialog_”. Make sure these updates are applied to all intents in the **Intents** section of Conversation as well as in the **Dialog** section.
+
+2. If you have not yet created your Conversation workspace, make sure that when you do start creating it, all of your intents begin with “dialog_”.
+
+**Option 2: Adding in your own intent prefix or intent pattern by editing the body.json file**
+
+1. Instead of prefixing your intents with "dialog_", choose your own prefix. 
+
+2. In your `body.json` file, create a new "QuestionIntent" block specifying your prefix, e.g.:
+
+            {
+               "m_Class" : "QuestionIntent",
+               "m_Intent" : "MY_PREFIX*"
+            },
+
+Now, complete **Section 4: Configuring Self to use your new Conversation instance**. Make sure that you copy your Workspace ID into the **self_domain** parameter. You can just leave the **self_dialog** parameter with its default value, or delete it if you wish.
+
 
 ## After DevCon ends
 Your instance of Intu is preconfigured with the following Watson services: Natural Language Classifier, Speech to Text, and Text to Speech. The preconfiguration is enabled for 30 days. If you want to test Intu after 30 days, you must create your own instances of these services and configure Intu to use them.
