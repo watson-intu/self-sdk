@@ -29,7 +29,7 @@
 * How do you define autonomous vs reactive behaviour of agents? How do they work?
   * Sample answer
 
-* When an agent is added locally, the code to create it is added locally in INTU config file. If an agent is added/configured in the cloud, can the code then reside in the cloud? Any changes can then be pushed to the user's machine. Surely it is not practical to update the config locally on every single machine that has INTU.
+* When an agent is added locally, the code to create it is added locally in Intu config file. If an agent is added/configured in the cloud, can the code then reside in the cloud? Any changes can then be pushed to the user's machine. Surely it is not practical to update the config locally on every single machine that has Intu.
   * Sample answer
 
 * How would we have local agents talk to agents on the cloud?
