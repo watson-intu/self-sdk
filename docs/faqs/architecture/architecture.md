@@ -8,4 +8,4 @@
 * Sample question 2
 ..* Sample answer 2
 
-[Back to the index](../index.md)
+[Back to the index](../../README.md)
