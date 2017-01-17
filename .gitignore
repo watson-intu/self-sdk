@@ -15,3 +15,5 @@ build-pepper/
 *.exe
 include/
 packages/
+*.swp
+*.swo
