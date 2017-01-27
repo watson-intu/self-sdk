@@ -56,11 +56,11 @@ To complete this task, you must download the **Intu Starter Kit**, which contain
 
 2. Click **Dialog** in the navigation bar at the top.
 
-3. Expand this branch of the dialog tree by clicking through the following dialog nodes: **#dialog** -> **@greeting** -> **@greeting:hello**. You may need to scroll down as you're clicking through.
+3. Expand this branch of the dialog tree by clicking through the following dialog nodes: **#dialog** -> **@greeting** -> **@greeting:hello**. You may need to scroll down as you're clicking through. Note: Nodes may have the name "untitled node" as you are clicking on them, the node name is an optional field.
 
-4. In the **Watson Response** box of **greeting:hello**, in `“values”: [ ]`, the current four responses for when you say "hello" are displayed. You can edit, remove, and add to these. For now, add a comma (,) directly after the final quotation mark (") at the end of "why hello there[emote=wave_anim]" and on a new line directly below it, add "Hello Workshop Two participant!".
+4. After clicking on the **greeting:hello** node there are currently four responses for when a user says "hello" are displayed. You can edit, remove, and add to these. For now, on a new line, after "why hello there[emote=wave_anim]" add "Hello Workshop Two participant!" directly below it.
 
-5. Click the **Conversation bubble** icon on the top right to open a **Try it out** panel where you can test your new response.
+5. Click the **Conversation bubble** icon on the top right banner to open a **Try it out** panel where you can test your new response.
 
 6. Test your response.
   1. In the **Enter something to test your bot** field at the bottom of the **Try it out** panel, type Hello, and press **Enter**. 
@@ -111,11 +111,11 @@ To complete this task, you must download the **Intu Starter Kit**, which contain
 
 ### C. Create new dialog
 
-1. Click **Dialog** on the top navigation bar, and click on any of the existing branches in grey, e.g. **#dialog**. You will see a green **+** displayed at the **bottom** of the box that has expanded.
+1. Click **Dialog** on the top navigation bar, and click on any of the existing branches in grey, e.g. **#dialog**. You will see a gray **+** displayed at the **bottom** of the box that has expanded.
   
-2. Click on this bottom green **+** and in the new box that opens, type **#dialog_capitals**.
+2. Click on this bottom gray **+** and in the new box that opens, type **#dialog_capitals**.
   
-3. Click within the **#dialog_capitals**. The box becomes outlined in green. Now, click the green **+** icon on the right side of the box. 
+3. Click within the **#dialog_capitals**. Now, click the gray **+** icon on the right side of the box. 
   
 4. In the new box that is displayed, under **Enter new condition**, type **@countries:Australia**.
   
@@ -125,7 +125,7 @@ To complete this task, you must download the **Intu Starter Kit**, which contain
 
 7.	In the white **@countries:Australia** box, type in the response: **The capital of Australia is Canberra.**
 
-8.	Click on the **@countries:Australia** where you just typed in the response: The capital of Australia is Canberra. The box will become outlined in green. Click on the green **+** icon on the bottom of the box. 
+8.	Click on the **@countries:Australia** where you just typed in the response: The capital of Australia is Canberra. The box will become outlined in green. Click on the gray **+** icon on the bottom of the box. 
 
 9.	In the new box that appears, under **Enter a condition**, type in: **@ countries:Canada,** and for the response: **The capital of Canada is Ottawa.**
 
