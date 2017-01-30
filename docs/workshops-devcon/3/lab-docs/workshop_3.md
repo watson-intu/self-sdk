@@ -117,12 +117,14 @@ Follow the instructions for your platform.
 		If you see this message, you will need to update **Xcode**.
 	
 3. Download **Anaconda 4.2.0 Python 2.7 version** by using the **Graphical Installer**. It is required to correctly configure pip in the following step.
-   1. Open a new browser window and [download Anaconda 4.2.0 Python 2.7 version](https://www.continuum.io/downloads).
+   1. Open a new browser window and [download Anaconda 4.2.0 Python 2.7 version](https://www.continuum.io/downloads). These instructions and the workshop have not been tested on Python 3.x
    2. Click the solid blue GRAPHICAL INSTALLER button for Python 2.7 Version. It should be 403 MB. The .pkg file downloads.
    3. After the file is downloaded, double-click it, and follow the prompts to install Anaconda.
    4. Open a **new** Terminal window and make sure your version of Python has been successfully updated by running the command: `python --version` 
  	
  		You should see: `Python 2.7.12 :: Anaconda 4.2.0 (x86_64)`
+
+ 	If your Python version doesn't match the above, make sure that you have set your $PATH variable correctly in the shell so that it prioritizes the Anaconda installation over the standard OS X Python installation. If you have previously installed Anaconda Python 3.x, you might run into an error. In that case, use a different path for your new Python 2.7 installation.
   
 4. Set up qiBuild.
    1. Run: `pip install qibuild`
