@@ -34,7 +34,7 @@ Follow the instructions for your platform.
 
 2. Create a new directory named **intu** in a directory of your choosing.
 
-3. Unzip the **wlabs_self-sdk-master.zip** file into **intu**, making sure that you retain the folder structure, i.e. your intu directory should now contain the unzipped **wlabs_self-sdk-masterr** folder.
+3. Unzip the **self-sdk-master.zip** file into **intu**, making sure that you retain the folder structure, i.e. your intu directory should now contain the unzipped **self-sdk-master** folder.
 
 ### A. Preparing for OS X
 
@@ -96,7 +96,7 @@ Follow the instructions for your platform.
    
 ### B. Building the Intu SDK for OS X
 
-1. In a new Terminal window, navigate to the **wlabs_self-sdk-master** directory inside **intu**. You should just be able to run: `cd intu/wlabs_self-sdk-master` 
+1. In a new Terminal window, navigate to the **self-sdk-master** directory inside **intu**. You should just be able to run: `cd intu/self-sdk-master` 
 
 	**Note:** If you have **already built the Intu SDK for OS X** in another workshop, run: `./scripts/clean.sh`    
 
@@ -115,7 +115,7 @@ Known toolchains are:
 
 1. If you do not have it installed already, download the trial version of the [CLion C++ IDE](https://www.jetbrains.com/clion/download/).
 
-2. In **CLion**, select Open -> home directory -> intu -> wlabs_self-sdk-master and click **OK**. 
+2. In **CLion**, select Open -> home directory -> intu -> self-sdk-master and click **OK**. 
 
 	Note that a window may appear prompting you to open your project in a New Window or This Window. Select **New Window**. At the bottom of your CLion window, in the Problems tab, you will see the following Error, which you do not need to worry about:
 	
@@ -126,7 +126,7 @@ Could not find a package configuration file provided by "SELF" with any of the f
 Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to a directory containing one of the above files.  If "SELF" provides a separate development package or SDK, be sure it has been installed.
 	```
 
-	2i. Inside the CLion **self-sdk-develop project**, right-click **examples**, select **New**, and select **Directory**. Type in **workshop_six** for the new directory name, and click **OK**.
+	2i. Inside the CLion **self-sdk-master project**, right-click **examples**, select **New**, and select **Directory**. Type in **workshop_six** for the new directory name, and click **OK**.
  
 	2ii. Right-click the `CMakeLists.txt` file in the **examples** directory, and click **Copy**. (If you are unsure of the directory you are in, look in the top-left navigation bar.)
   
@@ -152,11 +152,11 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
 	qi_stage_lib(workshop_six_plugin)
   ```
 
-3. Create a new directory inside this called **sensors** in the **workshop_six** directory.
+3. Create a new directory called **sensors** in the **workshop_six** directory.
 
 4. Locate the Workshop 6 code snippet files **to be filled in** in:
 
- `wlabs_self-sdk-master/docs/workshops-devcon/6/code-snippets/WorkshopSixSensor_start`
+ `self-sdk-master/docs/workshops-devcon/6/code-snippets/WorkshopSixSensor_start`
 
 5. Copy the `WorkshopSixSensor.cpp` and the `WorkshopSixSensor.h` files and paste them into the **sensors** directory that you created.
 
@@ -180,7 +180,7 @@ The OnStop, OnPause and OnResume functions are already completely built out.
 
 In the next step, you will build out the **OnStart**, **CaptureVideo** and **SendingData** functions using the example code provided.
 
-1. In **wlabs_self-sdk-master****w/docs/workshops-devcon/6/code-snippets/WorkshopSix_Snippets**, you will see the `WorkshopSixCodeSnippets.txt` file. Open this file and find the OnStart, CaptureVideo and SendingData functions.
+1. In **self-sdk-master/docs/workshops-devcon/6/code-snippets/WorkshopSixSensors_Snippets**, you will see the `WorkshopSixCodeSnippets.txt` file. Open this file and find the OnStart, CaptureVideo and SendingData functions.
 
 2. From `WorkshopSixCodeSnippets.txt `, for the **OnStart()** function, copy the code directly below **//Code for OnStart()**. Now paste this inside the function body **{}** of **OnStart()** in `WorkshopSixSensor.cpp` inside your **sensors** directory, overwriting all the code already inside the function body **{}**. The code which you need is displayed below for completeness; however, it is **not** recommended for you to copy it from here due to formatting issues.
 
@@ -233,7 +233,7 @@ In the next step, you will build out the **OnStart**, **CaptureVideo** and **Sen
   ```
 
 
-5. Open a **new** Terminal window and navigate to **intu/wlabs_self-sdk-master** by running: `cd intu/wlabs_self-sdk-master`.
+5. Open a **new** Terminal window and navigate to **intu/self-sdk-master** by running: `cd intu/self-sdk-master`.
 
 	**Note:** If you have built the SDK in a previous workshop, make sure you run: `./scripts/clean.sh`.
 
@@ -241,7 +241,7 @@ In the next step, you will build out the **OnStart**, **CaptureVideo** and **Sen
 
 **Congratulations!** You just built all the functions required for the camera sensor. 
 
-In the next task, you will update the `body.json` file also located in the **intu/wlabs_self-sdk-master/bin/mac/etc/profile** directory to include the new plugin so that Intu can use it.
+In the next task, you will update the `body.json` file also located in the **intu/self-sdk-master/bin/mac/etc/profile** directory to include the new plugin so that Intu can use it.
 
 
 ## 4. Configuring your Intu instance to include the camera sensor
@@ -258,7 +258,7 @@ In the next task, you will update the `body.json` file also located in the **int
 
 ### B. Configuring your `body.json` file
 
-1. Open your `body.json` file. This will be in **master_self-sdk-master/bin/mac/etc/profile**.
+1. Open your `body.json` file. This will be in **self-sdk-master/bin/mac/etc/profile**.
 	
 2. Locate the `m_Libs` variable. The variable should look like `"m_Libs" : [ "platform_mac" ],`
 
@@ -293,7 +293,7 @@ Save your changes.
 
 ### C. Building Intu
 
-1. Return to your most recent Terminal window, where you should already be in the **mac** directory. Otherwise, open a **new** Terminal window and navigate to this directory by running: `cd intu/wlabs_self-sdk-master/bin/mac`
+1. Return to your most recent Terminal window, where you should already be in the **mac** directory. Otherwise, open a **new** Terminal window and navigate to this directory by running: `cd intu/self-sdk-master/bin/mac`
 
 2. Run the following command:
   `export LD_LIBRARY_PATH=./`
