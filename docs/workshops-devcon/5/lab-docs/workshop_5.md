@@ -116,7 +116,7 @@ Connect your Raspberry Pi to an external monitor, keyboard and mouse as shown in
 
 2. Connect your Raspberry Pi to a power source, and connect an external keyboard, mouse and monitor to your Raspberry Pi.
 
-3. You should see a window open on your monitor. Click on the **Wifi networks (w)** icon at the top of the window, select your network (at DevCon, it will be **ROBOT_PED1**), and enter your password (**panda$123** for ROBOT_PED1).
+3. You should see a window open on your monitor. Sometimes it might so happen that your power strip might not work correctly. If your Pi does not start, plug it directly into a wall socket. Click on the **Wifi networks (w)** icon at the top of the window, select your network (at DevCon, it will be **ROBOT_PED1**), and enter your password (**panda$123** for ROBOT_PED1).
 
 4.	Get the IP address of your Raspberry Pi.
 	1.	Click on the black **Terminal** icon on the top left toolbar.
@@ -136,7 +136,7 @@ Connect your Raspberry Pi to an external monitor, keyboard and mouse as shown in
 
 6. At this point, you can disconnect the external monitor, mouse and keyboard from the Raspberry Pi. **Do not disconnect the Raspberry Pi from its power source.**
 
-7. Check that your laptop is still on the same network as the Raspberry Pi, and reboot the Raspberry Pi by running `sudo reboot` in your SSH window (Terminal for Mac and PuTTY for Windows). 
+7. Check that your laptop is still on the same network as the Raspberry Pi, and reboot the Raspberry Pi by running `sudo reboot` in your SSH window (Terminal for Mac and PuTTY for Windows). Try SSHing back into the Pi - when you can, the Pi is back up and running.
 
 **Note:** Unless explicitly stated, all of the following steps are to be run on your local computer.
 
@@ -319,8 +319,8 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
 1.	Copy the **workshop_five** directory from your local machine over to your Raspberry Pi. 
    
    **For Mac users:** 
-   1. Open a new SSH window and navigate to the **examples** directory (the parent directory of workshop_five) by running: `cd intu/wlabs_self-sdk-master/examples`
-	2. Run: `scp -r workshop_five pi@{IPaddress}:~/self/self-sdk-develop/examples`
+   1. Open a new terminal window and navigate to the **examples** directory (the parent directory of workshop_five) by running: `cd intu/wlabs_self-sdk-master/examples`
+	2. Run: `scp -r workshop_five pi@{IPaddress}:~/self/self-sdk-master/examples`
 
 	**For Windows users:** 
 	
@@ -329,7 +329,7 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
 		2. In the **Username** field, specify your Raspberry Pi's username (**pi**).
 		3. In the **Password** field, specify your Raspberry Pi's password (**raspberry**).
 		4. In the **Port** field, specify **22**.  	
-	2. Navigate to **self/self-sdk-develop/examples/** on the **Remote site** side of the screen.
+	2. Navigate to **self/self-sdk-master/examples/** on the **Remote site** side of the screen.
 	
 	3. Navigate to the **intu/wlabs_self-sdk-master/examples/** directory on the **Local site** side of the screen.
 	
@@ -337,8 +337,8 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
 
 2.	SSH to the Raspberry Pi in a new SSH window (Terminal for Mac or PuTTY for Windows):
 
-	1. Run:`ssh pi@{pi's_ip_address}`	
-  	2. Run: `cd /home/pi/self/self-sdk-develop/examples`
+	1. Run:`ssh pi@{IPaddress}`	
+  	2. Run: `cd /home/pi/self/self-sdk-master/examples`
 
 3.	Edit the `CMakeLists.txt` file in the examples directory you're currently in.
 
@@ -368,7 +368,7 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
 **For Mac users:**
 
 1. Copy the `body.json` from your Raspberry Pi to your local machine by running the following command in a new SSH window:
-		 `scp pi@[pi ip address]:/home/pi/self/self-sdk-develop/bin/raspi/etc/profile/body.json ~/`
+		 `scp pi@[IPaddress]:/home/pi/self/self-sdk-master/bin/raspi/etc/profile/body.json ~/`
 
 	Note that this copies the `body.json` file to your **home** directory.
 
@@ -381,19 +381,19 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
 5. Save your changes and close the file.
 
 6. Now copy your newly edited `body.json` from your local machine to the Raspberry Pi by running the following command from a **new** Terminal window: 
-`scp ~/body.json pi@{pi'sip_address}:/home/pi/self/self-sdk-develop/bin/raspi/etc/profile/`
+`scp ~/body.json pi@{IPaddress}:/home/pi/self/self-sdk-master/bin/raspi/etc/profile/`
 
 **For Windows users:**
 
 1. Open Filezilla and connect to your Raspberry Pi.
 
-2. On the **Remote site** side of the Filezilla screen, navigate to **/home/pi/self/self-sdk-develop/bin/raspi/etc/profile**.
+2. On the **Remote site** side of the Filezilla screen, navigate to **/home/pi/self/self-sdk-master/bin/raspi/etc/profile**.
 
 3. Locate the `body.json` file in the profile directory, and right click and select **View/Edit**.
 
 4. Locate the `m_Libs` variable, and change it to read: `"m_Libs":["platform_raspi", "workshop_five_plugin"]`
 
-5. Locate `"m_EmbodimentCreds":{ ... }`, and replace this with the complete set of credentials you copied over into your text editor from the Intu Gateway the previous section.
+5. Locate `"m_EmbodimentCreds":{ ... }`, and replace this with the complete set of credentials you copied over into your text editor from the Intu Gateway in the previous section.
 
 6. Exit the window you were using to edit the `body.json` file, upon which you will be prompted to upload the file back onto the server.
 
@@ -401,7 +401,7 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
 
 ### C. Building the Self SDK on your Raspberry Pi
 
-1. In your current (or a new) SSH session to the Raspberry Pi, navigate to the **self-sdk-develop** directory: `cd self-sdk-develop`
+1. In your current (or a new) SSH session to the Raspberry Pi, navigate to the **self-sdk-master** directory: `cd self-sdk-master`
 	
 2.	Mark the build script as executable by running: 
 `chmod +x scripts/build_raspi.sh`
@@ -420,7 +420,7 @@ Run Intu on your Raspberry Pi by completing the following steps in your SSH wind
 
 2.	Verify that you have a microphone and speaker plugged into your Raspberry Pi. Note that your speaker may need to be charged before use. Make sure that it is turned on before proceeding with the next step.
 
-3.	Navigate to the **raspi** directory using: `cd /home/pi/self/self-sdk-develop/bin/raspi`.
+3.	Navigate to the **raspi** directory using: `cd /home/pi/self/self-sdk-master/bin/raspi`.
 
 4.	Run: `export LD_LIBRARY_PATH=./`
 
@@ -604,7 +604,7 @@ Linux raspberrypi 4.4.21-v7+ #911 SMP Thu Sep 15 14:22:38 BST 2016 armv7l GNU/Li
 
 	**For Mac users:**
 
-	1. In a Terminal window, navigate to the directory where you downloaded the zip file, and copy it across to the newly created **self** directory on the Raspberry Pi using: `scp self-sdk-develop.zip pi@{pi's_IP_address}:/home/pi/self/`
+	1. In a Terminal window, navigate to the directory where you downloaded the zip file, and copy it across to the newly created **self** directory on the Raspberry Pi using: `scp self-sdk-master.zip pi@{IPaddress}:/home/pi/self/`
 	
 	**For Windows users:**
  
@@ -618,21 +618,21 @@ Linux raspberrypi 4.4.21-v7+ #911 SMP Thu Sep 15 14:22:38 BST 2016 armv7l GNU/Li
 		
 		4. In the **Port** field, specify **22**. 
 
-	2. In the **Local site** side of the screen, navigate to the `self-sdk-develop.zip` file.
+	2. In the **Local site** side of the screen, navigate to the `self-sdk-master.zip` file.
 	
 	3.	In the **Remote site** side of the screen, navigate to the directory: **/home/pi/self**
 	
-	4.	Click on the file `self-sdk-develop.zip` on the **Local site** side of the screen and drag it to the **Remote site** side of the screen. You can monitor the progress of the transfer in the panel located at the bottom of the Filezilla screen.
+	4.	Click on the file `self-sdk-master.zip` on the **Local site** side of the screen and drag it to the **Remote site** side of the screen. You can monitor the progress of the transfer in the panel located at the bottom of the Filezilla screen.
 
-3. Unzip the `self-sdk-develop.zip` file into the **self** directory of your Raspberry Pi. 
+3. Unzip the `self-sdk-master.zip` file into the **self** directory of your Raspberry Pi. 
  	
  	1.	Navigate to the **self** directory on your Raspberry Pi. You can open a new Terminal/PuTTY window as before, SSH into your Raspberry Pi, and run: `cd /home/pi/self`. If your prompt reads: `pi@raspberrypi:~/self $`, this confirms that you are in the **self** directory.
 	
-	2.	Run the following command: `unzip self-sdk-develop.zip`
+	2.	Run the following command: `unzip self-sdk-master.zip`
 
 4. Build Self on your Raspberry Pi with the following steps:
 
-	1.	Navigate into the **self-sdk-develop** directory on your Raspberry Pi: `cd self-sdk-develop`
+	1.	Navigate into the **self-sdk-master** directory on your Raspberry Pi: `cd self-sdk-master`
 	
 	2.	Mark the build script as executable by running: `chmod +x scripts/build_raspi.sh`
 	
