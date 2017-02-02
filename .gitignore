@@ -11,7 +11,7 @@ Release
 bin/win_debug/libqi.pdb
 *.user
 .qi/
-build-pepper/
+build*/
 *.exe
 include/
 packages/

@@ -117,6 +117,13 @@ Download the code to your computer. You can do download the code in either of th
 * You may need to delete the "wdc" directory to get latest due to that directory being converted into a sub-module.
 * If you use git bash to checkout, run the following command to checkout the submodule `git submodule foreach git pull origin develop`.
 
+#### For Intu version 0.1.269 - Update on 12/1/2016
+1. Fixed an issue where orgs with apostrophes in the Org Name could not connect to parents.
+2. Fixed an issue where previously users could not connect to parents because of scalability problems.
+3. Fixed an issue where Intu Gateway users were frequently logged out and redirected to the login page.
+4. Fixed an issue where multi-level conversation did not retain context.
+5. Included required executable vc_resti.x86.exe for the Windows build.
+
 ### Windows
 
 1. Set up [Visual Studio 2015](https://www.visualstudio.com/downloads/).
