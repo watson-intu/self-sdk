@@ -90,7 +90,7 @@ public:
 
 	//Definging the sensor time
 	//! Construction
-	ExampleSensor() : m_fPollInterval( 1.0f ), m_Paused( 0 )
+	ExampleSensor() : ISensor( "Example" ), m_fPollInterval( 1.0f ), m_Paused( 0 )
 	{}
 
 	//! ISerializable interface
