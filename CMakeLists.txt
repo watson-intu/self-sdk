@@ -5,3 +5,4 @@ find_package(self)
 find_package(wdc)
 
 add_subdirectory(examples)
+add_subdirectory(move_arm_joint)
