@@ -61,3 +61,19 @@ corresponding topics on a child Intu instance of a common parent.
 }
 
 ```
+
+Different programming languages have the freedom to use any WebSocket library
+to connect to the hosts. *Intu* supports many SDKs, and many more are in the
+works. Some of these languages provided WebSocket support out of the box, such
+as *JavaScipt*. Some of these can use any third party WebSocket libraries.
+Examples would be `okhttp3` for Java and `Twisted` for Python. It is also
+possible to write your own WebSocket implementation from scratch.
+
+A thin WebSocket client can be written to communite with any Intu instance. The
+main components of such an SDK would be the WebSocket component, and a few
+custom agents, gestures, or sensors that can be added to the remote/host Intu
+instance.
+
+For a concrete example implementation of a SDK that allows a Unity 3D application
+to connect to a running Intu instance and extend Intu with sensors, gestures,
+or agents, see [here](https://github.com/watson-intu/self-unity-sdk)
