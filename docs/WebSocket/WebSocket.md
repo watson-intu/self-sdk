@@ -16,7 +16,7 @@ organization to automatically learn the skill.
 preliminary connection to a host requires hitting the corresponding WebSocket
 endpoint, for example
 
-_ws://yourparentintu.mybluemix.net/stream?groupId=<groupId>&selfId=<selfId>&orgId=<orgId>_
+_ws://yourparentintu.mybluemix.net/stream?groupId=yourGroupId&selfId=yourSelfId&orgId=yourOrgId_
 
 Here the *groupId* refers to the group ID of the particular group in your
 organization that you are targeting. The *selfId* is the embodiment ID that your
@@ -55,7 +55,7 @@ corresponding topics on a child Intu instance of a common parent.
 }
 
 {
-	"targets": ["your parent Intu embodiment Id/log"],
+	"targets": ["your parent Intu embodiment Id followed by /log"],
 	"msg": "subscribe",
 	"origin": "your Self Id followed by /."
 }
