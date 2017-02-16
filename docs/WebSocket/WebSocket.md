@@ -24,5 +24,40 @@ device (that is trying to connect to the other device) receives once it
 registers with the gateway. The *orgId* is your organization's ID, that you can
 obtain from the gateway. But your devices also know your organization ID.
 
-*Intu* maintains a list of *topics* that the client can then subscribe to.
+*Intu* maintains a list of *topics* that the client can then subscribe to. The
+data model that is used to establish the connection and then to subscribe to
+the various topics looks like this:
 
+```
+{
+	"targets": [""],
+	"msg": "query",
+	"request": "1",
+	"origin": "your Self Id followed by /."
+}
+```
+
+Here is an example of subscribing to various topics. You can either subscribe
+to topics on the host you are connecting to, or you can subscribe to those
+corresponding topics on a child Intu instance of a common parent.
+
+```
+{
+	"targets": ["blackboard-stream"],
+	"msg": "subscribe",
+	"origin": "your Self Id followed by /."
+}
+
+{
+	"targets": ["log"],
+	"msg": "subscribe",
+	"origin": "your Self Id followed by /."
+}
+
+{
+	"targets": ["your parent Intu embodiment Id/log"],
+	"msg": "subscribe",
+	"origin": "your Self Id followed by /."
+}
+
+```
