@@ -15,13 +15,13 @@
 *
 */
 
-#ifndef SELF_MoveArmJointGesture_H
-#define SELF_MoveArmJointGesture_H
+#ifndef SELF_WORKSHOPFIVEGESTURE_H
+#define SELF_WORKSHOPFIVEGESTURE_H
 
 #include "gestures/AnimateGesture.h"
 
-//! This is the class for waving arm joints for RaspberryPI
-class MoveArmJointGesture : public AnimateGesture
+//! This is the class for animating a Raspberry Pi, such as changing LED colors.
+class WorkshopFiveGesture : public AnimateGesture
 {
 public:
     RTTI_DECL();
@@ -31,7 +31,7 @@ public:
     virtual bool Abort();
 
     //! Construction
-    MoveArmJointGesture() : m_PinNumber( 7 ), m_bWiredPi( false )
+    WorkshopFiveGesture() : m_PinNumber( 7 ), m_bWiredPi( false )
     {}
 
 private:
@@ -46,4 +46,4 @@ private:
 };
 
 
-#endif 
+#endif //SELF_WORKSHOPFIVEGESTURE_H
