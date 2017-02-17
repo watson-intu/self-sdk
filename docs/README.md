@@ -20,3 +20,6 @@ An assortment of frequently asked questions and their answers. Please let us kno
 * [Manager](./faqs/manager/manager.md)
 * [Misc](./faqs/misc/misc.md)
 * [Services](./faqs/services/services.md)
+
+##Intu WebSocket Interface
+[WebSocket Documentation](./WebSocket/WebSocket.md)
