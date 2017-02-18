@@ -11,7 +11,6 @@ In this workshop, you will assemble your own Raspberry Pi, which is a credit car
 
 2. You must have the following to complete Workshop 5:
 	* Raspberry Pi 3 with power cable
-
 	* Anker Bluetooth Speaker with power cable and 3.5mm audio cable
 	* USB Mini Microphone
 	* PiCamera for the Raspberry Pi 3
@@ -51,7 +50,7 @@ Complete the following tasks:
 					
 ### B. Heat sinks
 
-Place the two heat sinks on your Raspberry Pi.
+Place the two heat sinks on your Raspberry Pi (optional).
 				
 ![Heat sinks.](https://github.ibm.com/watson-labs-austin/self-sdk/blob/develop/docs/workshops-devcon/5/lab-docs/heat_sinks.png?raw=true)
 

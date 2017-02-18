@@ -307,7 +307,7 @@ The process you have just undertaken was adding a camera into your Intu instance
 
 **Pro Tips:** 
 
-1. In your Terminal/PuTTY window, SSH into your Raspberry Pi, and run: `sudo modprobe bcm2835-v4l2` to ensure that the PiCam data is passed through. 
+1. In your Terminal/PuTTY window, SSH into your Raspberry Pi, and run: `sudo modprobe bcm2835-v4l2` to ensure that the PiCam data is passed through. You need to do this everytime you open the terminal
 
 2. Enable the camera on your Raspberry Pi. 
 	1. Open the raspi-config tool from your SSH session to the Raspberry Pi by running: `sudo raspi-config`.
