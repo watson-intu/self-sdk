@@ -40,12 +40,15 @@ Complete the following tasks:
 13. Save the changes you made in the `Config.json` file.
   
 ## Running the Intu Avatar
+1. Confirm INTU is running on your machine.
 
-1. Navigate back to the directory where you extracted the Intu Avatar, and open the `intu_avatar` application. If a security warning is displayed, continue to run the application.
+2. Navigate back to the directory where you extracted the Intu Avatar, and open the `intu_avatar` application. If a security warning is displayed, continue to run the application.
 
 2. Select the **Windowed** option, accept the other default values, and click **Play!**.
 
 3. Test Intu by saying hello into the microphone or by typing hello in the **Input Message Here** field.
+
+NOTE: In case the avatar fails to run correctly, skip the configuration step ie steps 5-13.
 
 ## After DevCon ends
 

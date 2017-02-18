@@ -118,12 +118,12 @@ To complete this task, you must download the **Intu Starter Kit**, which contain
 3. Click within the **#dialog_capitals**. Now, click the gray **+** icon on the right side of the box. 
   
 4. In the new box that is displayed, under **Enter new condition**, type **@countries:Australia**.
-  
-5. Click the **three dots** in the top right of the #dialog_capitals box, and select **Continue from**. 
 
-6.	Click on the **@countries:Australia box**, then click on **Go to condition** which has just popped up.
+5. Highlight #dialog_capitals box, click on the bottom third icon called the "jump to".
 
-7.	In the white **@countries:Australia** box, type in the response: **The capital of Australia is Canberra.**
+6. Immediately click on the **@countries:Australia** box, then click on **Go to condition** which has just popped up.
+
+7.  In the white pop-up **@countries:Australia** box, type in the response: **The capital of Australia is Canberra.**
 
 8.	Click on the **@countries:Australia** where you just typed in the response: The capital of Australia is Canberra. The box will become outlined in green. Click on the gray **+** icon on the bottom of the box. 
 
@@ -142,7 +142,7 @@ To complete this task, you must download the **Intu Starter Kit**, which contain
 
 Your installation of Self is preconfigured to use the default Conversation service. To configure Self to use your new Conversation instance which you just modified, complete the following steps:
 
-1.	After testing your changes in the previous step above, click on the name of your Conversation Workspace **Self-Dialog** in the top left of your browser window.
+1.	After testing your changes in the previous step above, click on "Back to Workspaces". Next, click on the name of your Conversation Workspace **Self-Dialog** in the top left of your browser window.
 
 2.	This returns you to your Workspaces page, where you will see the Self-Dialog Workspace box. Click on the **three dots** in the top right hand corner of this box. Select **View details**.   
 
@@ -154,9 +154,9 @@ Your installation of Self is preconfigured to use the default Conversation servi
 
 6.	For your instance of **Conversation** click **Edit**, and copy over your username and password you saved earlier in your text file. Now copy your Workspace ID and paste it into the **self_dialog** parameter. 
 
-	**Important:** As you are using the **Self-Dialog** workspace, you do not 	need to worry about the **self_domain** parameter here. You can just leave 	**self_domain** with its default value, or delete it if you wish. If you 	were using your own, custom Conversation workspace (see **Challenge: Using 	your own custom Conversation workspace with Intu**), the **self_domain** 	parameter is where you would paste your Workspace ID.
+	**Important:** As you are using the **Self-Dialog** workspace, you do not 	need to worry about the **self_domain** parameter here. You can just leave 	**self_domain** with its default value, or delete it if you wish. If you 	were using your own, custom Conversation workspace (see **Challenge: Using 	your own custom Conversation workspace with Intu**), the **self_domain** 	parameter is where you would paste your Workspace ID. Please note that you have entered the workspace ID in the right place.
 	
-	In addition, do 	not change the service endpoint unless you are an enterprise user. 	Click **Save**.
+	In addition, do not change the service endpoint unless you are an enterprise user. 	Click **Save**.
 
 7.	If Intu is already **running** (from Workshop 1), ask it a question, e.g. **What is the capital of Australia?**
 

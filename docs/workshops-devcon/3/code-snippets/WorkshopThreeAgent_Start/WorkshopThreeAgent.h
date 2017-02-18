@@ -19,7 +19,6 @@
 #define SELF_WORKSHOP_THREE_AGENT_AGENT_H
 
 #include "agent/IAgent.h"
-#include "blackboard/Emotion.h"
 #include "blackboard/Text.h"
 #include "blackboard/LearningIntent.h"
 #include "services/WeatherInsights.h"
