@@ -66,7 +66,7 @@ Follow the instructions for your platform.
 
 **Before you begin**:
 
-1. [Download the Self SDK](https://hub.jazz.net/project/wlabs/self-sdk). Click on the **download icon** next to the default **master** branch selected.
+1. [Download the Self SDK](https://github.com/watson-intu/self-sdk).
 
 2. Create a new directory named **intu** in a directory of your choosing.
 

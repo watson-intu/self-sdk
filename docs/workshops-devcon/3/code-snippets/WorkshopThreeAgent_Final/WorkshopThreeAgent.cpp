@@ -65,8 +65,6 @@ bool WorkshopThreeAgent::OnStart()
     BlackBoard * pBlackboard = pInstance->GetBlackBoard();
     assert( pBlackboard != NULL );
 
-    pBlackboard->SubscribeToType( "Emotion",
-                                  DELEGATE( WorkshopThreeAgent, OnEmotion, const ThingEvent &, this ), TE_ADDED );
     pBlackboard->SubscribeToType("LearningIntent",
                                  DELEGATE(WorkshopThreeAgent, OnLearningIntent, const ThingEvent &, this), TE_ADDED);
     pBlackboard->SubscribeToType("Text",
@@ -80,20 +78,9 @@ bool WorkshopThreeAgent::OnStart()
 //  This will ensure processes are won't be running in the background.
 bool WorkshopThreeAgent::OnStop()
 {
-    SelfInstance::GetInstance()->GetBlackBoard()->UnsubscribeFromType( "Emotion", this );
     SelfInstance::GetInstance()->GetBlackBoard()->UnsubscribeFromType( "LearningIntent", this);
+    SelfInstance::GetInstance()->GetBlackBoard()->UnsubscribeFromType( "Text", this);
     return true;
-}
-
-//  OnEmotion will listen to the Blackboard for objects being posted .
-void WorkshopThreeAgent::OnEmotion( const ThingEvent & a_ThingEvent )
-{
-    Log::Debug("WorkshopThreeAgent", "Emotion object addition to the blackboard detected");
-    //Emotion::SP spEmotion = DynamicCast<Emotion>( a_ThingEvent.GetIThing() );
-    //if(spEmotion)
-    //{
-    //    SelfInstance::GetInstance()->GetSkillManager()->UseSkill( spEmotion->GetType(), spEmotion );
-    //}
 }
 
 //  OnText() waits for a text response from Tone Analyser which listens for OnTone()?
