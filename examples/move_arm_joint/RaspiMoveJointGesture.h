@@ -25,56 +25,24 @@ class RaspiMoveJointGesture : public MoveJointGesture
 {
 public:
     RTTI_DECL();
-
-    //! ISerializable interface
-//    virtual void Serialize(Json::Value & json);
-//    virtual void Deserialize(const Json::Value & json);
-
     //! IGesture interface
     virtual bool Execute( GestureDelegate a_Callback, const ParamsMap & a_Params );
     virtual bool Abort();
-
     //! Construction
     RaspiMoveJointGesture() : m_PinNumber( 7 ), m_bWiredPi( false ), m_ArmLowPoint(0), m_ArmHighPoint(40)
     {}
-
 private:
     //! Data
     bool m_bWiredPi;
     int m_PinNumber;
     int m_ArmLowPoint;
     int m_ArmHighPoint;
-    int m_CurrentPWMArmState = 0;
-
+    static int m_CurrentPWMArmState;
 
     //! Callbacks
-    void AnimateThread( Request * a_pReq );
-    void DoAnimateThread( Request * a_pReq );
-    void AnimateDone( Request * a_pReq );
-//    void MoveArmUp();
-//    void MoveArmDown();
+    void MoveJointThread( Request * a_pReq );
+    void MoveJointDone( Request * a_pReq );
     void MoveArm();
     int PWMValue();
-//protected:
-    //! Data
-//    std::vector<std::string> m_JointNames;
-//    std::vector<float> m_fAngles;
-//    std::vector<float> m_fSpeeds;
-//    float m_fStiffness;
-//    bool m_bAbsolute;
-//    std::string m_GestureId;
-
-//    "Type_": "MoveJointGesture",
-//    "m_GestureId": "r_hand_raise",
-//    "m_bAbsolute": true,
-//    "m_JointName": "RShoulderPitch",
-//    "m_fAngle": -1.4,
-//    "m_fSpeed": 3.5,
-//    "m_fStiffness": 1
-
-
-
 };
-
-
-#endif 
+#endif
