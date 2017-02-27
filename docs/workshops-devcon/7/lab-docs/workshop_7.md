@@ -49,6 +49,7 @@ Complete the following tasks:
 3. Test Intu by saying hello into the microphone or by typing hello in the **Input Message Here** field.
 
 NOTE: In case the avatar fails to run correctly, below is a workaround
+
 1. Make sure the self instance is not running. Keep the configuration values **blank** which were added in steps 5-13 (You can keep the quotes).  For any other avatar, you can keep the values in the m_EmbodimentCreds **blank**.
 
 2. Start self and see that the topics are listed in 127.0.0.1:9443/info
