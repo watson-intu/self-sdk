@@ -5,32 +5,28 @@ In this workshop, you will assemble your own Raspberry Pi, which is a credit car
 **Before you begin:** 
 
 1. You must have a Mac or Windows laptop, and you must have completed Workshop 1: Say Hello!. After completing Workshop 1, you will have:
-
-1. Your own account, Organization, Group and Parent on the [Intu Gateway](rg-`gateway.mybluemix.net`)
-2. Your own [Intu Gateway](rg-`gateway.mybluemix.net`) credentials 
-
-2. You must have the following to complete Workshop 5.5:
-* Raspberry Pi 3 with power cable
-* Anker Bluetooth Speaker with power cable and 3.5mm audio cable
-* USB Mini Microphone
-* Monitor (with a HDMI connection)
-* Keyboard and Mouse (with USB connections)
-* An imaged 32 GB SD card (16 GB would also work)
-
-3. You will notice that Intu and Self are used interchangeably. Self is the code name for Intu.  
+2. Your own account, Organization, Group and Parent on the [Intu Gateway](rg-`gateway.mybluemix.net`)
+3. Your own [Intu Gateway](rg-`gateway.mybluemix.net`) credentials 
+4. You must have the following to complete Workshop 5.5:
+    1. Raspberry Pi 3 with power cable
+    2. Anker Bluetooth Speaker with power cable and 3.5mm audio cable
+    3. USB Mini Microphone
+    4. Monitor (with a HDMI connection)
+    5. Keyboard and Mouse (with USB connections)
+    6. An imaged 32 GB SD card (16 GB would also work)
+5. You will notice that Intu and Self are used interchangeably. Self is the code name for Intu.  
 
 **Notes:** 
 
-1. If you **do not** have an imaged card from Devcon, please go to the **Appendix** after assembling your Raspberry Pi.	
-
+1. If you **do not** have an pre-imaged card we released at the Watson Devcon, please go to the **Appendix** after assembling your Raspberry Pi. (This steps are not optional for an new SD card)	
 2. In this workshop, commands are issued from **Terminal** on **Mac** or **PuTTY** on **Windows**. For **Windows** users, if you do not have **PuTTY** installed, you can download it using this [link](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html). **Windows** users will also require a file management tool to copy files over a network between their local machine and the Raspberry Pi. You can use a stand-alone tool like **Filezilla**, or you may prefer scp via Putty. **Filezilla** can be downloaded using this [link](https://filezilla-project.org/).
 
-Complete the following tasks:
+In this lab you will complete the following tasks:
 
 1. [Assembling the Raspberry Pi](#assembling-the-raspberry-pi)
 2. [Set up the Wi-Fi connection for your Raspberry Pi](#set-up-the-wi-fi-connection-for-your-raspberry-pi)
-3. [Download the Self SDK onto your computer and add in the code for the LED gesture](#download-the-self-sdk-onto-your-computer-and-add-in-the-code-for-the-led-gesture)
-4. [Updating your Raspberry Pi with the LED gesture](#updating-your-raspberry-pi-with-the-led-gesture)
+3. [Download the Self SDK onto your computer and add in the code for waving the arm gesture](#download-the-self-sdk-onto-your-computer-and-add-in-the-code-for-the-led-gesture)
+4. [Updating your Raspberry Pi with the Move Joint Gesture](#updating-your-raspberry-pi-with-the-led-gesture)
 5. [Updating the body.json configuration](#updating-the-body.json-configuration)
 6. [Run Intu on your Raspberry Pi](#run-intu-on-your-raspberry-pi)
 
@@ -71,19 +67,14 @@ Connect your Raspberry Pi to an external monitor, keyboard and mouse as shown in
 ![Raspberry Pi and external connections.](https://github.ibm.com/watson-labs-austin/self-sdk/blob/develop/docs/workshops-devcon/5/lab-docs/external_monitor_keyboard_to_pi.png?raw=true)
 
 ## 2. Set up the Wi-Fi connection for your Raspberry Pi
-
 1. Insert your SD card into your Raspberry Pi if you have not done so already.
-
 2. Connect your Raspberry Pi to a power source, and connect an external keyboard, mouse and monitor to your Raspberry Pi.
-
-3. You should see a window open on your monitor. Sometimes it might so happen that your power strip might not work correctly. If your Pi does not start, plug it directly into a wall socket. Click on the **Wifi networks (w)** icon at the top of the window, select your network (at DevCon, it will be **ROBOT_PED1**), and enter your password (**panda$123** for ROBOT_PED1).
-
+3. You should see a window open on your monitor. Sometimes it might so happen that your power strip might not work correctly. If your Pi does not start, plug it directly into a wall socket. Click on the **Wifi networks (w)** icon at the top of the window, select your network.
 4.	Get the IP address of your Raspberry Pi.
-1.	Click on the black **Terminal** icon on the top left toolbar.
-2.	Type in `ifconfig` and hit Enter.
-3. Look for the **wlan0** section. The **inet addr** gives you the IP address of your Raspberry Pi (e.g. 10.0.1.2). 
-
-5.	**Important:** Ensure that your laptop is on the **same** network as your Raspberry Pi from this point onwards.
+5.	Click on the black **Terminal** icon on the top left toolbar.
+6.	Type in `ifconfig` and hit Enter.
+7.	Look for the **wlan0** section. The **inet addr** gives you the IP address of your Raspberry Pi (e.g. 10.0.1.2). 
+8.	**Important:** Ensure that your laptop is on the **same** network as your Raspberry Pi from this point onwards.
 
 **For Mac users:**
 1. Open a new Terminal window, and connect to the Raspberry Pi using: `ssh pi@{pi's_IP_address}` (e.g. ssh pi@10.0.1.2)
@@ -100,7 +91,7 @@ Connect your Raspberry Pi to an external monitor, keyboard and mouse as shown in
 
 **Note:** Unless explicitly stated, all of the following steps are to be run on your local computer.
 
-## 3. Download the Self SDK onto your computer and add in the code for the LED gesture
+## 3. Download the Self SDK onto your computer and add in the code for the move joint gesture
 
 ### A. Download the Self SDK
 
@@ -111,26 +102,26 @@ Connect your Raspberry Pi to an external monitor, keyboard and mouse as shown in
 3. Unzip the **wlabs_self-sdk-master.zip** file into **intu**, making sure that you retain the folder structure, i.e. your intu directory should now contain the unzipped **wlabs_self-sdk-master** folder. This may take some time.
 
 ### B. Creating  the Waving Arm Gesture with INTU
-1. To create this in the Raspberry Pi we are going to recreate the folder structure under **examples** that is found in this repo under self-sdk/tree/develop/docs/workshops-devcon/5.5/code-snippets/TJBotWave_Final. 
-2. We have found the CLion IDE to be an nice environment for this type of work. If you do not have it installed already, download the trial version of the [CLion C++ IDE](https://www.jetbrains.com/clion/download/). Alternatively, You may also use your favorite text editor and just follow the steps below.)
+1. To create this in the Raspberry Pi we are going to recreate the folder structure under **examples** that is found in this repo under self-sdk/docs/workshops-devcon/5.5/code-snippets/TJBotWave_Final. 
+2. We have found the CLion IDE to be an nice environment for this type of work. If you do not have it installed already, download the trial version of the [CLion C++ IDE](https://www.jetbrains.com/clion/download/). (Alternatively, You may also use your favorite text editor and just follow the steps below.)
 3. Inside the **wlabs_self-sdk-master** project navigate to the **examples** directory. Inside here make an new directory called **move_arm_joint**
-4. Under examples edit the `CMakeLists.txt` file to look like:
+4. Edit the `examples/CMakeLists.txt` file to look like:
 ```
 include_directories(".")
 
 add_subdirectory(move_arm_joint)
 
 ```
-5. Next we will move the files from **self-sdk/tree/develop/docs/workshops-devcon/5.5/code-snippets/TJBotWave_Final/examples/move_arm_joint/** into the **move_arm_joint** directory. There should be 3 new files: CMakeLists.txt, RaspiMoveJointGesture.cpp, and RaspiMoveJointGesture.h now inside the **move_arm_joint** folder.
+5. Next we will move the files from **docs/workshops-devcon/5.5/code-snippets/TJBotWave_Final/examples/move_arm_joint/** into the **move_arm_joint** directory. There should be 3 new files: CMakeLists.txt, RaspiMoveJointGesture.cpp, and RaspiMoveJointGesture.h now inside the **move_arm_joint** folder.
 6. Take a few moments to look at all three of these files as they are the core of the code that acts as a plugin to INTU allowing it to control the Raspberry Pi's GPIO pins (with PWM) allowing the arm to move. 
+ 
+## 4. Updating your Raspberry Pi with the move joint gesture
 
-## 4. Updating your Raspberry Pi with the LED gesture
-
-1.	Copy the **move_arm_joint** directory from your local machine over to your Raspberry Pi. 
+1.	Copy the entire **examples** directory from your local machine over to your Raspberry Pi. (This includes the move_arm_joint directory)
 
 **For Mac users:** 
-1. Open a new terminal window and navigate to the **examples** directory (the parent directory of move_arm_joint) by running: `cd intu/wlabs_self-sdk-master/examples`
-2. Run: `scp -r move_arm_joint pi@{IPaddress}:~/self/self-sdk-master/examples`
+1. Open a new terminal window and navigate to the **examples** directory (the parent directory of move_arm_joint) by running: `cd intu/wlabs_self-sdk-master/`
+2. Run: `scp -r examples pi@{IPaddress}:~/self/self-sdk-master/`
 
 **For Windows users:** 
 
@@ -139,25 +130,11 @@ add_subdirectory(move_arm_joint)
 2. In the **Username** field, specify your Raspberry Pi's username (**pi**).
 3. In the **Password** field, specify your Raspberry Pi's password (**raspberry**).
 4. In the **Port** field, specify **22**.  	
-2. Navigate to **self/self-sdk-master/examples/** on the **Remote site** side of the screen.
+2. Navigate to **self/self-sdk-master/** on the **Remote site** side of the screen.
 
-3. Navigate to the **intu/wlabs_self-sdk-master/examples/** directory on the **Local site** side of the screen.
+3. Navigate to the **intu/wlabs_self-sdk-master/** directory on the **Local site** side of the screen.
 
 4. Drag your **examples** directory from the **Local site** to the **Remote site** to copy the directory across to your Raspberry Pi. You can monitor the progress of the transfer in the panel located at the bottom of the Filezilla screen.
-
-2.	SSH to the Raspberry Pi in a new SSH window (Terminal for Mac or PuTTY for Windows):
-
-1. Run:`ssh pi@{IPaddress}`	
-2. Run: `cd /home/pi/self/self-sdk-master/examples`
-
-3.	Edit the `CMakeLists.txt` file in the examples directory you're currently in.
-
-1. Run: `nano CMakeLists.txt`
-2. Carefully add the following line at the end of the file:		`add_subdirectory(move_arm_joint)`
-3. Save your changes to the `CMakeLists.txt` file. 
-1. Use **Ctrl + X** to `Exit`.
-2. When prompted with: `Save modified buffer (ANSWERING "No" WILL DESTROY CHANGES) ? `, type **Y** for **Yes**. 
-3. When prompted with: `File Name to Write: CMakeLists.txt`, hit **Return** or **Enter** to finalise your changes.
 
 ## 5. Updating the `body.json` configuration
 
@@ -450,7 +427,7 @@ You should see a list of classes compiled and "All Done" at the end.
 
 4. Run: `scripts/build_raspi.sh`
 
-###You are now ready to proceed from **Section 3: Download the Self SDK onto your computer and add in the code for the LED gesture.** 
+###You are now ready to proceed from **Section 3: Download the Self SDK onto your computer and add in the code for the move joint gesture.** 
 
 As you have already downloaded the `wlabs_self-sdk-master.zip` file, your first step will be **Section 3.A.2:** Create a new directory named **intu** in your **home** directory
 .
