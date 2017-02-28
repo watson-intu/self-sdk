@@ -181,12 +181,12 @@ Your installation of Self is preconfigured to use the default Conversation servi
 
 5.  Navigate to your body.json file in the latest directory
 
-**For Mac users:** Applications/IBM/Self/latest
+  **For Mac users:** Applications/IBM/Self/latest
 
-**For Windows users:** C:\Users\username\AppData\LocalLow\IBM\Self\latest
+  **For Windows users:** C:\Users\username\AppData\LocalLow\IBM\Self\latest
 
-Search for m_ClassifierProxies and add the following extra element to the array:
-
+  Search for m_ClassifierProxies and add the following extra element to the array:
+  ```
 {
                "Type_" : "ConversationProxy",
                "m_Context" : null,
@@ -206,12 +206,12 @@ Search for m_ClassifierProxies and add the following extra element to the array:
                "m_WorkspaceKey" : "{workspace_key}",
                "m_bPriority" : false
 }
-
-Update the **workspace_id** to the one taken in step 4. For the **workspace_key** make it any unique identifier. Save the above.
+  ```
+  Update the **workspace_id** to the one taken in step 4. For the **workspace_key** make it any unique identifier. Save the above.
 
 6.  Return to the [Intu Gateway](https://rg-gateway.mybluemix.net/). 
 
-Click on Manage => Services => Choose the appropriate Organization and Group => edit ConversationV1 => Click on the + sign
+  Click on Manage => Services => Choose the appropriate Organization and Group => edit ConversationV1 => Click on the + sign
 
 7. For the key, add in the workspace_key and for the value, add in the workspace_id. Click save.
 
