@@ -14,7 +14,7 @@ In this workshop, you will assemble your own Raspberry Pi, which is a credit car
 	* Anker Bluetooth Speaker with power cable and 3.5mm audio cable
 	* USB Mini Microphone
 	* PiCamera for the Raspberry Pi 3
-	* LED, diode, 3 female-female jumper wires
+	* Neopixel RGB LED
 	* Monitor (with a HDMI connection)
 	* Keyboard and Mouse (with USB connections)
 	* An imaged 32 GB SD card
@@ -47,20 +47,14 @@ Complete the following tasks:
 2. After your speaker is charged, connect it to your Raspberry Pi using the 3.5mm audio cable.
 
 	![Speaker plugged into your Raspberry Pi.](https://github.ibm.com/watson-labs-austin/self-sdk/blob/develop/docs/workshops-devcon/5/lab-docs/speaker_in_pi.png?raw=true)
-					
-### B. Heat sinks
 
-Place the two heat sinks on your Raspberry Pi (optional).
-				
-![Heat sinks.](https://github.ibm.com/watson-labs-austin/self-sdk/blob/develop/docs/workshops-devcon/5/lab-docs/heat_sinks.png?raw=true)
-
-### C. Microphone
+### B. Microphone
 
 Plug the USB microphone into any one of the USB ports of your Raspberry Pi.
 
 ![Microphone](https://github.ibm.com/watson-labs-austin/self-sdk/blob/develop/docs/workshops-devcon/5/lab-docs/microphone.png?raw=true)
 
-### D. Camera
+### C. Camera
 
 1.	Locate the connector situated to the **right** of the HDMI port.
 
@@ -74,36 +68,29 @@ Plug the USB microphone into any one of the USB ports of your Raspberry Pi.
 
 	![Camera.](https://github.ibm.com/watson-labs-austin/self-sdk/blob/develop/docs/workshops-devcon/5/lab-docs/camera4.png?raw=true)
 
-### E. LED
+### D. LED
 
 1.	Obtain the following parts:
-	1.	LED
-	2.	Three female-female jumper wires
-	3.	Diode
+	1.	Neopixel RGB LED
+	2.	Two female-female jumper wiresNeopixel_RGB_LED.jpg
 
-2.	Identify the **longer** leg of the **LED**. This is called the **Anode** pin.
+	![Neopixel RGB LED](https://github.ibm.com/watson-labs-austin/self-sdk/blob/develop/docs/workshops-devcon/5/lab-docs/neopixel_RGB_LED.jpg?raw=true)
 
-3.	Connect **Jumper Wire 1** to the **Anode**.
+2.	Connect Jumper Wire 1 to the GND pin. This is called the **cathode** pin
 
-4.	Connect the **Diode** to the **free end** of **Jumper Wire 1**.
+3.	Connect Jumper Wire 2 to the +3.3V pin. This is called the **anode** pin
 
-5.	Connect **Jumper Wire 2** to the **free end** of the **Diode**.
-
-6.	Connect **Jumper Wire 3** to the **shorter** leg of the **LED**. This is called the **Cathode** pin.
-
-	![LED and jumper wires.](https://github.ibm.com/watson-labs-austin/self-sdk/blob/develop/docs/workshops-devcon/5/lab-docs/led_wires.png?raw=true)
-
-7.	Now position your Raspberry Pi such that the **power cable** is on the **bottom**. Connect the **Cathode end** (Jumper Wire 3) to **pin #3** on the **top row**. Then connect the **Anode end **(Jumper Wire 2) to **pin #4** on the **bottom row**. Refer to the image below for a fully assembled Raspberry Pi.
+4.	Now position your Raspberry Pi such that the **power cable** is on the **bottom**. Connect the **Cathode end** to **pin #3** on the **top row**. Then connect the **Anode end ** to **pin #4** on the **bottom row**. Refer to the image below for a fully assembled Raspberry Pi.
 
 	![Assembled Raspberry Pi.](https://github.ibm.com/watson-labs-austin/self-sdk/blob/develop/docs/workshops-devcon/5/lab-docs/anode_cathode.png?raw=true)
 	
-### F. Power
+### E. Power
 
 To power up your Raspberry Pi, connect the power cable to your Raspberry Pi as shown in the image below. 
 
 ![Power cable for Raspberry Pi.](https://github.ibm.com/watson-labs-austin/self-sdk/blob/develop/docs/workshops-devcon/5/lab-docs/pi_charger.png?raw=true)
 
-### G. Connecting the Raspberry Pi to an external monitor, keyboard and mouse
+### F. Connecting the Raspberry Pi to an external monitor, keyboard and mouse
 
 Connect your Raspberry Pi to an external monitor, keyboard and mouse as shown in the image below.
 
@@ -115,7 +102,7 @@ Connect your Raspberry Pi to an external monitor, keyboard and mouse as shown in
 
 2. Connect your Raspberry Pi to a power source, and connect an external keyboard, mouse and monitor to your Raspberry Pi.
 
-3. You should see a window open on your monitor. Sometimes it might so happen that your power strip might not work correctly. If your Pi does not start, plug it directly into a wall socket. Click on the **Wifi networks (w)** icon at the top of the window, select your network (at DevCon, it will be **ROBOT_PED1**), and enter your password (**panda$123** for ROBOT_PED1).
+3. You should see a window open on your monitor. Sometimes it might so happen that your power strip might not work correctly. If your Pi does not start, plug it directly into a wall socket. Click on the **Wifi networks** icon ![wifi](https://github.ibm.com/watson-labs-austin/self-sdk/blob/develop/docs/workshops-devcon/5/lab-docs/wifi.png?raw=true) at the top of the window, select your network (at DevCon, it will be **ROBOT_PED1**), and enter your password (**panda$123** for ROBOT_PED1).
 
 4.	Get the IP address of your Raspberry Pi.
 	1.	Click on the black **Terminal** icon on the top left toolbar.
@@ -143,8 +130,7 @@ Connect your Raspberry Pi to an external monitor, keyboard and mouse as shown in
 
 ### A. Download the Self SDK
 
-1. [Download the Self SDK](https://github.com/watson-intu/self-sdk). Click on the **download icon** next to the default **master** branch selected.
-
+1. [Download the Self SDK](https://github.com/watson-intu/self-sdk). Make sure the branch is master and click on download.
 2. Create a new directory named **intu** in your **home** directory.
 
 3. Unzip the **wlabs_self-sdk-master.zip** file into **intu**, making sure that you retain the folder structure, i.e. your intu directory should now contain the unzipped **wlabs_self-sdk-master** folder. This may take some time.
@@ -319,7 +305,7 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
    
    **For Mac users:** 
    1. Open a new terminal window and navigate to the **examples** directory (the parent directory of workshop_five) by running: `cd intu/wlabs_self-sdk-master/examples`
-	2. Run: `scp -r workshop_five pi@{IPaddress}:~/self/self-sdk-master/examples`
+   2. Run: `scp -r workshop_five pi@{pi's_ip_address}:~/self/self-sdk-master/examples`
 
 	**For Windows users:** 
 	
@@ -336,7 +322,7 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
 
 2.	SSH to the Raspberry Pi in a new SSH window (Terminal for Mac or PuTTY for Windows):
 
-	1. Run:`ssh pi@{IPaddress}`	
+	1. Run:`ssh pi@{pi's_ip_address}`	
   	2. Run: `cd /home/pi/self/self-sdk-master/examples`
 
 3.	Edit the `CMakeLists.txt` file in the examples directory you're currently in.
@@ -366,21 +352,13 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
 
 **For Mac users:**
 
-1. Copy the `body.json` from your Raspberry Pi to your local machine by running the following command in a new SSH window:
-		 `scp pi@[IPaddress]:/home/pi/self/self-sdk-master/bin/raspi/etc/profile/body.json ~/`
+1. Open your `body.json` file which is in path /home/pi/self/self-sdk-master/bin/raspi/etc/profile/body.json using your favorite text editor. 
 
-	Note that this copies the `body.json` file to your **home** directory.
+2. Locate the `m_Libs` variable, and change it to read: `"m_Libs":["platform_raspi", "workshop_five_plugin"]`
 
-2. Open your `body.json` file using your favorite text editor. 
+3. Locate `"m_EmbodimentCreds":{ ... }`, and replace this with the complete set of credentials you copied over into your text editor from the section above ie 5.A.
 
-3. Locate the `m_Libs` variable, and change it to read: `"m_Libs":["platform_raspi", "workshop_five_plugin"]`
-
-4. Locate `"m_EmbodimentCreds":{ ... }`, and replace this with the complete set of credentials you copied over into your text editor from the Intu Gateway in step 4 of the previous section.
-
-5. Save your changes and close the file.
-
-6. Now copy your newly edited `body.json` from your local machine to the Raspberry Pi by running the following command from a **new** Terminal window: 
-`scp ~/body.json pi@{IPaddress}:/home/pi/self/self-sdk-master/bin/raspi/etc/profile/`
+4. Save your changes and close the file.
 
 **For Windows users:**
 
@@ -392,7 +370,7 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
 
 4. Locate the `m_Libs` variable, and change it to read: `"m_Libs":["platform_raspi", "workshop_five_plugin"]`
 
-5. Locate `"m_EmbodimentCreds":{ ... }`, and replace this with the complete set of credentials you copied over into your text editor from the Intu Gateway in the previous section.
+4. Locate `"m_EmbodimentCreds":{ ... }`, and replace this with the complete set of credentials you copied over into your text editor from the section above ie 5.A.
 
 6. Exit the window you were using to edit the `body.json` file, upon which you will be prompted to upload the file back onto the server.
 
@@ -411,7 +389,7 @@ Add the installation prefix of "SELF" to CMAKE_PREFIX_PATH or set "SELF_DIR" to 
 
 ## 6. Run Intu on your Raspberry Pi
 
-Run Intu on your Raspberry Pi by completing the following steps in your SSH window. 
+Run Intu on your Raspberry Pi by completing the following steps in your terminal window. 
 
 **Note:** The following steps will need to be repeated each time you power up your Raspberry Pi (i.e. unplug and plug back in the power source to your Raspberry Pi).
 
