@@ -1,0 +1,55 @@
+{
+	"Type_": "SkillCollection",
+	"m_SkillMap": [{
+		"key": "l_hand_descend",
+		"value": {
+			"Type_": "GestureSkill",
+			"m_GUID": "l_hand_descend",
+			"m_GestureId": "l_hand_descend",
+			"m_GestureParams": {
+				"Type_": "ParamsMap"
+			},
+			"m_SkillName": "l_hand_descend",
+			"m_bReplaceParams": false
+		}
+	},
+	{
+		"key": "l_hand_raise",
+		"value": {
+			"Type_": "GestureSkill",
+			"m_GUID": "l_hand_raise",
+			"m_GestureId": "l_hand_raise",
+			"m_GestureParams": {
+				"Type_": "ParamsMap"
+			},
+			"m_SkillName": "l_hand_raise",
+			"m_bReplaceParams": false
+		}
+	},
+	{
+		"key": "r_hand_descend",
+		"value": {
+			"Type_": "GestureSkill",
+			"m_GUID": "r_hand_descend",
+			"m_GestureId": "r_hand_descend",
+			"m_GestureParams": {
+				"Type_": "ParamsMap"
+			},
+			"m_SkillName": "r_hand_descend",
+			"m_bReplaceParams": false
+		}
+	},
+	{
+		"key": "r_hand_raise",
+		"value": {
+			"Type_": "GestureSkill",
+			"m_GUID": "r_hand_raise",
+			"m_GestureId": "r_hand_raise",
+			"m_GestureParams": {
+				"Type_": "ParamsMap"
+			},
+			"m_SkillName": "r_hand_raise",
+			"m_bReplaceParams": false
+		}
+	}]
+}

@@ -1,0 +1,18 @@
+{
+	"Type_": "SkillCollection",
+	"m_SkillMap": [
+	{
+		"key": "show_laugh",
+		"value": {
+			"Type_": "GestureSkill",
+			"m_GUID": "show_laugh",
+			"m_GestureId": "show_laugh",
+			"m_GestureParams": {
+				"Type_": "ParamsMap"
+			},
+			"m_SkillName": "show_laugh",
+			"m_bReplaceParams": false
+		}
+	}
+    ]
+}

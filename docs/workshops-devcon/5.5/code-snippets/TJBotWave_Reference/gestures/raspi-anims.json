@@ -1,0 +1,18 @@
+{
+  "Type_": "GestureManager",
+  "m_GestureMap": [
+    {
+      "key": "show_laugh",
+      "value": {
+        "Type_": "AnimateGesture",
+        "m_GestureId": "show_laugh",
+        "m_Animations": [
+          {
+            "m_AnimId": "demo",
+            "m_RequiredPosture": "on"
+          }
+        ]
+      }
+    }
+  ]
+}

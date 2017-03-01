@@ -1,0 +1,51 @@
+{
+  "Type_": "GestureManager",
+  "m_GestureMap": [{
+      "key": "r_hand_raise",
+      "value": {
+        "Type_": "MoveJointGesture",
+        "m_GestureId": "r_hand_raise",
+        "m_bAbsolute": true,
+        "m_JointName": "RShoulderPitch",
+        "m_fAngle": 200,
+        "m_fSpeed": 3.5,
+        "m_fStiffness": 1
+      }
+    },
+    {
+      "key": "l_hand_raise",
+      "value": {
+        "Type_": "MoveJointGesture",
+        "m_GestureId": "l_hand_raise",
+        "m_bAbsolute": true,
+        "m_JointName": "LShoulderPitch",
+        "m_fAngle": 200,
+        "m_fSpeed": 3.5,
+        "m_fStiffness": 1
+      }
+    },
+    {
+      "key": "l_hand_descend",
+      "value": {
+        "Type_": "MoveJointGesture",
+        "m_GestureId": "l_hand_descend",
+        "m_bAbsolute": true,
+        "m_JointName": "LShoulderPitch",
+        "m_fAngle": 0,
+        "m_fSpeed": 3.5,
+        "m_fStiffness": 1
+      }
+    },
+    {
+      "key": "r_hand_descend",
+      "value": {
+        "Type_": "MoveJointGesture",
+        "m_GestureId": "r_hand_descend",
+        "m_bAbsolute": true,
+        "m_JointName": "RShoulderPitch",
+        "m_fAngle": 0,
+        "m_fSpeed": 3.5,
+        "m_fStiffness": 1
+      }
+    }]
+}
