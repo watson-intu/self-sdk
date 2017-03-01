@@ -61,7 +61,9 @@ The endpoint for the _Intu_ `TopicManager`, that supports this pattern, is `/top
 
 A _topic_ is effectively a path. For example if you wanted to subscribe to the `sensors` on your parent _Intu_ instance from a child instance, you would use the _topic_ `../sensors` when you call _subscribe_. If you wanted to _subscribe_ to the same _topic_ on a child called **self01**, the _topic_ would have to be `self01/sensors`. If you wanted to _subscribe_ to **all** the children, you would use the `+` wildcard that _Intu_ supports, and say `+/self`.
 
-The _Intu Blackboard_ acts as the central publish/subscribe system for all agents. Below you will find a list of _topics_ that you can subscribe to, publish to, unsubscribe from, and also details of the data blobs that you need to use to perform those actions. Most of these _topics_ are very versatile, and allow all of the above actions. 
+The _Intu Blackboard_ acts as the central publish/subscribe system for all agents. Below you will find a list of _topics_ that you can subscribe to, publish to, unsubscribe from, and also details of the data blobs that you need to use to perform those actions. Most of these _topics_ are very versatile, and allow all of the above actions.
+
+For all of the `publish` examples, optionally you can add an `origin` entry, but it has a default value which tells the _TopicClient_ that the SDK is running on the same machine. If your _Intu_ instance and the SDK are running on the same physical machine, you can leave the `origin` blank.
 
 **agent-society**
 
@@ -89,12 +91,14 @@ The _Intu Blackboard_ acts as the central publish/subscribe system for all agent
 {
 	"targets": ["agent-society"],
 	"msg": "publish_at",
-	"data": "{\"event\":\"remove_agent_proxy\",\"agentId\":sampleAgentId}",
+	"data": "{\"event\":\"add_agent_proxy\",\"agentId\":\"de722486-fece-4a6e-95a9-6dd14cd31a79\",\"name\":\"ExampleAgent\",\"override\":false}",
 	"binary": false,
 	"persisted": false
 }
 
 ```
+
+In the above example, the `event` can be `add_agent_proxy` or `remove_agent_proxy`. The `override` flag would override an existing agent of the same name in this agent society.
 
 **blackboard**
 
@@ -125,6 +129,8 @@ The _Intu Blackboard_ acts as the central publish/subscribe system for all agent
 	"persisted": false
 }
 ```
+
+In the above example, the `event` could be `add_object`, `set_object_state` (string) , `set_object_importance` (float), `remove_object`, and `unsubscribe_from_type`.
 
 **blackboard-stream**
 
@@ -188,6 +194,8 @@ The _Intu Blackboard_ acts as the central publish/subscribe system for all agent
 }
 ```
 
+In the above example, the `event` can be `add_gesture_proxy`, `remove_gesture_proxy`, and `execute_done`. All three would require `gestureId` and `instanceId` to be passed in.
+
 **sensor-manager**
 
 *Subscribing*
@@ -218,25 +226,60 @@ The _Intu Blackboard_ acts as the central publish/subscribe system for all agent
 }
 
 ```
+In the above example, the `event` can be (analogous to `gesture-manager`) `add-sensor-proxy` and `remove-sensor-proxy`, and both would in turn require the `sensorId`, `name`, `data_type`, `binary_type`, and `override`.
 
-It is possible to register your own _types_ that are not part of the schema.
-
-**topic-manager**
+**graph-skills**
 
 *Subscribing*
 ```
-
+{
+	"targets": ["graph-skills"],
+	"msg": "subscribe",
+	"origin": "your Self Id followed by /."
+}
 ```
 
 *Unsubscribing*
 ```
-
+{
+	"targets": ["graph-skills"],
+	"msg": "unsubscribe",
+	"origin": "your Self Id followed by /."
+}
 ```
+
 *Publishing*
-```
 
 ```
+{
+	"targets": ["graph-skills"],
+	"msg": "publish_at",
+	"data": "{\"event\":\"traverse\",\"payload\":\"{
+  "Type_" : "OutTraverser",
+  "m_spCondition" : {
+     "Type_" : "EqualityCondition",
+     "m_EqualOp" : "EQ",
+     "m_Path" : "_label",
+     "m_Value" : "reports_to"
+  },
+  "m_spNext" : {
+     "Type_" : "FilterTraverser",
+     "m_spCondition" : {
+        "Type_" : "EqualityCondition",
+        "m_EqualOp" : "EQ",
+        "m_Path" : "name",
+        "m_Value" : "Richard"
+     }
+  }
+}\"}",
+	"binary": false,
+	"persisted": false
+}
 
+```
+In this example above the `event` could be `traverse`, `create_vertex`, `delete_vertex`, `create_edge`, etc. for example. The payloads would contain serialized information that the system can then use to create, update, or delete vertices or edges in the graph. You could also supply serialized traversal conditions that the graph can then use to traverse itself looking for all vertices that satisfy the traverser's conditions.
+
+It is possible to register your own _types_ that are not part of the schema.
 
 Some of the _topics_ such as **log** and **body** are just flows of textual data that you can subscribe to:
 
@@ -247,7 +290,8 @@ Some of the _topics_ such as **log** and **body** are just flows of textual data
 
 **audio-out**
 
-**graph-skills**
+**topic-manager**
+
 
 
 Here are some examples of subscribing to various topics. You can either subscribe to topics on the host you are connecting to, or you can subscribe to those corresponding topics on a child Intu instance of a common parent.
