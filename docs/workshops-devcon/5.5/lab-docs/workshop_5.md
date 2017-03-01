@@ -42,25 +42,25 @@ In this lab you will complete the following tasks:
 
 ![Speaker plugged into your Raspberry Pi.](https://github.ibm.com/watson-labs-austin/self-sdk/blob/develop/docs/workshops-devcon/5/lab-docs/speaker_in_pi.png?raw=true)
 
-### B. Heat sinks
-
-Place the two heat sinks on your Raspberry Pi. (These are optional but will help with overall Raspberry Pi speed)
-
-![Heat sinks.](https://github.ibm.com/watson-labs-austin/self-sdk/blob/develop/docs/workshops-devcon/5/lab-docs/heat_sinks.png?raw=true)
-
 ### C. Microphone
 
 Plug the USB microphone into any one of the USB ports of your Raspberry Pi.
 
 ![Microphone](https://github.ibm.com/watson-labs-austin/self-sdk/blob/develop/docs/workshops-devcon/5/lab-docs/microphone.png?raw=true)
 
-### D. Power
+### D. Connecting the Servo Motor
+
+As part of this lab we will be using the Tower Pro SG90 micoservo. You can see the pin out of this servo motor ![here](https://github.ibm.com/watson-labs-austin/self-sdk/blob/develop/docs/workshops-devcon/5.5/lab-docs/SG90Servo.pdf). You will need to connect the servo motor to the Raspi Board as below:
+
+![Board Layout for Servo](https://github.ibm.com/watson-labs-austin/self-sdk/blob/develop/docs/workshops-devcon/5.5/lab-docs/sevo_pin_layout.png?raw=true)
+
+### E. Power
 
 To power up your Raspberry Pi, connect the power cable to your Raspberry Pi as shown in the image below. 
 
 ![Power cable for Raspberry Pi.](https://github.ibm.com/watson-labs-austin/self-sdk/blob/develop/docs/workshops-devcon/5/lab-docs/pi_charger.png?raw=true)
 
-### E. Connecting the Raspberry Pi to an external monitor, keyboard and mouse
+### F. Connecting the Raspberry Pi to an external monitor, keyboard and mouse
 
 Connect your Raspberry Pi to an external monitor, keyboard and mouse as shown in the image below.
 
