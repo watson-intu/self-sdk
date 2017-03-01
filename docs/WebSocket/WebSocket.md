@@ -63,7 +63,27 @@ A _topic_ is effectively a path. For example if you wanted to subscribe to the `
 
 The _Intu Blackboard_ acts as the central publish/subscribe system for all agents. Below you will find a list of _topics_ that you can subscribe to, publish to, unsubscribe from, and also details of the data blobs that you need to use to perform those actions. Most of these _topics_ are very versatile, and allow all of the above actions.
 
+You can either subscribe to topics on the host you are connecting to, or you can subscribe to those corresponding topics on a child Intu instance of a common parent.
+
 For all of the `publish` examples, optionally you can add an `origin` entry, but it has a default value which tells the _TopicClient_ that the SDK is running on the same machine. If your _Intu_ instance and the SDK are running on the same physical machine, you can leave the `origin` blank.
+
+The `targets` refer to a list of _topics_ from above that you want to publish to. The `message` is always going to be `publish_at`. If you supply `true` for `persisted`, the data will get persisted in the _Intu_ instance so that future _subscribers_ will get all the persisted data the moment they _subscribe_, rather than only getting live _published_ data.
+
+The `event_mask` in the examples below is a combination of bit flags so that you can subscribe to specific events. The following are the big flags you can use:
+
+```
+	TE_NONE			= 0x0,			// no flags
+	TE_ADDED		= 0x1,			// IThing has been added
+	TE_REMOVED		= 0x2,			// IThing has been removed
+	TE_STATE		= 0x4,			// state of IThing has changed.
+	TE_IMPORTANCE	= 0x8,			// Importance of IThing has changed.
+	TE_GUID			= 0x10,			// GUID has been changed
+	TE_DATA			= 0X20,			// data of this thing has been changed
+
+	TE_ALL = TE_ADDED | TE_REMOVED | TE_STATE | TE_IMPORTANCE | TE_GUID | TE_DATA,
+    TE_ADDED_OR_STATE = TE_ADDED | TE_STATE
+    
+```
 
 **agent-society**
 
@@ -279,10 +299,9 @@ In the above example, the `event` can be (analogous to `gesture-manager`) `add-s
 ```
 In this example above the `event` could be `traverse`, `create_vertex`, `delete_vertex`, `create_edge`, etc. for example. The payloads would contain serialized information that the system can then use to create, update, or delete vertices or edges in the graph. You could also supply serialized traversal conditions that the graph can then use to traverse itself looking for all vertices that satisfy the traverser's conditions.
 
-It is possible to register your own _types_ that are not part of the schema.
+It is possible to register your own _types_ that are not part of the schema. _Intu_ supports generic `Thing` objects that you can register against the system.
 
 Some of the _topics_ such as **log** and **body** are just flows of textual data that you can subscribe to:
-
 
 **log**
 
@@ -292,64 +311,6 @@ Some of the _topics_ such as **log** and **body** are just flows of textual data
 
 **topic-manager**
 
-
-
-Here are some examples of subscribing to various topics. You can either subscribe to topics on the host you are connecting to, or you can subscribe to those corresponding topics on a child Intu instance of a common parent.
-
-```
-{
-	"targets": ["blackboard-stream"],
-	"msg": "subscribe",
-	"origin": "your Self Id followed by /."
-}
-
-{
-	"targets": ["log"],
-	"msg": "subscribe",
-	"origin": "your Self Id followed by /."
-}
-
-{
-	"targets": ["your parent Intu embodiment Id followed by /log"],
-	"msg": "subscribe",
-	"origin": "your Self Id followed by /."
-}
-
-```
-
-You can also unsubscribe from the topics if you so desire. A sample data blob to do so is as follows:
-
-```
-{
-	"targets": ["log"],
-	"msg": "unsubscribe",
-	"origin": "your Self Id followed by /."
-}
-```
-
-
-Here are some sample data blobs that can be used to _publish_ to the respective _topics_:
-
-```
-{
-	"targets": ["gesture-manager"],
-	"msg": "publish_at",
-	"data": "{\"event\":\"execute_done\",\"gestureId\":\"tts\",\"instanceId\":\"f1540690-f89a-45bd-eeb2-9ea24f22ba7a\"}",
-	"binary": false,
-	"persisted": false
-}
-
-{
-	"targets": ["blackboard"],
-	"msg": "publish_at",
-	"data": "{\"event\":\"subscribe_to_type\",\"type\":\"Text\",\"event_mask\":1}",
-	"binary": false,
-	"persisted": false
-}
-
-```
-
-The `targets` above refer to a list of _topics_ from above that you want to publish to. The `message` is always going to be `publish_at`. If you supply `true` for `persisted`, the data will get persisted in the _Intu_ instance so that future _subscribers_ will get all the persisted data the moment they _subscribe_, rather than only getting live _published_ data.
 
 For local testing (i.e. an _Intu_ instance running on the same physical device on which you are also running the _TopicClient_ through an SDK, you may leave the _SelfID_, _token_, and _orgId_ etc. empty in the data model. As is evident from the selective examples above, you see that the _publish_ and _subscribe_ can happen on textual data as well as binary data. For more information on what the actual data would look like for the individual _topics_, please refer to the open source [Intu Unity SDK](https://github.com/watson-intu/self-unity-sdk).
 
