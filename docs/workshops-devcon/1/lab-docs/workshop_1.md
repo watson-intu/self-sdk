@@ -20,9 +20,8 @@ Complete the following tasks:
 1. Request access to the [Intu Gateway](https://rg-gateway.mybluemix.net/).
 2. Click **Log In** and specify your IBM Bluemix credentials. If you don't have IBM Bluemix account, create one at [IBM Bluemix](https://console.ng.bluemix.net/).
 3. In the **Organization** field, specify the name of the organization that you represent.
-4. In the **Platform** field, specify the type of device you want to put Intu on.
-5. Click **Submit**. After your request has been submitted you will be logged in and receive a confirmation email.
-6. The Intu Downloads page is displayed.
+4. Click **Submit**. After your request has been submitted you will be logged in and receive a confirmation email.
+5. The Intu Downloads page is displayed.
 
 ## 2. Downloading Intu
 
