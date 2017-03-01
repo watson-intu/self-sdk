@@ -20,14 +20,13 @@ Complete the following tasks:
 1. Request access to the [Intu Gateway](https://rg-gateway.mybluemix.net/).
 2. Click **Log In** and specify your IBM Bluemix credentials. If you don't have IBM Bluemix account, create one at [IBM Bluemix](https://console.ng.bluemix.net/).
 3. In the **Organization** field, specify the name of the organization that you represent.
-4. In the **Business Justification** field, briefly explain why you need access to the Intu Gateway.
-5. Click **Submit**. After your request for access is approved, you will receive a confirmation email.
-6. Open the confirmation email, and **click the link**. The Intu Gateway Log In page is displayed again.
-7. Click **Log In**. The Intu Downloads page is displayed.
+4. In the **Platform** field, specify the type of device you want to put Intu on.
+5. Click **Submit**. After your request has been submitted you will be logged in and receive a confirmation email.
+6. The Intu Downloads page is displayed.
 
 ## 2. Downloading Intu
 
-1. On the Intu Downloads page, click on the the topmost download arrow for **Download Intu Tooling**. **Intu-Tooling-OSX64.zip** or **Intu-Tooling-Win64.zip** will start to download, depending on your machine.
+1. On the Intu Downloads page, click on the the topmost download arrow for **Download Intu Tooling Launcher**. **Intu-Tooling-OSX64.zip** or **Intu-Tooling-Win64.zip** will start to download, depending on your machine.
 
 2. Extract the Intu-Tooling-OSX64 or Intu-Tooling-Win64 directory (it may do so automatically), and copy the entire directory into your **home** directory. This is:
 
@@ -48,16 +47,16 @@ Complete the following tasks:
 	
 	If a security warning is displayed, accept the risk and open the file.
 2. Select the **Windowed** checkbox, accept the other default values, and click **Play!**. If a security warning is displayed, accept the risk. The Intu Manager page is now displayed. 
-3. Click **Install Intu**. Intu Tooling will start to install, and a new page will open in your browser for the Intu Tooling Log In page.
-4. Click **Log In**. Wait until you see the prompt to return to the Intu Manager application. At that point, return back to the Intu Tooling application.
+3. Wait until you see a browser appear inside the application. At that point, log into Bluemix through said browser, and you will be automatically logged into tooling.
+4. Tooling's main screen will start. Click **Menu** then **Install Intu**.
 5. A page displays options for where you can choose to install Intu. For this workshop, select **Local Machine**, and click **Next**. A page displays your Organizations and Groups in the dropdown menus. Default values are already selected. If you have multiple Organizations, Groups or both and want to use them, manually select them from the menus.
 6. Click **Install**. Installing Intu takes a few minutes. During the installation process, if you see one or more security prompts, make sure to allow access.
 
 7. After Intu installation is **Done!** and **100%** installed, if your microphone is on, say "hi,” or “how are you?", and hear Intu return a greeting. You will see a message "Intu install complete, loading Monitor in..." You can wait for the Intu Monitor to load automatically or click **Intu Monitor**.
 
-8.	The Intu Manager window is displayed, and you're prompted to select your Group. The Organization and Group should be preselected in the dropdown menu. 
+8.	The Intu Manager window is displayed, your Organization and Group selection can be seen in the top left. The Organization and Group can be changed in the two dropdown menu. 
 
-3. Click **Next**. A "Connecting to parent..." message is displayed while your Intu Manager tries to establish a connection. When the connection is made, the status icon of the device you installed Intu on turns **green**. 
+3. When an Organization and Group are selected. A **red** dot will display while your Intu Manager tries to establish a connection. When the connection is made, the status icon of the device you installed Intu on turns **green**. 
 4. Click on your device. A representation of a brain is displayed, and you will also see a **Menu** on the bottom left of the window.
 
 Now that Intu is installed successfully, explore how you can test conversations in speech and text with Intu in the next task.
