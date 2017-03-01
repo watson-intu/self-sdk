@@ -61,27 +61,194 @@ The endpoint for the _Intu_ `TopicManager`, that supports this pattern, is `/top
 
 A _topic_ is effectively a path. For example if you wanted to subscribe to the `sensors` on your parent _Intu_ instance from a child instance, you would use the _topic_ `../sensors` when you call _subscribe_. If you wanted to _subscribe_ to the same _topic_ on a child called **self01**, the _topic_ would have to be `self01/sensors`. If you wanted to _subscribe_ to **all** the children, you would use the `+` wildcard that _Intu_ supports, and say `+/self`.
 
-The _Intu Blackboard_ acts as the central publish/subscribe system for all agents. Here is a list of _topics_ that you can subscribe to:
+The _Intu Blackboard_ acts as the central publish/subscribe system for all agents. Below you will find a list of _topics_ that you can subscribe to, publish to, unsubscribe from, and also details of the data blobs that you need to use to perform those actions. Most of these _topics_ are very versatile, and allow all of the above actions. 
 
 **agent-society**
 
-**audio-out**
+*Subscribing*
+```
+{
+	"targets": ["agent-society"],
+	"msg": "subscribe",
+	"origin": "your Self Id followed by /."
+}
+
+```
+
+*Unsubscribing*
+```
+{
+	"targets": ["agent-society"],
+	"msg": "subscribe",
+	"origin": "your Self Id followed by /."
+}
+
+```
+*Publishing*
+```
+{
+	"targets": ["agent-society"],
+	"msg": "publish_at",
+	"data": "{\"event\":\"remove_agent_proxy\",\"agentId\":sampleAgentId}",
+	"binary": false,
+	"persisted": false
+}
+
+```
 
 **blackboard**
 
+*Subscribing*
+```
+{
+	"targets": ["blackboard"],
+	"msg": "subscribe",
+	"origin": "your Self Id followed by /."
+}
+```
+
+*Unsubscribing*
+```
+{
+	"targets": ["blackboard"],
+	"msg": "unsubscribe",
+	"origin": "your Self Id followed by /."
+}
+```
+*Publishing*
+```
+{
+	"targets": ["blackboard"],
+	"msg": "publish_at",
+	"data": "{\"event\":\"subscribe_to_type\",\"type\":\"Text\",\"event_mask\":1}",
+	"binary": false,
+	"persisted": false
+}
+```
+
 **blackboard-stream**
 
-**body**
+*Subscribing*
+```
+{
+	"targets": ["blackboard-stream"],
+	"msg": "subscribe",
+	"origin": "your Self Id followed by /."
+}
+
+```
+
+*Unsubscribing*
+```
+{
+	"targets": ["blackboard-stream"],
+	"msg": "unsubscribe",
+	"origin": "your Self Id followed by /."
+}
+
+```
+*Publishing*
+```
+{
+	"targets": ["blackboard-stream"],
+	"msg": "publish_at",
+	"data": "{\"event\":\"subscribe_to_type\",\"type\":\"Text\",\"event_mask\":1}",
+	"binary": false,
+	"persisted": false
+}
+```
 
 **gesture-manager**
 
-**graph-skills**
+*Subscribing*
+```
+{
+	"targets": ["gesture-manager"],
+	"msg": "subscribe",
+	"origin": "your Self Id followed by /."
+}
+```
 
-**log**
+*Unsubscribing*
+```
+{
+	"targets": ["gesture-manager"],
+	"msg": "unsubscribe",
+	"origin": "your Self Id followed by /."
+}
+```
+*Publishing*
+```
+{
+	"targets": ["gesture-manager"],
+	"msg": "publish_at",
+	"data": "{\"event\":\"execute_done\",\"gestureId\":\"tts\",\"instanceId\":\"f1540690-f89a-45bd-eeb2-9ea24f22ba7a\"}",
+	"binary": false,
+	"persisted": false
+}
+```
 
 **sensor-manager**
 
+*Subscribing*
+```
+{
+	"targets": ["sensor-manager"],
+	"msg": "subscribe",
+	"origin": "your Self Id followed by /."
+}
+```
+
+*Unsubscribing*
+```
+{
+	"targets": ["sensor-manager"],
+	"msg": "unsubscribe",
+	"origin": "your Self Id followed by /."
+}
+```
+*Publishing*
+```
+{
+	"targets": ["sensor-manager"],
+	"msg": "publish_at",
+	"data": "{\"event\":\"add_sensor_proxy\",\"sensorId\":\"asdf\",\"name\":\"keyboard\",\"data_type\":\"TextData\",\"binary_type\":\"KeyboardData\",\"override\":true}",
+	"binary": false,
+	"persisted": false
+}
+
+```
+
+It is possible to register your own _types_ that are not part of the schema.
+
 **topic-manager**
+
+*Subscribing*
+```
+
+```
+
+*Unsubscribing*
+```
+
+```
+*Publishing*
+```
+
+```
+
+
+Some of the _topics_ such as **log** and **body** are just flows of textual data that you can subscribe to:
+
+
+**log**
+
+**body**
+
+**audio-out**
+
+**graph-skills**
+
 
 Here are some examples of subscribing to various topics. You can either subscribe to topics on the host you are connecting to, or you can subscribe to those corresponding topics on a child Intu instance of a common parent.
 
