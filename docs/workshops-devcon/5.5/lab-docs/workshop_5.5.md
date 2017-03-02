@@ -50,7 +50,7 @@ Plug the USB microphone into any one of the USB ports of your Raspberry Pi.
 
 ### D. Connecting the Servo Motor
 
-As part of this lab we will be using the Tower Pro SG90 micoservo. You can see the pin out of this servo motor ![here](https://github.ibm.com/watson-labs-austin/self-sdk/blob/develop/docs/workshops-devcon/5.5/lab-docs/SG90Servo.pdf). You will need to connect the servo motor to the Raspi Board as below:
+As part of this lab we will be using the Tower Pro SG90 micoservo. You can see the pin out of this servo motor [here](https://github.ibm.com/watson-labs-austin/self-sdk/blob/develop/docs/workshops-devcon/5.5/lab-docs/SG90Servo.pdf). You will need to connect the servo motor to the Raspi Board as below:
 
 ![Board Layout for Servo](https://github.ibm.com/watson-labs-austin/self-sdk/blob/develop/docs/workshops-devcon/5.5/lab-docs/sevo_pin_layout.png?raw=true)
 
