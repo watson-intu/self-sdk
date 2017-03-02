@@ -120,7 +120,7 @@ void ExampleSensor::DeviceRequest::OnResponse(IWebClient::RequestData * a_pRespo
 void ExampleSensor::DeviceRequest::MakeRequest()
 {
 	if (!m_spClient)
-		m_spClient = IWebClient::Create();
+		m_spClient = IWebClient::Create(m_Rests[m_Index].m_URL);
 	
 	m_Rests[m_Index].m_Headers["Authorization"] = "Bearer 1ecee119-299e-41fa-9011-3593a73a1c33";
 	m_spClient->Request(m_Rests[m_Index].m_URL + m_Rests[m_Index].m_Params,
