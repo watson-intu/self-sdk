@@ -112,11 +112,9 @@ You may want to use git to clone the repository, so that the self-docs submodule
 
 **Option 1:** [Download the Self SDK](https://github.com/watson-intu/self-sdk) using git commands. Issue following commands on your terminal in Mac:
 
-    1. `git clone https://github.com/watson-intu/self-sdk.git`
-    
-    2. `cd self-sdk`
-    
-    3. `git submodule update --init --recursive`
+1. `git clone https://github.com/watson-intu/self-sdk.git`
+2. `cd self-sdk`
+3. `git submodule update --init --recursive`
 
 **Option 2:** [Download the Self SDK](https://github.com/watson-intu/self-sdk) and seperately download [Download the Self Docs](https://github.com/watson-intu/self-docs). Unzip it in a place you prefer.
 
