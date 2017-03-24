@@ -106,12 +106,19 @@ The Intu Starter Kit contains a Conversation service workspace that helps you vi
 
 ## Compiling Intu for various platforms
 
-### Getting the files
+### Getting the files 
 
-Download the code to your computer. You can do download the code in either of the following ways:
+You may want to use git to clone the repository, so that the self-docs submodule is downloaded for easy referal. In your home directory, do the following:
 
-  * Download the .zip file of this repository to a local directory.
-  * Clone this repository locally.
+**Option 1:** [Download the Self SDK](https://github.com/watson-intu/self-sdk) using git commands:
+
+    1. `git clone https://github.com/watson-intu/self-sdk.git`
+    
+    2. `cd self-sdk`
+    
+    3. `git submodule update --init --recursive`
+
+**Option 2:** [Download the Self SDK](https://github.com/watson-intu/self-sdk) and seperately download [Download the Self Docs](https://github.com/watson-intu/self-docs). Unzip it in a place you prefer.
 
 ### Release Notes
 * You may need to delete the "wdc" directory to get latest due to that directory being converted into a sub-module.
@@ -210,13 +217,8 @@ Linux raspberrypi 4.4.21-v7+ #911 SMP Thu Sep 15 14:22:38 BST 2016 armv7l GNU/Li
 
 	3. Navigate to the raspi directory using: `cd {self root directory}/bin/raspi`.
 	
-	4. Run: `export LD_LIBRARY_PATH=./`
-	
-	5. Run: `export WIRINGPI_GPIOMEM=1`
-	
-	6. Run: `./self_instance`
+	4. Run: `./run_self.sh`
     
-This process installs Intu on the remote device whose user name and IP address you provide. You can go to the `~/self/latest` directory on that device and run `run_self.sh`. This process was tested on Red Hat Enterprise 6.6 and 6.7.
 
 ### Aldebaran Nao and Pepper robots using OS X
 
