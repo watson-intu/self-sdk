@@ -110,7 +110,7 @@ The Intu Starter Kit contains a Conversation service workspace that helps you vi
 
 You may want to use git to clone the repository, so that the self-docs submodule is downloaded for easy referal. In your home directory, do the following:
 
-**Option 1:** [Download the Self SDK](https://github.com/watson-intu/self-sdk) using git commands:
+**Option 1:** [Download the Self SDK](https://github.com/watson-intu/self-sdk) using git commands. Issue following commands on your terminal in Mac:
 
     1. `git clone https://github.com/watson-intu/self-sdk.git`
     
