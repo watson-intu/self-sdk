@@ -116,6 +116,13 @@ You may want to use git to clone the repository, so that the self-docs submodule
 2. `cd self-sdk`
 3. `git submodule update --init --recursive`
 
+**Important:** If you use SourceTree, the process might get stuck when trying to pull by using SSH. This is because SourceTree will try to launch an interactive window that will be hidden. Run the following commands on the command line to fix the problem:
+
+1. `cd "C:\Program Files (x86)\Atlassian\SourceTree\tools\putty"`
+	
+2. `plink git@github.ibm.com`
+
+
 **Option 2:** [Download the Self SDK](https://github.com/watson-intu/self-sdk) and seperately download [Download the Self Docs](https://github.com/watson-intu/self-docs). Unzip it in a place you prefer.
 
 ### Release Notes
