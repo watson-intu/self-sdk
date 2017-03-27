@@ -13,7 +13,7 @@
 	* Linux now has a native implementation for speech.
 	* Intu now uses expressive speech if available.
 	* Implemented DiscoveryAgent for discovering other Intu instances on the network.
-	* Platform specific configurations are now seperated from the body.json.
+	* Platform specific configurations are now separated from the body.json.
 	* Conversation emotes are now executed based on their position within the text.
 	* Implementred MoveJointGesture for Raspberry Pi.
 	* Documentation is now a sub-module located in its own repository.
