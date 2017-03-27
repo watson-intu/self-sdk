@@ -21,7 +21,6 @@
 * Intu Models
 	* Implemented ModelsAgent for working with the graph.
 	* Graphs are now searched asychronously, locally found data is used immediately if available.
-	* Added support for IBM Graph.
 	* Skills & Plans are now stored in the models of the world.
 	* The graph is used to parse language, replacing the use of NLC.
 	* Models of others is updated when new persons are learned.
