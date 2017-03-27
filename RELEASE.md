@@ -16,7 +16,7 @@
 	* Platform specific configurations are now seperated from the body.json.
 	* Conversation emotes are now executed based on their position within the text.
 	* Implementred MoveJointGesture for raspberry Pi.
-	* Documentation is now a sub-module located in it's own repository.
+	* Documentation is now a sub-module located in its own repository.
 	* Implemented connection pooling for REST calls.
 	* Implemnented WeatherCompanyData service.
 
