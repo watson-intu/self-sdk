@@ -17,6 +17,7 @@
 	* Conversation emotes are now executed based on their position within the text.
 	* Implementred MoveJointGesture for raspberry Pi.
 	* Documentation is now a sub-module located in it's own repository.
+	* Implemented connection pooling for REST calls.
 
 * Intu Models
 	* Implemented ModelsAgent for working with the graph.
