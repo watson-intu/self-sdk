@@ -15,7 +15,7 @@
 	* Implemented DiscoveryAgent for discovering other Intu instances on the network.
 	* Platform specific configurations are now seperated from the body.json.
 	* Conversation emotes are now executed based on their position within the text.
-	* Implementred MoveJointGesture for raspberry Pi.
+	* Implementred MoveJointGesture for Raspberry Pi.
 	* Documentation is now a sub-module located in its own repository.
 	* Implemented connection pooling for REST calls.
 	* Implemnented WeatherCompanyData service.
