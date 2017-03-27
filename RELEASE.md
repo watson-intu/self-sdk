@@ -15,14 +15,14 @@
 	* Implemented DiscoveryAgent for discovering other Intu instances on the network.
 	* Platform specific configurations are now separated from the body.json.
 	* Conversation emotes are now executed based on their position within the text.
-	* Implementred MoveJointGesture for Raspberry Pi.
+	* Implemented MoveJointGesture for Raspberry Pi.
 	* Documentation is now a sub-module located in its own repository.
 	* Implemented connection pooling for REST calls.
 	* Implemnented WeatherCompanyData service.
 
 * Intu Models
 	* Implemented ModelsAgent for working with the graph.
-	* Graphs are now searched asychronously, locally found data is used immediately if available.
+	* Graphs are now searched asynchronously, locally found data is used immediately if available.
 	* Skills & Plans are now stored in the models of the world.
 	* The graph is used to parse language, replacing the use of NLC.
 	* Models of others is updated when new persons are learned.
@@ -32,7 +32,7 @@
 	* Tooling flow updated to remove the manage/install screen.
 	* Intu Manager can now auto-update itself to new versions of the tooling.
 	* You can now disable/enable the camera using tooling.
-	* Tooling can now connect directly to a Intu instance without a parent.
+	* Tooling can now connect directly to an Intu instance without a parent.
 
 * Known Issues
 	* Self updating is currently broken.
