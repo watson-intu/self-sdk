@@ -37,8 +37,7 @@
 * Known Issues
 	* Self auto upgrade is currently disabled.
 	* Resetting the avatar with a long press doesn't reset the topic subscriptions correctly, resulting in multiple subscriptions to the same topics.
-	* The avatar doesn't update the Conversation UI correctly when running fullscreen on Mac.
-	* Tooling has a memory leak and will crash after running for about 24 hours.
+	* Tooling has a memory leak and will stop running after ~24 hours.
 
 ### Release Notes for RC3 (Version 0.1.269, last updated 12/1/2016)
 
