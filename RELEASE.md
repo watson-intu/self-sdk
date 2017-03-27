@@ -37,7 +37,7 @@
 * Known Issues
 	* Self auto upgrade is currently disabled.
 	* Resetting the avatar with a long press doesn't reset the topic subscriptions correctly, resulting in multiple subscriptions to the same topics.
-	* Tooling has a memory leak and will stop running after ~24 hours.
+	* Tooling has a memory leak and will stop working if running continously for about ~24 hours.
 
 ### Release Notes for RC3 (Version 0.1.269, last updated 12/1/2016)
 
