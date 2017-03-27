@@ -12,7 +12,7 @@
 	* Camera is now off by default.
 	* Linux now has a native implementation for speech.
 	* Intu now uses expressive speech if available.
-	* Implemented DiscoveryAgent for discoveraing other Intu instances on the network.
+	* Implemented DiscoveryAgent for discovering other Intu instances on the network.
 	* Platform specific configurations are now separated from the body.json.
 	* Conversation emotes are now executed based on their position within the text.
 	* Implemented MoveJointGesture for raspberry Pi.
