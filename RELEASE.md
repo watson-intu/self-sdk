@@ -18,7 +18,7 @@
 	* Implemented MoveJointGesture for Raspberry Pi.
 	* Documentation is now a sub-module located in its own repository.
 	* Implemented connection pooling for REST calls.
-	* Implemnented WeatherCompanyData service.
+	* Implemented WeatherCompanyData service.
 
 * Intu Models
 	* Implemented ModelsAgent for working with the graph.
