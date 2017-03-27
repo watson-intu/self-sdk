@@ -1,14 +1,14 @@
 ### Release Notes for RC4 (Version 0.1.410, last updated 3/27/2017)
 
 * Intu Core
-	* Visual recognition intergrated into conversation context.
+	* Visual recognition integrated into conversation context.
 	* OpenCV is now used to detect faces locally.
 	* Implemented local cache for conversation.
-	* Streaming speech gesture is implemented for windows reducing latency on speech.
+	* Streaming speech gesture is implemented for Windows reducing latency on speech.
 	* GreeterAgent now creates a goal.
 	* ISensor based objects now have a serialized sensor name.
 	* Implemented default emotions for Mac, Windows, and Linux.
-	* Implemented Camera sensor for windows.
+	* Implemented Camera sensor for Windows.
 	* Camera is now off by default.
 	* Linux now has a native implementation for speech.
 	* Intu now uses expressive speech if available.
@@ -38,7 +38,7 @@
 	* You may need to delete the "wdc" directory to get latest due to that directory being converted into a sub-module.
 	* If you use git bash to checkout, run the following command to checkout the submodule `git submodule foreach git pull origin develop`.
 * Bug Fixes
-	*  Fixed an issue where orgs with apostrophes in the Org Name could not connect to parents.
+	* Fixed an issue where organizations with apostrophes in the Organization Name could not connect to parents.
 	* Fixed an issue where previously users could not connect to parents because of scalability problems.
 	* Fixed an issue where Intu Gateway users were frequently logged out and redirected to the login page.
 	* Fixed an issue where multi-level conversation did not retain context.
