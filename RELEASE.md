@@ -1,21 +1,6 @@
 ### Release Notes for RC4 (Version 0.1.410, last updated 3/27/2017)
 
-* Upgrading from RC3
-	* NLC is being phased out as the method to understand how to handle requests from the user to execute simple requests (e.g. Raise your right hand). Intu should continue to be backwards compatible with using NLC for simple requests, but if you would like to upgrade to the new method which uses a graph search and conversation to handle those requests please follow these steps:
-		* NLCProxy should be removed from your body.json .
-		* You may remove the **NaturalLanguageClassifierV1** service credentials from both the body.json and the gateway.
-		* You may remove the **NaturalLanguageClassifier** service from the body.json.
-		* RequestAgent in the body should be updated to the following:
-		```
-		{
-			 "Type_" : "RequestAgent",
-			 "m_EntityFilter" : [ "verb", "noun", "directionPerpendicular", "directionParallel", "adjective" ],
-			 "m_RequestFailedText" : [ "I do not know how to %s." ],
-			 "m_RequestFiles" : [ "shared/self_requests.json" ]
-		},
-		```
-		* You should re-import the default conversation from the starter kit; this is available in the downloads section of the [Robot Gateway](https://rg-gateway.mybluemix.net). This new conversation adds a **request** intent along with the entities parsed from the speech. The graph is searched using these entities to find an action to execute; your graph is initizlized from the file located at **etc/shared/self_requests.json**. 
-		
+If you are upgrading from RC3, please view [UPGRADE.md](./UPGRADE.md).
 
 * Intu Core
 	* Visual recognition integrated into conversation context.
