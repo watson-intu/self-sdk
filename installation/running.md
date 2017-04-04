@@ -24,7 +24,7 @@ If you installed **Intu** through the Intu Manager, follow these steps to run In
 
 
 ## <a name="intu-sdk">Running the Intu SDK</a>
-If you downloaded the **Intu SDK** and plan on running that instance of Intu, it is first assumed that you have [compiled](../compiling.md) your instance of Intu already. Next follow the instructions based off of which platform you intend to run Intu on:
+If you downloaded the **Intu SDK** and plan on running that instance of Intu, it is first assumed that you have [compiled](../installation/compiling.md) your instance of Intu already. Next follow the instructions based off of which platform you intend to run Intu on:
 
 ### Windows
 1. Open the Intu SDK project in Visual Studio
