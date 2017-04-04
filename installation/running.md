@@ -1,5 +1,11 @@
 # Running Intu on your devices
 
+This page will walk you through how to do the following tasks:
+
+1. [Running Intu through the Intu Manager](#intu-through-manager)
+2. [Running Intu from the SDK](#intu-sdk)
+3. [Updating the config.json](#updating-config)
+
 * If you installed **Intu** on your device through the **Intu Manager** downloaded from the Intu Gateway, follow [these instructions](#intu-through-manager).
 
 * If you are running the **Intu SDK** downloaded or cloned from GitHub, follow [these instructions](#intu-sdk).
@@ -30,45 +36,53 @@ If you downloaded the **Intu SDK** and plan on running that instance of Intu, it
 1. Open the Intu SDK project in Visual Studio
 2. Build the project
 3. In the Solution Explorer, got to **sdk -> bin**
-4. If there is a `config.json` file present, update it following [these instructions](#updating-config)
-5. If there is no `config.json` file present, create a file and name it `config.json` and update it following [these instructions](#updating-config)
+4. If there is a `config.json` file present, delete its current contents
+5. If there is no `config.json` file present, create a file and name it `config.json`
+6. Add your configuration to the `config.json` file by following [these instructions](#updating-config)
 6. Run Intu
 
 ### OS X
 1. Navigate to your Intu SDK root directory in your terminal
 2. Navigate to the `bin/mac` directory
-3. If there is a `config.json` file present, update it following [these instructions](#updating-config)
-4. If there is no `config.json` file present, create a file and name it `config.json` and update it following [these instructions](#updating-config)
-5. Run the following command: `./self_instance`
-6. If you get an error, run `export LD_LIBRARY_PATH=./` and then redo step 5.
+3. If there is a `config.json` file present, delete its current contents
+4. If there is no `config.json` file present, create a file and name it `config.json`
+5. Add your configuration to the `config.json` file by following [these instructions](#updating-config)
+6. Run the following command: `./self_instance`
+7. If you get an error, run `export LD_LIBRARY_PATH=./` and then redo step 6.
 
 ### Linux
 1. Navigate to your Intu SDK root directory
 2. Navigate to the `bin/linux` directory
-3. If there is a `config.json` file present, update it following [these instructions](#updating-config)
-4. If there is no `config.json` file present, create a file and name it `config.json` and update it following [these instructions](#updating-config)
-3. Run the following command: `./self_instance`
-4. If you get an error, run `export LD_LIBRARY_PATH=./` and then redo step 5.
+3. If there is a `config.json` file present, delete its current contents
+4. If there is no `config.json` file present, create a file and name it `config.json`
+5. Add your configuration to the `config.json` file by following [these instructions](#updating-config)
+6. Run the following command: `./self_instance`
+7. If you get an error, run `export LD_LIBRARY_PATH=./` and then redo step 6.
 
 ### Raspberry Pi
 1. ssh onto the Raspberry Pi
 2. On the Raspberry Pi, navigate to the Intu SDK root directory
 3. Navigate to the `bin/raspi` directory
-4. If there is a `config.json` file present, update it following [these instructions](#updating-config)
-5. If there is no `config.json` file present, create a file and name it `config.json` and update it following [these instructions](#updating-config)
-6. Run the following command: `./run_self.sh`
-7. If you get an error, run `export LD_LIBRARY_PATH=./` and then redo step 6.
+4. If there is a `config.json` file present, delete its current contents
+5. If there is no `config.json` file present, create a file and name it `config.json`
+6. Add your configuration to the `config.json` file by following [these instructions](#updating-config)
+7. Run the following command: `./run_self.sh`
+8. If you get an error, run `export LD_LIBRARY_PATH=./` and then redo step 7.
 
 ### Nao and Pepper robots
 1. ssh onto the robot
 2. On the robot, navigate to the Intu SDK root directory
 3. Navigate to the `bin/nao` directory
-4. If there is a `config.json` file present, update it following [these instructions](#updating-config)
-5. If there is no `config.json` file present, create a file and name it `config.json` and update it following [these instructions](#updating-config)
-6. Run the following command: `./self_instance`
-7. If you get an error, run `export LD_LIBRARY_PATH=./` and then redo step 6.
+4. If there is a `config.json` file present, delete its current contents
+5. If there is no `config.json` file present, create a file and name it `config.json`
+6. Add your configuration to the `config.json` file by following [these instructions](#updating-config)
+7. Run the following command: `./self_instance`
+8. If you get an error, run `export LD_LIBRARY_PATH=./` and then redo step 7.
 
-## <a name="updating-config">Updating the config.json</a>
+
+
+## <a name="updating-config">Updating your Configuration</a>
+### How to update the config.json file:
 1. Login to the [Intu Gateway](https://rg-gateway.mybluemix.net)
 2. Click on **VIEW CREDENTIALS** on the lefthand sidebar
 3. Selct your Organization and Group
