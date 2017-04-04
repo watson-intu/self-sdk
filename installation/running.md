@@ -6,6 +6,8 @@ This page will walk you through how to do the following tasks:
 2. [Running Intu from the SDK](#intu-sdk)
 3. [Updating the config.json](#updating-config)
 
+You will run **Intu** differently depending on whether you installed Intu through the **Intu Manager** or are running the **Intu SDK**:
+
 * If you installed **Intu** on your device through the **Intu Manager** downloaded from the Intu Gateway, follow [these instructions](#intu-through-manager).
 
 * If you are running the **Intu SDK** downloaded or cloned from GitHub, follow [these instructions](#intu-sdk).
