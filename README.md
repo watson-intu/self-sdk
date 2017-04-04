@@ -35,11 +35,11 @@ Intu is an architecture that enables Watson services in devices that perceive by
 
 To get started using Intu, complete the following tasks:
 
-1. [Requesting access to the Watson Intu Gateway and downloading the Intu Manager](./downloading.md)
-2. [Installing Intu on your devices](./installing.md)
-3. [Configuring Intu to use your own Bluemix services](./configuring.md)
-4. [Compiling Intu for various platforms](./compiling.md)
-5. [Running Intu](./running.md)
+1. [Requesting access to the Watson Intu Gateway and downloading the Intu Manager](./installation/downloading.md)
+2. [Installing Intu on your devices](./installation/installing.md)
+3. [Configuring Intu to use your own Bluemix services](./installation/configuring.md)
+4. [Compiling Intu for various platforms](./installation/compiling.md)
+5. [Running Intu](./installation/running.md)
 
   
 ## Feedback
