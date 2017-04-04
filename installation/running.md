@@ -20,7 +20,7 @@ If you installed **Intu** through the Intu Manager, follow these steps to run In
 2. Navigate to the following directory: `self/latest`
 3. On Raspberry Pi, run the following command: `./run_self.sh`
 4. On Nao or Pepper, run the following command: `./self_instance`
-5. If you get an error, run `export LD_LIBRARY_PATH=./` and then redo step 4 or 5.
+5. If you get an error, run `export LD_LIBRARY_PATH=./` and then redo step 3 or 4.
 
 
 ## <a name="intu-sdk">Running the Intu SDK</a>
